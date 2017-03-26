@@ -35,6 +35,7 @@
 <?php if ($direction == 'rtl') { ?>
 <link rel="stylesheet" type="text/css" href="catalog/view/theme/cosyone/stylesheet/rtl.css" />
 <?php } ?>
+<link href="catalog/view/theme/default/css/main.css" rel="stylesheet">
 
 <script type="text/javascript" src="catalog/view/theme/cosyone/js/owl.carousel.min.js"></script>
 <script type="text/javascript" src="catalog/view/theme/cosyone/js/cosyone_common.js"></script>
@@ -51,6 +52,23 @@
 </head>
 <body class="<?php echo $class; ?>">
 <div class="outer_container <?php echo $cosyone_default_product_style; ?> <?php if($cosyone_use_custom){ echo $cosyone_container_layout; } ?> <?php echo $cosyone_use_breadcrumb; ?>">
+
+<div class="header">
+    <div class="header__top">
+        <div class="container header__top-container">
+            <div class="header__socials">
+                фівфів
+            </div>
+        </div>
+    </div>
+    <div class="header__bottom">
+        <div class="header__container">
+фівфівфів
+        </div>
+    </div>
+</div>
+
+
 <div class="header_wrapper 
 <?php echo $cosyone_menu_sticky; ?> 
 <?php echo $cosyone_menu_border; ?> 
