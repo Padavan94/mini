@@ -53,22 +53,130 @@
 <body class="<?php echo $class; ?>">
 <div class="outer_container <?php echo $cosyone_default_product_style; ?> <?php if($cosyone_use_custom){ echo $cosyone_container_layout; } ?> <?php echo $cosyone_use_breadcrumb; ?>">
 
-<div class="header">
+<div class="header_main header">
     <div class="header__top">
         <div class="container header__top-container">
-            <div class="header__socials">
-                фівфів
+            <div class="header__row">
+              <div class="header__socials">
+                <a href="#" class="header__socials-icon"><i class="fa fa-vk"></i></a>
+                <a href="#" class="header__socials-icon"><i class="fa fa-vk"></i></a>
+                <a href="#" class="header__socials-icon"><i class="fa fa-vk"></i></a>
+              </div>
+              <div class="header__shares">
+                <div class="header__share _share1">
+                  при заказе на сумму от 1700 грн <strong><i></i>бесплатная доставка</strong>
+                </div>
+                <div class="header__share _share2">
+                  <i></i>
+                  Подарочный сертификат
+                </div>
+              </div>
             </div>
+            <div class="header__row">
+              <div class="header__contacts">
+                <a href="mailto:dariagavrilova.od@gmail.com">dariagavrilova.od@gmail.com</a>
+                <a href="tel:+38 063 764 63 67">+38 063 764 63 67</a>
+              </div>
+              <div class="header__logo">
+                <?php if ($logo) { ?>
+                <div class="logo"><a href="<?php echo $home; ?>"><img src="<?php echo $logo; ?>" title="<?php echo $name; ?>" alt="<?php echo $name; ?>" /></a></div>
+                <?php } ?>
+              </div>
+              <div class="header__cart">
+                <?php if($cosyone_header_style == 'header2') { ?>
+                    <?php } else { ?>
+                      <div class="shortcuts_wrapper">
+                      <?php if ($cosyone_header_cart) { echo $cart; } ?>
+                      </div>
+               <?php } ?>
+              </div>
+            </div>
+            
         </div>
     </div>
     <div class="header__bottom">
         <div class="header__container">
-фівфівфів
+            <div class="menu_wrapper">
+              <div class="container menu_border"></div>
+              <div class="container menu_holder">
+              <div id="menu">
+              
+                <ul class="only_desktop">
+                <li class="home only_desktop <?php echo $cosyone_show_home_icon; ?>"><a href="<?php echo $home; ?>"><?php echo $text_home; ?></a></li>
+                     <?php if ($categories) { ?>
+                     <?php foreach ($categories as $category_1) { ?>
+                      <?php if ($category_1['category_1_id'] == $category_1_id) { ?>
+                  <li class="col<?php echo $category_1['column']; ?> current"><a href="<?php echo $category_1['href']; ?>" ><?php echo $category_1['name']; ?><i class="fa fa-sort-desc"></i></a>
+                       <?php } else { ?>
+                       <li class="col<?php echo $category_1['column']; ?>"><a href="<?php echo $category_1['href']; ?>" ><?php echo $category_1['name']; ?><i class="fa fa-sort-desc"></i></a>
+                       <?php } ?>
+                        <?php if ($category_1['children']) { ?>
+                        <div class="menu_drop_down" style="width: <?php echo ((($category_1['column']) * (195)) + (10)); ?>px">
+                        <div class="wrapper">
+                        <ul><?php foreach ($category_1['children'] as $category_2) { ?>
+                        <li class="column level2">
+                          <a href="<?php echo $category_2['href']; ?>"><?php echo $category_2['name']; ?><i class="fa fa-caret-right"></i></a>
+                          <?php if($cosyone_menu_mega_second_thumb == 'enabled' && $category_2['thumb']) { ?>
+                        <a href="<?php echo $category_2['href']; ?>" class="sub_thumb"><img src="<?php echo $category_2['thumb']; ?>" alt="<?php echo $category_2['name']; ?>"/></a>
+                        <?php } ?>
+                            <?php if ($category_2['children']) { ?>
+                            <div class="third">
+                            <ul>
+                             <?php foreach ($category_2['children'] as $category_3) { ?>
+                             <li><a href="<?php echo $category_3['href']; ?>"><?php echo $category_3['name']; ?></a></li>
+                             <?php } ?>
+                            </ul>
+                            </div>
+                            <?php } ?>
+                          </li>
+                          <?php } ?>
+                        </ul>
+                        </div><!-- wrapper ends -->
+                        </div>
+                        <?php } ?>
+                      </li>
+                      <?php } ?>
+                      <?php } ?>
+                      <?php if($cosyone_custom_menu_block == 'enabled'){ ?>
+                  <li class="withsubs custom_block"><a><?php echo $cosyone_custom_menu_block_title; ?><i class="fa fa-sort-desc"></i></a>
+                      <div class="menu_drop_down" style="width:<?php echo $cosyone_menu_block_width; ?>px">
+                      <?php echo $cosyone_menu_custom_block_content; ?>
+                      </div></li>
+                  <?php } ?>
+                      <?php if($cosyone_custom_menu_title1){ ?>
+                  <li><a href="<?php echo $cosyone_custom_menu_url1 ?>"><?php echo $cosyone_custom_menu_title1; ?></a></li>
+                      <?php } ?>
+                      <?php if($cosyone_custom_menu_title2){ ?>
+                  <li><a href="<?php echo $cosyone_custom_menu_url2 ?>"><?php echo $cosyone_custom_menu_title2; ?></a></li>
+                      <?php } ?>
+                      <?php if($cosyone_custom_menu_title3){ ?>
+                  <li><a href="<?php echo $cosyone_custom_menu_url3; ?>"><?php echo $cosyone_custom_menu_title3; ?></a></li>
+                      <?php } ?>
+                      <?php if($cosyone_custom_menu_title4){ ?>
+                  <li><a href="<?php echo $cosyone_custom_menu_url4; ?>"><?php echo $cosyone_custom_menu_title4; ?></a></li>
+                      <?php } ?>
+                      <?php if($cosyone_custom_menu_title5){ ?>
+                  <li><a href="<?php echo $cosyone_custom_menu_url5; ?>"><?php echo $cosyone_custom_menu_title5; ?></a></li>
+                      <?php } ?>
+                      <?php if($cosyone_custom_menu_title6){ ?>
+                  <li><a href="<?php echo $cosyone_custom_menu_url6; ?>"><?php echo $cosyone_custom_menu_title6; ?></a></li>
+                      <?php } ?>
+                    </ul>
+
+                    <?php if($cosyone_header_style == 'header3') { ?>
+                     <?php } else { ?>
+                     <?php if($cosyone_header_search == 'enabled') { ?>
+                     <?php echo $search; ?>
+                     <?php } ?>
+                     <?php } ?>
+                  </div> <!-- menu_holder ends -->
+              </div> <!-- menu ends -->
+              </div> <!-- menu_wrapper ends -->
         </div>
     </div>
 </div>
 
-
+<?php if(false): ?>
 <div class="header_wrapper 
 <?php echo $cosyone_menu_sticky; ?> 
 <?php echo $cosyone_menu_border; ?> 
@@ -125,87 +233,7 @@
 	</div> <!-- header ends -->
     <?php } ?>
 
-<div class="menu_wrapper">
-<div class="container menu_border"></div>
-<div class="container menu_holder">
-<div id="menu">
-<?php if($cosyone_header_style == 'header2') { ?>
-    	<?php } else { ?>
-        <div class="shortcuts_wrapper">
-        <?php if($cosyone_header_style == 'header3') { ?>
- <div class="search-holder">
- <?php echo $search; ?>
- </div>
- <?php } ?>
-        <?php echo $header_wishlist_compare; ?>
-        <?php if ($cosyone_header_cart) { echo $cart; } ?>
-        </div>
- <?php } ?>
-<a class="mobile_menu_trigger up_to_tablet"><i class="fa fa-bars"></i> <?php echo $cosyone_text_mobile_menu; ?></a>
-  <ul class="only_desktop">
-	<li class="home only_desktop <?php echo $cosyone_show_home_icon; ?>"><a href="<?php echo $home; ?>"><?php echo $text_home; ?></a></li>
-       <?php if ($categories) { ?>
-       <?php foreach ($categories as $category_1) { ?>
-        <?php if ($category_1['category_1_id'] == $category_1_id) { ?>
-		<li class="col<?php echo $category_1['column']; ?> current"><a href="<?php echo $category_1['href']; ?>" ><?php echo $category_1['name']; ?><i class="fa fa-sort-desc"></i></a>
-         <?php } else { ?>
-         <li class="col<?php echo $category_1['column']; ?>"><a href="<?php echo $category_1['href']; ?>" ><?php echo $category_1['name']; ?><i class="fa fa-sort-desc"></i></a>
-         <?php } ?>
-          <?php if ($category_1['children']) { ?>
-          <div class="menu_drop_down" style="width: <?php echo ((($category_1['column']) * (195)) + (10)); ?>px">
-          <div class="wrapper">
-          <ul><?php foreach ($category_1['children'] as $category_2) { ?>
-          <li class="column level2">
-            <a href="<?php echo $category_2['href']; ?>"><?php echo $category_2['name']; ?><i class="fa fa-caret-right"></i></a>
-            <?php if($cosyone_menu_mega_second_thumb == 'enabled' && $category_2['thumb']) { ?>
-          <a href="<?php echo $category_2['href']; ?>" class="sub_thumb"><img src="<?php echo $category_2['thumb']; ?>" alt="<?php echo $category_2['name']; ?>"/></a>
-          <?php } ?>
-              <?php if ($category_2['children']) { ?>
-              <div class="third">
-              <ul>
-               <?php foreach ($category_2['children'] as $category_3) { ?>
-               <li><a href="<?php echo $category_3['href']; ?>"><?php echo $category_3['name']; ?></a></li>
-               <?php } ?>
-              </ul>
-              </div>
-              <?php } ?>
-            </li>
-            <?php } ?>
-          </ul>
-          </div><!-- wrapper ends -->
-          </div>
-          <?php } ?>
-        </li>
-        <?php } ?>
-        <?php } ?>
-        <?php if($cosyone_custom_menu_block == 'enabled'){ ?>
-		<li class="withsubs custom_block"><a><?php echo $cosyone_custom_menu_block_title; ?><i class="fa fa-sort-desc"></i></a>
-        <div class="menu_drop_down" style="width:<?php echo $cosyone_menu_block_width; ?>px">
-        <?php echo $cosyone_menu_custom_block_content; ?>
-        </div></li>
-		<?php } ?>
-        <?php if($cosyone_custom_menu_title1){ ?>
-		<li><a href="<?php echo $cosyone_custom_menu_url1 ?>"><?php echo $cosyone_custom_menu_title1; ?></a></li>
-        <?php } ?>
-        <?php if($cosyone_custom_menu_title2){ ?>
-		<li><a href="<?php echo $cosyone_custom_menu_url2 ?>"><?php echo $cosyone_custom_menu_title2; ?></a></li>
-        <?php } ?>
-        <?php if($cosyone_custom_menu_title3){ ?>
-		<li><a href="<?php echo $cosyone_custom_menu_url3; ?>"><?php echo $cosyone_custom_menu_title3; ?></a></li>
-        <?php } ?>
-        <?php if($cosyone_custom_menu_title4){ ?>
-		<li><a href="<?php echo $cosyone_custom_menu_url4; ?>"><?php echo $cosyone_custom_menu_title4; ?></a></li>
-        <?php } ?>
-        <?php if($cosyone_custom_menu_title5){ ?>
-		<li><a href="<?php echo $cosyone_custom_menu_url5; ?>"><?php echo $cosyone_custom_menu_title5; ?></a></li>
-        <?php } ?>
-        <?php if($cosyone_custom_menu_title6){ ?>
-		<li><a href="<?php echo $cosyone_custom_menu_url6; ?>"><?php echo $cosyone_custom_menu_title6; ?></a></li>
-        <?php } ?>
-      </ul>
-    </div> <!-- menu_holder ends -->
-</div> <!-- menu ends -->
-</div> <!-- menu_wrapper ends -->
+
 
 <?php if($cosyone_header_style == 'header3'){ ?>
       </div> <!-- header_right ends -->
@@ -264,6 +292,9 @@
 </div>
 </div>
 </div> <!-- header_wrapper ends -->
+<?php endif; ?>
+
+
 </div> <!-- inner conainer ends -->
 <div class="breadcrumb_wrapper"></div>
 <div id="notification" class="container"></div>
