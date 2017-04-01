@@ -1,3 +1,6 @@
+<a href="mailto:<?php echo $email; ?>"><?php echo $email; ?></a>
+<a href="tel:<?php echo $telephone; ?>"><?php echo $telephone; ?></a>
+
 <div class="clearfix footer_margin"></div>
 <?php echo $footer_modules ?>
 <div id="footer">

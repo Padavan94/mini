@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.4.15.7
+-- version 4.0.10.10
 -- http://www.phpmyadmin.net
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Мар 26 2017 г., 23:42
--- Версия сервера: 5.6.31
--- Версия PHP: 5.6.23
+-- Время создания: Мар 31 2017 г., 09:40
+-- Версия сервера: 5.5.45
+-- Версия PHP: 5.6.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -14,7 +14,7 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+/*!40101 SET NAMES utf8 */;
 
 --
 -- База данных: `mini`
@@ -27,7 +27,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE IF NOT EXISTS `oc_address` (
-  `address_id` int(11) NOT NULL,
+  `address_id` int(11) NOT NULL AUTO_INCREMENT,
   `customer_id` int(11) NOT NULL,
   `firstname` varchar(32) NOT NULL,
   `lastname` varchar(32) NOT NULL,
@@ -38,8 +38,10 @@ CREATE TABLE IF NOT EXISTS `oc_address` (
   `postcode` varchar(10) NOT NULL,
   `country_id` int(11) NOT NULL DEFAULT '0',
   `zone_id` int(11) NOT NULL DEFAULT '0',
-  `custom_field` text NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+  `custom_field` text NOT NULL,
+  PRIMARY KEY (`address_id`),
+  KEY `customer_id` (`customer_id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
 --
 -- Дамп данных таблицы `oc_address`
@@ -55,7 +57,7 @@ INSERT INTO `oc_address` (`address_id`, `customer_id`, `firstname`, `lastname`, 
 --
 
 CREATE TABLE IF NOT EXISTS `oc_affiliate` (
-  `affiliate_id` int(11) NOT NULL,
+  `affiliate_id` int(11) NOT NULL AUTO_INCREMENT,
   `firstname` varchar(32) NOT NULL,
   `lastname` varchar(32) NOT NULL,
   `email` varchar(96) NOT NULL,
@@ -85,8 +87,9 @@ CREATE TABLE IF NOT EXISTS `oc_affiliate` (
   `ip` varchar(40) NOT NULL,
   `status` tinyint(1) NOT NULL,
   `approved` tinyint(1) NOT NULL,
-  `date_added` datetime NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `date_added` datetime NOT NULL,
+  PRIMARY KEY (`affiliate_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -95,13 +98,14 @@ CREATE TABLE IF NOT EXISTS `oc_affiliate` (
 --
 
 CREATE TABLE IF NOT EXISTS `oc_affiliate_activity` (
-  `affiliate_activity_id` int(11) NOT NULL,
+  `affiliate_activity_id` int(11) NOT NULL AUTO_INCREMENT,
   `affiliate_id` int(11) NOT NULL,
   `key` varchar(64) NOT NULL,
   `data` text NOT NULL,
   `ip` varchar(40) NOT NULL,
-  `date_added` datetime NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `date_added` datetime NOT NULL,
+  PRIMARY KEY (`affiliate_activity_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -110,13 +114,16 @@ CREATE TABLE IF NOT EXISTS `oc_affiliate_activity` (
 --
 
 CREATE TABLE IF NOT EXISTS `oc_affiliate_login` (
-  `affiliate_login_id` int(11) NOT NULL,
+  `affiliate_login_id` int(11) NOT NULL AUTO_INCREMENT,
   `email` varchar(96) NOT NULL,
   `ip` varchar(40) NOT NULL,
   `total` int(4) NOT NULL,
   `date_added` datetime NOT NULL,
-  `date_modified` datetime NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `date_modified` datetime NOT NULL,
+  PRIMARY KEY (`affiliate_login_id`),
+  KEY `email` (`email`),
+  KEY `ip` (`ip`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -125,13 +132,14 @@ CREATE TABLE IF NOT EXISTS `oc_affiliate_login` (
 --
 
 CREATE TABLE IF NOT EXISTS `oc_affiliate_transaction` (
-  `affiliate_transaction_id` int(11) NOT NULL,
+  `affiliate_transaction_id` int(11) NOT NULL AUTO_INCREMENT,
   `affiliate_id` int(11) NOT NULL,
   `order_id` int(11) NOT NULL,
   `description` text NOT NULL,
   `amount` decimal(15,4) NOT NULL,
-  `date_added` datetime NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `date_added` datetime NOT NULL,
+  PRIMARY KEY (`affiliate_transaction_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -140,13 +148,14 @@ CREATE TABLE IF NOT EXISTS `oc_affiliate_transaction` (
 --
 
 CREATE TABLE IF NOT EXISTS `oc_api` (
-  `api_id` int(11) NOT NULL,
+  `api_id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(64) NOT NULL,
   `key` text NOT NULL,
   `status` tinyint(1) NOT NULL,
   `date_added` datetime NOT NULL,
-  `date_modified` datetime NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+  `date_modified` datetime NOT NULL,
+  PRIMARY KEY (`api_id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
 --
 -- Дамп данных таблицы `oc_api`
@@ -162,10 +171,11 @@ INSERT INTO `oc_api` (`api_id`, `name`, `key`, `status`, `date_added`, `date_mod
 --
 
 CREATE TABLE IF NOT EXISTS `oc_api_ip` (
-  `api_ip_id` int(11) NOT NULL,
+  `api_ip_id` int(11) NOT NULL AUTO_INCREMENT,
   `api_id` int(11) NOT NULL,
-  `ip` varchar(40) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `ip` varchar(40) NOT NULL,
+  PRIMARY KEY (`api_ip_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -174,15 +184,16 @@ CREATE TABLE IF NOT EXISTS `oc_api_ip` (
 --
 
 CREATE TABLE IF NOT EXISTS `oc_api_session` (
-  `api_session_id` int(11) NOT NULL,
+  `api_session_id` int(11) NOT NULL AUTO_INCREMENT,
   `api_id` int(11) NOT NULL,
   `token` varchar(32) NOT NULL,
   `session_id` varchar(32) NOT NULL,
   `session_name` varchar(32) NOT NULL,
   `ip` varchar(40) NOT NULL,
   `date_added` datetime NOT NULL,
-  `date_modified` datetime NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `date_modified` datetime NOT NULL,
+  PRIMARY KEY (`api_session_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -191,10 +202,11 @@ CREATE TABLE IF NOT EXISTS `oc_api_session` (
 --
 
 CREATE TABLE IF NOT EXISTS `oc_attribute` (
-  `attribute_id` int(11) NOT NULL,
+  `attribute_id` int(11) NOT NULL AUTO_INCREMENT,
   `attribute_group_id` int(11) NOT NULL,
-  `sort_order` int(3) NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+  `sort_order` int(3) NOT NULL,
+  PRIMARY KEY (`attribute_id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=12 ;
 
 --
 -- Дамп данных таблицы `oc_attribute`
@@ -222,7 +234,8 @@ INSERT INTO `oc_attribute` (`attribute_id`, `attribute_group_id`, `sort_order`) 
 CREATE TABLE IF NOT EXISTS `oc_attribute_description` (
   `attribute_id` int(11) NOT NULL,
   `language_id` int(11) NOT NULL,
-  `name` varchar(64) NOT NULL
+  `name` varchar(64) NOT NULL,
+  PRIMARY KEY (`attribute_id`,`language_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
@@ -249,9 +262,10 @@ INSERT INTO `oc_attribute_description` (`attribute_id`, `language_id`, `name`) V
 --
 
 CREATE TABLE IF NOT EXISTS `oc_attribute_group` (
-  `attribute_group_id` int(11) NOT NULL,
-  `sort_order` int(3) NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+  `attribute_group_id` int(11) NOT NULL AUTO_INCREMENT,
+  `sort_order` int(3) NOT NULL,
+  PRIMARY KEY (`attribute_group_id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
 
 --
 -- Дамп данных таблицы `oc_attribute_group`
@@ -272,7 +286,8 @@ INSERT INTO `oc_attribute_group` (`attribute_group_id`, `sort_order`) VALUES
 CREATE TABLE IF NOT EXISTS `oc_attribute_group_description` (
   `attribute_group_id` int(11) NOT NULL,
   `language_id` int(11) NOT NULL,
-  `name` varchar(64) NOT NULL
+  `name` varchar(64) NOT NULL,
+  PRIMARY KEY (`attribute_group_id`,`language_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
@@ -292,10 +307,11 @@ INSERT INTO `oc_attribute_group_description` (`attribute_group_id`, `language_id
 --
 
 CREATE TABLE IF NOT EXISTS `oc_banner` (
-  `banner_id` int(11) NOT NULL,
+  `banner_id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(64) NOT NULL,
-  `status` tinyint(1) NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+  `status` tinyint(1) NOT NULL,
+  PRIMARY KEY (`banner_id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=9 ;
 
 --
 -- Дамп данных таблицы `oc_banner`
@@ -313,12 +329,13 @@ INSERT INTO `oc_banner` (`banner_id`, `name`, `status`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `oc_banner_image` (
-  `banner_image_id` int(11) NOT NULL,
+  `banner_image_id` int(11) NOT NULL AUTO_INCREMENT,
   `banner_id` int(11) NOT NULL,
   `link` varchar(255) NOT NULL,
   `image` varchar(255) NOT NULL,
-  `sort_order` int(3) NOT NULL DEFAULT '0'
-) ENGINE=MyISAM AUTO_INCREMENT=99 DEFAULT CHARSET=utf8;
+  `sort_order` int(3) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`banner_image_id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=99 ;
 
 --
 -- Дамп данных таблицы `oc_banner_image`
@@ -350,7 +367,8 @@ CREATE TABLE IF NOT EXISTS `oc_banner_image_description` (
   `banner_image_id` int(11) NOT NULL,
   `language_id` int(11) NOT NULL,
   `banner_id` int(11) NOT NULL,
-  `title` varchar(64) NOT NULL
+  `title` varchar(64) NOT NULL,
+  PRIMARY KEY (`banner_image_id`,`language_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
@@ -380,15 +398,16 @@ INSERT INTO `oc_banner_image_description` (`banner_image_id`, `language_id`, `ba
 --
 
 CREATE TABLE IF NOT EXISTS `oc_blog` (
-  `blog_id` int(11) NOT NULL,
+  `blog_id` int(11) NOT NULL AUTO_INCREMENT,
   `allow_comment` int(1) NOT NULL DEFAULT '1',
   `count_read` int(11) NOT NULL DEFAULT '0',
   `sort_order` int(3) NOT NULL,
   `status` int(1) NOT NULL DEFAULT '1',
   `author` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
   `date_added` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `image` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=19 DEFAULT CHARSET=latin1;
+  `image` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  PRIMARY KEY (`blog_id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=19 ;
 
 --
 -- Дамп данных таблицы `oc_blog`
@@ -406,12 +425,13 @@ INSERT INTO `oc_blog` (`blog_id`, `allow_comment`, `count_read`, `sort_order`, `
 --
 
 CREATE TABLE IF NOT EXISTS `oc_blog_category` (
-  `blog_category_id` int(11) NOT NULL,
+  `blog_category_id` int(11) NOT NULL AUTO_INCREMENT,
   `parent_id` int(11) NOT NULL DEFAULT '0',
   `sort_order` int(3) NOT NULL DEFAULT '0',
   `date_added` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `status` int(1) NOT NULL DEFAULT '1'
-) ENGINE=MyISAM AUTO_INCREMENT=50 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+  `status` int(1) NOT NULL DEFAULT '1',
+  PRIMARY KEY (`blog_category_id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=50 ;
 
 --
 -- Дамп данных таблицы `oc_blog_category`
@@ -433,7 +453,9 @@ CREATE TABLE IF NOT EXISTS `oc_blog_category_description` (
   `page_title` varchar(255) COLLATE utf8_bin NOT NULL DEFAULT '',
   `meta_keywords` varchar(255) COLLATE utf8_bin NOT NULL,
   `meta_description` varchar(255) COLLATE utf8_bin NOT NULL,
-  `description` text COLLATE utf8_bin NOT NULL
+  `description` text COLLATE utf8_bin NOT NULL,
+  PRIMARY KEY (`blog_category_id`,`language_id`),
+  KEY `name` (`name`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
@@ -452,7 +474,8 @@ INSERT INTO `oc_blog_category_description` (`blog_category_id`, `language_id`, `
 CREATE TABLE IF NOT EXISTS `oc_blog_category_to_layout` (
   `blog_category_id` int(11) NOT NULL,
   `store_id` int(11) NOT NULL,
-  `layout_id` int(11) NOT NULL
+  `layout_id` int(11) NOT NULL,
+  PRIMARY KEY (`blog_category_id`,`store_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 -- --------------------------------------------------------
@@ -463,7 +486,8 @@ CREATE TABLE IF NOT EXISTS `oc_blog_category_to_layout` (
 
 CREATE TABLE IF NOT EXISTS `oc_blog_category_to_store` (
   `blog_category_id` int(11) NOT NULL,
-  `store_id` int(11) NOT NULL
+  `store_id` int(11) NOT NULL,
+  PRIMARY KEY (`blog_category_id`,`store_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
@@ -480,14 +504,15 @@ INSERT INTO `oc_blog_category_to_store` (`blog_category_id`, `store_id`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `oc_blog_comment` (
-  `blog_comment_id` int(11) NOT NULL,
+  `blog_comment_id` int(11) NOT NULL AUTO_INCREMENT,
   `blog_id` int(11) NOT NULL DEFAULT '0',
   `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   `email` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   `comment` text CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   `date_added` datetime DEFAULT '0000-00-00 00:00:00',
-  `status` int(1) NOT NULL DEFAULT '1'
-) ENGINE=MyISAM AUTO_INCREMENT=21 DEFAULT CHARSET=latin1;
+  `status` int(1) NOT NULL DEFAULT '1',
+  PRIMARY KEY (`blog_comment_id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=21 ;
 
 -- --------------------------------------------------------
 
@@ -535,7 +560,8 @@ CREATE TABLE IF NOT EXISTS `oc_blog_related` (
 
 CREATE TABLE IF NOT EXISTS `oc_blog_to_category` (
   `blog_id` int(11) NOT NULL,
-  `blog_category_id` int(11) NOT NULL
+  `blog_category_id` int(11) NOT NULL,
+  PRIMARY KEY (`blog_id`,`blog_category_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
@@ -556,7 +582,8 @@ INSERT INTO `oc_blog_to_category` (`blog_id`, `blog_category_id`) VALUES
 CREATE TABLE IF NOT EXISTS `oc_blog_to_layout` (
   `blog_id` int(11) NOT NULL,
   `store_id` int(11) NOT NULL,
-  `layout_id` int(11) NOT NULL
+  `layout_id` int(11) NOT NULL,
+  PRIMARY KEY (`blog_id`,`store_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 -- --------------------------------------------------------
@@ -586,15 +613,17 @@ INSERT INTO `oc_blog_to_store` (`blog_id`, `store_id`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `oc_cart` (
-  `cart_id` int(11) unsigned NOT NULL,
+  `cart_id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `customer_id` int(11) NOT NULL,
   `session_id` varchar(32) NOT NULL,
   `product_id` int(11) NOT NULL,
   `recurring_id` int(11) NOT NULL,
   `option` text NOT NULL,
   `quantity` int(5) NOT NULL,
-  `date_added` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `date_added` datetime NOT NULL,
+  PRIMARY KEY (`cart_id`),
+  KEY `cart_id` (`customer_id`,`session_id`,`product_id`,`recurring_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -603,7 +632,7 @@ CREATE TABLE IF NOT EXISTS `oc_cart` (
 --
 
 CREATE TABLE IF NOT EXISTS `oc_category` (
-  `category_id` int(11) NOT NULL,
+  `category_id` int(11) NOT NULL AUTO_INCREMENT,
   `image` varchar(255) DEFAULT NULL,
   `parent_id` int(11) NOT NULL DEFAULT '0',
   `top` tinyint(1) NOT NULL,
@@ -611,8 +640,10 @@ CREATE TABLE IF NOT EXISTS `oc_category` (
   `sort_order` int(3) NOT NULL DEFAULT '0',
   `status` tinyint(1) NOT NULL,
   `date_added` datetime NOT NULL,
-  `date_modified` datetime NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=60 DEFAULT CHARSET=utf8;
+  `date_modified` datetime NOT NULL,
+  PRIMARY KEY (`category_id`),
+  KEY `parent_id` (`parent_id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=60 ;
 
 --
 -- Дамп данных таблицы `oc_category`
@@ -672,7 +703,9 @@ CREATE TABLE IF NOT EXISTS `oc_category_description` (
   `description` text NOT NULL,
   `meta_title` varchar(255) NOT NULL,
   `meta_description` varchar(255) NOT NULL,
-  `meta_keyword` varchar(255) NOT NULL
+  `meta_keyword` varchar(255) NOT NULL,
+  PRIMARY KEY (`category_id`,`language_id`),
+  KEY `name` (`name`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
@@ -728,7 +761,8 @@ INSERT INTO `oc_category_description` (`category_id`, `language_id`, `name`, `de
 
 CREATE TABLE IF NOT EXISTS `oc_category_filter` (
   `category_id` int(11) NOT NULL,
-  `filter_id` int(11) NOT NULL
+  `filter_id` int(11) NOT NULL,
+  PRIMARY KEY (`category_id`,`filter_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
@@ -749,7 +783,8 @@ INSERT INTO `oc_category_filter` (`category_id`, `filter_id`) VALUES
 CREATE TABLE IF NOT EXISTS `oc_category_path` (
   `category_id` int(11) NOT NULL,
   `path_id` int(11) NOT NULL,
-  `level` int(11) NOT NULL
+  `level` int(11) NOT NULL,
+  PRIMARY KEY (`category_id`,`path_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
@@ -877,7 +912,8 @@ INSERT INTO `oc_category_path` (`category_id`, `path_id`, `level`) VALUES
 CREATE TABLE IF NOT EXISTS `oc_category_to_layout` (
   `category_id` int(11) NOT NULL,
   `store_id` int(11) NOT NULL,
-  `layout_id` int(11) NOT NULL
+  `layout_id` int(11) NOT NULL,
+  PRIMARY KEY (`category_id`,`store_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
@@ -903,7 +939,8 @@ INSERT INTO `oc_category_to_layout` (`category_id`, `store_id`, `layout_id`) VAL
 
 CREATE TABLE IF NOT EXISTS `oc_category_to_store` (
   `category_id` int(11) NOT NULL,
-  `store_id` int(11) NOT NULL
+  `store_id` int(11) NOT NULL,
+  PRIMARY KEY (`category_id`,`store_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
@@ -958,14 +995,15 @@ INSERT INTO `oc_category_to_store` (`category_id`, `store_id`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `oc_country` (
-  `country_id` int(11) NOT NULL,
+  `country_id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(128) NOT NULL,
   `iso_code_2` varchar(2) NOT NULL,
   `iso_code_3` varchar(3) NOT NULL,
   `address_format` text NOT NULL,
   `postcode_required` tinyint(1) NOT NULL,
-  `status` tinyint(1) NOT NULL DEFAULT '1'
-) ENGINE=MyISAM AUTO_INCREMENT=258 DEFAULT CHARSET=utf8;
+  `status` tinyint(1) NOT NULL DEFAULT '1',
+  PRIMARY KEY (`country_id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=258 ;
 
 --
 -- Дамп данных таблицы `oc_country`
@@ -1233,7 +1271,7 @@ INSERT INTO `oc_country` (`country_id`, `name`, `iso_code_2`, `iso_code_3`, `add
 --
 
 CREATE TABLE IF NOT EXISTS `oc_coupon` (
-  `coupon_id` int(11) NOT NULL,
+  `coupon_id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(128) NOT NULL,
   `code` varchar(10) NOT NULL,
   `type` char(1) NOT NULL,
@@ -1246,8 +1284,9 @@ CREATE TABLE IF NOT EXISTS `oc_coupon` (
   `uses_total` int(11) NOT NULL,
   `uses_customer` varchar(11) NOT NULL,
   `status` tinyint(1) NOT NULL,
-  `date_added` datetime NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+  `date_added` datetime NOT NULL,
+  PRIMARY KEY (`coupon_id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
 
 --
 -- Дамп данных таблицы `oc_coupon`
@@ -1266,7 +1305,8 @@ INSERT INTO `oc_coupon` (`coupon_id`, `name`, `code`, `type`, `discount`, `logge
 
 CREATE TABLE IF NOT EXISTS `oc_coupon_category` (
   `coupon_id` int(11) NOT NULL,
-  `category_id` int(11) NOT NULL
+  `category_id` int(11) NOT NULL,
+  PRIMARY KEY (`coupon_id`,`category_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -1276,13 +1316,14 @@ CREATE TABLE IF NOT EXISTS `oc_coupon_category` (
 --
 
 CREATE TABLE IF NOT EXISTS `oc_coupon_history` (
-  `coupon_history_id` int(11) NOT NULL,
+  `coupon_history_id` int(11) NOT NULL AUTO_INCREMENT,
   `coupon_id` int(11) NOT NULL,
   `order_id` int(11) NOT NULL,
   `customer_id` int(11) NOT NULL,
   `amount` decimal(15,4) NOT NULL,
-  `date_added` datetime NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `date_added` datetime NOT NULL,
+  PRIMARY KEY (`coupon_history_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -1291,10 +1332,11 @@ CREATE TABLE IF NOT EXISTS `oc_coupon_history` (
 --
 
 CREATE TABLE IF NOT EXISTS `oc_coupon_product` (
-  `coupon_product_id` int(11) NOT NULL,
+  `coupon_product_id` int(11) NOT NULL AUTO_INCREMENT,
   `coupon_id` int(11) NOT NULL,
-  `product_id` int(11) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `product_id` int(11) NOT NULL,
+  PRIMARY KEY (`coupon_product_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -1303,7 +1345,7 @@ CREATE TABLE IF NOT EXISTS `oc_coupon_product` (
 --
 
 CREATE TABLE IF NOT EXISTS `oc_currency` (
-  `currency_id` int(11) NOT NULL,
+  `currency_id` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(32) NOT NULL,
   `code` varchar(3) NOT NULL,
   `symbol_left` varchar(12) NOT NULL,
@@ -1311,17 +1353,18 @@ CREATE TABLE IF NOT EXISTS `oc_currency` (
   `decimal_place` char(1) NOT NULL,
   `value` float(15,8) NOT NULL,
   `status` tinyint(1) NOT NULL,
-  `date_modified` datetime NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+  `date_modified` datetime NOT NULL,
+  PRIMARY KEY (`currency_id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
 
 --
 -- Дамп данных таблицы `oc_currency`
 --
 
 INSERT INTO `oc_currency` (`currency_id`, `title`, `code`, `symbol_left`, `symbol_right`, `decimal_place`, `value`, `status`, `date_modified`) VALUES
-(1, 'Pound Sterling', 'GBP', '£', '', '2', 0.80180001, 1, '2017-03-26 19:57:30'),
-(2, 'US Dollar', 'USD', '$', '', '2', 1.00000000, 1, '2017-03-26 21:01:27'),
-(3, 'Euro', 'EUR', '', '€', '2', 0.92580003, 1, '2017-03-26 19:57:30');
+(1, 'Pound Sterling', 'GBP', '£', '', '2', 0.80350000, 1, '2017-03-30 03:43:32'),
+(2, 'US Dollar', 'USD', '$', '', '2', 1.00000000, 1, '2017-03-30 04:11:42'),
+(3, 'Euro', 'EUR', '', '€', '2', 0.92960000, 1, '2017-03-30 03:43:32');
 
 -- --------------------------------------------------------
 
@@ -1330,7 +1373,7 @@ INSERT INTO `oc_currency` (`currency_id`, `title`, `code`, `symbol_left`, `symbo
 --
 
 CREATE TABLE IF NOT EXISTS `oc_customer` (
-  `customer_id` int(11) NOT NULL,
+  `customer_id` int(11) NOT NULL AUTO_INCREMENT,
   `customer_group_id` int(11) NOT NULL,
   `store_id` int(11) NOT NULL DEFAULT '0',
   `firstname` varchar(32) NOT NULL,
@@ -1351,8 +1394,9 @@ CREATE TABLE IF NOT EXISTS `oc_customer` (
   `safe` tinyint(1) NOT NULL,
   `token` text NOT NULL,
   `code` varchar(40) NOT NULL,
-  `date_added` datetime NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+  `date_added` datetime NOT NULL,
+  PRIMARY KEY (`customer_id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
 --
 -- Дамп данных таблицы `oc_customer`
@@ -1368,13 +1412,14 @@ INSERT INTO `oc_customer` (`customer_id`, `customer_group_id`, `store_id`, `firs
 --
 
 CREATE TABLE IF NOT EXISTS `oc_customer_activity` (
-  `customer_activity_id` int(11) NOT NULL,
+  `customer_activity_id` int(11) NOT NULL AUTO_INCREMENT,
   `customer_id` int(11) NOT NULL,
   `key` varchar(64) NOT NULL,
   `data` text NOT NULL,
   `ip` varchar(40) NOT NULL,
-  `date_added` datetime NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+  `date_added` datetime NOT NULL,
+  PRIMARY KEY (`customer_activity_id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 --
 -- Дамп данных таблицы `oc_customer_activity`
@@ -1391,10 +1436,11 @@ INSERT INTO `oc_customer_activity` (`customer_activity_id`, `customer_id`, `key`
 --
 
 CREATE TABLE IF NOT EXISTS `oc_customer_group` (
-  `customer_group_id` int(11) NOT NULL,
+  `customer_group_id` int(11) NOT NULL AUTO_INCREMENT,
   `approval` int(1) NOT NULL,
-  `sort_order` int(3) NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+  `sort_order` int(3) NOT NULL,
+  PRIMARY KEY (`customer_group_id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
 --
 -- Дамп данных таблицы `oc_customer_group`
@@ -1413,7 +1459,8 @@ CREATE TABLE IF NOT EXISTS `oc_customer_group_description` (
   `customer_group_id` int(11) NOT NULL,
   `language_id` int(11) NOT NULL,
   `name` varchar(32) NOT NULL,
-  `description` text NOT NULL
+  `description` text NOT NULL,
+  PRIMARY KEY (`customer_group_id`,`language_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
@@ -1430,11 +1477,12 @@ INSERT INTO `oc_customer_group_description` (`customer_group_id`, `language_id`,
 --
 
 CREATE TABLE IF NOT EXISTS `oc_customer_history` (
-  `customer_history_id` int(11) NOT NULL,
+  `customer_history_id` int(11) NOT NULL AUTO_INCREMENT,
   `customer_id` int(11) NOT NULL,
   `comment` text NOT NULL,
-  `date_added` datetime NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `date_added` datetime NOT NULL,
+  PRIMARY KEY (`customer_history_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -1443,11 +1491,13 @@ CREATE TABLE IF NOT EXISTS `oc_customer_history` (
 --
 
 CREATE TABLE IF NOT EXISTS `oc_customer_ip` (
-  `customer_ip_id` int(11) NOT NULL,
+  `customer_ip_id` int(11) NOT NULL AUTO_INCREMENT,
   `customer_id` int(11) NOT NULL,
   `ip` varchar(40) NOT NULL,
-  `date_added` datetime NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+  `date_added` datetime NOT NULL,
+  PRIMARY KEY (`customer_ip_id`),
+  KEY `ip` (`ip`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
 --
 -- Дамп данных таблицы `oc_customer_ip`
@@ -1463,13 +1513,16 @@ INSERT INTO `oc_customer_ip` (`customer_ip_id`, `customer_id`, `ip`, `date_added
 --
 
 CREATE TABLE IF NOT EXISTS `oc_customer_login` (
-  `customer_login_id` int(11) NOT NULL,
+  `customer_login_id` int(11) NOT NULL AUTO_INCREMENT,
   `email` varchar(96) NOT NULL,
   `ip` varchar(40) NOT NULL,
   `total` int(4) NOT NULL,
   `date_added` datetime NOT NULL,
-  `date_modified` datetime NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `date_modified` datetime NOT NULL,
+  PRIMARY KEY (`customer_login_id`),
+  KEY `email` (`email`),
+  KEY `ip` (`ip`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -1482,7 +1535,8 @@ CREATE TABLE IF NOT EXISTS `oc_customer_online` (
   `customer_id` int(11) NOT NULL,
   `url` text NOT NULL,
   `referer` text NOT NULL,
-  `date_added` datetime NOT NULL
+  `date_added` datetime NOT NULL,
+  PRIMARY KEY (`ip`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -1492,13 +1546,14 @@ CREATE TABLE IF NOT EXISTS `oc_customer_online` (
 --
 
 CREATE TABLE IF NOT EXISTS `oc_customer_reward` (
-  `customer_reward_id` int(11) NOT NULL,
+  `customer_reward_id` int(11) NOT NULL AUTO_INCREMENT,
   `customer_id` int(11) NOT NULL DEFAULT '0',
   `order_id` int(11) NOT NULL DEFAULT '0',
   `description` text NOT NULL,
   `points` int(8) NOT NULL DEFAULT '0',
-  `date_added` datetime NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `date_added` datetime NOT NULL,
+  PRIMARY KEY (`customer_reward_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -1507,13 +1562,14 @@ CREATE TABLE IF NOT EXISTS `oc_customer_reward` (
 --
 
 CREATE TABLE IF NOT EXISTS `oc_customer_transaction` (
-  `customer_transaction_id` int(11) NOT NULL,
+  `customer_transaction_id` int(11) NOT NULL AUTO_INCREMENT,
   `customer_id` int(11) NOT NULL,
   `order_id` int(11) NOT NULL,
   `description` text NOT NULL,
   `amount` decimal(15,4) NOT NULL,
-  `date_added` datetime NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `date_added` datetime NOT NULL,
+  PRIMARY KEY (`customer_transaction_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -1524,7 +1580,8 @@ CREATE TABLE IF NOT EXISTS `oc_customer_transaction` (
 CREATE TABLE IF NOT EXISTS `oc_customer_wishlist` (
   `customer_id` int(11) NOT NULL,
   `product_id` int(11) NOT NULL,
-  `date_added` datetime NOT NULL
+  `date_added` datetime NOT NULL,
+  PRIMARY KEY (`customer_id`,`product_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -1534,14 +1591,15 @@ CREATE TABLE IF NOT EXISTS `oc_customer_wishlist` (
 --
 
 CREATE TABLE IF NOT EXISTS `oc_custom_field` (
-  `custom_field_id` int(11) NOT NULL,
+  `custom_field_id` int(11) NOT NULL AUTO_INCREMENT,
   `type` varchar(32) NOT NULL,
   `value` text NOT NULL,
   `validation` varchar(255) NOT NULL,
   `location` varchar(7) NOT NULL,
   `status` tinyint(1) NOT NULL,
-  `sort_order` int(3) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `sort_order` int(3) NOT NULL,
+  PRIMARY KEY (`custom_field_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -1552,7 +1610,8 @@ CREATE TABLE IF NOT EXISTS `oc_custom_field` (
 CREATE TABLE IF NOT EXISTS `oc_custom_field_customer_group` (
   `custom_field_id` int(11) NOT NULL,
   `customer_group_id` int(11) NOT NULL,
-  `required` tinyint(1) NOT NULL
+  `required` tinyint(1) NOT NULL,
+  PRIMARY KEY (`custom_field_id`,`customer_group_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -1564,7 +1623,8 @@ CREATE TABLE IF NOT EXISTS `oc_custom_field_customer_group` (
 CREATE TABLE IF NOT EXISTS `oc_custom_field_description` (
   `custom_field_id` int(11) NOT NULL,
   `language_id` int(11) NOT NULL,
-  `name` varchar(128) NOT NULL
+  `name` varchar(128) NOT NULL,
+  PRIMARY KEY (`custom_field_id`,`language_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -1574,10 +1634,11 @@ CREATE TABLE IF NOT EXISTS `oc_custom_field_description` (
 --
 
 CREATE TABLE IF NOT EXISTS `oc_custom_field_value` (
-  `custom_field_value_id` int(11) NOT NULL,
+  `custom_field_value_id` int(11) NOT NULL AUTO_INCREMENT,
   `custom_field_id` int(11) NOT NULL,
-  `sort_order` int(3) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `sort_order` int(3) NOT NULL,
+  PRIMARY KEY (`custom_field_value_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -1589,7 +1650,8 @@ CREATE TABLE IF NOT EXISTS `oc_custom_field_value_description` (
   `custom_field_value_id` int(11) NOT NULL,
   `language_id` int(11) NOT NULL,
   `custom_field_id` int(11) NOT NULL,
-  `name` varchar(128) NOT NULL
+  `name` varchar(128) NOT NULL,
+  PRIMARY KEY (`custom_field_value_id`,`language_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -1599,11 +1661,12 @@ CREATE TABLE IF NOT EXISTS `oc_custom_field_value_description` (
 --
 
 CREATE TABLE IF NOT EXISTS `oc_download` (
-  `download_id` int(11) NOT NULL,
+  `download_id` int(11) NOT NULL AUTO_INCREMENT,
   `filename` varchar(160) NOT NULL,
   `mask` varchar(128) NOT NULL,
-  `date_added` datetime NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `date_added` datetime NOT NULL,
+  PRIMARY KEY (`download_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -1614,7 +1677,8 @@ CREATE TABLE IF NOT EXISTS `oc_download` (
 CREATE TABLE IF NOT EXISTS `oc_download_description` (
   `download_id` int(11) NOT NULL,
   `language_id` int(11) NOT NULL,
-  `name` varchar(64) NOT NULL
+  `name` varchar(64) NOT NULL,
+  PRIMARY KEY (`download_id`,`language_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -1624,11 +1688,12 @@ CREATE TABLE IF NOT EXISTS `oc_download_description` (
 --
 
 CREATE TABLE IF NOT EXISTS `oc_event` (
-  `event_id` int(11) NOT NULL,
+  `event_id` int(11) NOT NULL AUTO_INCREMENT,
   `code` varchar(32) NOT NULL,
   `trigger` text NOT NULL,
-  `action` text NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+  `action` text NOT NULL,
+  PRIMARY KEY (`event_id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
 --
 -- Дамп данных таблицы `oc_event`
@@ -1644,10 +1709,11 @@ INSERT INTO `oc_event` (`event_id`, `code`, `trigger`, `action`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `oc_extension` (
-  `extension_id` int(11) NOT NULL,
+  `extension_id` int(11) NOT NULL AUTO_INCREMENT,
   `type` varchar(32) NOT NULL,
-  `code` varchar(32) NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=1460 DEFAULT CHARSET=utf8;
+  `code` varchar(32) NOT NULL,
+  PRIMARY KEY (`extension_id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1462 ;
 
 --
 -- Дамп данных таблицы `oc_extension`
@@ -1690,7 +1756,8 @@ INSERT INTO `oc_extension` (`extension_id`, `type`, `code`) VALUES
 (1452, 'module', 'faqmanager'),
 (1455, 'module', 'category'),
 (1459, 'module', 'adv_ajaxfilter'),
-(1458, 'module', 'mega_filter');
+(1458, 'module', 'mega_filter'),
+(1460, 'module', 'featured');
 
 -- --------------------------------------------------------
 
@@ -1699,10 +1766,11 @@ INSERT INTO `oc_extension` (`extension_id`, `type`, `code`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `oc_filter` (
-  `filter_id` int(11) NOT NULL,
+  `filter_id` int(11) NOT NULL AUTO_INCREMENT,
   `filter_group_id` int(11) NOT NULL,
-  `sort_order` int(3) NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+  `sort_order` int(3) NOT NULL,
+  PRIMARY KEY (`filter_id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
 
 --
 -- Дамп данных таблицы `oc_filter`
@@ -1723,7 +1791,8 @@ CREATE TABLE IF NOT EXISTS `oc_filter_description` (
   `filter_id` int(11) NOT NULL,
   `language_id` int(11) NOT NULL,
   `filter_group_id` int(11) NOT NULL,
-  `name` varchar(64) NOT NULL
+  `name` varchar(64) NOT NULL,
+  PRIMARY KEY (`filter_id`,`language_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
@@ -1742,9 +1811,10 @@ INSERT INTO `oc_filter_description` (`filter_id`, `language_id`, `filter_group_i
 --
 
 CREATE TABLE IF NOT EXISTS `oc_filter_group` (
-  `filter_group_id` int(11) NOT NULL,
-  `sort_order` int(3) NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+  `filter_group_id` int(11) NOT NULL AUTO_INCREMENT,
+  `sort_order` int(3) NOT NULL,
+  PRIMARY KEY (`filter_group_id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
 --
 -- Дамп данных таблицы `oc_filter_group`
@@ -1762,7 +1832,8 @@ INSERT INTO `oc_filter_group` (`filter_group_id`, `sort_order`) VALUES
 CREATE TABLE IF NOT EXISTS `oc_filter_group_description` (
   `filter_group_id` int(11) NOT NULL,
   `language_id` int(11) NOT NULL,
-  `name` varchar(64) NOT NULL
+  `name` varchar(64) NOT NULL,
+  PRIMARY KEY (`filter_group_id`,`language_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
@@ -1779,12 +1850,13 @@ INSERT INTO `oc_filter_group_description` (`filter_group_id`, `language_id`, `na
 --
 
 CREATE TABLE IF NOT EXISTS `oc_geo_zone` (
-  `geo_zone_id` int(11) NOT NULL,
+  `geo_zone_id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(32) NOT NULL,
   `description` varchar(255) NOT NULL,
   `date_modified` datetime NOT NULL,
-  `date_added` datetime NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+  `date_added` datetime NOT NULL,
+  PRIMARY KEY (`geo_zone_id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
 
 --
 -- Дамп данных таблицы `oc_geo_zone`
@@ -1801,11 +1873,12 @@ INSERT INTO `oc_geo_zone` (`geo_zone_id`, `name`, `description`, `date_modified`
 --
 
 CREATE TABLE IF NOT EXISTS `oc_information` (
-  `information_id` int(11) NOT NULL,
+  `information_id` int(11) NOT NULL AUTO_INCREMENT,
   `bottom` int(1) NOT NULL DEFAULT '0',
   `sort_order` int(3) NOT NULL DEFAULT '0',
-  `status` tinyint(1) NOT NULL DEFAULT '1'
-) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+  `status` tinyint(1) NOT NULL DEFAULT '1',
+  PRIMARY KEY (`information_id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
 
 --
 -- Дамп данных таблицы `oc_information`
@@ -1830,7 +1903,8 @@ CREATE TABLE IF NOT EXISTS `oc_information_description` (
   `description` text NOT NULL,
   `meta_title` varchar(255) NOT NULL,
   `meta_description` varchar(255) NOT NULL,
-  `meta_keyword` varchar(255) NOT NULL
+  `meta_keyword` varchar(255) NOT NULL,
+  PRIMARY KEY (`information_id`,`language_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
@@ -1852,7 +1926,8 @@ INSERT INTO `oc_information_description` (`information_id`, `language_id`, `titl
 CREATE TABLE IF NOT EXISTS `oc_information_to_layout` (
   `information_id` int(11) NOT NULL,
   `store_id` int(11) NOT NULL,
-  `layout_id` int(11) NOT NULL
+  `layout_id` int(11) NOT NULL,
+  PRIMARY KEY (`information_id`,`store_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -1863,7 +1938,8 @@ CREATE TABLE IF NOT EXISTS `oc_information_to_layout` (
 
 CREATE TABLE IF NOT EXISTS `oc_information_to_store` (
   `information_id` int(11) NOT NULL,
-  `store_id` int(11) NOT NULL
+  `store_id` int(11) NOT NULL,
+  PRIMARY KEY (`information_id`,`store_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
@@ -1883,15 +1959,17 @@ INSERT INTO `oc_information_to_store` (`information_id`, `store_id`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `oc_language` (
-  `language_id` int(11) NOT NULL,
+  `language_id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(32) NOT NULL,
   `code` varchar(5) NOT NULL,
   `locale` varchar(255) NOT NULL,
   `image` varchar(64) NOT NULL,
   `directory` varchar(32) NOT NULL,
   `sort_order` int(3) NOT NULL DEFAULT '0',
-  `status` tinyint(1) NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+  `status` tinyint(1) NOT NULL,
+  PRIMARY KEY (`language_id`),
+  KEY `name` (`name`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 --
 -- Дамп данных таблицы `oc_language`
@@ -1907,9 +1985,10 @@ INSERT INTO `oc_language` (`language_id`, `name`, `code`, `locale`, `image`, `di
 --
 
 CREATE TABLE IF NOT EXISTS `oc_layout` (
-  `layout_id` int(11) NOT NULL,
-  `name` varchar(64) NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
+  `layout_id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(64) NOT NULL,
+  PRIMARY KEY (`layout_id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=16 ;
 
 --
 -- Дамп данных таблицы `oc_layout`
@@ -1939,12 +2018,13 @@ INSERT INTO `oc_layout` (`layout_id`, `name`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `oc_layout_module` (
-  `layout_module_id` int(11) NOT NULL,
+  `layout_module_id` int(11) NOT NULL AUTO_INCREMENT,
   `layout_id` int(11) NOT NULL,
   `code` varchar(64) NOT NULL,
   `position` varchar(14) NOT NULL,
-  `sort_order` int(3) NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=197 DEFAULT CHARSET=utf8;
+  `sort_order` int(3) NOT NULL,
+  PRIMARY KEY (`layout_module_id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=201 ;
 
 --
 -- Дамп данных таблицы `oc_layout_module`
@@ -1956,15 +2036,10 @@ INSERT INTO `oc_layout_module` (`layout_module_id`, `layout_id`, `code`, `positi
 (142, 5, 'cosyone_category', 'column_left', 1),
 (150, 10, 'account', 'column_left', 1),
 (172, 6, 'account', 'column_left', 1),
-(177, 1, 'cosyone_testimonial.37', 'content_bottom', 5),
 (195, 3, 'cosyone_deals.31', 'content_top', 1),
 (146, 8, 'cosyone_category', 'column_left', 1),
-(176, 1, 'cosyone_carousel.36', 'content_bottom', 4),
-(175, 1, 'showintabs_output.35', 'content_bottom', 3),
-(174, 1, 'cosyone_bannerwall.34', 'content_bottom', 2),
-(173, 1, 'revslideroutput.33', 'home_top_top', 1),
-(168, 14, 'cosyone_socials.40', 'footer', 2),
-(167, 14, 'cosyone_twitterfeed', 'footer', 1),
+(199, 1, 'featured.46', 'content_bottom', 0),
+(200, 14, 'cosyone_socials.40', 'footer', 2),
 (193, 3, 'cosyone_banner.32', 'column_left', 3),
 (126, 2, 'showintabs_output.41', 'column_right', 4),
 (125, 2, 'cosyone_banner.32', 'column_right', 3),
@@ -1979,7 +2054,7 @@ INSERT INTO `oc_layout_module` (`layout_module_id`, `layout_id`, `code`, `positi
 (147, 8, 'cosyone_banner.32', 'column_left', 2),
 (148, 8, 'newsletter.42', 'column_left', 3),
 (196, 3, 'adv_ajaxfilter', 'column_left', 0),
-(178, 1, 'cosyone_content.39', 'content_bottom', 7),
+(198, 1, 'revslideroutput.33', 'home_top_top', 1),
 (194, 3, 'newsletter.42', 'column_left', 4),
 (192, 3, 'showintabs_output.41', 'column_left', 2),
 (191, 3, 'cosyone_category', 'column_left', 1);
@@ -1991,11 +2066,12 @@ INSERT INTO `oc_layout_module` (`layout_module_id`, `layout_id`, `code`, `positi
 --
 
 CREATE TABLE IF NOT EXISTS `oc_layout_route` (
-  `layout_route_id` int(11) NOT NULL,
+  `layout_route_id` int(11) NOT NULL AUTO_INCREMENT,
   `layout_id` int(11) NOT NULL,
   `store_id` int(11) NOT NULL,
-  `route` varchar(255) NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=97 DEFAULT CHARSET=utf8;
+  `route` varchar(255) NOT NULL,
+  PRIMARY KEY (`layout_route_id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=99 ;
 
 --
 -- Дамп данных таблицы `oc_layout_route`
@@ -2005,7 +2081,7 @@ INSERT INTO `oc_layout_route` (`layout_route_id`, `layout_id`, `store_id`, `rout
 (88, 6, 0, 'account/%'),
 (81, 10, 0, 'affiliate/%'),
 (95, 3, 0, 'product/special'),
-(90, 1, 0, 'common/home'),
+(98, 1, 0, 'common/home'),
 (70, 2, 0, 'product/product'),
 (78, 11, 0, 'information/information'),
 (86, 7, 0, 'checkout/%'),
@@ -2028,9 +2104,10 @@ INSERT INTO `oc_layout_route` (`layout_route_id`, `layout_id`, `store_id`, `rout
 --
 
 CREATE TABLE IF NOT EXISTS `oc_length_class` (
-  `length_class_id` int(11) NOT NULL,
-  `value` decimal(15,8) NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+  `length_class_id` int(11) NOT NULL AUTO_INCREMENT,
+  `value` decimal(15,8) NOT NULL,
+  PRIMARY KEY (`length_class_id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
 
 --
 -- Дамп данных таблицы `oc_length_class`
@@ -2051,7 +2128,8 @@ CREATE TABLE IF NOT EXISTS `oc_length_class_description` (
   `length_class_id` int(11) NOT NULL,
   `language_id` int(11) NOT NULL,
   `title` varchar(32) NOT NULL,
-  `unit` varchar(4) NOT NULL
+  `unit` varchar(4) NOT NULL,
+  PRIMARY KEY (`length_class_id`,`language_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
@@ -2070,7 +2148,7 @@ INSERT INTO `oc_length_class_description` (`length_class_id`, `language_id`, `ti
 --
 
 CREATE TABLE IF NOT EXISTS `oc_location` (
-  `location_id` int(11) NOT NULL,
+  `location_id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(32) NOT NULL,
   `address` text NOT NULL,
   `telephone` varchar(32) NOT NULL,
@@ -2078,8 +2156,10 @@ CREATE TABLE IF NOT EXISTS `oc_location` (
   `geocode` varchar(32) NOT NULL,
   `image` varchar(255) DEFAULT NULL,
   `open` text NOT NULL,
-  `comment` text NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `comment` text NOT NULL,
+  PRIMARY KEY (`location_id`),
+  KEY `name` (`name`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -2088,11 +2168,12 @@ CREATE TABLE IF NOT EXISTS `oc_location` (
 --
 
 CREATE TABLE IF NOT EXISTS `oc_manufacturer` (
-  `manufacturer_id` int(11) NOT NULL,
+  `manufacturer_id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(64) NOT NULL,
   `image` varchar(255) DEFAULT NULL,
-  `sort_order` int(3) NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+  `sort_order` int(3) NOT NULL,
+  PRIMARY KEY (`manufacturer_id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=11 ;
 
 --
 -- Дамп данных таблицы `oc_manufacturer`
@@ -2114,7 +2195,8 @@ INSERT INTO `oc_manufacturer` (`manufacturer_id`, `name`, `image`, `sort_order`)
 
 CREATE TABLE IF NOT EXISTS `oc_manufacturer_to_store` (
   `manufacturer_id` int(11) NOT NULL,
-  `store_id` int(11) NOT NULL
+  `store_id` int(11) NOT NULL,
+  PRIMARY KEY (`manufacturer_id`,`store_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
@@ -2136,13 +2218,14 @@ INSERT INTO `oc_manufacturer_to_store` (`manufacturer_id`, `store_id`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `oc_marketing` (
-  `marketing_id` int(11) NOT NULL,
+  `marketing_id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(32) NOT NULL,
   `description` text NOT NULL,
   `code` varchar(64) NOT NULL,
   `clicks` int(5) NOT NULL DEFAULT '0',
-  `date_added` datetime NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `date_added` datetime NOT NULL,
+  PRIMARY KEY (`marketing_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -2151,13 +2234,14 @@ CREATE TABLE IF NOT EXISTS `oc_marketing` (
 --
 
 CREATE TABLE IF NOT EXISTS `oc_mfilter_url_alias` (
-  `mfilter_url_alias_id` int(11) unsigned NOT NULL,
+  `mfilter_url_alias_id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `path` text COLLATE utf8_unicode_ci NOT NULL,
   `mfp` text COLLATE utf8_unicode_ci NOT NULL,
   `alias` text COLLATE utf8_unicode_ci NOT NULL,
   `language_id` int(11) NOT NULL,
-  `store_id` int(11) NOT NULL DEFAULT '0'
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  `store_id` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`mfilter_url_alias_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -2166,7 +2250,7 @@ CREATE TABLE IF NOT EXISTS `oc_mfilter_url_alias` (
 --
 
 CREATE TABLE IF NOT EXISTS `oc_modification` (
-  `modification_id` int(11) NOT NULL,
+  `modification_id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(64) NOT NULL,
   `code` varchar(64) NOT NULL,
   `author` varchar(64) NOT NULL,
@@ -2174,8 +2258,9 @@ CREATE TABLE IF NOT EXISTS `oc_modification` (
   `link` varchar(255) NOT NULL,
   `xml` mediumtext NOT NULL,
   `status` tinyint(1) NOT NULL,
-  `date_added` datetime NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `date_added` datetime NOT NULL,
+  PRIMARY KEY (`modification_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -2184,11 +2269,12 @@ CREATE TABLE IF NOT EXISTS `oc_modification` (
 --
 
 CREATE TABLE IF NOT EXISTS `oc_module` (
-  `module_id` int(11) NOT NULL,
+  `module_id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(64) NOT NULL,
   `code` varchar(32) NOT NULL,
-  `setting` text NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=46 DEFAULT CHARSET=utf8;
+  `setting` text NOT NULL,
+  PRIMARY KEY (`module_id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=47 ;
 
 --
 -- Дамп данных таблицы `oc_module`
@@ -2205,10 +2291,11 @@ INSERT INTO `oc_module` (`module_id`, `name`, `code`, `setting`) VALUES
 (35, 'Home page tabs', 'showintabs_output', '{"name":"Home page tabs","status":"1","selected_tabs":{"tabs":["1","2","5"]},"limit":"8","image_width":"263","image_height":"263","columns":"grid4","carousel":"1"}'),
 (37, 'Home testimonials', 'cosyone_testimonial', '{"name":"Home testimonials","testimonial_title":{"2":"Testimonials"},"testimonial_limit":"5","testimonial_character_limit":"190","testimonial_columns":"grid3","testimonial_carousel":"1","testimonial_contrast":"1","status":"1"}'),
 (39, 'Custom tekst', 'cosyone_content', '{"save":"stay","status":"1","name":"Custom tekst","template":"info1","columns":"column-3","module_title":{"2":"Custom tekst"},"sections":{"1":{"title":{"2":"CUSTOM"},"block":{"2":"&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod \\r\\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim \\r\\nveniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea \\r\\ncommodo consequat.&lt;br&gt;&lt;\\/p&gt;"}},"2":{"title":{"2":"CUSTOM 2"},"block":{"2":"&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod \\r\\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim \\r\\nveniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea \\r\\ncommodo consequat.&lt;br&gt;&lt;\\/p&gt;"}},"3":{"title":{"2":"CUSTOM 3"},"block":{"2":"&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod \\r\\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim \\r\\nveniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea \\r\\ncommodo consequat.&lt;br&gt;&lt;\\/p&gt;"}}}}'),
-(40, 'Footer Socials', 'cosyone_socials', '{"save":"stay","status":"1","name":"Footer Socials","module_title":{"1":"Stay connected"},"sections":{"1":{"social_type":"fa-facebook","link":"#","link_type":"external","tooltip":"Facebook"},"2":{"social_type":"fa-twitter","link":"#","link_type":"external","tooltip":"Twitter"},"3":{"social_type":"fa-google-plus","link":"#","link_type":"external","tooltip":"Google+"},"4":{"social_type":"fa-rss","link":"#","link_type":"external","tooltip":"RSS"},"5":{"social_type":"fa-pinterest","link":"#","link_type":"external","tooltip":"Pinterest"},"6":{"social_type":"fa-instagram","link":"#","link_type":"external","tooltip":"Instagram"},"7":{"social_type":"fa-linkedin","link":"#","link_type":"external","tooltip":"Linkedin"},"8":{"social_type":"fa-vimeo-square","link":"#","link_type":"external","tooltip":"Vimeo"},"9":{"social_type":"fa-youtube","link":"#","link_type":"external","tooltip":"Youtube"},"10":{"social_type":"fa-flickr","link":"#","link_type":"external","tooltip":"Flickr"},"11":{"social_type":"fa-vk","link":"#","link_type":"external","tooltip":"VK"},"12":{"social_type":"fa-dribbble","link":"#","link_type":"external","tooltip":"Dribbble"},"13":{"social_type":"fa-spotify","link":"#","link_type":"external","tooltip":"Spotify"},"14":{"social_type":"fa-tumblr","link":"#","link_type":"external","tooltip":"Tumblr"},"15":{"social_type":"fa-xing","link":"#","link_type":"external","tooltip":"Xing"},"16":{"social_type":"fa-wordpress","link":"#","link_type":"external","tooltip":"Wordpress"}}}'),
+(40, 'Footer Socials', 'cosyone_socials', '{"save":"0","status":"1","name":"Footer Socials","module_title":{"2":""},"sections":{"1":{"social_type":"fa-facebook","link":"#","link_type":"external","tooltip":"Facebook"},"6":{"social_type":"fa-instagram","link":"#","link_type":"external","tooltip":"Instagram"},"13":{"social_type":"fa-vk","link":"#","link_type":"external","tooltip":"Spotify"}}}'),
 (41, 'Column top rated', 'showintabs_output', '{"name":"Column top rated","status":"1","selected_tabs":{"tabs":["5"]},"limit":"4","image_width":"60","image_height":"60","columns":"grid1","carousel":"0"}'),
 (44, 'Recently viewed product page', 'cosyone_recently', '{"name":"Recently viewed product page","limit":"3","width":"262","height":"262","grid":"grid3","status":"1"}'),
-(45, 'Header socials', 'cosyone_socials', '{"save":"0","status":"1","name":"Header socials","module_title":{"2":""},"sections":{"1":{"social_type":"fa-facebook","link":"","link_type":"internal","tooltip":""}}}');
+(45, 'Header socials', 'cosyone_socials', '{"save":"stay","status":"1","name":"Header socials","module_title":{"2":""},"sections":{"1":{"social_type":"fa-facebook","link":"","link_type":"internal","tooltip":""},"2":{"social_type":"fa-instagram","link":"","link_type":"internal","tooltip":""},"3":{"social_type":"fa-vk","link":"","link_type":"internal","tooltip":""}}}'),
+(46, 'Хит продаж', 'featured', '{"name":"\\u0425\\u0438\\u0442 \\u043f\\u0440\\u043e\\u0434\\u0430\\u0436","product_name":"","product":["42","28","47","41"],"limit":"3","width":"200","height":"200","status":"1"}');
 
 -- --------------------------------------------------------
 
@@ -2217,7 +2304,8 @@ INSERT INTO `oc_module` (`module_id`, `name`, `code`, `setting`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `oc_newsletter` (
-  `email` varchar(255) COLLATE utf8_bin NOT NULL DEFAULT ''
+  `email` varchar(255) COLLATE utf8_bin NOT NULL DEFAULT '',
+  PRIMARY KEY (`email`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 -- --------------------------------------------------------
@@ -2227,10 +2315,11 @@ CREATE TABLE IF NOT EXISTS `oc_newsletter` (
 --
 
 CREATE TABLE IF NOT EXISTS `oc_option` (
-  `option_id` int(11) NOT NULL,
+  `option_id` int(11) NOT NULL AUTO_INCREMENT,
   `type` varchar(32) NOT NULL,
-  `sort_order` int(3) NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+  `sort_order` int(3) NOT NULL,
+  PRIMARY KEY (`option_id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=13 ;
 
 --
 -- Дамп данных таблицы `oc_option`
@@ -2258,7 +2347,8 @@ INSERT INTO `oc_option` (`option_id`, `type`, `sort_order`) VALUES
 CREATE TABLE IF NOT EXISTS `oc_option_description` (
   `option_id` int(11) NOT NULL,
   `language_id` int(11) NOT NULL,
-  `name` varchar(128) NOT NULL
+  `name` varchar(128) NOT NULL,
+  PRIMARY KEY (`option_id`,`language_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
@@ -2285,11 +2375,12 @@ INSERT INTO `oc_option_description` (`option_id`, `language_id`, `name`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `oc_option_value` (
-  `option_value_id` int(11) NOT NULL,
+  `option_value_id` int(11) NOT NULL AUTO_INCREMENT,
   `option_id` int(11) NOT NULL,
   `image` varchar(255) NOT NULL,
-  `sort_order` int(3) NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=49 DEFAULT CHARSET=utf8;
+  `sort_order` int(3) NOT NULL,
+  PRIMARY KEY (`option_value_id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=49 ;
 
 --
 -- Дамп данных таблицы `oc_option_value`
@@ -2321,7 +2412,8 @@ CREATE TABLE IF NOT EXISTS `oc_option_value_description` (
   `option_value_id` int(11) NOT NULL,
   `language_id` int(11) NOT NULL,
   `option_id` int(11) NOT NULL,
-  `name` varchar(128) NOT NULL
+  `name` varchar(128) NOT NULL,
+  PRIMARY KEY (`option_value_id`,`language_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
@@ -2351,7 +2443,7 @@ INSERT INTO `oc_option_value_description` (`option_value_id`, `language_id`, `op
 --
 
 CREATE TABLE IF NOT EXISTS `oc_order` (
-  `order_id` int(11) NOT NULL,
+  `order_id` int(11) NOT NULL AUTO_INCREMENT,
   `invoice_no` int(11) NOT NULL DEFAULT '0',
   `invoice_prefix` varchar(26) NOT NULL,
   `store_id` int(11) NOT NULL DEFAULT '0',
@@ -2411,8 +2503,9 @@ CREATE TABLE IF NOT EXISTS `oc_order` (
   `user_agent` varchar(255) NOT NULL,
   `accept_language` varchar(255) NOT NULL,
   `date_added` datetime NOT NULL,
-  `date_modified` datetime NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+  `date_modified` datetime NOT NULL,
+  PRIMARY KEY (`order_id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
 --
 -- Дамп данных таблицы `oc_order`
@@ -2428,15 +2521,16 @@ INSERT INTO `oc_order` (`order_id`, `invoice_no`, `invoice_prefix`, `store_id`, 
 --
 
 CREATE TABLE IF NOT EXISTS `oc_order_custom_field` (
-  `order_custom_field_id` int(11) NOT NULL,
+  `order_custom_field_id` int(11) NOT NULL AUTO_INCREMENT,
   `order_id` int(11) NOT NULL,
   `custom_field_id` int(11) NOT NULL,
   `custom_field_value_id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
   `value` text NOT NULL,
   `type` varchar(32) NOT NULL,
-  `location` varchar(16) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `location` varchar(16) NOT NULL,
+  PRIMARY KEY (`order_custom_field_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -2445,13 +2539,14 @@ CREATE TABLE IF NOT EXISTS `oc_order_custom_field` (
 --
 
 CREATE TABLE IF NOT EXISTS `oc_order_history` (
-  `order_history_id` int(11) NOT NULL,
+  `order_history_id` int(11) NOT NULL AUTO_INCREMENT,
   `order_id` int(11) NOT NULL,
   `order_status_id` int(11) NOT NULL,
   `notify` tinyint(1) NOT NULL DEFAULT '0',
   `comment` text NOT NULL,
-  `date_added` datetime NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+  `date_added` datetime NOT NULL,
+  PRIMARY KEY (`order_history_id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
 --
 -- Дамп данных таблицы `oc_order_history`
@@ -2467,15 +2562,16 @@ INSERT INTO `oc_order_history` (`order_history_id`, `order_id`, `order_status_id
 --
 
 CREATE TABLE IF NOT EXISTS `oc_order_option` (
-  `order_option_id` int(11) NOT NULL,
+  `order_option_id` int(11) NOT NULL AUTO_INCREMENT,
   `order_id` int(11) NOT NULL,
   `order_product_id` int(11) NOT NULL,
   `product_option_id` int(11) NOT NULL,
   `product_option_value_id` int(11) NOT NULL DEFAULT '0',
   `name` varchar(255) NOT NULL,
   `value` text NOT NULL,
-  `type` varchar(32) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `type` varchar(32) NOT NULL,
+  PRIMARY KEY (`order_option_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -2484,7 +2580,7 @@ CREATE TABLE IF NOT EXISTS `oc_order_option` (
 --
 
 CREATE TABLE IF NOT EXISTS `oc_order_product` (
-  `order_product_id` int(11) NOT NULL,
+  `order_product_id` int(11) NOT NULL AUTO_INCREMENT,
   `order_id` int(11) NOT NULL,
   `product_id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
@@ -2493,8 +2589,9 @@ CREATE TABLE IF NOT EXISTS `oc_order_product` (
   `price` decimal(15,4) NOT NULL DEFAULT '0.0000',
   `total` decimal(15,4) NOT NULL DEFAULT '0.0000',
   `tax` decimal(15,4) NOT NULL DEFAULT '0.0000',
-  `reward` int(8) NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+  `reward` int(8) NOT NULL,
+  PRIMARY KEY (`order_product_id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
 --
 -- Дамп данных таблицы `oc_order_product`
@@ -2510,7 +2607,7 @@ INSERT INTO `oc_order_product` (`order_product_id`, `order_id`, `product_id`, `n
 --
 
 CREATE TABLE IF NOT EXISTS `oc_order_recurring` (
-  `order_recurring_id` int(11) NOT NULL,
+  `order_recurring_id` int(11) NOT NULL AUTO_INCREMENT,
   `order_id` int(11) NOT NULL,
   `reference` varchar(255) NOT NULL,
   `product_id` int(11) NOT NULL,
@@ -2529,8 +2626,9 @@ CREATE TABLE IF NOT EXISTS `oc_order_recurring` (
   `trial_duration` smallint(6) NOT NULL,
   `trial_price` decimal(10,4) NOT NULL,
   `status` tinyint(4) NOT NULL,
-  `date_added` datetime NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `date_added` datetime NOT NULL,
+  PRIMARY KEY (`order_recurring_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -2539,13 +2637,14 @@ CREATE TABLE IF NOT EXISTS `oc_order_recurring` (
 --
 
 CREATE TABLE IF NOT EXISTS `oc_order_recurring_transaction` (
-  `order_recurring_transaction_id` int(11) NOT NULL,
+  `order_recurring_transaction_id` int(11) NOT NULL AUTO_INCREMENT,
   `order_recurring_id` int(11) NOT NULL,
   `reference` varchar(255) NOT NULL,
   `type` varchar(255) NOT NULL,
   `amount` decimal(10,4) NOT NULL,
-  `date_added` datetime NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `date_added` datetime NOT NULL,
+  PRIMARY KEY (`order_recurring_transaction_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -2554,10 +2653,11 @@ CREATE TABLE IF NOT EXISTS `oc_order_recurring_transaction` (
 --
 
 CREATE TABLE IF NOT EXISTS `oc_order_status` (
-  `order_status_id` int(11) NOT NULL,
+  `order_status_id` int(11) NOT NULL AUTO_INCREMENT,
   `language_id` int(11) NOT NULL,
-  `name` varchar(32) NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
+  `name` varchar(32) NOT NULL,
+  PRIMARY KEY (`order_status_id`,`language_id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=17 ;
 
 --
 -- Дамп данных таблицы `oc_order_status`
@@ -2586,13 +2686,15 @@ INSERT INTO `oc_order_status` (`order_status_id`, `language_id`, `name`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `oc_order_total` (
-  `order_total_id` int(10) NOT NULL,
+  `order_total_id` int(10) NOT NULL AUTO_INCREMENT,
   `order_id` int(11) NOT NULL,
   `code` varchar(32) NOT NULL,
   `title` varchar(255) NOT NULL,
   `value` decimal(15,4) NOT NULL DEFAULT '0.0000',
-  `sort_order` int(3) NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+  `sort_order` int(3) NOT NULL,
+  PRIMARY KEY (`order_total_id`),
+  KEY `order_id` (`order_id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
 
 --
 -- Дамп данных таблицы `oc_order_total`
@@ -2610,7 +2712,7 @@ INSERT INTO `oc_order_total` (`order_total_id`, `order_id`, `code`, `title`, `va
 --
 
 CREATE TABLE IF NOT EXISTS `oc_order_voucher` (
-  `order_voucher_id` int(11) NOT NULL,
+  `order_voucher_id` int(11) NOT NULL AUTO_INCREMENT,
   `order_id` int(11) NOT NULL,
   `voucher_id` int(11) NOT NULL,
   `description` varchar(255) NOT NULL,
@@ -2621,8 +2723,9 @@ CREATE TABLE IF NOT EXISTS `oc_order_voucher` (
   `to_email` varchar(96) NOT NULL,
   `voucher_theme_id` int(11) NOT NULL,
   `message` text NOT NULL,
-  `amount` decimal(15,4) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `amount` decimal(15,4) NOT NULL,
+  PRIMARY KEY (`order_voucher_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -2631,7 +2734,7 @@ CREATE TABLE IF NOT EXISTS `oc_order_voucher` (
 --
 
 CREATE TABLE IF NOT EXISTS `oc_product` (
-  `product_id` int(11) NOT NULL,
+  `product_id` int(11) NOT NULL AUTO_INCREMENT,
   `model` varchar(64) NOT NULL,
   `sku` varchar(64) NOT NULL,
   `upc` varchar(12) NOT NULL,
@@ -2661,8 +2764,9 @@ CREATE TABLE IF NOT EXISTS `oc_product` (
   `status` tinyint(1) NOT NULL DEFAULT '0',
   `viewed` int(5) NOT NULL DEFAULT '0',
   `date_added` datetime NOT NULL,
-  `date_modified` datetime NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=50 DEFAULT CHARSET=utf8;
+  `date_modified` datetime NOT NULL,
+  PRIMARY KEY (`product_id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=50 ;
 
 --
 -- Дамп данных таблицы `oc_product`
@@ -2699,7 +2803,8 @@ CREATE TABLE IF NOT EXISTS `oc_product_attribute` (
   `product_id` int(11) NOT NULL,
   `attribute_id` int(11) NOT NULL,
   `language_id` int(11) NOT NULL,
-  `text` text NOT NULL
+  `text` text NOT NULL,
+  PRIMARY KEY (`product_id`,`attribute_id`,`language_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
@@ -2727,7 +2832,9 @@ CREATE TABLE IF NOT EXISTS `oc_product_description` (
   `tag` text NOT NULL,
   `meta_title` varchar(255) NOT NULL,
   `meta_description` varchar(255) NOT NULL,
-  `meta_keyword` varchar(255) NOT NULL
+  `meta_keyword` varchar(255) NOT NULL,
+  PRIMARY KEY (`product_id`,`language_id`),
+  KEY `name` (`name`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
@@ -2762,15 +2869,17 @@ INSERT INTO `oc_product_description` (`product_id`, `language_id`, `name`, `desc
 --
 
 CREATE TABLE IF NOT EXISTS `oc_product_discount` (
-  `product_discount_id` int(11) NOT NULL,
+  `product_discount_id` int(11) NOT NULL AUTO_INCREMENT,
   `product_id` int(11) NOT NULL,
   `customer_group_id` int(11) NOT NULL,
   `quantity` int(4) NOT NULL DEFAULT '0',
   `priority` int(5) NOT NULL DEFAULT '1',
   `price` decimal(15,4) NOT NULL DEFAULT '0.0000',
   `date_start` date NOT NULL DEFAULT '0000-00-00',
-  `date_end` date NOT NULL DEFAULT '0000-00-00'
-) ENGINE=MyISAM AUTO_INCREMENT=450 DEFAULT CHARSET=utf8;
+  `date_end` date NOT NULL DEFAULT '0000-00-00',
+  PRIMARY KEY (`product_discount_id`),
+  KEY `product_id` (`product_id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=450 ;
 
 --
 -- Дамп данных таблицы `oc_product_discount`
@@ -2789,7 +2898,8 @@ INSERT INTO `oc_product_discount` (`product_discount_id`, `product_id`, `custome
 
 CREATE TABLE IF NOT EXISTS `oc_product_filter` (
   `product_id` int(11) NOT NULL,
-  `filter_id` int(11) NOT NULL
+  `filter_id` int(11) NOT NULL,
+  PRIMARY KEY (`product_id`,`filter_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
@@ -2808,11 +2918,13 @@ INSERT INTO `oc_product_filter` (`product_id`, `filter_id`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `oc_product_image` (
-  `product_image_id` int(11) NOT NULL,
+  `product_image_id` int(11) NOT NULL AUTO_INCREMENT,
   `product_id` int(11) NOT NULL,
   `image` varchar(255) DEFAULT NULL,
-  `sort_order` int(3) NOT NULL DEFAULT '0'
-) ENGINE=MyISAM AUTO_INCREMENT=2373 DEFAULT CHARSET=utf8;
+  `sort_order` int(3) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`product_image_id`),
+  KEY `product_id` (`product_id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2373 ;
 
 --
 -- Дамп данных таблицы `oc_product_image`
@@ -2888,12 +3000,13 @@ INSERT INTO `oc_product_image` (`product_image_id`, `product_id`, `image`, `sort
 --
 
 CREATE TABLE IF NOT EXISTS `oc_product_option` (
-  `product_option_id` int(11) NOT NULL,
+  `product_option_id` int(11) NOT NULL AUTO_INCREMENT,
   `product_id` int(11) NOT NULL,
   `option_id` int(11) NOT NULL,
   `value` text NOT NULL,
-  `required` tinyint(1) NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=227 DEFAULT CHARSET=utf8;
+  `required` tinyint(1) NOT NULL,
+  PRIMARY KEY (`product_option_id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=227 ;
 
 --
 -- Дамп данных таблицы `oc_product_option`
@@ -2920,7 +3033,7 @@ INSERT INTO `oc_product_option` (`product_option_id`, `product_id`, `option_id`,
 --
 
 CREATE TABLE IF NOT EXISTS `oc_product_option_value` (
-  `product_option_value_id` int(11) NOT NULL,
+  `product_option_value_id` int(11) NOT NULL AUTO_INCREMENT,
   `product_option_id` int(11) NOT NULL,
   `product_id` int(11) NOT NULL,
   `option_id` int(11) NOT NULL,
@@ -2932,8 +3045,11 @@ CREATE TABLE IF NOT EXISTS `oc_product_option_value` (
   `points` int(8) NOT NULL,
   `points_prefix` varchar(1) NOT NULL,
   `weight` decimal(15,8) NOT NULL,
-  `weight_prefix` varchar(1) NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
+  `weight_prefix` varchar(1) NOT NULL,
+  PRIMARY KEY (`product_option_value_id`),
+  KEY `option_value_id` (`option_value_id`),
+  KEY `product_id` (`product_id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=17 ;
 
 --
 -- Дамп данных таблицы `oc_product_option_value`
@@ -2966,7 +3082,8 @@ INSERT INTO `oc_product_option_value` (`product_option_value_id`, `product_optio
 CREATE TABLE IF NOT EXISTS `oc_product_recurring` (
   `product_id` int(11) NOT NULL,
   `recurring_id` int(11) NOT NULL,
-  `customer_group_id` int(11) NOT NULL
+  `customer_group_id` int(11) NOT NULL,
+  PRIMARY KEY (`product_id`,`recurring_id`,`customer_group_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -2977,7 +3094,8 @@ CREATE TABLE IF NOT EXISTS `oc_product_recurring` (
 
 CREATE TABLE IF NOT EXISTS `oc_product_related` (
   `product_id` int(11) NOT NULL,
-  `related_id` int(11) NOT NULL
+  `related_id` int(11) NOT NULL,
+  PRIMARY KEY (`product_id`,`related_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
@@ -2997,11 +3115,12 @@ INSERT INTO `oc_product_related` (`product_id`, `related_id`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `oc_product_reward` (
-  `product_reward_id` int(11) NOT NULL,
+  `product_reward_id` int(11) NOT NULL AUTO_INCREMENT,
   `product_id` int(11) NOT NULL DEFAULT '0',
   `customer_group_id` int(11) NOT NULL DEFAULT '0',
-  `points` int(8) NOT NULL DEFAULT '0'
-) ENGINE=MyISAM AUTO_INCREMENT=550 DEFAULT CHARSET=utf8;
+  `points` int(8) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`product_reward_id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=550 ;
 
 --
 -- Дамп данных таблицы `oc_product_reward`
@@ -3034,14 +3153,16 @@ INSERT INTO `oc_product_reward` (`product_reward_id`, `product_id`, `customer_gr
 --
 
 CREATE TABLE IF NOT EXISTS `oc_product_special` (
-  `product_special_id` int(11) NOT NULL,
+  `product_special_id` int(11) NOT NULL AUTO_INCREMENT,
   `product_id` int(11) NOT NULL,
   `customer_group_id` int(11) NOT NULL,
   `priority` int(5) NOT NULL DEFAULT '1',
   `price` decimal(15,4) NOT NULL DEFAULT '0.0000',
   `date_start` date NOT NULL DEFAULT '0000-00-00',
-  `date_end` date NOT NULL DEFAULT '0000-00-00'
-) ENGINE=MyISAM AUTO_INCREMENT=445 DEFAULT CHARSET=utf8;
+  `date_end` date NOT NULL DEFAULT '0000-00-00',
+  PRIMARY KEY (`product_special_id`),
+  KEY `product_id` (`product_id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=445 ;
 
 --
 -- Дамп данных таблицы `oc_product_special`
@@ -3064,7 +3185,8 @@ CREATE TABLE IF NOT EXISTS `oc_product_tab` (
   `language_id` int(11) NOT NULL,
   `text` text COLLATE utf8_bin NOT NULL,
   `position` tinyint(1) DEFAULT NULL,
-  `show_empty` tinyint(1) DEFAULT NULL
+  `show_empty` tinyint(1) DEFAULT NULL,
+  PRIMARY KEY (`product_id`,`tab_id`,`language_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 -- --------------------------------------------------------
@@ -3075,7 +3197,9 @@ CREATE TABLE IF NOT EXISTS `oc_product_tab` (
 
 CREATE TABLE IF NOT EXISTS `oc_product_to_category` (
   `product_id` int(11) NOT NULL,
-  `category_id` int(11) NOT NULL
+  `category_id` int(11) NOT NULL,
+  PRIMARY KEY (`product_id`,`category_id`),
+  KEY `category_id` (`category_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
@@ -3122,7 +3246,8 @@ INSERT INTO `oc_product_to_category` (`product_id`, `category_id`) VALUES
 
 CREATE TABLE IF NOT EXISTS `oc_product_to_download` (
   `product_id` int(11) NOT NULL,
-  `download_id` int(11) NOT NULL
+  `download_id` int(11) NOT NULL,
+  PRIMARY KEY (`product_id`,`download_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -3134,7 +3259,8 @@ CREATE TABLE IF NOT EXISTS `oc_product_to_download` (
 CREATE TABLE IF NOT EXISTS `oc_product_to_layout` (
   `product_id` int(11) NOT NULL,
   `store_id` int(11) NOT NULL,
-  `layout_id` int(11) NOT NULL
+  `layout_id` int(11) NOT NULL,
+  PRIMARY KEY (`product_id`,`store_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
@@ -3154,7 +3280,8 @@ INSERT INTO `oc_product_to_layout` (`product_id`, `store_id`, `layout_id`) VALUE
 
 CREATE TABLE IF NOT EXISTS `oc_product_to_store` (
   `product_id` int(11) NOT NULL,
-  `store_id` int(11) NOT NULL DEFAULT '0'
+  `store_id` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`product_id`,`store_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
@@ -3189,7 +3316,7 @@ INSERT INTO `oc_product_to_store` (`product_id`, `store_id`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `oc_question` (
-  `question_id` int(11) NOT NULL,
+  `question_id` int(11) NOT NULL AUTO_INCREMENT,
   `product_id` int(1) NOT NULL,
   `customer_id` int(11) NOT NULL,
   `author` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
@@ -3200,8 +3327,9 @@ CREATE TABLE IF NOT EXISTS `oc_question` (
   `private` tinyint(1) NOT NULL DEFAULT '0',
   `notify` tinyint(1) NOT NULL DEFAULT '1',
   `date_added` datetime DEFAULT '0000-00-00 00:00:00',
-  `date_modified` datetime DEFAULT '0000-00-00 00:00:00'
-) ENGINE=MyISAM AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
+  `date_modified` datetime DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`question_id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=16 ;
 
 -- --------------------------------------------------------
 
@@ -3210,7 +3338,7 @@ CREATE TABLE IF NOT EXISTS `oc_question` (
 --
 
 CREATE TABLE IF NOT EXISTS `oc_recurring` (
-  `recurring_id` int(11) NOT NULL,
+  `recurring_id` int(11) NOT NULL AUTO_INCREMENT,
   `price` decimal(10,4) NOT NULL,
   `frequency` enum('day','week','semi_month','month','year') NOT NULL,
   `duration` int(10) unsigned NOT NULL,
@@ -3221,8 +3349,9 @@ CREATE TABLE IF NOT EXISTS `oc_recurring` (
   `trial_duration` int(10) unsigned NOT NULL,
   `trial_cycle` int(10) unsigned NOT NULL,
   `status` tinyint(4) NOT NULL,
-  `sort_order` int(11) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `sort_order` int(11) NOT NULL,
+  PRIMARY KEY (`recurring_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -3233,7 +3362,8 @@ CREATE TABLE IF NOT EXISTS `oc_recurring` (
 CREATE TABLE IF NOT EXISTS `oc_recurring_description` (
   `recurring_id` int(11) NOT NULL,
   `language_id` int(11) NOT NULL,
-  `name` varchar(255) NOT NULL
+  `name` varchar(255) NOT NULL,
+  PRIMARY KEY (`recurring_id`,`language_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -3243,7 +3373,7 @@ CREATE TABLE IF NOT EXISTS `oc_recurring_description` (
 --
 
 CREATE TABLE IF NOT EXISTS `oc_return` (
-  `return_id` int(11) NOT NULL,
+  `return_id` int(11) NOT NULL AUTO_INCREMENT,
   `order_id` int(11) NOT NULL,
   `product_id` int(11) NOT NULL,
   `customer_id` int(11) NOT NULL,
@@ -3261,8 +3391,9 @@ CREATE TABLE IF NOT EXISTS `oc_return` (
   `comment` text,
   `date_ordered` date NOT NULL DEFAULT '0000-00-00',
   `date_added` datetime NOT NULL,
-  `date_modified` datetime NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `date_modified` datetime NOT NULL,
+  PRIMARY KEY (`return_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -3271,10 +3402,11 @@ CREATE TABLE IF NOT EXISTS `oc_return` (
 --
 
 CREATE TABLE IF NOT EXISTS `oc_return_action` (
-  `return_action_id` int(11) NOT NULL,
+  `return_action_id` int(11) NOT NULL AUTO_INCREMENT,
   `language_id` int(11) NOT NULL DEFAULT '0',
-  `name` varchar(64) NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+  `name` varchar(64) NOT NULL,
+  PRIMARY KEY (`return_action_id`,`language_id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
 
 --
 -- Дамп данных таблицы `oc_return_action`
@@ -3292,13 +3424,14 @@ INSERT INTO `oc_return_action` (`return_action_id`, `language_id`, `name`) VALUE
 --
 
 CREATE TABLE IF NOT EXISTS `oc_return_history` (
-  `return_history_id` int(11) NOT NULL,
+  `return_history_id` int(11) NOT NULL AUTO_INCREMENT,
   `return_id` int(11) NOT NULL,
   `return_status_id` int(11) NOT NULL,
   `notify` tinyint(1) NOT NULL,
   `comment` text NOT NULL,
-  `date_added` datetime NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `date_added` datetime NOT NULL,
+  PRIMARY KEY (`return_history_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -3307,10 +3440,11 @@ CREATE TABLE IF NOT EXISTS `oc_return_history` (
 --
 
 CREATE TABLE IF NOT EXISTS `oc_return_reason` (
-  `return_reason_id` int(11) NOT NULL,
+  `return_reason_id` int(11) NOT NULL AUTO_INCREMENT,
   `language_id` int(11) NOT NULL DEFAULT '0',
-  `name` varchar(128) NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+  `name` varchar(128) NOT NULL,
+  PRIMARY KEY (`return_reason_id`,`language_id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
 
 --
 -- Дамп данных таблицы `oc_return_reason`
@@ -3330,10 +3464,11 @@ INSERT INTO `oc_return_reason` (`return_reason_id`, `language_id`, `name`) VALUE
 --
 
 CREATE TABLE IF NOT EXISTS `oc_return_status` (
-  `return_status_id` int(11) NOT NULL,
+  `return_status_id` int(11) NOT NULL AUTO_INCREMENT,
   `language_id` int(11) NOT NULL DEFAULT '0',
-  `name` varchar(32) NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+  `name` varchar(32) NOT NULL,
+  PRIMARY KEY (`return_status_id`,`language_id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
 
 --
 -- Дамп данных таблицы `oc_return_status`
@@ -3351,7 +3486,7 @@ INSERT INTO `oc_return_status` (`return_status_id`, `language_id`, `name`) VALUE
 --
 
 CREATE TABLE IF NOT EXISTS `oc_review` (
-  `review_id` int(11) NOT NULL,
+  `review_id` int(11) NOT NULL AUTO_INCREMENT,
   `product_id` int(11) NOT NULL,
   `customer_id` int(11) NOT NULL,
   `author` varchar(64) NOT NULL,
@@ -3359,8 +3494,10 @@ CREATE TABLE IF NOT EXISTS `oc_review` (
   `rating` int(1) NOT NULL,
   `status` tinyint(1) NOT NULL DEFAULT '0',
   `date_added` datetime NOT NULL,
-  `date_modified` datetime NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `date_modified` datetime NOT NULL,
+  PRIMARY KEY (`review_id`),
+  KEY `product_id` (`product_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -3369,9 +3506,10 @@ CREATE TABLE IF NOT EXISTS `oc_review` (
 --
 
 CREATE TABLE IF NOT EXISTS `oc_revslider_attachment_images` (
-  `ID` int(10) NOT NULL,
-  `file_name` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `ID` int(10) NOT NULL AUTO_INCREMENT,
+  `file_name` varchar(100) NOT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -3380,12 +3518,13 @@ CREATE TABLE IF NOT EXISTS `oc_revslider_attachment_images` (
 --
 
 CREATE TABLE IF NOT EXISTS `oc_revslider_css` (
-  `id` int(9) NOT NULL,
+  `id` int(9) NOT NULL AUTO_INCREMENT,
   `handle` text NOT NULL,
   `settings` text,
   `hover` text,
-  `params` text NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=42 DEFAULT CHARSET=utf8;
+  `params` text NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=42 ;
 
 --
 -- Дамп данных таблицы `oc_revslider_css`
@@ -3441,10 +3580,11 @@ INSERT INTO `oc_revslider_css` (`id`, `handle`, `settings`, `hover`, `params`) V
 --
 
 CREATE TABLE IF NOT EXISTS `oc_revslider_layer_animations` (
-  `id` int(9) NOT NULL,
+  `id` int(9) NOT NULL AUTO_INCREMENT,
   `handle` text NOT NULL,
-  `params` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `params` text NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -3453,10 +3593,11 @@ CREATE TABLE IF NOT EXISTS `oc_revslider_layer_animations` (
 --
 
 CREATE TABLE IF NOT EXISTS `oc_revslider_settings` (
-  `id` int(9) NOT NULL,
+  `id` int(9) NOT NULL AUTO_INCREMENT,
   `general` text NOT NULL,
-  `params` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `params` text NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -3465,11 +3606,12 @@ CREATE TABLE IF NOT EXISTS `oc_revslider_settings` (
 --
 
 CREATE TABLE IF NOT EXISTS `oc_revslider_sliders` (
-  `id` int(9) NOT NULL,
+  `id` int(9) NOT NULL AUTO_INCREMENT,
   `title` tinytext NOT NULL,
   `alias` tinytext,
-  `params` text NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+  `params` text NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
 --
 -- Дамп данных таблицы `oc_revslider_sliders`
@@ -3485,12 +3627,13 @@ INSERT INTO `oc_revslider_sliders` (`id`, `title`, `alias`, `params`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `oc_revslider_slides` (
-  `id` int(9) NOT NULL,
+  `id` int(9) NOT NULL AUTO_INCREMENT,
   `slider_id` int(9) NOT NULL,
   `slide_order` int(11) NOT NULL,
   `params` text NOT NULL,
-  `layers` text NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+  `layers` text NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
 
 --
 -- Дамп данных таблицы `oc_revslider_slides`
@@ -3508,11 +3651,12 @@ INSERT INTO `oc_revslider_slides` (`id`, `slider_id`, `slide_order`, `params`, `
 --
 
 CREATE TABLE IF NOT EXISTS `oc_revslider_static_slides` (
-  `id` int(9) NOT NULL,
+  `id` int(9) NOT NULL AUTO_INCREMENT,
   `slider_id` int(9) NOT NULL,
   `params` text NOT NULL,
-  `layers` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `layers` text NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -3521,13 +3665,14 @@ CREATE TABLE IF NOT EXISTS `oc_revslider_static_slides` (
 --
 
 CREATE TABLE IF NOT EXISTS `oc_setting` (
-  `setting_id` int(11) NOT NULL,
+  `setting_id` int(11) NOT NULL AUTO_INCREMENT,
   `store_id` int(11) NOT NULL DEFAULT '0',
   `code` varchar(32) NOT NULL,
   `key` varchar(64) NOT NULL,
   `value` longtext NOT NULL,
-  `serialized` tinyint(1) NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=111055 DEFAULT CHARSET=utf8;
+  `serialized` tinyint(1) NOT NULL,
+  PRIMARY KEY (`setting_id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=111147 ;
 
 --
 -- Дамп данных таблицы `oc_setting`
@@ -3564,100 +3709,84 @@ INSERT INTO `oc_setting` (`setting_id`, `store_id`, `code`, `key`, `value`, `ser
 (158, 0, 'account', 'account_status', '1', 0),
 (159, 0, 'affiliate', 'affiliate_status', '1', 0),
 (795, 0, 'theme_default', 'theme_default_image_location_height', '50', 0),
-(111052, 0, 'config', 'config_error_display', '1', 0),
-(111053, 0, 'config', 'config_error_log', '1', 0),
 (108634, 0, 'theme_default', 'theme_default_image_wishlist_height', '100', 0),
 (108633, 0, 'theme_default', 'theme_default_image_wishlist_width', '100', 0),
 (94, 0, 'voucher', 'voucher_sort_order', '8', 0),
 (95, 0, 'voucher', 'voucher_status', '1', 0),
 (103, 0, 'free_checkout', 'free_checkout_status', '1', 0),
 (104, 0, 'free_checkout', 'free_checkout_order_status_id', '1', 0),
-(111049, 0, 'config', 'config_file_max_size', '300000', 0),
-(111048, 0, 'config', 'config_encryption', 'XFdp6dqwDGeKiQC8UikuOjhR1bMUPNHyDb6rey2Vn7TMVbgMPjuQpkbhb5el0lWLzDxhyGLnIbO2lwIc8ajtCJYgDpzgQcx6rQQwYMGqTfrnADok9WPHYE9aL9HJbfITGiyabXyIuRWvZC1nfQ8N4VSoKZfx65jFwogVhFI1QgTlH71800WDDpFM3yGxxVpaZhoUSOntApLFGnVGmw9IUvj2CGg0bCyMdOzfqc8Nyf1FD6qj8ToAMfjP4qQwZLGpaOlrbE4CfSlJ7me1M4gEWR8ONRfASRFDIMvJx93KZxoeEFqLenvw5CqpbFrc0kQBieK0ngdmgB2c92x9nFClcgkBSpFSVAmBiTD9J573txV4dFOmtLasuAYq845gktb0wYnxoGenRJupg4nEvTiT1fc6XDTzW08wTzKdJ5ymfegn0C2yvlr3TFQzbUL8mN15Th5ksqNLBFx5UyuhadFVMraDOCR9cr0xTGxHU3qw0dF4wDINmxrGxjKL3Ohq0aocG0wkb9A0HoCNUbWu5o1qiY5GHVwdqGjwZlIp55VSF6cg5acgvwVe5SG0d3ekCM3bJ7Gq33yu0fKLitVhDOIBEuitoXYZdrsMIpm8XGm2q8ih3uFkhIU1J80HybrGYpcuzFEH9FT7psYTwYOVAOUFhfcULTQmfO2dcng7L09s2Fv6SvkGH98Sqdn085m0FcCPzaneVjagAeu2Rj1kTNKh3iy6ZrOeYwJU3pGOlKfOpKtVhY6hc4USSy0qCSmNspr6D1DRvLep1CSOwpD6BUrTvHMaYAWGmR94FXvYDuFulOptxpAVPrLNczSQaYwdGitEz1JQuQE83OVl5Z7vnr54IEE4H7MzlI0l0uirx8fvuf3fItCjWPxX5D1FbWoXf9i9h5UgPJuSas2Sxndz0VTkdFFRBjwagulLddmKsHM5KHJM9h3PhCVkpC8B92CPQvaAA8cin7oXoDGWeXgg0EUEbKUdO1KvqjQPQrRaedFLn8z7UwM8lDl0L42C1hPmvIe6', 0),
-(111047, 0, 'config', 'config_shared', '0', 0),
-(111046, 0, 'config', 'config_password', '1', 0),
-(111045, 0, 'config', 'config_secure', '0', 0),
-(111044, 0, 'config', 'config_compression', '0', 0),
+(111136, 0, 'config', 'config_compression', '0', 0),
+(111137, 0, 'config', 'config_secure', '0', 0),
+(111138, 0, 'config', 'config_password', '1', 0),
+(111139, 0, 'config', 'config_shared', '0', 0),
+(111140, 0, 'config', 'config_encryption', 'XFdp6dqwDGeKiQC8UikuOjhR1bMUPNHyDb6rey2Vn7TMVbgMPjuQpkbhb5el0lWLzDxhyGLnIbO2lwIc8ajtCJYgDpzgQcx6rQQwYMGqTfrnADok9WPHYE9aL9HJbfITGiyabXyIuRWvZC1nfQ8N4VSoKZfx65jFwogVhFI1QgTlH71800WDDpFM3yGxxVpaZhoUSOntApLFGnVGmw9IUvj2CGg0bCyMdOzfqc8Nyf1FD6qj8ToAMfjP4qQwZLGpaOlrbE4CfSlJ7me1M4gEWR8ONRfASRFDIMvJx93KZxoeEFqLenvw5CqpbFrc0kQBieK0ngdmgB2c92x9nFClcgkBSpFSVAmBiTD9J573txV4dFOmtLasuAYq845gktb0wYnxoGenRJupg4nEvTiT1fc6XDTzW08wTzKdJ5ymfegn0C2yvlr3TFQzbUL8mN15Th5ksqNLBFx5UyuhadFVMraDOCR9cr0xTGxHU3qw0dF4wDINmxrGxjKL3Ohq0aocG0wkb9A0HoCNUbWu5o1qiY5GHVwdqGjwZlIp55VSF6cg5acgvwVe5SG0d3ekCM3bJ7Gq33yu0fKLitVhDOIBEuitoXYZdrsMIpm8XGm2q8ih3uFkhIU1J80HybrGYpcuzFEH9FT7psYTwYOVAOUFhfcULTQmfO2dcng7L09s2Fv6SvkGH98Sqdn085m0FcCPzaneVjagAeu2Rj1kTNKh3iy6ZrOeYwJU3pGOlKfOpKtVhY6hc4USSy0qCSmNspr6D1DRvLep1CSOwpD6BUrTvHMaYAWGmR94FXvYDuFulOptxpAVPrLNczSQaYwdGitEz1JQuQE83OVl5Z7vnr54IEE4H7MzlI0l0uirx8fvuf3fItCjWPxX5D1FbWoXf9i9h5UgPJuSas2Sxndz0VTkdFFRBjwagulLddmKsHM5KHJM9h3PhCVkpC8B92CPQvaAA8cin7oXoDGWeXgg0EUEbKUdO1KvqjQPQrRaedFLn8z7UwM8lDl0L42C1hPmvIe6', 0),
 (794, 0, 'theme_default', 'theme_default_image_location_width', '268', 0),
 (108635, 0, 'theme_default', 'theme_default_image_cart_width', '100', 0),
 (108636, 0, 'theme_default', 'theme_default_image_cart_height', '100', 0),
 (774, 0, 'theme_default', 'theme_default_product_limit', '15', 0),
 (775, 0, 'theme_default', 'theme_default_product_description_length', '100', 0),
-(111007, 0, 'config', 'config_order_status_id', '1', 0),
-(111008, 0, 'config', 'config_processing_status', '["5","1","2","12","3"]', 1),
-(111009, 0, 'config', 'config_complete_status', '["5","3"]', 1),
-(111010, 0, 'config', 'config_fraud_status_id', '7', 0),
-(111011, 0, 'config', 'config_order_mail', '0', 0),
-(111012, 0, 'config', 'config_api_id', '1', 0),
-(111013, 0, 'config', 'config_stock_display', '0', 0),
-(111014, 0, 'config', 'config_stock_warning', '0', 0),
-(111015, 0, 'config', 'config_stock_checkout', '0', 0),
-(111016, 0, 'config', 'config_affiliate_approval', '0', 0),
-(111017, 0, 'config', 'config_affiliate_auto', '0', 0),
-(111018, 0, 'config', 'config_affiliate_commission', '5', 0),
-(111019, 0, 'config', 'config_affiliate_id', '4', 0),
-(111020, 0, 'config', 'config_affiliate_mail', '0', 0),
-(111021, 0, 'config', 'config_return_id', '0', 0),
-(111022, 0, 'config', 'config_return_status_id', '2', 0),
-(111023, 0, 'config', 'config_captcha', '', 0),
-(111024, 0, 'config', 'config_captcha_page', '["review","return","contact"]', 1),
-(111025, 0, 'config', 'config_logo', 'catalog/logo.png', 0),
-(111026, 0, 'config', 'config_icon', 'catalog/cart.png', 0),
-(111027, 0, 'config', 'config_ftp_hostname', 'testtheme.net', 0),
-(111028, 0, 'config', 'config_ftp_port', '21', 0),
-(111029, 0, 'config', 'config_ftp_username', '', 0),
-(111030, 0, 'config', 'config_ftp_password', '', 0),
-(111031, 0, 'config', 'config_ftp_root', '', 0),
-(111032, 0, 'config', 'config_ftp_status', '0', 0),
-(111033, 0, 'config', 'config_mail_protocol', 'mail', 0),
-(111034, 0, 'config', 'config_mail_parameter', '', 0),
-(111035, 0, 'config', 'config_mail_smtp_hostname', '', 0),
-(111036, 0, 'config', 'config_mail_smtp_username', '', 0),
-(111037, 0, 'config', 'config_mail_smtp_password', '', 0),
-(111038, 0, 'config', 'config_mail_smtp_port', '25', 0),
-(111039, 0, 'config', 'config_mail_smtp_timeout', '5', 0),
-(111040, 0, 'config', 'config_mail_alert', '', 0),
-(111041, 0, 'config', 'config_maintenance', '0', 0),
-(111042, 0, 'config', 'config_seo_url', '1', 0),
-(111043, 0, 'config', 'config_robots', 'abot\r\ndbot\r\nebot\r\nhbot\r\nkbot\r\nlbot\r\nmbot\r\nnbot\r\nobot\r\npbot\r\nrbot\r\nsbot\r\ntbot\r\nvbot\r\nybot\r\nzbot\r\nbot.\r\nbot/\r\n_bot\r\n.bot\r\n/bot\r\n-bot\r\n:bot\r\n(bot\r\ncrawl\r\nslurp\r\nspider\r\nseek\r\naccoona\r\nacoon\r\nadressendeutschland\r\nah-ha.com\r\nahoy\r\naltavista\r\nananzi\r\nanthill\r\nappie\r\narachnophilia\r\narale\r\naraneo\r\naranha\r\narchitext\r\naretha\r\narks\r\nasterias\r\natlocal\r\natn\r\natomz\r\naugurfind\r\nbackrub\r\nbannana_bot\r\nbaypup\r\nbdfetch\r\nbig brother\r\nbiglotron\r\nbjaaland\r\nblackwidow\r\nblaiz\r\nblog\r\nblo.\r\nbloodhound\r\nboitho\r\nbooch\r\nbradley\r\nbutterfly\r\ncalif\r\ncassandra\r\nccubee\r\ncfetch\r\ncharlotte\r\nchurl\r\ncienciaficcion\r\ncmc\r\ncollective\r\ncomagent\r\ncombine\r\ncomputingsite\r\ncsci\r\ncurl\r\ncusco\r\ndaumoa\r\ndeepindex\r\ndelorie\r\ndepspid\r\ndeweb\r\ndie blinde kuh\r\ndigger\r\nditto\r\ndmoz\r\ndocomo\r\ndownload express\r\ndtaagent\r\ndwcp\r\nebiness\r\nebingbong\r\ne-collector\r\nejupiter\r\nemacs-w3 search engine\r\nesther\r\nevliya celebi\r\nezresult\r\nfalcon\r\nfelix ide\r\nferret\r\nfetchrover\r\nfido\r\nfindlinks\r\nfireball\r\nfish search\r\nfouineur\r\nfunnelweb\r\ngazz\r\ngcreep\r\ngenieknows\r\ngetterroboplus\r\ngeturl\r\nglx\r\ngoforit\r\ngolem\r\ngrabber\r\ngrapnel\r\ngralon\r\ngriffon\r\ngromit\r\ngrub\r\ngulliver\r\nhamahakki\r\nharvest\r\nhavindex\r\nhelix\r\nheritrix\r\nhku www octopus\r\nhomerweb\r\nhtdig\r\nhtml index\r\nhtml_analyzer\r\nhtmlgobble\r\nhubater\r\nhyper-decontextualizer\r\nia_archiver\r\nibm_planetwide\r\nichiro\r\niconsurf\r\niltrovatore\r\nimage.kapsi.net\r\nimagelock\r\nincywincy\r\nindexer\r\ninfobee\r\ninformant\r\ningrid\r\ninktomisearch.com\r\ninspector web\r\nintelliagent\r\ninternet shinchakubin\r\nip3000\r\niron33\r\nisraeli-search\r\nivia\r\njack\r\njakarta\r\njavabee\r\njetbot\r\njumpstation\r\nkatipo\r\nkdd-explorer\r\nkilroy\r\nknowledge\r\nkototoi\r\nkretrieve\r\nlabelgrabber\r\nlachesis\r\nlarbin\r\nlegs\r\nlibwww\r\nlinkalarm\r\nlink validator\r\nlinkscan\r\nlockon\r\nlwp\r\nlycos\r\nmagpie\r\nmantraagent\r\nmapoftheinternet\r\nmarvin/\r\nmattie\r\nmediafox\r\nmediapartners\r\nmercator\r\nmerzscope\r\nmicrosoft url control\r\nminirank\r\nmiva\r\nmj12\r\nmnogosearch\r\nmoget\r\nmonster\r\nmoose\r\nmotor\r\nmultitext\r\nmuncher\r\nmuscatferret\r\nmwd.search\r\nmyweb\r\nnajdi\r\nnameprotect\r\nnationaldirectory\r\nnazilla\r\nncsa beta\r\nnec-meshexplorer\r\nnederland.zoek\r\nnetcarta webmap engine\r\nnetmechanic\r\nnetresearchserver\r\nnetscoop\r\nnewscan-online\r\nnhse\r\nnokia6682/\r\nnomad\r\nnoyona\r\nnutch\r\nnzexplorer\r\nobjectssearch\r\noccam\r\nomni\r\nopen text\r\nopenfind\r\nopenintelligencedata\r\norb search\r\nosis-project\r\npack rat\r\npageboy\r\npagebull\r\npage_verifier\r\npanscient\r\nparasite\r\npartnersite\r\npatric\r\npear.\r\npegasus\r\nperegrinator\r\npgp key agent\r\nphantom\r\nphpdig\r\npicosearch\r\npiltdownman\r\npimptrain\r\npinpoint\r\npioneer\r\npiranha\r\nplumtreewebaccessor\r\npogodak\r\npoirot\r\npompos\r\npoppelsdorf\r\npoppi\r\npopular iconoclast\r\npsycheclone\r\npublisher\r\npython\r\nrambler\r\nraven search\r\nroach\r\nroad runner\r\nroadhouse\r\nrobbie\r\nrobofox\r\nrobozilla\r\nrules\r\nsalty\r\nsbider\r\nscooter\r\nscoutjet\r\nscrubby\r\nsearch.\r\nsearchprocess\r\nsemanticdiscovery\r\nsenrigan\r\nsg-scout\r\nshai''hulud\r\nshark\r\nshopwiki\r\nsidewinder\r\nsift\r\nsilk\r\nsimmany\r\nsite searcher\r\nsite valet\r\nsitetech-rover\r\nskymob.com\r\nsleek\r\nsmartwit\r\nsna-\r\nsnappy\r\nsnooper\r\nsohu\r\nspeedfind\r\nsphere\r\nsphider\r\nspinner\r\nspyder\r\nsteeler/\r\nsuke\r\nsuntek\r\nsupersnooper\r\nsurfnomore\r\nsven\r\nsygol\r\nszukacz\r\ntach black widow\r\ntarantula\r\ntempleton\r\n/teoma\r\nt-h-u-n-d-e-r-s-t-o-n-e\r\ntheophrastus\r\ntitan\r\ntitin\r\ntkwww\r\ntoutatis\r\nt-rex\r\ntutorgig\r\ntwiceler\r\ntwisted\r\nucsd\r\nudmsearch\r\nurl check\r\nupdated\r\nvagabondo\r\nvalkyrie\r\nverticrawl\r\nvictoria\r\nvision-search\r\nvolcano\r\nvoyager/\r\nvoyager-hc\r\nw3c_validator\r\nw3m2\r\nw3mir\r\nwalker\r\nwallpaper\r\nwanderer\r\nwauuu\r\nwavefire\r\nweb core\r\nweb hopper\r\nweb wombat\r\nwebbandit\r\nwebcatcher\r\nwebcopy\r\nwebfoot\r\nweblayers\r\nweblinker\r\nweblog monitor\r\nwebmirror\r\nwebmonkey\r\nwebquest\r\nwebreaper\r\nwebsitepulse\r\nwebsnarf\r\nwebstolperer\r\nwebvac\r\nwebwalk\r\nwebwatch\r\nwebwombat\r\nwebzinger\r\nwhizbang\r\nwhowhere\r\nwild ferret\r\nworldlight\r\nwwwc\r\nwwwster\r\nxenu\r\nxget\r\nxift\r\nxirq\r\nyandex\r\nyanga\r\nyeti\r\nyodao\r\nzao\r\nzippp\r\nzyborg', 0),
-(111006, 0, 'config', 'config_checkout_id', '5', 0),
-(111005, 0, 'config', 'config_checkout_guest', '1', 0),
-(111004, 0, 'config', 'config_cart_weight', '1', 0),
-(111003, 0, 'config', 'config_invoice_prefix', 'INV-2013-00', 0),
-(111002, 0, 'config', 'config_account_mail', '0', 0),
-(111001, 0, 'config', 'config_account_id', '3', 0),
-(111000, 0, 'config', 'config_login_attempts', '5', 0),
-(110999, 0, 'config', 'config_customer_price', '0', 0),
-(110998, 0, 'config', 'config_customer_group_display', '["1"]', 1),
-(110997, 0, 'config', 'config_customer_group_id', '1', 0),
-(110996, 0, 'config', 'config_customer_online', '0', 0),
-(110995, 0, 'config', 'config_tax_customer', 'shipping', 0),
-(110994, 0, 'config', 'config_tax_default', 'shipping', 0),
-(110993, 0, 'config', 'config_tax', '1', 0),
-(110992, 0, 'config', 'config_voucher_max', '1000', 0),
-(110991, 0, 'config', 'config_voucher_min', '1', 0),
-(110990, 0, 'config', 'config_review_mail', '0', 0),
-(110989, 0, 'config', 'config_review_guest', '1', 0),
-(110988, 0, 'config', 'config_review_status', '1', 0),
-(110987, 0, 'config', 'config_limit_admin', '20', 0),
-(110986, 0, 'config', 'config_product_count', '1', 0),
-(110985, 0, 'config', 'config_weight_class_id', '1', 0),
-(110984, 0, 'config', 'config_length_class_id', '1', 0),
-(110983, 0, 'config', 'config_currency_auto', '1', 0),
-(110982, 0, 'config', 'config_currency', 'USD', 0),
-(110981, 0, 'config', 'config_admin_language', 'ru-ru', 0),
-(110980, 0, 'config', 'config_language', 'ru-ru', 0),
-(110979, 0, 'config', 'config_zone_id', '3563', 0),
-(110978, 0, 'config', 'config_country_id', '222', 0),
-(110977, 0, 'config', 'config_comment', '', 0),
-(110976, 0, 'config', 'config_open', '', 0),
-(110975, 0, 'config', 'config_image', '', 0),
-(110974, 0, 'config', 'config_fax', '', 0),
-(110973, 0, 'config', 'config_telephone', '123456789', 0),
-(110972, 0, 'config', 'config_email', 'iragrinchuk@gmail.com', 0),
-(110971, 0, 'config', 'config_geocode', '', 0),
-(110970, 0, 'config', 'config_address', 'Address 1', 0),
-(110969, 0, 'config', 'config_owner', 'Your Name', 0),
+(111101, 0, 'config', 'config_complete_status', '["5","3"]', 1),
+(111102, 0, 'config', 'config_fraud_status_id', '7', 0),
+(111103, 0, 'config', 'config_order_mail', '0', 0),
+(111104, 0, 'config', 'config_api_id', '1', 0),
+(111105, 0, 'config', 'config_stock_display', '0', 0),
+(111106, 0, 'config', 'config_stock_warning', '0', 0),
+(111107, 0, 'config', 'config_stock_checkout', '0', 0),
+(111108, 0, 'config', 'config_affiliate_approval', '0', 0),
+(111109, 0, 'config', 'config_affiliate_auto', '0', 0),
+(111110, 0, 'config', 'config_affiliate_commission', '5', 0),
+(111111, 0, 'config', 'config_affiliate_id', '4', 0),
+(111112, 0, 'config', 'config_affiliate_mail', '0', 0),
+(111113, 0, 'config', 'config_return_id', '0', 0),
+(111114, 0, 'config', 'config_return_status_id', '2', 0),
+(111115, 0, 'config', 'config_captcha', '', 0),
+(111116, 0, 'config', 'config_captcha_page', '["review","return","contact"]', 1),
+(111117, 0, 'config', 'config_logo', 'catalog/logo.png', 0),
+(111118, 0, 'config', 'config_icon', 'catalog/cart.png', 0),
+(111119, 0, 'config', 'config_ftp_hostname', 'testtheme.net', 0),
+(111120, 0, 'config', 'config_ftp_port', '21', 0),
+(111121, 0, 'config', 'config_ftp_username', '', 0),
+(111122, 0, 'config', 'config_ftp_password', '', 0),
+(111123, 0, 'config', 'config_ftp_root', '', 0),
+(111124, 0, 'config', 'config_ftp_status', '0', 0),
+(111125, 0, 'config', 'config_mail_protocol', 'mail', 0),
+(111126, 0, 'config', 'config_mail_parameter', '', 0),
+(111127, 0, 'config', 'config_mail_smtp_hostname', '', 0),
+(111128, 0, 'config', 'config_mail_smtp_username', '', 0),
+(111129, 0, 'config', 'config_mail_smtp_password', '', 0),
+(111130, 0, 'config', 'config_mail_smtp_port', '25', 0),
+(111131, 0, 'config', 'config_mail_smtp_timeout', '5', 0),
+(111132, 0, 'config', 'config_mail_alert', '', 0),
+(111133, 0, 'config', 'config_maintenance', '0', 0),
+(111134, 0, 'config', 'config_seo_url', '1', 0),
+(111135, 0, 'config', 'config_robots', 'abot\r\ndbot\r\nebot\r\nhbot\r\nkbot\r\nlbot\r\nmbot\r\nnbot\r\nobot\r\npbot\r\nrbot\r\nsbot\r\ntbot\r\nvbot\r\nybot\r\nzbot\r\nbot.\r\nbot/\r\n_bot\r\n.bot\r\n/bot\r\n-bot\r\n:bot\r\n(bot\r\ncrawl\r\nslurp\r\nspider\r\nseek\r\naccoona\r\nacoon\r\nadressendeutschland\r\nah-ha.com\r\nahoy\r\naltavista\r\nananzi\r\nanthill\r\nappie\r\narachnophilia\r\narale\r\naraneo\r\naranha\r\narchitext\r\naretha\r\narks\r\nasterias\r\natlocal\r\natn\r\natomz\r\naugurfind\r\nbackrub\r\nbannana_bot\r\nbaypup\r\nbdfetch\r\nbig brother\r\nbiglotron\r\nbjaaland\r\nblackwidow\r\nblaiz\r\nblog\r\nblo.\r\nbloodhound\r\nboitho\r\nbooch\r\nbradley\r\nbutterfly\r\ncalif\r\ncassandra\r\nccubee\r\ncfetch\r\ncharlotte\r\nchurl\r\ncienciaficcion\r\ncmc\r\ncollective\r\ncomagent\r\ncombine\r\ncomputingsite\r\ncsci\r\ncurl\r\ncusco\r\ndaumoa\r\ndeepindex\r\ndelorie\r\ndepspid\r\ndeweb\r\ndie blinde kuh\r\ndigger\r\nditto\r\ndmoz\r\ndocomo\r\ndownload express\r\ndtaagent\r\ndwcp\r\nebiness\r\nebingbong\r\ne-collector\r\nejupiter\r\nemacs-w3 search engine\r\nesther\r\nevliya celebi\r\nezresult\r\nfalcon\r\nfelix ide\r\nferret\r\nfetchrover\r\nfido\r\nfindlinks\r\nfireball\r\nfish search\r\nfouineur\r\nfunnelweb\r\ngazz\r\ngcreep\r\ngenieknows\r\ngetterroboplus\r\ngeturl\r\nglx\r\ngoforit\r\ngolem\r\ngrabber\r\ngrapnel\r\ngralon\r\ngriffon\r\ngromit\r\ngrub\r\ngulliver\r\nhamahakki\r\nharvest\r\nhavindex\r\nhelix\r\nheritrix\r\nhku www octopus\r\nhomerweb\r\nhtdig\r\nhtml index\r\nhtml_analyzer\r\nhtmlgobble\r\nhubater\r\nhyper-decontextualizer\r\nia_archiver\r\nibm_planetwide\r\nichiro\r\niconsurf\r\niltrovatore\r\nimage.kapsi.net\r\nimagelock\r\nincywincy\r\nindexer\r\ninfobee\r\ninformant\r\ningrid\r\ninktomisearch.com\r\ninspector web\r\nintelliagent\r\ninternet shinchakubin\r\nip3000\r\niron33\r\nisraeli-search\r\nivia\r\njack\r\njakarta\r\njavabee\r\njetbot\r\njumpstation\r\nkatipo\r\nkdd-explorer\r\nkilroy\r\nknowledge\r\nkototoi\r\nkretrieve\r\nlabelgrabber\r\nlachesis\r\nlarbin\r\nlegs\r\nlibwww\r\nlinkalarm\r\nlink validator\r\nlinkscan\r\nlockon\r\nlwp\r\nlycos\r\nmagpie\r\nmantraagent\r\nmapoftheinternet\r\nmarvin/\r\nmattie\r\nmediafox\r\nmediapartners\r\nmercator\r\nmerzscope\r\nmicrosoft url control\r\nminirank\r\nmiva\r\nmj12\r\nmnogosearch\r\nmoget\r\nmonster\r\nmoose\r\nmotor\r\nmultitext\r\nmuncher\r\nmuscatferret\r\nmwd.search\r\nmyweb\r\nnajdi\r\nnameprotect\r\nnationaldirectory\r\nnazilla\r\nncsa beta\r\nnec-meshexplorer\r\nnederland.zoek\r\nnetcarta webmap engine\r\nnetmechanic\r\nnetresearchserver\r\nnetscoop\r\nnewscan-online\r\nnhse\r\nnokia6682/\r\nnomad\r\nnoyona\r\nnutch\r\nnzexplorer\r\nobjectssearch\r\noccam\r\nomni\r\nopen text\r\nopenfind\r\nopenintelligencedata\r\norb search\r\nosis-project\r\npack rat\r\npageboy\r\npagebull\r\npage_verifier\r\npanscient\r\nparasite\r\npartnersite\r\npatric\r\npear.\r\npegasus\r\nperegrinator\r\npgp key agent\r\nphantom\r\nphpdig\r\npicosearch\r\npiltdownman\r\npimptrain\r\npinpoint\r\npioneer\r\npiranha\r\nplumtreewebaccessor\r\npogodak\r\npoirot\r\npompos\r\npoppelsdorf\r\npoppi\r\npopular iconoclast\r\npsycheclone\r\npublisher\r\npython\r\nrambler\r\nraven search\r\nroach\r\nroad runner\r\nroadhouse\r\nrobbie\r\nrobofox\r\nrobozilla\r\nrules\r\nsalty\r\nsbider\r\nscooter\r\nscoutjet\r\nscrubby\r\nsearch.\r\nsearchprocess\r\nsemanticdiscovery\r\nsenrigan\r\nsg-scout\r\nshai''hulud\r\nshark\r\nshopwiki\r\nsidewinder\r\nsift\r\nsilk\r\nsimmany\r\nsite searcher\r\nsite valet\r\nsitetech-rover\r\nskymob.com\r\nsleek\r\nsmartwit\r\nsna-\r\nsnappy\r\nsnooper\r\nsohu\r\nspeedfind\r\nsphere\r\nsphider\r\nspinner\r\nspyder\r\nsteeler/\r\nsuke\r\nsuntek\r\nsupersnooper\r\nsurfnomore\r\nsven\r\nsygol\r\nszukacz\r\ntach black widow\r\ntarantula\r\ntempleton\r\n/teoma\r\nt-h-u-n-d-e-r-s-t-o-n-e\r\ntheophrastus\r\ntitan\r\ntitin\r\ntkwww\r\ntoutatis\r\nt-rex\r\ntutorgig\r\ntwiceler\r\ntwisted\r\nucsd\r\nudmsearch\r\nurl check\r\nupdated\r\nvagabondo\r\nvalkyrie\r\nverticrawl\r\nvictoria\r\nvision-search\r\nvolcano\r\nvoyager/\r\nvoyager-hc\r\nw3c_validator\r\nw3m2\r\nw3mir\r\nwalker\r\nwallpaper\r\nwanderer\r\nwauuu\r\nwavefire\r\nweb core\r\nweb hopper\r\nweb wombat\r\nwebbandit\r\nwebcatcher\r\nwebcopy\r\nwebfoot\r\nweblayers\r\nweblinker\r\nweblog monitor\r\nwebmirror\r\nwebmonkey\r\nwebquest\r\nwebreaper\r\nwebsitepulse\r\nwebsnarf\r\nwebstolperer\r\nwebvac\r\nwebwalk\r\nwebwatch\r\nwebwombat\r\nwebzinger\r\nwhizbang\r\nwhowhere\r\nwild ferret\r\nworldlight\r\nwwwc\r\nwwwster\r\nxenu\r\nxget\r\nxift\r\nxirq\r\nyandex\r\nyanga\r\nyeti\r\nyodao\r\nzao\r\nzippp\r\nzyborg', 0),
+(111100, 0, 'config', 'config_processing_status', '["5","1","2","12","3"]', 1),
+(111099, 0, 'config', 'config_order_status_id', '1', 0),
+(111098, 0, 'config', 'config_checkout_id', '5', 0),
+(111097, 0, 'config', 'config_checkout_guest', '1', 0),
+(111096, 0, 'config', 'config_cart_weight', '1', 0),
+(111095, 0, 'config', 'config_invoice_prefix', 'INV-2013-00', 0),
+(111094, 0, 'config', 'config_account_mail', '0', 0),
+(111093, 0, 'config', 'config_account_id', '3', 0),
+(111092, 0, 'config', 'config_login_attempts', '5', 0),
+(111091, 0, 'config', 'config_customer_price', '0', 0),
+(111090, 0, 'config', 'config_customer_group_display', '["1"]', 1),
+(111089, 0, 'config', 'config_customer_group_id', '1', 0),
+(111088, 0, 'config', 'config_customer_online', '0', 0),
+(111087, 0, 'config', 'config_tax_customer', 'shipping', 0),
+(111086, 0, 'config', 'config_tax_default', 'shipping', 0),
+(111085, 0, 'config', 'config_tax', '1', 0),
+(111084, 0, 'config', 'config_voucher_max', '1000', 0),
+(111083, 0, 'config', 'config_voucher_min', '1', 0),
+(111082, 0, 'config', 'config_review_mail', '0', 0),
+(111081, 0, 'config', 'config_review_guest', '1', 0),
+(111080, 0, 'config', 'config_review_status', '1', 0),
+(111079, 0, 'config', 'config_limit_admin', '20', 0),
+(111078, 0, 'config', 'config_product_count', '1', 0),
+(111077, 0, 'config', 'config_weight_class_id', '1', 0),
+(111076, 0, 'config', 'config_length_class_id', '1', 0),
+(111075, 0, 'config', 'config_currency_auto', '1', 0),
+(111074, 0, 'config', 'config_currency', 'USD', 0),
 (410, 0, 'shopme', 'shopme_header_style', 'header1', 0),
 (411, 0, 'shopme', 'shopme_footer_columns', 'col-xs-12', 0),
 (412, 0, 'shopme', 'shopme_menu_type', 'default', 0),
@@ -3720,8 +3849,7 @@ INSERT INTO `oc_setting` (`setting_id`, `store_id`, `code`, `key`, `value`, `ser
 (110738, 0, 'cosyone', 'cosyone_font1_import', 'Roboto:400,300,500,700', 0),
 (110737, 0, 'cosyone', 'cosyone_use_custom_font', '1', 0),
 (110736, 0, 'cosyone', 'cosyone_button2_hover_background', '8c0303', 0),
-(110968, 0, 'config', 'config_name', 'Your Store', 0),
-(110967, 0, 'config', 'config_layout_id', '4', 0),
+(111073, 0, 'config', 'config_admin_language', 'ru-ru', 0),
 (773, 0, 'theme_default', 'theme_default_status', '1', 0),
 (772, 0, 'theme_default', 'theme_default_directory', 'cosyone', 0),
 (110735, 0, 'cosyone', 'cosyone_button2_hover_border', '8c0303', 0),
@@ -3901,20 +4029,37 @@ INSERT INTO `oc_setting` (`setting_id`, `store_id`, `code`, `key`, `value`, `ser
 (110639, 0, 'cosyone', 'cosyone_use_breadcrumb', '', 0),
 (110638, 0, 'cosyone', 'cosyone_use_responsive', 'enabled', 0),
 (110637, 0, 'cosyone', 'cosyone_max_width', '1140', 0),
-(111050, 0, 'config', 'config_file_ext_allowed', 'zip\r\ntxt\r\npng\r\njpe\r\njpeg\r\njpg\r\ngif\r\nbmp\r\nico\r\ntiff\r\ntif\r\nsvg\r\nsvgz\r\nzip\r\nrar\r\nmsi\r\ncab\r\nmp3\r\nqt\r\nmov\r\npdf\r\npsd\r\nai\r\neps\r\nps\r\ndoc', 0),
-(111051, 0, 'config', 'config_file_mime_allowed', 'text/plain\r\nimage/png\r\nimage/jpeg\r\nimage/gif\r\nimage/bmp\r\nimage/tiff\r\nimage/svg+xml\r\napplication/zip\r\n&quot;application/zip&quot;\r\napplication/x-zip\r\n&quot;application/x-zip&quot;\r\napplication/x-zip-compressed\r\n&quot;application/x-zip-compressed&quot;\r\napplication/rar\r\n&quot;application/rar&quot;\r\napplication/x-rar\r\n&quot;application/x-rar&quot;\r\napplication/x-rar-compressed\r\n&quot;application/x-rar-compressed&quot;\r\napplication/octet-stream\r\n&quot;application/octet-stream&quot;\r\naudio/mpeg\r\nvideo/quicktime\r\napplication/pdf', 0),
-(110966, 0, 'config', 'config_theme', 'theme_default', 0),
-(110965, 0, 'config', 'config_meta_keyword', '', 0),
-(110964, 0, 'config', 'config_meta_description', 'My Store', 0),
-(110963, 0, 'config', 'config_meta_title', 'Your Store', 0),
-(111054, 0, 'config', 'config_error_filename', 'error.log', 0),
+(111070, 0, 'config', 'config_country_id', '222', 0),
+(111071, 0, 'config', 'config_zone_id', '3563', 0),
+(111072, 0, 'config', 'config_language', 'ru-ru', 0),
+(111059, 0, 'config', 'config_layout_id', '4', 0),
+(111060, 0, 'config', 'config_name', 'Your Store', 0),
+(111061, 0, 'config', 'config_owner', 'Your Name', 0),
+(111062, 0, 'config', 'config_address', 'Address 1', 0),
+(111063, 0, 'config', 'config_geocode', '', 0),
+(111064, 0, 'config', 'config_email', 'dariagavrilova.od@gmail.com', 0),
+(111065, 0, 'config', 'config_telephone', '+38 063 764 63 67', 0),
+(111066, 0, 'config', 'config_fax', '', 0),
+(111067, 0, 'config', 'config_image', '', 0),
+(111068, 0, 'config', 'config_open', '', 0),
+(111069, 0, 'config', 'config_comment', '', 0),
+(111058, 0, 'config', 'config_theme', 'theme_default', 0),
+(111057, 0, 'config', 'config_meta_keyword', '', 0),
+(111056, 0, 'config', 'config_meta_description', 'My Store', 0),
+(111055, 0, 'config', 'config_meta_title', 'Your Store', 0),
 (110849, 0, 'mega_filter_module', 'mega_filter_module', '{"1":{"title":{"2":"Mega Filter PRO"},"layout_id":["3"],"store_id":[0],"position":"column_left","status":"1","sort_order":""}}', 1),
 (110850, 0, 'mega_filter_settings', 'mega_filter_settings', '{"show_number_of_products":"1","calculate_number_of_products":"1","show_loader_over_results":"1","css_style":"","content_selector":"#mfilter-content-container","refresh_results":"immediately","attribs":{"price":{"enabled":"1","sort_order":"-1"}},"layout_c":"3","display_live_filter":{"items":"1"}}', 1),
 (110851, 0, 'mega_filter_status', 'mega_filter_status', '1', 0),
 (110852, 0, 'mfilter_version', 'mfilter_version', '2.0.2.1', 0),
 (110868, 0, 'adv_ajaxfilter', 'adv_ajaxfilter_status', '1', 0),
 (110869, 0, 'adv_ajaxfilter', 'adv_ajaxfilter_setting', '{"price_slider":"1","display_manufacturer":"none","display_categories":"none","display_filters":"checkbox","display_option_2":"none","display_option_1":"none","display_option_5":"none","display_option_11":"none","display_attribute_4":"checkbox","display_attribute_5":"checkbox","display_attribute_6":"checkbox","display_attribute_7":"checkbox","display_attribute_8":"checkbox","display_attribute_9":"checkbox","display_attribute_10":"checkbox","display_attribute_11":"checkbox","display_attribute_3":"checkbox","display_attribute_1":"checkbox","display_attribute_2":"checkbox","attr_delimeter":":","tax":"0","option_mode":"or","filter_group_mode":"or","attribute_mode":"or","attribute_value_mode":"or","attr_group":"0","adv_ajaxfilter_container":"list"}', 1),
-(110870, 0, 'adv_ajaxfilter', 'adv_ajaxfilter_module', '[{"module_title":"","module_color":"0088CC","module_border_color":"39C6FA","module_hover_color":"2896FA","module_text_color":"FFFFFF"}]', 1);
+(110870, 0, 'adv_ajaxfilter', 'adv_ajaxfilter_module', '[{"module_title":"","module_color":"0088CC","module_border_color":"39C6FA","module_hover_color":"2896FA","module_text_color":"FFFFFF"}]', 1),
+(111141, 0, 'config', 'config_file_max_size', '300000', 0),
+(111142, 0, 'config', 'config_file_ext_allowed', 'zip\r\ntxt\r\npng\r\njpe\r\njpeg\r\njpg\r\ngif\r\nbmp\r\nico\r\ntiff\r\ntif\r\nsvg\r\nsvgz\r\nzip\r\nrar\r\nmsi\r\ncab\r\nmp3\r\nqt\r\nmov\r\npdf\r\npsd\r\nai\r\neps\r\nps\r\ndoc', 0),
+(111143, 0, 'config', 'config_file_mime_allowed', 'text/plain\r\nimage/png\r\nimage/jpeg\r\nimage/gif\r\nimage/bmp\r\nimage/tiff\r\nimage/svg+xml\r\napplication/zip\r\n&quot;application/zip&quot;\r\napplication/x-zip\r\n&quot;application/x-zip&quot;\r\napplication/x-zip-compressed\r\n&quot;application/x-zip-compressed&quot;\r\napplication/rar\r\n&quot;application/rar&quot;\r\napplication/x-rar\r\n&quot;application/x-rar&quot;\r\napplication/x-rar-compressed\r\n&quot;application/x-rar-compressed&quot;\r\napplication/octet-stream\r\n&quot;application/octet-stream&quot;\r\naudio/mpeg\r\nvideo/quicktime\r\napplication/pdf', 0),
+(111144, 0, 'config', 'config_error_display', '1', 0),
+(111145, 0, 'config', 'config_error_log', '1', 0),
+(111146, 0, 'config', 'config_error_filename', 'error.log', 0);
 
 -- --------------------------------------------------------
 
@@ -3923,10 +4068,11 @@ INSERT INTO `oc_setting` (`setting_id`, `store_id`, `code`, `key`, `value`, `ser
 --
 
 CREATE TABLE IF NOT EXISTS `oc_stock_status` (
-  `stock_status_id` int(11) NOT NULL,
+  `stock_status_id` int(11) NOT NULL AUTO_INCREMENT,
   `language_id` int(11) NOT NULL,
-  `name` varchar(32) NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+  `name` varchar(32) NOT NULL,
+  PRIMARY KEY (`stock_status_id`,`language_id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=9 ;
 
 --
 -- Дамп данных таблицы `oc_stock_status`
@@ -3945,11 +4091,12 @@ INSERT INTO `oc_stock_status` (`stock_status_id`, `language_id`, `name`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `oc_store` (
-  `store_id` int(11) NOT NULL,
+  `store_id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(64) NOT NULL,
   `url` varchar(255) NOT NULL,
-  `ssl` varchar(255) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `ssl` varchar(255) NOT NULL,
+  PRIMARY KEY (`store_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -3958,12 +4105,13 @@ CREATE TABLE IF NOT EXISTS `oc_store` (
 --
 
 CREATE TABLE IF NOT EXISTS `oc_tab` (
-  `tab_id` int(11) NOT NULL,
+  `tab_id` int(11) NOT NULL AUTO_INCREMENT,
   `sort_order` int(3) NOT NULL,
   `status` tinyint(1) NOT NULL DEFAULT '1',
   `position` tinyint(1) NOT NULL DEFAULT '1',
-  `show_empty` tinyint(1) NOT NULL DEFAULT '0'
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+  `show_empty` tinyint(1) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`tab_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -3974,7 +4122,8 @@ CREATE TABLE IF NOT EXISTS `oc_tab` (
 CREATE TABLE IF NOT EXISTS `oc_tab_description` (
   `tab_id` int(11) NOT NULL,
   `language_id` int(11) NOT NULL,
-  `name` varchar(64) COLLATE utf8_bin NOT NULL
+  `name` varchar(64) COLLATE utf8_bin NOT NULL,
+  PRIMARY KEY (`tab_id`,`language_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 -- --------------------------------------------------------
@@ -3987,7 +4136,8 @@ CREATE TABLE IF NOT EXISTS `oc_tag_cloud` (
   `qty` int(11) NOT NULL,
   `tag` varchar(255) COLLATE utf8_bin NOT NULL,
   `language_id` int(11) NOT NULL,
-  `store_id` int(11) NOT NULL
+  `store_id` int(11) NOT NULL,
+  PRIMARY KEY (`tag`,`language_id`,`store_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
@@ -4006,12 +4156,13 @@ INSERT INTO `oc_tag_cloud` (`qty`, `tag`, `language_id`, `store_id`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `oc_tax_class` (
-  `tax_class_id` int(11) NOT NULL,
+  `tax_class_id` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(32) NOT NULL,
   `description` varchar(255) NOT NULL,
   `date_added` datetime NOT NULL,
-  `date_modified` datetime NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+  `date_modified` datetime NOT NULL,
+  PRIMARY KEY (`tax_class_id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=11 ;
 
 --
 -- Дамп данных таблицы `oc_tax_class`
@@ -4028,14 +4179,15 @@ INSERT INTO `oc_tax_class` (`tax_class_id`, `title`, `description`, `date_added`
 --
 
 CREATE TABLE IF NOT EXISTS `oc_tax_rate` (
-  `tax_rate_id` int(11) NOT NULL,
+  `tax_rate_id` int(11) NOT NULL AUTO_INCREMENT,
   `geo_zone_id` int(11) NOT NULL DEFAULT '0',
   `name` varchar(32) NOT NULL,
   `rate` decimal(15,4) NOT NULL DEFAULT '0.0000',
   `type` char(1) NOT NULL,
   `date_added` datetime NOT NULL,
-  `date_modified` datetime NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=88 DEFAULT CHARSET=utf8;
+  `date_modified` datetime NOT NULL,
+  PRIMARY KEY (`tax_rate_id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=88 ;
 
 --
 -- Дамп данных таблицы `oc_tax_rate`
@@ -4053,7 +4205,8 @@ INSERT INTO `oc_tax_rate` (`tax_rate_id`, `geo_zone_id`, `name`, `rate`, `type`,
 
 CREATE TABLE IF NOT EXISTS `oc_tax_rate_to_customer_group` (
   `tax_rate_id` int(11) NOT NULL,
-  `customer_group_id` int(11) NOT NULL
+  `customer_group_id` int(11) NOT NULL,
+  PRIMARY KEY (`tax_rate_id`,`customer_group_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
@@ -4071,12 +4224,13 @@ INSERT INTO `oc_tax_rate_to_customer_group` (`tax_rate_id`, `customer_group_id`)
 --
 
 CREATE TABLE IF NOT EXISTS `oc_tax_rule` (
-  `tax_rule_id` int(11) NOT NULL,
+  `tax_rule_id` int(11) NOT NULL AUTO_INCREMENT,
   `tax_class_id` int(11) NOT NULL,
   `tax_rate_id` int(11) NOT NULL,
   `based` varchar(10) NOT NULL,
-  `priority` int(5) NOT NULL DEFAULT '1'
-) ENGINE=MyISAM AUTO_INCREMENT=129 DEFAULT CHARSET=utf8;
+  `priority` int(5) NOT NULL DEFAULT '1',
+  PRIMARY KEY (`tax_rule_id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=129 ;
 
 --
 -- Дамп данных таблицы `oc_tax_rule`
@@ -4095,14 +4249,15 @@ INSERT INTO `oc_tax_rule` (`tax_rule_id`, `tax_class_id`, `tax_rate_id`, `based`
 --
 
 CREATE TABLE IF NOT EXISTS `oc_testimonial` (
-  `testimonial_id` int(11) NOT NULL,
+  `testimonial_id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(64) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   `city` varchar(64) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
   `email` varchar(96) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
   `status` int(1) NOT NULL DEFAULT '0',
   `rating` int(1) NOT NULL DEFAULT '0',
-  `date_added` datetime NOT NULL DEFAULT '0000-00-00 00:00:00'
-) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  `date_added` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`testimonial_id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=9 ;
 
 --
 -- Дамп данных таблицы `oc_testimonial`
@@ -4128,7 +4283,8 @@ CREATE TABLE IF NOT EXISTS `oc_testimonial_description` (
   `testimonial_id` int(11) NOT NULL,
   `language_id` int(11) NOT NULL,
   `title` varchar(64) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `description` text COLLATE utf8_unicode_ci NOT NULL
+  `description` text COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`testimonial_id`,`language_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -4152,12 +4308,13 @@ INSERT INTO `oc_testimonial_description` (`testimonial_id`, `language_id`, `titl
 --
 
 CREATE TABLE IF NOT EXISTS `oc_upload` (
-  `upload_id` int(11) NOT NULL,
+  `upload_id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   `filename` varchar(255) NOT NULL,
   `code` varchar(255) NOT NULL,
-  `date_added` datetime NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+  `date_added` datetime NOT NULL,
+  PRIMARY KEY (`upload_id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
 --
 -- Дамп данных таблицы `oc_upload`
@@ -4173,10 +4330,13 @@ INSERT INTO `oc_upload` (`upload_id`, `name`, `filename`, `code`, `date_added`) 
 --
 
 CREATE TABLE IF NOT EXISTS `oc_url_alias` (
-  `url_alias_id` int(11) NOT NULL,
+  `url_alias_id` int(11) NOT NULL AUTO_INCREMENT,
   `query` varchar(255) NOT NULL,
-  `keyword` varchar(255) NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=905 DEFAULT CHARSET=utf8;
+  `keyword` varchar(255) NOT NULL,
+  PRIMARY KEY (`url_alias_id`),
+  KEY `query` (`query`),
+  KEY `keyword` (`keyword`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=905 ;
 
 --
 -- Дамп данных таблицы `oc_url_alias`
@@ -4294,7 +4454,7 @@ INSERT INTO `oc_url_alias` (`url_alias_id`, `query`, `keyword`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `oc_user` (
-  `user_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL AUTO_INCREMENT,
   `user_group_id` int(11) NOT NULL,
   `username` varchar(20) NOT NULL,
   `password` varchar(40) NOT NULL,
@@ -4306,8 +4466,9 @@ CREATE TABLE IF NOT EXISTS `oc_user` (
   `code` varchar(40) NOT NULL,
   `ip` varchar(40) NOT NULL,
   `status` tinyint(1) NOT NULL,
-  `date_added` datetime NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+  `date_added` datetime NOT NULL,
+  PRIMARY KEY (`user_id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
 --
 -- Дамп данных таблицы `oc_user`
@@ -4323,17 +4484,18 @@ INSERT INTO `oc_user` (`user_id`, `user_group_id`, `username`, `password`, `salt
 --
 
 CREATE TABLE IF NOT EXISTS `oc_user_group` (
-  `user_group_id` int(11) NOT NULL,
+  `user_group_id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(64) NOT NULL,
-  `permission` text NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+  `permission` text NOT NULL,
+  PRIMARY KEY (`user_group_id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=11 ;
 
 --
 -- Дамп данных таблицы `oc_user_group`
 --
 
 INSERT INTO `oc_user_group` (`user_group_id`, `name`, `permission`) VALUES
-(1, 'Administrator', '{"access":["analytics\\/google_analytics","blog\\/blog","blog\\/blog_category","blog\\/blog_comment","blog\\/blog_setting","captcha\\/basic_captcha","captcha\\/google_captcha","catalog\\/attribute","catalog\\/attribute_group","catalog\\/category","catalog\\/download","catalog\\/filter","catalog\\/information","catalog\\/manufacturer","catalog\\/option","catalog\\/product","catalog\\/question","catalog\\/recurring","catalog\\/review","catalog\\/tab","catalog\\/testimonial","common\\/column_left","common\\/filemanager","common\\/menu","common\\/profile","common\\/stats","customer\\/custom_field","customer\\/customer","customer\\/customer_group","design\\/banner","design\\/language","design\\/layout","design\\/theme","event\\/theme","extension\\/analytics","extension\\/captcha","extension\\/feed","extension\\/fraud","extension\\/installer","extension\\/modification","extension\\/module","extension\\/newsletter","extension\\/openbay","extension\\/payment","extension\\/shipping","extension\\/theme","extension\\/total","feed\\/google_base","feed\\/google_sitemap","feed\\/openbaypro","fraud\\/fraudlabspro","fraud\\/ip","fraud\\/maxmind","localisation\\/country","localisation\\/currency","localisation\\/geo_zone","localisation\\/language","localisation\\/length_class","localisation\\/location","localisation\\/order_status","localisation\\/return_action","localisation\\/return_reason","localisation\\/return_status","localisation\\/stock_status","localisation\\/tax_class","localisation\\/tax_rate","localisation\\/weight_class","localisation\\/zone","marketing\\/affiliate","marketing\\/contact","marketing\\/coupon","marketing\\/marketing","module\\/account","module\\/adv_ajaxfilter","module\\/affiliate","module\\/amazon_login","module\\/amazon_pay","module\\/banner","module\\/bestseller","module\\/blog_category","module\\/blog_latest","module\\/carousel","module\\/category","module\\/cosyone","module\\/cosyone_banner","module\\/cosyone_bannerwall","module\\/cosyone_carousel","module\\/cosyone_category","module\\/cosyone_content","module\\/cosyone_deals","module\\/cosyone_productbrand","module\\/cosyone_recently","module\\/cosyone_socials","module\\/cosyone_tagcloud","module\\/cosyone_testimonial","module\\/cosyone_twitterfeed","module\\/d_ajax_search","module\\/ebay_listing","module\\/faqmanager","module\\/featured","module\\/filter","module\\/google_hangouts","module\\/html","module\\/information","module\\/latest","module\\/laybuy_layout","module\\/mega_filter","module\\/newsletter","module\\/pp_button","module\\/pp_login","module\\/quickcheckout","module\\/revslideropencart","module\\/revslideroutput","module\\/sagepay_direct_cards","module\\/sagepay_server_cards","module\\/showintabs","module\\/showintabs_output","module\\/slideshow","module\\/special","module\\/store","openbay\\/amazon","openbay\\/amazon_listing","openbay\\/amazon_product","openbay\\/amazonus","openbay\\/amazonus_listing","openbay\\/amazonus_product","openbay\\/ebay","openbay\\/ebay_profile","openbay\\/ebay_template","openbay\\/etsy","openbay\\/etsy_product","openbay\\/etsy_shipping","openbay\\/etsy_shop","openbay\\/fba","payment\\/amazon_login_pay","payment\\/authorizenet_aim","payment\\/authorizenet_sim","payment\\/bank_transfer","payment\\/bluepay_hosted","payment\\/bluepay_redirect","payment\\/cardinity","payment\\/cheque","payment\\/cod","payment\\/eway","payment\\/firstdata","payment\\/firstdata_remote","payment\\/free_checkout","payment\\/g2apay","payment\\/globalpay","payment\\/globalpay_remote","payment\\/klarna_account","payment\\/klarna_invoice","payment\\/laybuy","payment\\/liqpay","payment\\/nochex","payment\\/paymate","payment\\/paypoint","payment\\/payza","payment\\/perpetual_payments","payment\\/pp_express","payment\\/pp_payflow","payment\\/pp_payflow_iframe","payment\\/pp_pro","payment\\/pp_pro_iframe","payment\\/pp_standard","payment\\/realex","payment\\/realex_remote","payment\\/sagepay_direct","payment\\/sagepay_server","payment\\/sagepay_us","payment\\/securetrading_pp","payment\\/securetrading_ws","payment\\/skrill","payment\\/twocheckout","payment\\/web_payment_software","payment\\/worldpay","report\\/affiliate","report\\/affiliate_activity","report\\/affiliate_login","report\\/customer_activity","report\\/customer_credit","report\\/customer_login","report\\/customer_online","report\\/customer_order","report\\/customer_reward","report\\/marketing","report\\/product_purchased","report\\/product_viewed","report\\/sale_coupon","report\\/sale_order","report\\/sale_return","report\\/sale_shipping","report\\/sale_tax","sale\\/order","sale\\/recurring","sale\\/return","sale\\/voucher","sale\\/voucher_theme","setting\\/setting","setting\\/store","shipping\\/auspost","shipping\\/citylink","shipping\\/fedex","shipping\\/flat","shipping\\/free","shipping\\/item","shipping\\/parcelforce_48","shipping\\/pickup","shipping\\/royal_mail","shipping\\/ups","shipping\\/usps","shipping\\/weight","startup\\/error","startup\\/event","startup\\/login","startup\\/permission","startup\\/router","startup\\/sass","startup\\/startup","theme\\/theme_default","tool\\/backup","tool\\/error_log","tool\\/upload","total\\/coupon","total\\/credit","total\\/handling","total\\/klarna_fee","total\\/low_order_fee","total\\/reward","total\\/shipping","total\\/sub_total","total\\/tax","total\\/total","total\\/voucher","user\\/api","user\\/user","user\\/user_permission","module\\/mega_filter","module\\/mega_filter","module\\/category","module\\/filter","module\\/adv_ajaxfilter","module\\/mega_filter","module\\/adv_ajaxfilter"],"modify":["analytics\\/google_analytics","blog\\/blog","blog\\/blog_category","blog\\/blog_comment","blog\\/blog_setting","captcha\\/basic_captcha","captcha\\/google_captcha","catalog\\/attribute","catalog\\/attribute_group","catalog\\/category","catalog\\/download","catalog\\/filter","catalog\\/information","catalog\\/manufacturer","catalog\\/option","catalog\\/product","catalog\\/question","catalog\\/recurring","catalog\\/review","catalog\\/tab","catalog\\/testimonial","common\\/column_left","common\\/filemanager","common\\/menu","common\\/profile","common\\/stats","customer\\/custom_field","customer\\/customer","customer\\/customer_group","design\\/banner","design\\/language","design\\/layout","design\\/theme","event\\/theme","extension\\/analytics","extension\\/captcha","extension\\/feed","extension\\/fraud","extension\\/installer","extension\\/modification","extension\\/module","extension\\/newsletter","extension\\/openbay","extension\\/payment","extension\\/shipping","extension\\/theme","extension\\/total","feed\\/google_base","feed\\/google_sitemap","feed\\/openbaypro","fraud\\/fraudlabspro","fraud\\/ip","fraud\\/maxmind","localisation\\/country","localisation\\/currency","localisation\\/geo_zone","localisation\\/language","localisation\\/length_class","localisation\\/location","localisation\\/order_status","localisation\\/return_action","localisation\\/return_reason","localisation\\/return_status","localisation\\/stock_status","localisation\\/tax_class","localisation\\/tax_rate","localisation\\/weight_class","localisation\\/zone","marketing\\/affiliate","marketing\\/contact","marketing\\/coupon","marketing\\/marketing","module\\/account","module\\/adv_ajaxfilter","module\\/affiliate","module\\/amazon_login","module\\/amazon_pay","module\\/banner","module\\/bestseller","module\\/blog_category","module\\/blog_latest","module\\/carousel","module\\/category","module\\/cosyone","module\\/cosyone_banner","module\\/cosyone_bannerwall","module\\/cosyone_carousel","module\\/cosyone_category","module\\/cosyone_content","module\\/cosyone_deals","module\\/cosyone_productbrand","module\\/cosyone_recently","module\\/cosyone_socials","module\\/cosyone_tagcloud","module\\/cosyone_testimonial","module\\/cosyone_twitterfeed","module\\/d_ajax_search","module\\/ebay_listing","module\\/faqmanager","module\\/featured","module\\/filter","module\\/google_hangouts","module\\/html","module\\/information","module\\/latest","module\\/laybuy_layout","module\\/mega_filter","module\\/newsletter","module\\/pp_button","module\\/pp_login","module\\/quickcheckout","module\\/revslideropencart","module\\/revslideroutput","module\\/sagepay_direct_cards","module\\/sagepay_server_cards","module\\/showintabs","module\\/showintabs_output","module\\/slideshow","module\\/special","module\\/store","openbay\\/amazon","openbay\\/amazon_listing","openbay\\/amazon_product","openbay\\/amazonus","openbay\\/amazonus_listing","openbay\\/amazonus_product","openbay\\/ebay","openbay\\/ebay_profile","openbay\\/ebay_template","openbay\\/etsy","openbay\\/etsy_product","openbay\\/etsy_shipping","openbay\\/etsy_shop","openbay\\/fba","payment\\/amazon_login_pay","payment\\/authorizenet_aim","payment\\/authorizenet_sim","payment\\/bank_transfer","payment\\/bluepay_hosted","payment\\/bluepay_redirect","payment\\/cardinity","payment\\/cheque","payment\\/cod","payment\\/eway","payment\\/firstdata","payment\\/firstdata_remote","payment\\/free_checkout","payment\\/g2apay","payment\\/globalpay","payment\\/globalpay_remote","payment\\/klarna_account","payment\\/klarna_invoice","payment\\/laybuy","payment\\/liqpay","payment\\/nochex","payment\\/paymate","payment\\/paypoint","payment\\/payza","payment\\/perpetual_payments","payment\\/pp_express","payment\\/pp_payflow","payment\\/pp_payflow_iframe","payment\\/pp_pro","payment\\/pp_pro_iframe","payment\\/pp_standard","payment\\/realex","payment\\/realex_remote","payment\\/sagepay_direct","payment\\/sagepay_server","payment\\/sagepay_us","payment\\/securetrading_pp","payment\\/securetrading_ws","payment\\/skrill","payment\\/twocheckout","payment\\/web_payment_software","payment\\/worldpay","report\\/affiliate","report\\/affiliate_activity","report\\/affiliate_login","report\\/customer_activity","report\\/customer_credit","report\\/customer_login","report\\/customer_online","report\\/customer_order","report\\/customer_reward","report\\/marketing","report\\/product_purchased","report\\/product_viewed","report\\/sale_coupon","report\\/sale_order","report\\/sale_return","report\\/sale_shipping","report\\/sale_tax","sale\\/order","sale\\/recurring","sale\\/return","sale\\/voucher","sale\\/voucher_theme","setting\\/setting","setting\\/store","shipping\\/auspost","shipping\\/citylink","shipping\\/fedex","shipping\\/flat","shipping\\/free","shipping\\/item","shipping\\/parcelforce_48","shipping\\/pickup","shipping\\/royal_mail","shipping\\/ups","shipping\\/usps","shipping\\/weight","startup\\/error","startup\\/event","startup\\/login","startup\\/permission","startup\\/router","startup\\/sass","startup\\/startup","theme\\/theme_default","tool\\/backup","tool\\/error_log","tool\\/upload","total\\/coupon","total\\/credit","total\\/handling","total\\/klarna_fee","total\\/low_order_fee","total\\/reward","total\\/shipping","total\\/sub_total","total\\/tax","total\\/total","total\\/voucher","user\\/api","user\\/user","user\\/user_permission","module\\/mega_filter","module\\/mega_filter","module\\/category","module\\/filter","module\\/adv_ajaxfilter","module\\/mega_filter","module\\/adv_ajaxfilter"]}'),
+(1, 'Administrator', '{"access":["analytics\\/google_analytics","blog\\/blog","blog\\/blog_category","blog\\/blog_comment","blog\\/blog_setting","captcha\\/basic_captcha","captcha\\/google_captcha","catalog\\/attribute","catalog\\/attribute_group","catalog\\/category","catalog\\/download","catalog\\/filter","catalog\\/information","catalog\\/manufacturer","catalog\\/option","catalog\\/product","catalog\\/question","catalog\\/recurring","catalog\\/review","catalog\\/tab","catalog\\/testimonial","common\\/column_left","common\\/filemanager","common\\/menu","common\\/profile","common\\/stats","customer\\/custom_field","customer\\/customer","customer\\/customer_group","design\\/banner","design\\/language","design\\/layout","design\\/theme","event\\/theme","extension\\/analytics","extension\\/captcha","extension\\/feed","extension\\/fraud","extension\\/installer","extension\\/modification","extension\\/module","extension\\/newsletter","extension\\/openbay","extension\\/payment","extension\\/shipping","extension\\/theme","extension\\/total","feed\\/google_base","feed\\/google_sitemap","feed\\/openbaypro","fraud\\/fraudlabspro","fraud\\/ip","fraud\\/maxmind","localisation\\/country","localisation\\/currency","localisation\\/geo_zone","localisation\\/language","localisation\\/length_class","localisation\\/location","localisation\\/order_status","localisation\\/return_action","localisation\\/return_reason","localisation\\/return_status","localisation\\/stock_status","localisation\\/tax_class","localisation\\/tax_rate","localisation\\/weight_class","localisation\\/zone","marketing\\/affiliate","marketing\\/contact","marketing\\/coupon","marketing\\/marketing","module\\/account","module\\/adv_ajaxfilter","module\\/affiliate","module\\/amazon_login","module\\/amazon_pay","module\\/banner","module\\/bestseller","module\\/blog_category","module\\/blog_latest","module\\/carousel","module\\/category","module\\/cosyone","module\\/cosyone_banner","module\\/cosyone_bannerwall","module\\/cosyone_carousel","module\\/cosyone_category","module\\/cosyone_content","module\\/cosyone_deals","module\\/cosyone_productbrand","module\\/cosyone_recently","module\\/cosyone_socials","module\\/cosyone_tagcloud","module\\/cosyone_testimonial","module\\/cosyone_twitterfeed","module\\/d_ajax_search","module\\/ebay_listing","module\\/faqmanager","module\\/featured","module\\/filter","module\\/google_hangouts","module\\/html","module\\/information","module\\/latest","module\\/laybuy_layout","module\\/mega_filter","module\\/newsletter","module\\/pp_button","module\\/pp_login","module\\/quickcheckout","module\\/revslideropencart","module\\/revslideroutput","module\\/sagepay_direct_cards","module\\/sagepay_server_cards","module\\/showintabs","module\\/showintabs_output","module\\/slideshow","module\\/special","module\\/store","openbay\\/amazon","openbay\\/amazon_listing","openbay\\/amazon_product","openbay\\/amazonus","openbay\\/amazonus_listing","openbay\\/amazonus_product","openbay\\/ebay","openbay\\/ebay_profile","openbay\\/ebay_template","openbay\\/etsy","openbay\\/etsy_product","openbay\\/etsy_shipping","openbay\\/etsy_shop","openbay\\/fba","payment\\/amazon_login_pay","payment\\/authorizenet_aim","payment\\/authorizenet_sim","payment\\/bank_transfer","payment\\/bluepay_hosted","payment\\/bluepay_redirect","payment\\/cardinity","payment\\/cheque","payment\\/cod","payment\\/eway","payment\\/firstdata","payment\\/firstdata_remote","payment\\/free_checkout","payment\\/g2apay","payment\\/globalpay","payment\\/globalpay_remote","payment\\/klarna_account","payment\\/klarna_invoice","payment\\/laybuy","payment\\/liqpay","payment\\/nochex","payment\\/paymate","payment\\/paypoint","payment\\/payza","payment\\/perpetual_payments","payment\\/pp_express","payment\\/pp_payflow","payment\\/pp_payflow_iframe","payment\\/pp_pro","payment\\/pp_pro_iframe","payment\\/pp_standard","payment\\/realex","payment\\/realex_remote","payment\\/sagepay_direct","payment\\/sagepay_server","payment\\/sagepay_us","payment\\/securetrading_pp","payment\\/securetrading_ws","payment\\/skrill","payment\\/twocheckout","payment\\/web_payment_software","payment\\/worldpay","report\\/affiliate","report\\/affiliate_activity","report\\/affiliate_login","report\\/customer_activity","report\\/customer_credit","report\\/customer_login","report\\/customer_online","report\\/customer_order","report\\/customer_reward","report\\/marketing","report\\/product_purchased","report\\/product_viewed","report\\/sale_coupon","report\\/sale_order","report\\/sale_return","report\\/sale_shipping","report\\/sale_tax","sale\\/order","sale\\/recurring","sale\\/return","sale\\/voucher","sale\\/voucher_theme","setting\\/setting","setting\\/store","shipping\\/auspost","shipping\\/citylink","shipping\\/fedex","shipping\\/flat","shipping\\/free","shipping\\/item","shipping\\/parcelforce_48","shipping\\/pickup","shipping\\/royal_mail","shipping\\/ups","shipping\\/usps","shipping\\/weight","startup\\/error","startup\\/event","startup\\/login","startup\\/permission","startup\\/router","startup\\/sass","startup\\/startup","theme\\/theme_default","tool\\/backup","tool\\/error_log","tool\\/upload","total\\/coupon","total\\/credit","total\\/handling","total\\/klarna_fee","total\\/low_order_fee","total\\/reward","total\\/shipping","total\\/sub_total","total\\/tax","total\\/total","total\\/voucher","user\\/api","user\\/user","user\\/user_permission","module\\/mega_filter","module\\/mega_filter","module\\/category","module\\/filter","module\\/adv_ajaxfilter","module\\/mega_filter","module\\/adv_ajaxfilter","module\\/featured","module\\/bestseller"],"modify":["analytics\\/google_analytics","blog\\/blog","blog\\/blog_category","blog\\/blog_comment","blog\\/blog_setting","captcha\\/basic_captcha","captcha\\/google_captcha","catalog\\/attribute","catalog\\/attribute_group","catalog\\/category","catalog\\/download","catalog\\/filter","catalog\\/information","catalog\\/manufacturer","catalog\\/option","catalog\\/product","catalog\\/question","catalog\\/recurring","catalog\\/review","catalog\\/tab","catalog\\/testimonial","common\\/column_left","common\\/filemanager","common\\/menu","common\\/profile","common\\/stats","customer\\/custom_field","customer\\/customer","customer\\/customer_group","design\\/banner","design\\/language","design\\/layout","design\\/theme","event\\/theme","extension\\/analytics","extension\\/captcha","extension\\/feed","extension\\/fraud","extension\\/installer","extension\\/modification","extension\\/module","extension\\/newsletter","extension\\/openbay","extension\\/payment","extension\\/shipping","extension\\/theme","extension\\/total","feed\\/google_base","feed\\/google_sitemap","feed\\/openbaypro","fraud\\/fraudlabspro","fraud\\/ip","fraud\\/maxmind","localisation\\/country","localisation\\/currency","localisation\\/geo_zone","localisation\\/language","localisation\\/length_class","localisation\\/location","localisation\\/order_status","localisation\\/return_action","localisation\\/return_reason","localisation\\/return_status","localisation\\/stock_status","localisation\\/tax_class","localisation\\/tax_rate","localisation\\/weight_class","localisation\\/zone","marketing\\/affiliate","marketing\\/contact","marketing\\/coupon","marketing\\/marketing","module\\/account","module\\/adv_ajaxfilter","module\\/affiliate","module\\/amazon_login","module\\/amazon_pay","module\\/banner","module\\/bestseller","module\\/blog_category","module\\/blog_latest","module\\/carousel","module\\/category","module\\/cosyone","module\\/cosyone_banner","module\\/cosyone_bannerwall","module\\/cosyone_carousel","module\\/cosyone_category","module\\/cosyone_content","module\\/cosyone_deals","module\\/cosyone_productbrand","module\\/cosyone_recently","module\\/cosyone_socials","module\\/cosyone_tagcloud","module\\/cosyone_testimonial","module\\/cosyone_twitterfeed","module\\/d_ajax_search","module\\/ebay_listing","module\\/faqmanager","module\\/featured","module\\/filter","module\\/google_hangouts","module\\/html","module\\/information","module\\/latest","module\\/laybuy_layout","module\\/mega_filter","module\\/newsletter","module\\/pp_button","module\\/pp_login","module\\/quickcheckout","module\\/revslideropencart","module\\/revslideroutput","module\\/sagepay_direct_cards","module\\/sagepay_server_cards","module\\/showintabs","module\\/showintabs_output","module\\/slideshow","module\\/special","module\\/store","openbay\\/amazon","openbay\\/amazon_listing","openbay\\/amazon_product","openbay\\/amazonus","openbay\\/amazonus_listing","openbay\\/amazonus_product","openbay\\/ebay","openbay\\/ebay_profile","openbay\\/ebay_template","openbay\\/etsy","openbay\\/etsy_product","openbay\\/etsy_shipping","openbay\\/etsy_shop","openbay\\/fba","payment\\/amazon_login_pay","payment\\/authorizenet_aim","payment\\/authorizenet_sim","payment\\/bank_transfer","payment\\/bluepay_hosted","payment\\/bluepay_redirect","payment\\/cardinity","payment\\/cheque","payment\\/cod","payment\\/eway","payment\\/firstdata","payment\\/firstdata_remote","payment\\/free_checkout","payment\\/g2apay","payment\\/globalpay","payment\\/globalpay_remote","payment\\/klarna_account","payment\\/klarna_invoice","payment\\/laybuy","payment\\/liqpay","payment\\/nochex","payment\\/paymate","payment\\/paypoint","payment\\/payza","payment\\/perpetual_payments","payment\\/pp_express","payment\\/pp_payflow","payment\\/pp_payflow_iframe","payment\\/pp_pro","payment\\/pp_pro_iframe","payment\\/pp_standard","payment\\/realex","payment\\/realex_remote","payment\\/sagepay_direct","payment\\/sagepay_server","payment\\/sagepay_us","payment\\/securetrading_pp","payment\\/securetrading_ws","payment\\/skrill","payment\\/twocheckout","payment\\/web_payment_software","payment\\/worldpay","report\\/affiliate","report\\/affiliate_activity","report\\/affiliate_login","report\\/customer_activity","report\\/customer_credit","report\\/customer_login","report\\/customer_online","report\\/customer_order","report\\/customer_reward","report\\/marketing","report\\/product_purchased","report\\/product_viewed","report\\/sale_coupon","report\\/sale_order","report\\/sale_return","report\\/sale_shipping","report\\/sale_tax","sale\\/order","sale\\/recurring","sale\\/return","sale\\/voucher","sale\\/voucher_theme","setting\\/setting","setting\\/store","shipping\\/auspost","shipping\\/citylink","shipping\\/fedex","shipping\\/flat","shipping\\/free","shipping\\/item","shipping\\/parcelforce_48","shipping\\/pickup","shipping\\/royal_mail","shipping\\/ups","shipping\\/usps","shipping\\/weight","startup\\/error","startup\\/event","startup\\/login","startup\\/permission","startup\\/router","startup\\/sass","startup\\/startup","theme\\/theme_default","tool\\/backup","tool\\/error_log","tool\\/upload","total\\/coupon","total\\/credit","total\\/handling","total\\/klarna_fee","total\\/low_order_fee","total\\/reward","total\\/shipping","total\\/sub_total","total\\/tax","total\\/total","total\\/voucher","user\\/api","user\\/user","user\\/user_permission","module\\/mega_filter","module\\/mega_filter","module\\/category","module\\/filter","module\\/adv_ajaxfilter","module\\/mega_filter","module\\/adv_ajaxfilter","module\\/featured","module\\/bestseller"]}'),
 (10, 'Demonstration', '');
 
 -- --------------------------------------------------------
@@ -4343,7 +4505,7 @@ INSERT INTO `oc_user_group` (`user_group_id`, `name`, `permission`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `oc_voucher` (
-  `voucher_id` int(11) NOT NULL,
+  `voucher_id` int(11) NOT NULL AUTO_INCREMENT,
   `order_id` int(11) NOT NULL,
   `code` varchar(10) NOT NULL,
   `from_name` varchar(64) NOT NULL,
@@ -4354,8 +4516,9 @@ CREATE TABLE IF NOT EXISTS `oc_voucher` (
   `message` text NOT NULL,
   `amount` decimal(15,4) NOT NULL,
   `status` tinyint(1) NOT NULL,
-  `date_added` datetime NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `date_added` datetime NOT NULL,
+  PRIMARY KEY (`voucher_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -4364,12 +4527,13 @@ CREATE TABLE IF NOT EXISTS `oc_voucher` (
 --
 
 CREATE TABLE IF NOT EXISTS `oc_voucher_history` (
-  `voucher_history_id` int(11) NOT NULL,
+  `voucher_history_id` int(11) NOT NULL AUTO_INCREMENT,
   `voucher_id` int(11) NOT NULL,
   `order_id` int(11) NOT NULL,
   `amount` decimal(15,4) NOT NULL,
-  `date_added` datetime NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `date_added` datetime NOT NULL,
+  PRIMARY KEY (`voucher_history_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -4378,9 +4542,10 @@ CREATE TABLE IF NOT EXISTS `oc_voucher_history` (
 --
 
 CREATE TABLE IF NOT EXISTS `oc_voucher_theme` (
-  `voucher_theme_id` int(11) NOT NULL,
-  `image` varchar(255) NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+  `voucher_theme_id` int(11) NOT NULL AUTO_INCREMENT,
+  `image` varchar(255) NOT NULL,
+  PRIMARY KEY (`voucher_theme_id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=9 ;
 
 --
 -- Дамп данных таблицы `oc_voucher_theme`
@@ -4400,7 +4565,8 @@ INSERT INTO `oc_voucher_theme` (`voucher_theme_id`, `image`) VALUES
 CREATE TABLE IF NOT EXISTS `oc_voucher_theme_description` (
   `voucher_theme_id` int(11) NOT NULL,
   `language_id` int(11) NOT NULL,
-  `name` varchar(32) NOT NULL
+  `name` varchar(32) NOT NULL,
+  PRIMARY KEY (`voucher_theme_id`,`language_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
@@ -4419,9 +4585,10 @@ INSERT INTO `oc_voucher_theme_description` (`voucher_theme_id`, `language_id`, `
 --
 
 CREATE TABLE IF NOT EXISTS `oc_weight_class` (
-  `weight_class_id` int(11) NOT NULL,
-  `value` decimal(15,8) NOT NULL DEFAULT '0.00000000'
-) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+  `weight_class_id` int(11) NOT NULL AUTO_INCREMENT,
+  `value` decimal(15,8) NOT NULL DEFAULT '0.00000000',
+  PRIMARY KEY (`weight_class_id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
 
 --
 -- Дамп данных таблицы `oc_weight_class`
@@ -4443,7 +4610,8 @@ CREATE TABLE IF NOT EXISTS `oc_weight_class_description` (
   `weight_class_id` int(11) NOT NULL,
   `language_id` int(11) NOT NULL,
   `title` varchar(32) NOT NULL,
-  `unit` varchar(4) NOT NULL
+  `unit` varchar(4) NOT NULL,
+  PRIMARY KEY (`weight_class_id`,`language_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
@@ -4463,12 +4631,13 @@ INSERT INTO `oc_weight_class_description` (`weight_class_id`, `language_id`, `ti
 --
 
 CREATE TABLE IF NOT EXISTS `oc_zone` (
-  `zone_id` int(11) NOT NULL,
+  `zone_id` int(11) NOT NULL AUTO_INCREMENT,
   `country_id` int(11) NOT NULL,
   `name` varchar(128) NOT NULL,
   `code` varchar(32) NOT NULL,
-  `status` tinyint(1) NOT NULL DEFAULT '1'
-) ENGINE=MyISAM AUTO_INCREMENT=4232 DEFAULT CHARSET=utf8;
+  `status` tinyint(1) NOT NULL DEFAULT '1',
+  PRIMARY KEY (`zone_id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4232 ;
 
 --
 -- Дамп данных таблицы `oc_zone`
@@ -6007,10 +6176,10 @@ INSERT INTO `oc_zone` (`zone_id`, `country_id`, `name`, `code`, `status`) VALUES
 (1592, 103, 'Galway', 'GA', 1),
 (1593, 103, 'Kerry', 'KE', 1),
 (1594, 103, 'Kildare', 'KI', 1),
-(1595, 103, 'Kilkenny', 'KL', 1),
-(1596, 103, 'Laois', 'LA', 1),
-(1597, 103, 'Leitrim', 'LE', 1);
+(1595, 103, 'Kilkenny', 'KL', 1);
 INSERT INTO `oc_zone` (`zone_id`, `country_id`, `name`, `code`, `status`) VALUES
+(1596, 103, 'Laois', 'LA', 1),
+(1597, 103, 'Leitrim', 'LE', 1),
 (1598, 103, 'Limerick', 'LI', 1),
 (1599, 103, 'Longford', 'LO', 1),
 (1600, 103, 'Louth', 'LU', 1),
@@ -7510,11 +7679,11 @@ INSERT INTO `oc_zone` (`zone_id`, `country_id`, `name`, `code`, `status`) VALUES
 (3130, 205, 'Hamah', 'HM', 1),
 (3131, 205, 'Hims', 'HI', 1),
 (3132, 205, 'Idlib', 'ID', 1),
-(3133, 205, 'Rif Dimashq', 'RD', 1),
+(3133, 205, 'Rif Dimashq', 'RD', 1);
+INSERT INTO `oc_zone` (`zone_id`, `country_id`, `name`, `code`, `status`) VALUES
 (3134, 205, 'Tartus', 'TA', 1),
 (3135, 206, 'Chang-hua', 'CH', 1),
-(3136, 206, 'Chia-i', 'CI', 1);
-INSERT INTO `oc_zone` (`zone_id`, `country_id`, `name`, `code`, `status`) VALUES
+(3136, 206, 'Chia-i', 'CI', 1),
 (3137, 206, 'Hsin-chu', 'HS', 1),
 (3138, 206, 'Hua-lien', 'HL', 1),
 (3139, 206, 'I-lan', 'IL', 1),
@@ -8590,13 +8759,14 @@ INSERT INTO `oc_zone` (`zone_id`, `country_id`, `name`, `code`, `status`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `oc_zone_to_geo_zone` (
-  `zone_to_geo_zone_id` int(11) NOT NULL,
+  `zone_to_geo_zone_id` int(11) NOT NULL AUTO_INCREMENT,
   `country_id` int(11) NOT NULL,
   `zone_id` int(11) NOT NULL DEFAULT '0',
   `geo_zone_id` int(11) NOT NULL,
   `date_added` datetime NOT NULL,
-  `date_modified` datetime NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=110 DEFAULT CHARSET=utf8;
+  `date_modified` datetime NOT NULL,
+  PRIMARY KEY (`zone_to_geo_zone_id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=110 ;
 
 --
 -- Дамп данных таблицы `oc_zone_to_geo_zone`
@@ -8713,1447 +8883,6 @@ INSERT INTO `oc_zone_to_geo_zone` (`zone_to_geo_zone_id`, `country_id`, `zone_id
 (108, 222, 3955, 3, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (109, 222, 3972, 3, '0000-00-00 00:00:00', '0000-00-00 00:00:00');
 
---
--- Индексы сохранённых таблиц
---
-
---
--- Индексы таблицы `oc_address`
---
-ALTER TABLE `oc_address`
-  ADD PRIMARY KEY (`address_id`),
-  ADD KEY `customer_id` (`customer_id`);
-
---
--- Индексы таблицы `oc_affiliate`
---
-ALTER TABLE `oc_affiliate`
-  ADD PRIMARY KEY (`affiliate_id`);
-
---
--- Индексы таблицы `oc_affiliate_activity`
---
-ALTER TABLE `oc_affiliate_activity`
-  ADD PRIMARY KEY (`affiliate_activity_id`);
-
---
--- Индексы таблицы `oc_affiliate_login`
---
-ALTER TABLE `oc_affiliate_login`
-  ADD PRIMARY KEY (`affiliate_login_id`),
-  ADD KEY `email` (`email`),
-  ADD KEY `ip` (`ip`);
-
---
--- Индексы таблицы `oc_affiliate_transaction`
---
-ALTER TABLE `oc_affiliate_transaction`
-  ADD PRIMARY KEY (`affiliate_transaction_id`);
-
---
--- Индексы таблицы `oc_api`
---
-ALTER TABLE `oc_api`
-  ADD PRIMARY KEY (`api_id`);
-
---
--- Индексы таблицы `oc_api_ip`
---
-ALTER TABLE `oc_api_ip`
-  ADD PRIMARY KEY (`api_ip_id`);
-
---
--- Индексы таблицы `oc_api_session`
---
-ALTER TABLE `oc_api_session`
-  ADD PRIMARY KEY (`api_session_id`);
-
---
--- Индексы таблицы `oc_attribute`
---
-ALTER TABLE `oc_attribute`
-  ADD PRIMARY KEY (`attribute_id`);
-
---
--- Индексы таблицы `oc_attribute_description`
---
-ALTER TABLE `oc_attribute_description`
-  ADD PRIMARY KEY (`attribute_id`,`language_id`);
-
---
--- Индексы таблицы `oc_attribute_group`
---
-ALTER TABLE `oc_attribute_group`
-  ADD PRIMARY KEY (`attribute_group_id`);
-
---
--- Индексы таблицы `oc_attribute_group_description`
---
-ALTER TABLE `oc_attribute_group_description`
-  ADD PRIMARY KEY (`attribute_group_id`,`language_id`);
-
---
--- Индексы таблицы `oc_banner`
---
-ALTER TABLE `oc_banner`
-  ADD PRIMARY KEY (`banner_id`);
-
---
--- Индексы таблицы `oc_banner_image`
---
-ALTER TABLE `oc_banner_image`
-  ADD PRIMARY KEY (`banner_image_id`);
-
---
--- Индексы таблицы `oc_banner_image_description`
---
-ALTER TABLE `oc_banner_image_description`
-  ADD PRIMARY KEY (`banner_image_id`,`language_id`);
-
---
--- Индексы таблицы `oc_blog`
---
-ALTER TABLE `oc_blog`
-  ADD PRIMARY KEY (`blog_id`);
-
---
--- Индексы таблицы `oc_blog_category`
---
-ALTER TABLE `oc_blog_category`
-  ADD PRIMARY KEY (`blog_category_id`);
-
---
--- Индексы таблицы `oc_blog_category_description`
---
-ALTER TABLE `oc_blog_category_description`
-  ADD PRIMARY KEY (`blog_category_id`,`language_id`),
-  ADD KEY `name` (`name`);
-
---
--- Индексы таблицы `oc_blog_category_to_layout`
---
-ALTER TABLE `oc_blog_category_to_layout`
-  ADD PRIMARY KEY (`blog_category_id`,`store_id`);
-
---
--- Индексы таблицы `oc_blog_category_to_store`
---
-ALTER TABLE `oc_blog_category_to_store`
-  ADD PRIMARY KEY (`blog_category_id`,`store_id`);
-
---
--- Индексы таблицы `oc_blog_comment`
---
-ALTER TABLE `oc_blog_comment`
-  ADD PRIMARY KEY (`blog_comment_id`);
-
---
--- Индексы таблицы `oc_blog_to_category`
---
-ALTER TABLE `oc_blog_to_category`
-  ADD PRIMARY KEY (`blog_id`,`blog_category_id`);
-
---
--- Индексы таблицы `oc_blog_to_layout`
---
-ALTER TABLE `oc_blog_to_layout`
-  ADD PRIMARY KEY (`blog_id`,`store_id`);
-
---
--- Индексы таблицы `oc_cart`
---
-ALTER TABLE `oc_cart`
-  ADD PRIMARY KEY (`cart_id`),
-  ADD KEY `cart_id` (`customer_id`,`session_id`,`product_id`,`recurring_id`);
-
---
--- Индексы таблицы `oc_category`
---
-ALTER TABLE `oc_category`
-  ADD PRIMARY KEY (`category_id`),
-  ADD KEY `parent_id` (`parent_id`);
-
---
--- Индексы таблицы `oc_category_description`
---
-ALTER TABLE `oc_category_description`
-  ADD PRIMARY KEY (`category_id`,`language_id`),
-  ADD KEY `name` (`name`);
-
---
--- Индексы таблицы `oc_category_filter`
---
-ALTER TABLE `oc_category_filter`
-  ADD PRIMARY KEY (`category_id`,`filter_id`);
-
---
--- Индексы таблицы `oc_category_path`
---
-ALTER TABLE `oc_category_path`
-  ADD PRIMARY KEY (`category_id`,`path_id`);
-
---
--- Индексы таблицы `oc_category_to_layout`
---
-ALTER TABLE `oc_category_to_layout`
-  ADD PRIMARY KEY (`category_id`,`store_id`);
-
---
--- Индексы таблицы `oc_category_to_store`
---
-ALTER TABLE `oc_category_to_store`
-  ADD PRIMARY KEY (`category_id`,`store_id`);
-
---
--- Индексы таблицы `oc_country`
---
-ALTER TABLE `oc_country`
-  ADD PRIMARY KEY (`country_id`);
-
---
--- Индексы таблицы `oc_coupon`
---
-ALTER TABLE `oc_coupon`
-  ADD PRIMARY KEY (`coupon_id`);
-
---
--- Индексы таблицы `oc_coupon_category`
---
-ALTER TABLE `oc_coupon_category`
-  ADD PRIMARY KEY (`coupon_id`,`category_id`);
-
---
--- Индексы таблицы `oc_coupon_history`
---
-ALTER TABLE `oc_coupon_history`
-  ADD PRIMARY KEY (`coupon_history_id`);
-
---
--- Индексы таблицы `oc_coupon_product`
---
-ALTER TABLE `oc_coupon_product`
-  ADD PRIMARY KEY (`coupon_product_id`);
-
---
--- Индексы таблицы `oc_currency`
---
-ALTER TABLE `oc_currency`
-  ADD PRIMARY KEY (`currency_id`);
-
---
--- Индексы таблицы `oc_customer`
---
-ALTER TABLE `oc_customer`
-  ADD PRIMARY KEY (`customer_id`);
-
---
--- Индексы таблицы `oc_customer_activity`
---
-ALTER TABLE `oc_customer_activity`
-  ADD PRIMARY KEY (`customer_activity_id`);
-
---
--- Индексы таблицы `oc_customer_group`
---
-ALTER TABLE `oc_customer_group`
-  ADD PRIMARY KEY (`customer_group_id`);
-
---
--- Индексы таблицы `oc_customer_group_description`
---
-ALTER TABLE `oc_customer_group_description`
-  ADD PRIMARY KEY (`customer_group_id`,`language_id`);
-
---
--- Индексы таблицы `oc_customer_history`
---
-ALTER TABLE `oc_customer_history`
-  ADD PRIMARY KEY (`customer_history_id`);
-
---
--- Индексы таблицы `oc_customer_ip`
---
-ALTER TABLE `oc_customer_ip`
-  ADD PRIMARY KEY (`customer_ip_id`),
-  ADD KEY `ip` (`ip`);
-
---
--- Индексы таблицы `oc_customer_login`
---
-ALTER TABLE `oc_customer_login`
-  ADD PRIMARY KEY (`customer_login_id`),
-  ADD KEY `email` (`email`),
-  ADD KEY `ip` (`ip`);
-
---
--- Индексы таблицы `oc_customer_online`
---
-ALTER TABLE `oc_customer_online`
-  ADD PRIMARY KEY (`ip`);
-
---
--- Индексы таблицы `oc_customer_reward`
---
-ALTER TABLE `oc_customer_reward`
-  ADD PRIMARY KEY (`customer_reward_id`);
-
---
--- Индексы таблицы `oc_customer_transaction`
---
-ALTER TABLE `oc_customer_transaction`
-  ADD PRIMARY KEY (`customer_transaction_id`);
-
---
--- Индексы таблицы `oc_customer_wishlist`
---
-ALTER TABLE `oc_customer_wishlist`
-  ADD PRIMARY KEY (`customer_id`,`product_id`);
-
---
--- Индексы таблицы `oc_custom_field`
---
-ALTER TABLE `oc_custom_field`
-  ADD PRIMARY KEY (`custom_field_id`);
-
---
--- Индексы таблицы `oc_custom_field_customer_group`
---
-ALTER TABLE `oc_custom_field_customer_group`
-  ADD PRIMARY KEY (`custom_field_id`,`customer_group_id`);
-
---
--- Индексы таблицы `oc_custom_field_description`
---
-ALTER TABLE `oc_custom_field_description`
-  ADD PRIMARY KEY (`custom_field_id`,`language_id`);
-
---
--- Индексы таблицы `oc_custom_field_value`
---
-ALTER TABLE `oc_custom_field_value`
-  ADD PRIMARY KEY (`custom_field_value_id`);
-
---
--- Индексы таблицы `oc_custom_field_value_description`
---
-ALTER TABLE `oc_custom_field_value_description`
-  ADD PRIMARY KEY (`custom_field_value_id`,`language_id`);
-
---
--- Индексы таблицы `oc_download`
---
-ALTER TABLE `oc_download`
-  ADD PRIMARY KEY (`download_id`);
-
---
--- Индексы таблицы `oc_download_description`
---
-ALTER TABLE `oc_download_description`
-  ADD PRIMARY KEY (`download_id`,`language_id`);
-
---
--- Индексы таблицы `oc_event`
---
-ALTER TABLE `oc_event`
-  ADD PRIMARY KEY (`event_id`);
-
---
--- Индексы таблицы `oc_extension`
---
-ALTER TABLE `oc_extension`
-  ADD PRIMARY KEY (`extension_id`);
-
---
--- Индексы таблицы `oc_filter`
---
-ALTER TABLE `oc_filter`
-  ADD PRIMARY KEY (`filter_id`);
-
---
--- Индексы таблицы `oc_filter_description`
---
-ALTER TABLE `oc_filter_description`
-  ADD PRIMARY KEY (`filter_id`,`language_id`);
-
---
--- Индексы таблицы `oc_filter_group`
---
-ALTER TABLE `oc_filter_group`
-  ADD PRIMARY KEY (`filter_group_id`);
-
---
--- Индексы таблицы `oc_filter_group_description`
---
-ALTER TABLE `oc_filter_group_description`
-  ADD PRIMARY KEY (`filter_group_id`,`language_id`);
-
---
--- Индексы таблицы `oc_geo_zone`
---
-ALTER TABLE `oc_geo_zone`
-  ADD PRIMARY KEY (`geo_zone_id`);
-
---
--- Индексы таблицы `oc_information`
---
-ALTER TABLE `oc_information`
-  ADD PRIMARY KEY (`information_id`);
-
---
--- Индексы таблицы `oc_information_description`
---
-ALTER TABLE `oc_information_description`
-  ADD PRIMARY KEY (`information_id`,`language_id`);
-
---
--- Индексы таблицы `oc_information_to_layout`
---
-ALTER TABLE `oc_information_to_layout`
-  ADD PRIMARY KEY (`information_id`,`store_id`);
-
---
--- Индексы таблицы `oc_information_to_store`
---
-ALTER TABLE `oc_information_to_store`
-  ADD PRIMARY KEY (`information_id`,`store_id`);
-
---
--- Индексы таблицы `oc_language`
---
-ALTER TABLE `oc_language`
-  ADD PRIMARY KEY (`language_id`),
-  ADD KEY `name` (`name`);
-
---
--- Индексы таблицы `oc_layout`
---
-ALTER TABLE `oc_layout`
-  ADD PRIMARY KEY (`layout_id`);
-
---
--- Индексы таблицы `oc_layout_module`
---
-ALTER TABLE `oc_layout_module`
-  ADD PRIMARY KEY (`layout_module_id`);
-
---
--- Индексы таблицы `oc_layout_route`
---
-ALTER TABLE `oc_layout_route`
-  ADD PRIMARY KEY (`layout_route_id`);
-
---
--- Индексы таблицы `oc_length_class`
---
-ALTER TABLE `oc_length_class`
-  ADD PRIMARY KEY (`length_class_id`);
-
---
--- Индексы таблицы `oc_length_class_description`
---
-ALTER TABLE `oc_length_class_description`
-  ADD PRIMARY KEY (`length_class_id`,`language_id`);
-
---
--- Индексы таблицы `oc_location`
---
-ALTER TABLE `oc_location`
-  ADD PRIMARY KEY (`location_id`),
-  ADD KEY `name` (`name`);
-
---
--- Индексы таблицы `oc_manufacturer`
---
-ALTER TABLE `oc_manufacturer`
-  ADD PRIMARY KEY (`manufacturer_id`);
-
---
--- Индексы таблицы `oc_manufacturer_to_store`
---
-ALTER TABLE `oc_manufacturer_to_store`
-  ADD PRIMARY KEY (`manufacturer_id`,`store_id`);
-
---
--- Индексы таблицы `oc_marketing`
---
-ALTER TABLE `oc_marketing`
-  ADD PRIMARY KEY (`marketing_id`);
-
---
--- Индексы таблицы `oc_mfilter_url_alias`
---
-ALTER TABLE `oc_mfilter_url_alias`
-  ADD PRIMARY KEY (`mfilter_url_alias_id`);
-
---
--- Индексы таблицы `oc_modification`
---
-ALTER TABLE `oc_modification`
-  ADD PRIMARY KEY (`modification_id`);
-
---
--- Индексы таблицы `oc_module`
---
-ALTER TABLE `oc_module`
-  ADD PRIMARY KEY (`module_id`);
-
---
--- Индексы таблицы `oc_newsletter`
---
-ALTER TABLE `oc_newsletter`
-  ADD PRIMARY KEY (`email`);
-
---
--- Индексы таблицы `oc_option`
---
-ALTER TABLE `oc_option`
-  ADD PRIMARY KEY (`option_id`);
-
---
--- Индексы таблицы `oc_option_description`
---
-ALTER TABLE `oc_option_description`
-  ADD PRIMARY KEY (`option_id`,`language_id`);
-
---
--- Индексы таблицы `oc_option_value`
---
-ALTER TABLE `oc_option_value`
-  ADD PRIMARY KEY (`option_value_id`);
-
---
--- Индексы таблицы `oc_option_value_description`
---
-ALTER TABLE `oc_option_value_description`
-  ADD PRIMARY KEY (`option_value_id`,`language_id`);
-
---
--- Индексы таблицы `oc_order`
---
-ALTER TABLE `oc_order`
-  ADD PRIMARY KEY (`order_id`);
-
---
--- Индексы таблицы `oc_order_custom_field`
---
-ALTER TABLE `oc_order_custom_field`
-  ADD PRIMARY KEY (`order_custom_field_id`);
-
---
--- Индексы таблицы `oc_order_history`
---
-ALTER TABLE `oc_order_history`
-  ADD PRIMARY KEY (`order_history_id`);
-
---
--- Индексы таблицы `oc_order_option`
---
-ALTER TABLE `oc_order_option`
-  ADD PRIMARY KEY (`order_option_id`);
-
---
--- Индексы таблицы `oc_order_product`
---
-ALTER TABLE `oc_order_product`
-  ADD PRIMARY KEY (`order_product_id`);
-
---
--- Индексы таблицы `oc_order_recurring`
---
-ALTER TABLE `oc_order_recurring`
-  ADD PRIMARY KEY (`order_recurring_id`);
-
---
--- Индексы таблицы `oc_order_recurring_transaction`
---
-ALTER TABLE `oc_order_recurring_transaction`
-  ADD PRIMARY KEY (`order_recurring_transaction_id`);
-
---
--- Индексы таблицы `oc_order_status`
---
-ALTER TABLE `oc_order_status`
-  ADD PRIMARY KEY (`order_status_id`,`language_id`);
-
---
--- Индексы таблицы `oc_order_total`
---
-ALTER TABLE `oc_order_total`
-  ADD PRIMARY KEY (`order_total_id`),
-  ADD KEY `order_id` (`order_id`);
-
---
--- Индексы таблицы `oc_order_voucher`
---
-ALTER TABLE `oc_order_voucher`
-  ADD PRIMARY KEY (`order_voucher_id`);
-
---
--- Индексы таблицы `oc_product`
---
-ALTER TABLE `oc_product`
-  ADD PRIMARY KEY (`product_id`);
-
---
--- Индексы таблицы `oc_product_attribute`
---
-ALTER TABLE `oc_product_attribute`
-  ADD PRIMARY KEY (`product_id`,`attribute_id`,`language_id`);
-
---
--- Индексы таблицы `oc_product_description`
---
-ALTER TABLE `oc_product_description`
-  ADD PRIMARY KEY (`product_id`,`language_id`),
-  ADD KEY `name` (`name`);
-
---
--- Индексы таблицы `oc_product_discount`
---
-ALTER TABLE `oc_product_discount`
-  ADD PRIMARY KEY (`product_discount_id`),
-  ADD KEY `product_id` (`product_id`);
-
---
--- Индексы таблицы `oc_product_filter`
---
-ALTER TABLE `oc_product_filter`
-  ADD PRIMARY KEY (`product_id`,`filter_id`);
-
---
--- Индексы таблицы `oc_product_image`
---
-ALTER TABLE `oc_product_image`
-  ADD PRIMARY KEY (`product_image_id`),
-  ADD KEY `product_id` (`product_id`);
-
---
--- Индексы таблицы `oc_product_option`
---
-ALTER TABLE `oc_product_option`
-  ADD PRIMARY KEY (`product_option_id`);
-
---
--- Индексы таблицы `oc_product_option_value`
---
-ALTER TABLE `oc_product_option_value`
-  ADD PRIMARY KEY (`product_option_value_id`),
-  ADD KEY `option_value_id` (`option_value_id`),
-  ADD KEY `product_id` (`product_id`);
-
---
--- Индексы таблицы `oc_product_recurring`
---
-ALTER TABLE `oc_product_recurring`
-  ADD PRIMARY KEY (`product_id`,`recurring_id`,`customer_group_id`);
-
---
--- Индексы таблицы `oc_product_related`
---
-ALTER TABLE `oc_product_related`
-  ADD PRIMARY KEY (`product_id`,`related_id`);
-
---
--- Индексы таблицы `oc_product_reward`
---
-ALTER TABLE `oc_product_reward`
-  ADD PRIMARY KEY (`product_reward_id`);
-
---
--- Индексы таблицы `oc_product_special`
---
-ALTER TABLE `oc_product_special`
-  ADD PRIMARY KEY (`product_special_id`),
-  ADD KEY `product_id` (`product_id`);
-
---
--- Индексы таблицы `oc_product_tab`
---
-ALTER TABLE `oc_product_tab`
-  ADD PRIMARY KEY (`product_id`,`tab_id`,`language_id`);
-
---
--- Индексы таблицы `oc_product_to_category`
---
-ALTER TABLE `oc_product_to_category`
-  ADD PRIMARY KEY (`product_id`,`category_id`),
-  ADD KEY `category_id` (`category_id`);
-
---
--- Индексы таблицы `oc_product_to_download`
---
-ALTER TABLE `oc_product_to_download`
-  ADD PRIMARY KEY (`product_id`,`download_id`);
-
---
--- Индексы таблицы `oc_product_to_layout`
---
-ALTER TABLE `oc_product_to_layout`
-  ADD PRIMARY KEY (`product_id`,`store_id`);
-
---
--- Индексы таблицы `oc_product_to_store`
---
-ALTER TABLE `oc_product_to_store`
-  ADD PRIMARY KEY (`product_id`,`store_id`);
-
---
--- Индексы таблицы `oc_question`
---
-ALTER TABLE `oc_question`
-  ADD PRIMARY KEY (`question_id`);
-
---
--- Индексы таблицы `oc_recurring`
---
-ALTER TABLE `oc_recurring`
-  ADD PRIMARY KEY (`recurring_id`);
-
---
--- Индексы таблицы `oc_recurring_description`
---
-ALTER TABLE `oc_recurring_description`
-  ADD PRIMARY KEY (`recurring_id`,`language_id`);
-
---
--- Индексы таблицы `oc_return`
---
-ALTER TABLE `oc_return`
-  ADD PRIMARY KEY (`return_id`);
-
---
--- Индексы таблицы `oc_return_action`
---
-ALTER TABLE `oc_return_action`
-  ADD PRIMARY KEY (`return_action_id`,`language_id`);
-
---
--- Индексы таблицы `oc_return_history`
---
-ALTER TABLE `oc_return_history`
-  ADD PRIMARY KEY (`return_history_id`);
-
---
--- Индексы таблицы `oc_return_reason`
---
-ALTER TABLE `oc_return_reason`
-  ADD PRIMARY KEY (`return_reason_id`,`language_id`);
-
---
--- Индексы таблицы `oc_return_status`
---
-ALTER TABLE `oc_return_status`
-  ADD PRIMARY KEY (`return_status_id`,`language_id`);
-
---
--- Индексы таблицы `oc_review`
---
-ALTER TABLE `oc_review`
-  ADD PRIMARY KEY (`review_id`),
-  ADD KEY `product_id` (`product_id`);
-
---
--- Индексы таблицы `oc_revslider_attachment_images`
---
-ALTER TABLE `oc_revslider_attachment_images`
-  ADD PRIMARY KEY (`ID`);
-
---
--- Индексы таблицы `oc_revslider_css`
---
-ALTER TABLE `oc_revslider_css`
-  ADD PRIMARY KEY (`id`);
-
---
--- Индексы таблицы `oc_revslider_layer_animations`
---
-ALTER TABLE `oc_revslider_layer_animations`
-  ADD PRIMARY KEY (`id`);
-
---
--- Индексы таблицы `oc_revslider_settings`
---
-ALTER TABLE `oc_revslider_settings`
-  ADD PRIMARY KEY (`id`);
-
---
--- Индексы таблицы `oc_revslider_sliders`
---
-ALTER TABLE `oc_revslider_sliders`
-  ADD PRIMARY KEY (`id`);
-
---
--- Индексы таблицы `oc_revslider_slides`
---
-ALTER TABLE `oc_revslider_slides`
-  ADD PRIMARY KEY (`id`);
-
---
--- Индексы таблицы `oc_revslider_static_slides`
---
-ALTER TABLE `oc_revslider_static_slides`
-  ADD PRIMARY KEY (`id`);
-
---
--- Индексы таблицы `oc_setting`
---
-ALTER TABLE `oc_setting`
-  ADD PRIMARY KEY (`setting_id`);
-
---
--- Индексы таблицы `oc_stock_status`
---
-ALTER TABLE `oc_stock_status`
-  ADD PRIMARY KEY (`stock_status_id`,`language_id`);
-
---
--- Индексы таблицы `oc_store`
---
-ALTER TABLE `oc_store`
-  ADD PRIMARY KEY (`store_id`);
-
---
--- Индексы таблицы `oc_tab`
---
-ALTER TABLE `oc_tab`
-  ADD PRIMARY KEY (`tab_id`);
-
---
--- Индексы таблицы `oc_tab_description`
---
-ALTER TABLE `oc_tab_description`
-  ADD PRIMARY KEY (`tab_id`,`language_id`);
-
---
--- Индексы таблицы `oc_tag_cloud`
---
-ALTER TABLE `oc_tag_cloud`
-  ADD PRIMARY KEY (`tag`,`language_id`,`store_id`);
-
---
--- Индексы таблицы `oc_tax_class`
---
-ALTER TABLE `oc_tax_class`
-  ADD PRIMARY KEY (`tax_class_id`);
-
---
--- Индексы таблицы `oc_tax_rate`
---
-ALTER TABLE `oc_tax_rate`
-  ADD PRIMARY KEY (`tax_rate_id`);
-
---
--- Индексы таблицы `oc_tax_rate_to_customer_group`
---
-ALTER TABLE `oc_tax_rate_to_customer_group`
-  ADD PRIMARY KEY (`tax_rate_id`,`customer_group_id`);
-
---
--- Индексы таблицы `oc_tax_rule`
---
-ALTER TABLE `oc_tax_rule`
-  ADD PRIMARY KEY (`tax_rule_id`);
-
---
--- Индексы таблицы `oc_testimonial`
---
-ALTER TABLE `oc_testimonial`
-  ADD PRIMARY KEY (`testimonial_id`);
-
---
--- Индексы таблицы `oc_testimonial_description`
---
-ALTER TABLE `oc_testimonial_description`
-  ADD PRIMARY KEY (`testimonial_id`,`language_id`);
-
---
--- Индексы таблицы `oc_upload`
---
-ALTER TABLE `oc_upload`
-  ADD PRIMARY KEY (`upload_id`);
-
---
--- Индексы таблицы `oc_url_alias`
---
-ALTER TABLE `oc_url_alias`
-  ADD PRIMARY KEY (`url_alias_id`),
-  ADD KEY `query` (`query`),
-  ADD KEY `keyword` (`keyword`);
-
---
--- Индексы таблицы `oc_user`
---
-ALTER TABLE `oc_user`
-  ADD PRIMARY KEY (`user_id`);
-
---
--- Индексы таблицы `oc_user_group`
---
-ALTER TABLE `oc_user_group`
-  ADD PRIMARY KEY (`user_group_id`);
-
---
--- Индексы таблицы `oc_voucher`
---
-ALTER TABLE `oc_voucher`
-  ADD PRIMARY KEY (`voucher_id`);
-
---
--- Индексы таблицы `oc_voucher_history`
---
-ALTER TABLE `oc_voucher_history`
-  ADD PRIMARY KEY (`voucher_history_id`);
-
---
--- Индексы таблицы `oc_voucher_theme`
---
-ALTER TABLE `oc_voucher_theme`
-  ADD PRIMARY KEY (`voucher_theme_id`);
-
---
--- Индексы таблицы `oc_voucher_theme_description`
---
-ALTER TABLE `oc_voucher_theme_description`
-  ADD PRIMARY KEY (`voucher_theme_id`,`language_id`);
-
---
--- Индексы таблицы `oc_weight_class`
---
-ALTER TABLE `oc_weight_class`
-  ADD PRIMARY KEY (`weight_class_id`);
-
---
--- Индексы таблицы `oc_weight_class_description`
---
-ALTER TABLE `oc_weight_class_description`
-  ADD PRIMARY KEY (`weight_class_id`,`language_id`);
-
---
--- Индексы таблицы `oc_zone`
---
-ALTER TABLE `oc_zone`
-  ADD PRIMARY KEY (`zone_id`);
-
---
--- Индексы таблицы `oc_zone_to_geo_zone`
---
-ALTER TABLE `oc_zone_to_geo_zone`
-  ADD PRIMARY KEY (`zone_to_geo_zone_id`);
-
---
--- AUTO_INCREMENT для сохранённых таблиц
---
-
---
--- AUTO_INCREMENT для таблицы `oc_address`
---
-ALTER TABLE `oc_address`
-  MODIFY `address_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
---
--- AUTO_INCREMENT для таблицы `oc_affiliate`
---
-ALTER TABLE `oc_affiliate`
-  MODIFY `affiliate_id` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT для таблицы `oc_affiliate_activity`
---
-ALTER TABLE `oc_affiliate_activity`
-  MODIFY `affiliate_activity_id` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT для таблицы `oc_affiliate_login`
---
-ALTER TABLE `oc_affiliate_login`
-  MODIFY `affiliate_login_id` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT для таблицы `oc_affiliate_transaction`
---
-ALTER TABLE `oc_affiliate_transaction`
-  MODIFY `affiliate_transaction_id` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT для таблицы `oc_api`
---
-ALTER TABLE `oc_api`
-  MODIFY `api_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
---
--- AUTO_INCREMENT для таблицы `oc_api_ip`
---
-ALTER TABLE `oc_api_ip`
-  MODIFY `api_ip_id` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT для таблицы `oc_api_session`
---
-ALTER TABLE `oc_api_session`
-  MODIFY `api_session_id` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT для таблицы `oc_attribute`
---
-ALTER TABLE `oc_attribute`
-  MODIFY `attribute_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=12;
---
--- AUTO_INCREMENT для таблицы `oc_attribute_group`
---
-ALTER TABLE `oc_attribute_group`
-  MODIFY `attribute_group_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
---
--- AUTO_INCREMENT для таблицы `oc_banner`
---
-ALTER TABLE `oc_banner`
-  MODIFY `banner_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
---
--- AUTO_INCREMENT для таблицы `oc_banner_image`
---
-ALTER TABLE `oc_banner_image`
-  MODIFY `banner_image_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=99;
---
--- AUTO_INCREMENT для таблицы `oc_blog`
---
-ALTER TABLE `oc_blog`
-  MODIFY `blog_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=19;
---
--- AUTO_INCREMENT для таблицы `oc_blog_category`
---
-ALTER TABLE `oc_blog_category`
-  MODIFY `blog_category_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=50;
---
--- AUTO_INCREMENT для таблицы `oc_blog_comment`
---
-ALTER TABLE `oc_blog_comment`
-  MODIFY `blog_comment_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=21;
---
--- AUTO_INCREMENT для таблицы `oc_cart`
---
-ALTER TABLE `oc_cart`
-  MODIFY `cart_id` int(11) unsigned NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT для таблицы `oc_category`
---
-ALTER TABLE `oc_category`
-  MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=60;
---
--- AUTO_INCREMENT для таблицы `oc_country`
---
-ALTER TABLE `oc_country`
-  MODIFY `country_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=258;
---
--- AUTO_INCREMENT для таблицы `oc_coupon`
---
-ALTER TABLE `oc_coupon`
-  MODIFY `coupon_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
---
--- AUTO_INCREMENT для таблицы `oc_coupon_history`
---
-ALTER TABLE `oc_coupon_history`
-  MODIFY `coupon_history_id` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT для таблицы `oc_coupon_product`
---
-ALTER TABLE `oc_coupon_product`
-  MODIFY `coupon_product_id` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT для таблицы `oc_currency`
---
-ALTER TABLE `oc_currency`
-  MODIFY `currency_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
---
--- AUTO_INCREMENT для таблицы `oc_customer`
---
-ALTER TABLE `oc_customer`
-  MODIFY `customer_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
---
--- AUTO_INCREMENT для таблицы `oc_customer_activity`
---
-ALTER TABLE `oc_customer_activity`
-  MODIFY `customer_activity_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
---
--- AUTO_INCREMENT для таблицы `oc_customer_group`
---
-ALTER TABLE `oc_customer_group`
-  MODIFY `customer_group_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
---
--- AUTO_INCREMENT для таблицы `oc_customer_history`
---
-ALTER TABLE `oc_customer_history`
-  MODIFY `customer_history_id` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT для таблицы `oc_customer_ip`
---
-ALTER TABLE `oc_customer_ip`
-  MODIFY `customer_ip_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
---
--- AUTO_INCREMENT для таблицы `oc_customer_login`
---
-ALTER TABLE `oc_customer_login`
-  MODIFY `customer_login_id` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT для таблицы `oc_customer_reward`
---
-ALTER TABLE `oc_customer_reward`
-  MODIFY `customer_reward_id` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT для таблицы `oc_customer_transaction`
---
-ALTER TABLE `oc_customer_transaction`
-  MODIFY `customer_transaction_id` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT для таблицы `oc_custom_field`
---
-ALTER TABLE `oc_custom_field`
-  MODIFY `custom_field_id` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT для таблицы `oc_custom_field_value`
---
-ALTER TABLE `oc_custom_field_value`
-  MODIFY `custom_field_value_id` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT для таблицы `oc_download`
---
-ALTER TABLE `oc_download`
-  MODIFY `download_id` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT для таблицы `oc_event`
---
-ALTER TABLE `oc_event`
-  MODIFY `event_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
---
--- AUTO_INCREMENT для таблицы `oc_extension`
---
-ALTER TABLE `oc_extension`
-  MODIFY `extension_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=1460;
---
--- AUTO_INCREMENT для таблицы `oc_filter`
---
-ALTER TABLE `oc_filter`
-  MODIFY `filter_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
---
--- AUTO_INCREMENT для таблицы `oc_filter_group`
---
-ALTER TABLE `oc_filter_group`
-  MODIFY `filter_group_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
---
--- AUTO_INCREMENT для таблицы `oc_geo_zone`
---
-ALTER TABLE `oc_geo_zone`
-  MODIFY `geo_zone_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
---
--- AUTO_INCREMENT для таблицы `oc_information`
---
-ALTER TABLE `oc_information`
-  MODIFY `information_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
---
--- AUTO_INCREMENT для таблицы `oc_language`
---
-ALTER TABLE `oc_language`
-  MODIFY `language_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
---
--- AUTO_INCREMENT для таблицы `oc_layout`
---
-ALTER TABLE `oc_layout`
-  MODIFY `layout_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=16;
---
--- AUTO_INCREMENT для таблицы `oc_layout_module`
---
-ALTER TABLE `oc_layout_module`
-  MODIFY `layout_module_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=197;
---
--- AUTO_INCREMENT для таблицы `oc_layout_route`
---
-ALTER TABLE `oc_layout_route`
-  MODIFY `layout_route_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=97;
---
--- AUTO_INCREMENT для таблицы `oc_length_class`
---
-ALTER TABLE `oc_length_class`
-  MODIFY `length_class_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
---
--- AUTO_INCREMENT для таблицы `oc_location`
---
-ALTER TABLE `oc_location`
-  MODIFY `location_id` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT для таблицы `oc_manufacturer`
---
-ALTER TABLE `oc_manufacturer`
-  MODIFY `manufacturer_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
---
--- AUTO_INCREMENT для таблицы `oc_marketing`
---
-ALTER TABLE `oc_marketing`
-  MODIFY `marketing_id` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT для таблицы `oc_mfilter_url_alias`
---
-ALTER TABLE `oc_mfilter_url_alias`
-  MODIFY `mfilter_url_alias_id` int(11) unsigned NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT для таблицы `oc_modification`
---
-ALTER TABLE `oc_modification`
-  MODIFY `modification_id` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT для таблицы `oc_module`
---
-ALTER TABLE `oc_module`
-  MODIFY `module_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=46;
---
--- AUTO_INCREMENT для таблицы `oc_option`
---
-ALTER TABLE `oc_option`
-  MODIFY `option_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
---
--- AUTO_INCREMENT для таблицы `oc_option_value`
---
-ALTER TABLE `oc_option_value`
-  MODIFY `option_value_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=49;
---
--- AUTO_INCREMENT для таблицы `oc_order`
---
-ALTER TABLE `oc_order`
-  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
---
--- AUTO_INCREMENT для таблицы `oc_order_custom_field`
---
-ALTER TABLE `oc_order_custom_field`
-  MODIFY `order_custom_field_id` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT для таблицы `oc_order_history`
---
-ALTER TABLE `oc_order_history`
-  MODIFY `order_history_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
---
--- AUTO_INCREMENT для таблицы `oc_order_option`
---
-ALTER TABLE `oc_order_option`
-  MODIFY `order_option_id` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT для таблицы `oc_order_product`
---
-ALTER TABLE `oc_order_product`
-  MODIFY `order_product_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
---
--- AUTO_INCREMENT для таблицы `oc_order_recurring`
---
-ALTER TABLE `oc_order_recurring`
-  MODIFY `order_recurring_id` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT для таблицы `oc_order_recurring_transaction`
---
-ALTER TABLE `oc_order_recurring_transaction`
-  MODIFY `order_recurring_transaction_id` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT для таблицы `oc_order_status`
---
-ALTER TABLE `oc_order_status`
-  MODIFY `order_status_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=17;
---
--- AUTO_INCREMENT для таблицы `oc_order_total`
---
-ALTER TABLE `oc_order_total`
-  MODIFY `order_total_id` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
---
--- AUTO_INCREMENT для таблицы `oc_order_voucher`
---
-ALTER TABLE `oc_order_voucher`
-  MODIFY `order_voucher_id` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT для таблицы `oc_product`
---
-ALTER TABLE `oc_product`
-  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=50;
---
--- AUTO_INCREMENT для таблицы `oc_product_discount`
---
-ALTER TABLE `oc_product_discount`
-  MODIFY `product_discount_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=450;
---
--- AUTO_INCREMENT для таблицы `oc_product_image`
---
-ALTER TABLE `oc_product_image`
-  MODIFY `product_image_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2373;
---
--- AUTO_INCREMENT для таблицы `oc_product_option`
---
-ALTER TABLE `oc_product_option`
-  MODIFY `product_option_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=227;
---
--- AUTO_INCREMENT для таблицы `oc_product_option_value`
---
-ALTER TABLE `oc_product_option_value`
-  MODIFY `product_option_value_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=17;
---
--- AUTO_INCREMENT для таблицы `oc_product_reward`
---
-ALTER TABLE `oc_product_reward`
-  MODIFY `product_reward_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=550;
---
--- AUTO_INCREMENT для таблицы `oc_product_special`
---
-ALTER TABLE `oc_product_special`
-  MODIFY `product_special_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=445;
---
--- AUTO_INCREMENT для таблицы `oc_question`
---
-ALTER TABLE `oc_question`
-  MODIFY `question_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=16;
---
--- AUTO_INCREMENT для таблицы `oc_recurring`
---
-ALTER TABLE `oc_recurring`
-  MODIFY `recurring_id` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT для таблицы `oc_return`
---
-ALTER TABLE `oc_return`
-  MODIFY `return_id` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT для таблицы `oc_return_action`
---
-ALTER TABLE `oc_return_action`
-  MODIFY `return_action_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
---
--- AUTO_INCREMENT для таблицы `oc_return_history`
---
-ALTER TABLE `oc_return_history`
-  MODIFY `return_history_id` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT для таблицы `oc_return_reason`
---
-ALTER TABLE `oc_return_reason`
-  MODIFY `return_reason_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
---
--- AUTO_INCREMENT для таблицы `oc_return_status`
---
-ALTER TABLE `oc_return_status`
-  MODIFY `return_status_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
---
--- AUTO_INCREMENT для таблицы `oc_review`
---
-ALTER TABLE `oc_review`
-  MODIFY `review_id` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT для таблицы `oc_revslider_attachment_images`
---
-ALTER TABLE `oc_revslider_attachment_images`
-  MODIFY `ID` int(10) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT для таблицы `oc_revslider_css`
---
-ALTER TABLE `oc_revslider_css`
-  MODIFY `id` int(9) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=42;
---
--- AUTO_INCREMENT для таблицы `oc_revslider_layer_animations`
---
-ALTER TABLE `oc_revslider_layer_animations`
-  MODIFY `id` int(9) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT для таблицы `oc_revslider_settings`
---
-ALTER TABLE `oc_revslider_settings`
-  MODIFY `id` int(9) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT для таблицы `oc_revslider_sliders`
---
-ALTER TABLE `oc_revslider_sliders`
-  MODIFY `id` int(9) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
---
--- AUTO_INCREMENT для таблицы `oc_revslider_slides`
---
-ALTER TABLE `oc_revslider_slides`
-  MODIFY `id` int(9) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
---
--- AUTO_INCREMENT для таблицы `oc_revslider_static_slides`
---
-ALTER TABLE `oc_revslider_static_slides`
-  MODIFY `id` int(9) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT для таблицы `oc_setting`
---
-ALTER TABLE `oc_setting`
-  MODIFY `setting_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=111055;
---
--- AUTO_INCREMENT для таблицы `oc_stock_status`
---
-ALTER TABLE `oc_stock_status`
-  MODIFY `stock_status_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
---
--- AUTO_INCREMENT для таблицы `oc_store`
---
-ALTER TABLE `oc_store`
-  MODIFY `store_id` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT для таблицы `oc_tab`
---
-ALTER TABLE `oc_tab`
-  MODIFY `tab_id` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT для таблицы `oc_tax_class`
---
-ALTER TABLE `oc_tax_class`
-  MODIFY `tax_class_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
---
--- AUTO_INCREMENT для таблицы `oc_tax_rate`
---
-ALTER TABLE `oc_tax_rate`
-  MODIFY `tax_rate_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=88;
---
--- AUTO_INCREMENT для таблицы `oc_tax_rule`
---
-ALTER TABLE `oc_tax_rule`
-  MODIFY `tax_rule_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=129;
---
--- AUTO_INCREMENT для таблицы `oc_testimonial`
---
-ALTER TABLE `oc_testimonial`
-  MODIFY `testimonial_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
---
--- AUTO_INCREMENT для таблицы `oc_upload`
---
-ALTER TABLE `oc_upload`
-  MODIFY `upload_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
---
--- AUTO_INCREMENT для таблицы `oc_url_alias`
---
-ALTER TABLE `oc_url_alias`
-  MODIFY `url_alias_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=905;
---
--- AUTO_INCREMENT для таблицы `oc_user`
---
-ALTER TABLE `oc_user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
---
--- AUTO_INCREMENT для таблицы `oc_user_group`
---
-ALTER TABLE `oc_user_group`
-  MODIFY `user_group_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
---
--- AUTO_INCREMENT для таблицы `oc_voucher`
---
-ALTER TABLE `oc_voucher`
-  MODIFY `voucher_id` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT для таблицы `oc_voucher_history`
---
-ALTER TABLE `oc_voucher_history`
-  MODIFY `voucher_history_id` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT для таблицы `oc_voucher_theme`
---
-ALTER TABLE `oc_voucher_theme`
-  MODIFY `voucher_theme_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
---
--- AUTO_INCREMENT для таблицы `oc_weight_class`
---
-ALTER TABLE `oc_weight_class`
-  MODIFY `weight_class_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
---
--- AUTO_INCREMENT для таблицы `oc_zone`
---
-ALTER TABLE `oc_zone`
-  MODIFY `zone_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4232;
---
--- AUTO_INCREMENT для таблицы `oc_zone_to_geo_zone`
---
-ALTER TABLE `oc_zone_to_geo_zone`
-  MODIFY `zone_to_geo_zone_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=110;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

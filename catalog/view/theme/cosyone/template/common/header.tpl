@@ -74,8 +74,8 @@
             </div>
             <div class="header__row">
               <div class="header__contacts">
-                <a href="mailto:dariagavrilova.od@gmail.com">dariagavrilova.od@gmail.com</a>
-                <a href="tel:+38 063 764 63 67">+38 063 764 63 67</a>
+                <a href="mailto:<?php echo $email; ?>"><?php echo $email; ?></a>
+                <a href="tel:<?php echo $telephone; ?>"><?php echo $telephone; ?></a>
               </div>
               <div class="header__logo">
                 <?php if ($logo) { ?>
