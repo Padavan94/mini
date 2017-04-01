@@ -24,17 +24,12 @@
 <link href="catalog/view/javascript/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen" />
 <script src="catalog/view/javascript/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
 <link rel="stylesheet" type="text/css" href="catalog/view/theme/cosyone/stylesheet/stylesheet.css" />
-<link rel="stylesheet" type="text/css" href="catalog/view/theme/cosyone/stylesheet/grid/<?php echo $cosyone_max_width; ?>.css" />
+
 <link href="catalog/view/javascript/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
 <?php if($cosyone_use_responsive == 'enabled'){ ?>
 <link rel="stylesheet" type="text/css" href="catalog/view/theme/cosyone/stylesheet/responsive.css" />
 <?php } ?>
-<?php foreach ($styles as $style) { ?>
-<link rel="<?php echo $style['rel']; ?>" type="text/css" href="<?php echo $style['href']; ?>" media="<?php echo $style['media']; ?>" />
-<?php } ?>
-<?php if ($direction == 'rtl') { ?>
-<link rel="stylesheet" type="text/css" href="catalog/view/theme/cosyone/stylesheet/rtl.css" />
-<?php } ?>
+
 <link href="catalog/view/theme/default/css/main.css" rel="stylesheet">
 
 <script type="text/javascript" src="catalog/view/theme/cosyone/js/owl.carousel.min.js"></script>
@@ -48,7 +43,7 @@
 <?php foreach ($analytics as $analytic) { ?>
 <?php echo $analytic; ?>
 <?php } ?>
-<?php echo $cosyone_styles; ?>
+
 </head>
 <body class="<?php echo $class; ?>">
 <div class="outer_container <?php echo $cosyone_default_product_style; ?> <?php if($cosyone_use_custom){ echo $cosyone_container_layout; } ?> <?php echo $cosyone_use_breadcrumb; ?>">
@@ -59,23 +54,23 @@
             <div class="header__row">
               <div class="header__socials">
                 <a href="#" class="header__socials-icon"><i class="fa fa-vk"></i></a>
-                <a href="#" class="header__socials-icon"><i class="fa fa-vk"></i></a>
-                <a href="#" class="header__socials-icon"><i class="fa fa-vk"></i></a>
+                <a href="#" class="header__socials-icon"><i class="fa fa-instagram"></i></a>
+                <a href="#" class="header__socials-icon"><i class="fa fa-facebook"></i></a>
               </div>
               <div class="header__shares">
                 <div class="header__share _share1">
-                  при заказе на сумму от 1700 грн <strong><i></i>бесплатная доставка</strong>
+                  <span>при заказе на сумму от 1700 грн</span>
+                  <strong class="flex"><i class="icon-car"></i>бесплатная доставка</strong>
                 </div>
                 <div class="header__share _share2">
-                  <i></i>
-                  Подарочный сертификат
+                  <a class="flex" href="#"><i class="icon-prize"></i>Подарочный сертификат</a>
                 </div>
               </div>
             </div>
             <div class="header__row">
               <div class="header__contacts">
-                <a href="mailto:<?php echo $email; ?>"><?php echo $email; ?></a>
-                <a href="tel:<?php echo $telephone; ?>"><?php echo $telephone; ?></a>
+                <a class="flex header__contacts-icon-mail" href="mailto:<?php echo $email; ?>"><i class="icon-mail"></i><?php echo $email; ?></a>
+                <a class="flex header__contacts-icon-mobile" href="tel:<?php echo $telephone; ?>"><i class="icon-mobile"></i><?php echo $telephone; ?></a>
               </div>
               <div class="header__logo">
                 <?php if ($logo) { ?>
@@ -91,7 +86,6 @@
                <?php } ?>
               </div>
             </div>
-            
         </div>
     </div>
     <div class="header__bottom">
