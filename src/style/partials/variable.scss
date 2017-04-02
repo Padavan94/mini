@@ -1,6 +1,7 @@
 
-a,i,button{
+a,button{
 	transition: all .2s ease;
+	display: inline-block;
 	&:before{
 		transition: all .2s ease;
 	}
@@ -11,7 +12,5 @@ a,i,button{
 }
 
 
-$brand: #1565c0;
-$text: #373737;
-$fw-main: 16px;
-$link-hover: #ffff75;
+$brand:      #ffeb3b;
+$brand2:     #5f2a43;
