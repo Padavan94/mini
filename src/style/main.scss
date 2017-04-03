@@ -56,6 +56,18 @@ body {
 .icon-man {
 	@include sprite($man);
 }
+.icon-dress {
+	@include sprite($dress);
+}
+.icon-buss {
+	@include sprite($buss);
+}
+.icon-percents {
+	@include sprite($percents);
+}
+.icon-card {
+	@include sprite($card);
+}
 
 
 
@@ -441,7 +453,195 @@ body {
 	}
 }
 
+.advantages {
+	padding: 20px 0;
+	background-color: $brand2;
+	font-size: 11px;
+	text-transform: uppercase;
+	color: #fff;
+	font-family: "Ral-sb";
 
+	&__container {
+		display: flex;
+		flex-wrap: wrap;
+	}
+
+	&__item {
+		width: 25%;
+		display: flex;
+		align-items: center;
+		i {
+			margin-right: 9px;
+		}
+	}
+}
+
+.hits {
+	margin-top: 25px;
+
+	&__container {
+		border-top: 1px solid #d9d9d9;
+	}
+	&__carousel-inner {
+		padding: 0px 110px 70px 110px;
+	}
+	&__title {
+		height: 120px;
+		width: 240px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		font-family: "Ral-b";
+		font-size: 15px;
+		text-transform: uppercase;
+		color: #161616;
+		margin: 0 auto;
+		position: relative;
+		overflow: hidden;
+		top: -1px;
+		margin-bottom: 40px;
+		&:before {
+			width: 240px;
+			height: 240px;
+			content: "";
+			left: 0;
+			top: -120px;
+			position: absolute;
+			background-color: $brand;
+			border-radius: 50%;
+			z-index: -1;
+		}
+		& > span {
+			position: relative;
+		}
+
+		.bubles {
+			display: flex;
+			position: absolute;
+			left: 50%;
+			top: calc(100% + 15px);
+			transform: translate(-50%,-50%);	
+			span {
+				border-radius: 50%;
+				background-color: $brand2;
+				width: 6px;
+				height: 6px;
+				margin: 0px 2px;
+			}
+		}
+	}
+
+}
+
+
+
+
+
+
+
+
+.footer {
+	background-image: url("/image/footer-m.png");
+	background-repeat: no-repeat;
+	background-position: left 190px bottom;
+	padding: 64px 0;
+
+	&__heding {
+		color: #161616;
+		font-size: 15px;
+		text-transform: uppercase;
+		font-family: "Ral-b";
+		position: relative;
+		padding-left: 25px;
+		margin-bottom: 30px;
+		&:before {
+			content: "";
+			width: 50px;
+			height: 50px;
+			border-radius: 50%;
+			background-color: $brand;
+			position: absolute;
+			left: 0px;
+			top: calc(50% - 25px);
+			z-index: -1;
+		}
+	}
+
+	&__container {
+		display: flex;
+		justify-content: space-between;
+	}
+
+	&__logo {
+		margin-bottom: 33px;
+	}
+
+	p {
+		font-size: 13px;
+		color: #161616;
+		font-family: "Ral-m";
+	}
+
+	.column {
+		ul {
+			li {
+				margin-bottom: 7px;
+				i {
+					font-size: 12px;
+					margin-right: 6px;
+					color: $brand2;
+				}
+				a {
+					font-size: 11px;
+					text-transform: uppercase;
+					font-family: "Ral-b";
+					color: #161616;
+					&:hover {
+						color: $brand2;
+					}
+				}
+			}
+		}
+	}
+
+	&__text {
+		color: #957886;
+		font-size: 11px;
+		text-transform: uppercase;
+		margin-bottom: 7px;
+		font-family: "Ral-b";
+	}
+	&__mail {
+		margin-bottom: 20px;
+		a {
+			color: #161616;
+			font-family: "Ral-b";
+			font-size: 14px;
+			&:hover {
+				color: $brand2;
+			}
+		}
+	}
+	&__phone {
+		a {
+			color: #242424;
+			font-family: "Rob-b";
+			font-size: 16px;
+			&:hover {
+				color: $brand2;
+			}
+		}
+	}
+	&__socials {
+		@extend .header__socials;
+		padding-top: 0;
+	}
+	&__socials-icon {
+		@extend .header__socials-icon;
+		color: #ad8698;
+		background-color: $brand2;
+	}
+}
 
 
 //display: none;

@@ -3419,38 +3419,16 @@ h3.faq_section {
 }
 /* Static footer bottom part */
 #footer {
-	min-height: 100px;
-	padding:35px 0 10px;
-	font-size:0;
-	margin-left:-25px;
+	
 }
-#footer .column {
-	display:inline-block;
-	font-size:14px;
-	vertical-align:top;
-	width: 25%;
-	padding:0 0 20px;
-	padding-left:25px;
-}
-#footer .box-heading {
-	padding-top:0;
-}
+
+
 #footer .column ul {
 	padding-left: 12px;
 	list-style: none;
 	padding:0;
 }
-#footer .column ul li {
-	margin-bottom:16px;
-}
 
-#footer .column ul li .fa {
-	font-size:12px;
-	margin-right:10px;
-}
-#footer .column .custom_block p {
-	color:#595959;
-}
 .bottom_line {
 	padding:13px 0 20px;
 	border-top:2px solid #222222;

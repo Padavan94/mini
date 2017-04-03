@@ -1,7 +1,20 @@
-<h3><?php echo $heading_title; ?></h3>
-<div class="row">
+<div class="hits clearfix">
+<div class="container hits__container">
+  <h3 class="hits__title"><?php //echo $heading_title; ?>
+  <span>
+  хиты продаж
+  <div class="bubles">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+  </span>
+  
+  </h3>
+  <div class="hits__carousel-inner">
+  <div class="hits__carousel">
   <?php foreach ($products as $product) { ?>
-  <div class="product-layout col-lg-3 col-md-3 col-sm-6 col-xs-12">
+  <div class="product-layout">
     <div class="product-thumb transition">
       <div class="image"><a href="<?php echo $product['href']; ?>"><img src="<?php echo $product['thumb']; ?>" alt="<?php echo $product['name']; ?>" title="<?php echo $product['name']; ?>" class="img-responsive" /></a></div>
       <div class="caption">
@@ -39,4 +52,23 @@
     </div>
   </div>
   <?php } ?>
+  </div>
+  </div>
 </div>
+
+</div>
+
+
+<script type="text/javascript">
+$(document).ready(function() {
+$('.hits__carousel').owlCarousel({
+  items: 3,
+  autoPlay: true,
+  autoHeight:true,
+  navigation: true,
+  navigationText: ["<span><i class='fa fa-angle-left'></i></span>","<span><i class='fa fa-angle-right'></i></span>"],
+  dots: true,
+  transitionStyle:"backSlide"
+});
+});
+</script> 
