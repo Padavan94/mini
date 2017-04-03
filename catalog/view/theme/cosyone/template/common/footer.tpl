@@ -1,49 +1,63 @@
-<a href="mailto:<?php echo $email; ?>"><?php echo $email; ?></a>
-<a href="tel:<?php echo $telephone; ?>"><?php echo $telephone; ?></a>
 
-<div class="clearfix footer_margin"></div>
-<?php echo $footer_modules ?>
-<div id="footer">
-	<div class="column">
-	<div class="box-heading heading">
-    <?php echo $cosyone_footer_custom_block_title; ?>
+
+
+
+<div id="footer" class="footer">
+	<div class="container footer__container">
+   <div class="column footer__column">
+    <div class="footer__logo">
+      <a href="/"><img src="/image/logog.png" alt="logo"></a>
     </div>
+
     <div class="custom_block">
-    <?php echo $cosyone_footer_custom_block; ?>
+    <p>Minny © 2017. <br> Все права защищены</p>
+    <?php // echo $cosyone_footer_custom_block; ?>
     </div>
     </div><!--
-  --><div class="column">
-    <div class="box-heading heading"><?php echo $text_information; ?></div>
+  --><div class="column footer__column">
+    <div class="footer__heding"><?php //echo $text_information; ?>полезно</div>
     <ul class="contrast_font">
     <?php if ($informations) { ?>
       <?php foreach ($informations as $information) { ?>
-      <li><i class="fa fa-caret-right"></i><a href="<?php echo $information['href']; ?>"><?php echo $information['title']; ?></a></li>
+      <li><i class="fa fa-angle-right"></i><a href="<?php echo $information['href']; ?>"><?php echo $information['title']; ?></a></li>
       <?php } ?>
       <?php } ?>
-      <li><i class="fa fa-caret-right"></i><a href="<?php echo $contact; ?>"><?php echo $text_contact; ?></a></li>
+      <li><i class="fa fa-angle-right"></i><a href="<?php echo $contact; ?>"><?php echo $text_contact; ?></a></li>
     </ul>
   </div><!--
-  --><div class="column">
-    <div class="box-heading heading"><?php echo $text_extra; ?></div>
-    <ul class="contrast_font">
-      <li><i class="fa fa-caret-right"></i><a href="<?php echo $manufacturer; ?>"><?php echo $text_manufacturer; ?></a></li>
-      <li><i class="fa fa-caret-right"></i><a href="<?php echo $voucher; ?>"><?php echo $text_voucher; ?></a></li>
-      <li><i class="fa fa-caret-right"></i><a href="<?php echo $affiliate; ?>"><?php echo $text_affiliate; ?></a></li>
-      <li><i class="fa fa-caret-right"></i><a href="<?php echo $special; ?>"><?php echo $text_special; ?></a></li>
-      <li><i class="fa fa-caret-right"></i><a href="<?php echo $sitemap; ?>"><?php echo $text_sitemap; ?></a></li>
-    </ul>
+  --><div class="column footer__column">
+    <div class="footer__heding"><?php //echo $text_extra; ?>контакты</div>
+    <div class="footer__info">
+      <div class="footer__set">
+        <div class="footer__text">
+          Напишите нам:
+        </div>
+        <div class="footer__mail">
+          <a class="flex" href="mailto:<?php echo $email; ?>"><i class="icon-mail"></i><?php echo $email; ?></a>
+        </div>
+      </div>
+      <div class="footer__set">
+        <div class="footer__text">
+          Позвоните нам
+        </div>
+        <div class="footer__phone">
+          <a class="flex" href="tel:<?php echo $telephone; ?>"><i class="icon-mobile"></i><?php echo $telephone; ?></a>
+        </div>
+      </div>
+    </div>
   </div><!--
-  --><div class="column">
-    <div class="box-heading heading"><?php echo $text_account; ?></div>
-    <ul class="contrast_font">
-      <li><i class="fa fa-caret-right"></i><a href="<?php echo $account; ?>"><?php echo $text_account; ?></a></li>
-      <li><i class="fa fa-caret-right"></i><a href="<?php echo $order; ?>"><?php echo $text_order; ?></a></li>
-      <li><i class="fa fa-caret-right"></i><a href="<?php echo $return; ?>"><?php echo $text_return; ?></a></li>
-      <li><i class="fa fa-caret-right"></i><a href="<?php echo $wishlist; ?>"><?php echo $text_wishlist; ?></a></li>
-      <li><i class="fa fa-caret-right"></i><a href="<?php echo $newsletter; ?>"><?php echo $text_newsletter; ?></a></li>
-    </ul>
+  --><div class="column footer__column">
+    <div class="footer__heding"><?php //echo $text_account; ?>мы в соц. сетях</div>
+    <div class="footer__socials">
+      <a href="#" class="footer__socials-icon"><i class="fa fa-vk"></i></a>
+      <a href="#" class="footer__socials-icon"><i class="fa fa-instagram"></i></a>
+      <a href="#" class="footer__socials-icon"><i class="fa fa-facebook"></i></a>
+    </div>
+  </div> 
   </div>
 </div> <!-- #footer ends --> 
+
+<?php if(false): ?>
   <div class="bottom_line"> <div class="scroll_to_top"><a class="scroll_top icon tablet_hide"><i class="fa fa-angle-up"></i></a></div>
   <div id="powered"><?php echo $powered; ?></div>
   <?php if ($cosyone_footer_payment_icon) { ?>
@@ -51,11 +65,13 @@
    <?php } ?>
    <div class="clearfix"></div>
   </div>
+
+<?php endif; ?>
 <!--
 OpenCart is open source software and you are free to remove the powered by OpenCart if you want, but its generally accepted practise to make a small donation.
 Please donate via PayPal to donate@opencart.com
 //-->
-</div>  <!-- .container ends -->
+
 </div>  <!-- .outer_container ends -->
 <script type="text/javascript" src="catalog/view/theme/cosyone/js/jquery.cookie.js"></script>
 
