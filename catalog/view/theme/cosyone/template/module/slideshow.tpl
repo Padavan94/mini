@@ -3,6 +3,12 @@
   <div class="item">
     <?php if ($banner['link']) { ?>
     <a href="<?php echo $banner['link']; ?>"><img src="<?php echo $banner['image']; ?>" alt="<?php echo $banner['title']; ?>" class="img-responsive" /></a>
+
+    <div class="slide-info">
+      <div class="slide-info__title"><?php echo $banner['title']; ?></div>
+      <p class="slide-info__descr"><?php echo $banner['description']; ?></p>
+      <a href="<?php echo $banner['link']; ?>" class="slide-info__link">Смотреть</a>
+    </div>
     <?php } else { ?>
     <img src="<?php echo $banner['image']; ?>" alt="<?php echo $banner['title']; ?>" class="img-responsive" />
     <?php } ?>

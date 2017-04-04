@@ -4,7 +4,7 @@
     <ul>
       <li><a href="<?php echo $category; ?>"><?php echo $text_category; ?></a></li>
       <li><a href="<?php echo $product; ?>"><?php echo $text_product; ?></a></li>
-	  <li><a href="<?php echo $import_products; ?>">Импорт товаров</a></li>
+	  <!--<li><a href="<?php echo $import_products; ?>">Импорт товаров</a></li>-->
       <li><a href="<?php echo $recurring; ?>"><?php echo $text_recurring; ?></a></li>
       <li><a href="<?php echo $filter; ?>"><?php echo $text_filter; ?></a></li>
       <li><a class="parent"><?php echo $text_attribute; ?></a>
@@ -18,6 +18,9 @@
       <li><a href="<?php echo $download; ?>"><?php echo $text_download; ?></a></li>
       <li><a href="<?php echo $review; ?>"><?php echo $text_review; ?></a></li>
       <li><a href="<?php echo $information; ?>"><?php echo $text_information; ?></a></li>
+       <li><a href="<?php echo $special_offers; ?>"><?php echo $text_special_offers; ?></a></li>
+       <li><a href="<?php echo $collections; ?>"><?php echo $text_collections; ?></a></li>
+       
     </ul>
   </li>
   <li id="extension"><a class="parent"><i class="fa fa-puzzle-piece fa-fw"></i> <span><?php echo $text_extension; ?></span></a>

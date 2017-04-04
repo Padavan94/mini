@@ -28,6 +28,8 @@ class ControllerCommonMenu extends Controller {
 		$data['text_paypal'] = $this->language->get('text_paypal');
 		$data['text_paypal_search'] = $this->language->get('text_paypal_search');
 		$data['text_design'] = $this->language->get('text_design');
+		$data['text_special_offers'] = "LookBook";
+		$data['text_collections'] = "Коллекции";
 		$data['text_download'] = $this->language->get('text_download');
 		$data['text_error_log'] = $this->language->get('text_error_log');
 		$data['text_extension'] = $this->language->get('text_extension');
@@ -124,6 +126,8 @@ class ControllerCommonMenu extends Controller {
 		$data['import_products'] = $this->url->link('tool/import_products', 'token=' . $this->session->data['token'], true);
         $data['banner'] = $this->url->link('design/banner', 'token=' . $this->session->data['token'], true);
 		$data['captcha'] = $this->url->link('extension/captcha', 'token=' . $this->session->data['token'], true);
+		$data['special_offers'] = $this->url->link('design/special_offers', 'token=' . $this->session->data['token'], 'SSL');
+		$data['collections'] = $this->url->link('design/collections', 'token=' . $this->session->data['token'], 'SSL');
 		$data['category'] = $this->url->link('catalog/category', 'token=' . $this->session->data['token'], true);
 		$data['country'] = $this->url->link('localisation/country', 'token=' . $this->session->data['token'], true);
 		$data['contact'] = $this->url->link('marketing/contact', 'token=' . $this->session->data['token'], true);

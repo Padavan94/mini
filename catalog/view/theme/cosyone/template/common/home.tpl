@@ -21,7 +21,7 @@
                 <span>Для девочек</span>
               </div>
               <div class="category-home__bottom">
-                <a href="#">Перейти <i class="fa fa-angle-right"></i></a>
+                  <a href="<?php echo $girls; ?>">Перейти <i class="fa fa-angle-right"></i></a>
               </div>
             </div>
           </div>
@@ -42,7 +42,7 @@
                 <span>для мальчиков</span>
               </div>
               <div class="category-home__bottom">
-                <a href="#">Перейти <i class="fa fa-angle-right"></i></a>
+                <a href="<?php echo $boys; ?>">Перейти <i class="fa fa-angle-right"></i></a>
               </div>
             </div>
           </div>

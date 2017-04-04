@@ -1138,3 +1138,45 @@
 2017-03-26 19:36:36 - PHP Notice:  Undefined variable: content_bottom_half in C:\OPENSERVER\OpenServer\domains\mini.loc\catalog\view\theme\cosyone\template\common\home.tpl on line 21
 2017-04-04 0:13:15 - PHP Notice:  Undefined variable: autoplay in C:\OPENSERVER\OpenServer\domains\mini.loc\catalog\view\theme\default\template\module\featured.tpl on line 65
 2017-04-04 0:13:27 - PHP Notice:  Undefined variable: autoplay in C:\OPENSERVER\OpenServer\domains\mini.loc\catalog\view\theme\default\template\module\featured.tpl on line 65
+2017-04-04 4:49:37 - PHP Notice:  Undefined index: description in D:\OpenServer\domains\mini.loc\admin\model\design\banner.php on line 103
+2017-04-04 4:49:37 - PHP Notice:  Undefined index: description in D:\OpenServer\domains\mini.loc\admin\model\design\banner.php on line 103
+2017-04-04 5:15:01 - PHP Notice:  Undefined index: image in D:\OpenServer\domains\mini.loc\admin\view\template\design\special_offers_form.tpl on line 38
+2017-04-04 5:15:01 - PHP Notice:  Undefined variable: button_remove in D:\OpenServer\domains\mini.loc\admin\view\template\design\special_offers_form.tpl on line 132
+2017-04-04 5:15:01 - PHP Notice:  Undefined variable: button_remove in D:\OpenServer\domains\mini.loc\admin\view\template\design\special_offers_form.tpl on line 132
+2017-04-04 5:15:01 - PHP Notice:  Undefined variable: button_remove in D:\OpenServer\domains\mini.loc\admin\view\template\design\special_offers_form.tpl on line 132
+2017-04-04 5:15:01 - PHP Notice:  Undefined variable: button_remove in D:\OpenServer\domains\mini.loc\admin\view\template\design\special_offers_form.tpl on line 132
+2017-04-04 5:15:01 - PHP Notice:  Undefined variable: button_remove in D:\OpenServer\domains\mini.loc\admin\view\template\design\special_offers_form.tpl on line 132
+2017-04-04 5:15:01 - PHP Notice:  Undefined variable: button_remove in D:\OpenServer\domains\mini.loc\admin\view\template\design\special_offers_form.tpl on line 216
+2017-04-04 5:22:26 - PHP Notice:  Undefined index: image in D:\OpenServer\domains\mini.loc\admin\view\template\design\special_offers_form.tpl on line 38
+2017-04-04 5:22:26 - PHP Notice:  Undefined variable: button_remove in D:\OpenServer\domains\mini.loc\admin\view\template\design\special_offers_form.tpl on line 132
+2017-04-04 5:22:26 - PHP Notice:  Undefined variable: button_remove in D:\OpenServer\domains\mini.loc\admin\view\template\design\special_offers_form.tpl on line 132
+2017-04-04 5:22:26 - PHP Notice:  Undefined variable: button_remove in D:\OpenServer\domains\mini.loc\admin\view\template\design\special_offers_form.tpl on line 132
+2017-04-04 5:22:26 - PHP Notice:  Undefined variable: button_remove in D:\OpenServer\domains\mini.loc\admin\view\template\design\special_offers_form.tpl on line 132
+2017-04-04 5:22:26 - PHP Notice:  Undefined variable: button_remove in D:\OpenServer\domains\mini.loc\admin\view\template\design\special_offers_form.tpl on line 132
+2017-04-04 5:22:26 - PHP Notice:  Undefined variable: button_remove in D:\OpenServer\domains\mini.loc\admin\view\template\design\special_offers_form.tpl on line 216
+2017-04-04 5:32:46 - PHP Notice:  Error: Could not load template D:/OpenServer/domains/mini.loc/catalog/view/theme/default/template/blog/special_offers.tpl! in D:\OpenServer\domains\mini.loc\vqmod\vqcache\vq2-system_library_template_basic.php on line 26
+2017-04-04 5:36:30 - PHP Notice:  Error: Could not load template D:/OpenServer/domains/mini.loc/catalog/view/theme/default/template/blog/special_offers.tpl! in D:\OpenServer\domains\mini.loc\vqmod\vqcache\vq2-system_library_template_basic.php on line 26
+2017-04-04 5:36:36 - PHP Notice:  Error: Could not load template D:/OpenServer/domains/mini.loc/catalog/view/theme/default/template/blog/special_offers.tpl! in D:\OpenServer\domains\mini.loc\vqmod\vqcache\vq2-system_library_template_basic.php on line 26
+2017-04-04 5:42:25 - PHP Notice:  Error: Could not load template D:/OpenServer/domains/mini.loc/catalog/view/theme/default/template/default/template/module/special_offers_widget.tpl! in D:\OpenServer\domains\mini.loc\vqmod\vqcache\vq2-system_library_template_basic.php on line 26
+2017-04-04 5:43:23 - PHP Notice:  Error: Could not load template D:/OpenServer/domains/mini.loc/catalog/view/theme/default/template/default/template/module/special_offers_widget.tpl! in D:\OpenServer\domains\mini.loc\vqmod\vqcache\vq2-system_library_template_basic.php on line 26
+2017-04-04 5:43:26 - PHP Notice:  Error: Could not load template D:/OpenServer/domains/mini.loc/catalog/view/theme/default/template/default/template/module/special_offers_widget.tpl! in D:\OpenServer\domains\mini.loc\vqmod\vqcache\vq2-system_library_template_basic.php on line 26
+2017-04-04 8:02:32 - PHP Notice:  Undefined index: image in D:\OpenServer\domains\mini.loc\admin\view\template\design\collections_form.tpl on line 38
+2017-04-04 8:02:32 - PHP Notice:  Undefined variable: button_remove in D:\OpenServer\domains\mini.loc\admin\view\template\design\collections_form.tpl on line 132
+2017-04-04 8:02:32 - PHP Notice:  Undefined variable: button_remove in D:\OpenServer\domains\mini.loc\admin\view\template\design\collections_form.tpl on line 132
+2017-04-04 8:02:32 - PHP Notice:  Undefined variable: button_remove in D:\OpenServer\domains\mini.loc\admin\view\template\design\collections_form.tpl on line 132
+2017-04-04 8:02:32 - PHP Notice:  Undefined variable: button_remove in D:\OpenServer\domains\mini.loc\admin\view\template\design\collections_form.tpl on line 132
+2017-04-04 8:02:32 - PHP Notice:  Undefined variable: button_remove in D:\OpenServer\domains\mini.loc\admin\view\template\design\collections_form.tpl on line 132
+2017-04-04 8:02:32 - PHP Notice:  Undefined variable: button_remove in D:\OpenServer\domains\mini.loc\admin\view\template\design\collections_form.tpl on line 216
+2017-04-04 8:13:17 - PHP Warning:  Invalid argument supplied for foreach() in D:\OpenServer\domains\mini.loc\vqmod\vqcache\vq2-system_engine_loader.php on line 45
+2017-04-04 8:14:27 - PHP Notice:  Error: Could not load template D:/OpenServer/domains/mini.loc/catalog/view/theme/default/template/module/collections_widget.tpl! in D:\OpenServer\domains\mini.loc\vqmod\vqcache\vq2-system_library_template_basic.php on line 26
+2017-04-04 8:17:44 - PHP Warning:  Invalid argument supplied for foreach() in D:\OpenServer\domains\mini.loc\vqmod\vqcache\vq2-system_engine_loader.php on line 45
+2017-04-04 8:18:52 - PHP Notice:  Undefined index: collections_id in D:\OpenServer\domains\mini.loc\catalog\controller\blog\collections.php on line 100
+2017-04-04 8:18:52 - PHP Notice:  Undefined index: collections_id in D:\OpenServer\domains\mini.loc\catalog\controller\blog\collections.php on line 106
+2017-04-04 8:18:52 - PHP Notice:  Undefined index: collections_id in D:\OpenServer\domains\mini.loc\catalog\controller\blog\collections.php on line 100
+2017-04-04 8:18:52 - PHP Notice:  Undefined index: collections_id in D:\OpenServer\domains\mini.loc\catalog\controller\blog\collections.php on line 106
+2017-04-04 8:18:52 - PHP Notice:  Undefined index: collections_id in D:\OpenServer\domains\mini.loc\catalog\controller\blog\collections.php on line 100
+2017-04-04 8:18:52 - PHP Notice:  Undefined index: collections_id in D:\OpenServer\domains\mini.loc\catalog\controller\blog\collections.php on line 106
+2017-04-04 8:18:52 - PHP Notice:  Undefined index: collections_id in D:\OpenServer\domains\mini.loc\catalog\controller\blog\collections.php on line 100
+2017-04-04 8:18:52 - PHP Notice:  Undefined index: collections_id in D:\OpenServer\domains\mini.loc\catalog\controller\blog\collections.php on line 106
+2017-04-04 8:18:52 - PHP Notice:  Undefined index: collections_id in D:\OpenServer\domains\mini.loc\catalog\controller\blog\collections.php on line 100
+2017-04-04 8:18:52 - PHP Notice:  Undefined index: collections_id in D:\OpenServer\domains\mini.loc\catalog\controller\blog\collections.php on line 106
