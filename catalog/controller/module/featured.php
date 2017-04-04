@@ -3,7 +3,7 @@ class ControllerModuleFeatured extends Controller {
 	public function index($setting) {
 		$this->load->language('module/featured');
 
-		$data['heading_title'] = $this->language->get('heading_title');
+		$data['heading_title'] = $this->language->get($setting['name']);
 
 		$data['text_tax'] = $this->language->get('text_tax');
 
@@ -20,7 +20,6 @@ class ControllerModuleFeatured extends Controller {
 		if (!$setting['limit']) {
 			$setting['limit'] = 4;
 		}
-
 		if (!empty($setting['product'])) {
 			$products = array_slice($setting['product'], 0, (int)$setting['limit']);
 

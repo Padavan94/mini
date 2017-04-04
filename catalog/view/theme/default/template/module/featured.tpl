@@ -2,7 +2,7 @@
 <div class="container hits__container">
   <h3 class="hits__title"><?php //echo $heading_title; ?>
   <span>
-  хиты продаж
+  <?php echo $heading_title; ?>
   <div class="bubles">
     <span></span>
     <span></span>

@@ -1180,3 +1180,52 @@
 2017-04-04 8:18:52 - PHP Notice:  Undefined index: collections_id in D:\OpenServer\domains\mini.loc\catalog\controller\blog\collections.php on line 106
 2017-04-04 8:18:52 - PHP Notice:  Undefined index: collections_id in D:\OpenServer\domains\mini.loc\catalog\controller\blog\collections.php on line 100
 2017-04-04 8:18:52 - PHP Notice:  Undefined index: collections_id in D:\OpenServer\domains\mini.loc\catalog\controller\blog\collections.php on line 106
+2017-04-04 16:58:30 - PHP Notice:  Use of undefined constant image - assumed 'image' in C:\OpenServer\domains\mini.loc\catalog\view\theme\cosyone\template\module\collections_widget.tpl on line 9
+2017-04-04 16:58:30 - PHP Notice:  Use of undefined constant image - assumed 'image' in C:\OpenServer\domains\mini.loc\catalog\view\theme\cosyone\template\module\collections_widget.tpl on line 9
+2017-04-04 16:58:30 - PHP Notice:  Use of undefined constant image - assumed 'image' in C:\OpenServer\domains\mini.loc\catalog\view\theme\cosyone\template\module\collections_widget.tpl on line 9
+2017-04-04 16:58:30 - PHP Notice:  Use of undefined constant image - assumed 'image' in C:\OpenServer\domains\mini.loc\catalog\view\theme\cosyone\template\module\collections_widget.tpl on line 9
+2017-04-04 16:58:30 - PHP Notice:  Use of undefined constant image - assumed 'image' in C:\OpenServer\domains\mini.loc\catalog\view\theme\cosyone\template\module\collections_widget.tpl on line 9
+2017-04-04 16:59:19 - PHP Notice:  Use of undefined constant image - assumed 'image' in C:\OpenServer\domains\mini.loc\catalog\view\theme\cosyone\template\module\collections_widget.tpl on line 9
+2017-04-04 16:59:19 - PHP Notice:  Use of undefined constant image - assumed 'image' in C:\OpenServer\domains\mini.loc\catalog\view\theme\cosyone\template\module\collections_widget.tpl on line 9
+2017-04-04 16:59:19 - PHP Notice:  Use of undefined constant image - assumed 'image' in C:\OpenServer\domains\mini.loc\catalog\view\theme\cosyone\template\module\collections_widget.tpl on line 9
+2017-04-04 16:59:19 - PHP Notice:  Use of undefined constant image - assumed 'image' in C:\OpenServer\domains\mini.loc\catalog\view\theme\cosyone\template\module\collections_widget.tpl on line 9
+2017-04-04 16:59:19 - PHP Notice:  Use of undefined constant image - assumed 'image' in C:\OpenServer\domains\mini.loc\catalog\view\theme\cosyone\template\module\collections_widget.tpl on line 9
+2017-04-04 16:59:23 - PHP Notice:  Use of undefined constant image - assumed 'image' in C:\OpenServer\domains\mini.loc\catalog\view\theme\cosyone\template\module\collections_widget.tpl on line 9
+2017-04-04 16:59:23 - PHP Notice:  Use of undefined constant image - assumed 'image' in C:\OpenServer\domains\mini.loc\catalog\view\theme\cosyone\template\module\collections_widget.tpl on line 9
+2017-04-04 16:59:23 - PHP Notice:  Use of undefined constant image - assumed 'image' in C:\OpenServer\domains\mini.loc\catalog\view\theme\cosyone\template\module\collections_widget.tpl on line 9
+2017-04-04 16:59:23 - PHP Notice:  Use of undefined constant image - assumed 'image' in C:\OpenServer\domains\mini.loc\catalog\view\theme\cosyone\template\module\collections_widget.tpl on line 9
+2017-04-04 16:59:23 - PHP Notice:  Use of undefined constant image - assumed 'image' in C:\OpenServer\domains\mini.loc\catalog\view\theme\cosyone\template\module\collections_widget.tpl on line 9
+2017-04-04 16:59:56 - PHP Notice:  Use of undefined constant image - assumed 'image' in C:\OpenServer\domains\mini.loc\catalog\view\theme\cosyone\template\module\collections_widget.tpl on line 9
+2017-04-04 16:59:56 - PHP Notice:  Use of undefined constant image - assumed 'image' in C:\OpenServer\domains\mini.loc\catalog\view\theme\cosyone\template\module\collections_widget.tpl on line 9
+2017-04-04 16:59:56 - PHP Notice:  Use of undefined constant image - assumed 'image' in C:\OpenServer\domains\mini.loc\catalog\view\theme\cosyone\template\module\collections_widget.tpl on line 9
+2017-04-04 16:59:56 - PHP Notice:  Use of undefined constant image - assumed 'image' in C:\OpenServer\domains\mini.loc\catalog\view\theme\cosyone\template\module\collections_widget.tpl on line 9
+2017-04-04 16:59:56 - PHP Notice:  Use of undefined constant image - assumed 'image' in C:\OpenServer\domains\mini.loc\catalog\view\theme\cosyone\template\module\collections_widget.tpl on line 9
+2017-04-04 17:00:36 - PHP Notice:  Use of undefined constant image - assumed 'image' in C:\OpenServer\domains\mini.loc\catalog\view\theme\cosyone\template\module\collections_widget.tpl on line 9
+2017-04-04 17:00:36 - PHP Notice:  Use of undefined constant image - assumed 'image' in C:\OpenServer\domains\mini.loc\catalog\view\theme\cosyone\template\module\collections_widget.tpl on line 9
+2017-04-04 17:00:36 - PHP Notice:  Use of undefined constant image - assumed 'image' in C:\OpenServer\domains\mini.loc\catalog\view\theme\cosyone\template\module\collections_widget.tpl on line 9
+2017-04-04 17:00:36 - PHP Notice:  Use of undefined constant image - assumed 'image' in C:\OpenServer\domains\mini.loc\catalog\view\theme\cosyone\template\module\collections_widget.tpl on line 9
+2017-04-04 17:00:36 - PHP Notice:  Use of undefined constant image - assumed 'image' in C:\OpenServer\domains\mini.loc\catalog\view\theme\cosyone\template\module\collections_widget.tpl on line 9
+2017-04-04 17:01:03 - PHP Notice:  Undefined variable: button_remove in C:\OpenServer\domains\mini.loc\admin\view\template\design\collections_form.tpl on line 132
+2017-04-04 17:01:03 - PHP Notice:  Undefined variable: button_remove in C:\OpenServer\domains\mini.loc\admin\view\template\design\collections_form.tpl on line 132
+2017-04-04 17:01:03 - PHP Notice:  Undefined variable: button_remove in C:\OpenServer\domains\mini.loc\admin\view\template\design\collections_form.tpl on line 132
+2017-04-04 17:01:03 - PHP Notice:  Undefined variable: button_remove in C:\OpenServer\domains\mini.loc\admin\view\template\design\collections_form.tpl on line 132
+2017-04-04 17:01:03 - PHP Notice:  Undefined variable: button_remove in C:\OpenServer\domains\mini.loc\admin\view\template\design\collections_form.tpl on line 132
+2017-04-04 17:01:03 - PHP Notice:  Undefined variable: button_remove in C:\OpenServer\domains\mini.loc\admin\view\template\design\collections_form.tpl on line 216
+2017-04-04 17:02:33 - PHP Notice:  Use of undefined constant image - assumed 'image' in C:\OpenServer\domains\mini.loc\catalog\view\theme\cosyone\template\module\collections_widget.tpl on line 9
+2017-04-04 17:02:33 - PHP Notice:  Use of undefined constant image - assumed 'image' in C:\OpenServer\domains\mini.loc\catalog\view\theme\cosyone\template\module\collections_widget.tpl on line 9
+2017-04-04 17:02:33 - PHP Notice:  Use of undefined constant image - assumed 'image' in C:\OpenServer\domains\mini.loc\catalog\view\theme\cosyone\template\module\collections_widget.tpl on line 9
+2017-04-04 17:02:33 - PHP Notice:  Use of undefined constant image - assumed 'image' in C:\OpenServer\domains\mini.loc\catalog\view\theme\cosyone\template\module\collections_widget.tpl on line 9
+2017-04-04 17:02:33 - PHP Notice:  Use of undefined constant image - assumed 'image' in C:\OpenServer\domains\mini.loc\catalog\view\theme\cosyone\template\module\collections_widget.tpl on line 9
+2017-04-04 17:03:43 - PHP Notice:  Use of undefined constant image - assumed 'image' in C:\OpenServer\domains\mini.loc\catalog\view\theme\cosyone\template\module\collections_widget.tpl on line 9
+2017-04-04 17:03:43 - PHP Notice:  Use of undefined constant image - assumed 'image' in C:\OpenServer\domains\mini.loc\catalog\view\theme\cosyone\template\module\collections_widget.tpl on line 9
+2017-04-04 17:03:43 - PHP Notice:  Use of undefined constant image - assumed 'image' in C:\OpenServer\domains\mini.loc\catalog\view\theme\cosyone\template\module\collections_widget.tpl on line 9
+2017-04-04 17:03:43 - PHP Notice:  Use of undefined constant image - assumed 'image' in C:\OpenServer\domains\mini.loc\catalog\view\theme\cosyone\template\module\collections_widget.tpl on line 9
+2017-04-04 17:03:43 - PHP Notice:  Use of undefined constant image - assumed 'image' in C:\OpenServer\domains\mini.loc\catalog\view\theme\cosyone\template\module\collections_widget.tpl on line 9
+2017-04-04 17:03:50 - PHP Notice:  Undefined variable: button_remove in C:\OpenServer\domains\mini.loc\admin\view\template\design\collections_form.tpl on line 132
+2017-04-04 17:03:50 - PHP Notice:  Undefined variable: button_remove in C:\OpenServer\domains\mini.loc\admin\view\template\design\collections_form.tpl on line 132
+2017-04-04 17:03:50 - PHP Notice:  Undefined variable: button_remove in C:\OpenServer\domains\mini.loc\admin\view\template\design\collections_form.tpl on line 216
+2017-04-04 17:04:08 - PHP Notice:  Use of undefined constant image - assumed 'image' in C:\OpenServer\domains\mini.loc\catalog\view\theme\cosyone\template\module\collections_widget.tpl on line 9
+2017-04-04 17:04:08 - PHP Notice:  Use of undefined constant image - assumed 'image' in C:\OpenServer\domains\mini.loc\catalog\view\theme\cosyone\template\module\collections_widget.tpl on line 9
+2017-04-04 17:04:08 - PHP Notice:  Use of undefined constant image - assumed 'image' in C:\OpenServer\domains\mini.loc\catalog\view\theme\cosyone\template\module\collections_widget.tpl on line 9
+2017-04-04 17:04:08 - PHP Notice:  Use of undefined constant image - assumed 'image' in C:\OpenServer\domains\mini.loc\catalog\view\theme\cosyone\template\module\collections_widget.tpl on line 9
+2017-04-04 17:04:08 - PHP Notice:  Use of undefined constant image - assumed 'image' in C:\OpenServer\domains\mini.loc\catalog\view\theme\cosyone\template\module\collections_widget.tpl on line 9

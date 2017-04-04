@@ -33,7 +33,7 @@ class ControllerModuleCollectionsWidget extends Controller {
 					'link'  => $this->url->link('blog/collections', '', 'SSL') . '&path=' . $result['collections_id'],
                     'image' => '/image/' . $result['image'],
 //                    'description'  => $result['description'],
-                    'description'  => utf8_substr(strip_tags(html_entity_decode($result['description'], ENT_QUOTES, 'UTF-8')), 0, 200) . '..',
+                    'description'  => utf8_substr(strip_tags(html_entity_decode($result['description'], ENT_QUOTES, 'UTF-8')), 0, 70) . '..',
 
                                 );
 		}

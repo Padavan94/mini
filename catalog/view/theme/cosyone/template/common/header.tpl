@@ -95,7 +95,7 @@
               <div id="menu">
               
                 <ul class="only_desktop">
-                <li class="home only_desktop <?php echo $cosyone_show_home_icon; ?>"><a href="<?php echo $home; ?>"><?php echo $text_home; ?></a></li>
+                <li class="home only_desktop <?php echo $cosyone_show_home_icon; ?>"><a href="<?php echo $home; ?>"><?php //echo $text_home; ?>Новинки</a></li>
                      <?php if ($categories) { ?>
                      <?php foreach ($categories as $category_1) { ?>
                       <?php if ($category_1['category_1_id'] == $category_1_id) { ?>

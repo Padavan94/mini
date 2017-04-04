@@ -8,7 +8,7 @@
       <div class="container category-home__container">
       <div class="category-home__col">
         <div class="category-home__img">
-          <a href="#"><img src="/image/girl.png" alt="main"></a>
+          <a href="<?php echo $girls; ?>"><img src="/image/girl.png" alt="main"></a>
           <div class="category-home__next-wrap">
             <span class="bubles">
               <i></i>
@@ -29,7 +29,7 @@
       </div>
       <div class="category-home__col">
         <div class="category-home__img">
-          <a href="#"><img src="/image/man.png" alt="main"></a>
+          <a href="<?php echo $boys; ?>"><img src="/image/man.png" alt="main"></a>
           <div class="category-home__next-wrap">
             <span class="bubles">
               <i></i>
@@ -50,75 +50,7 @@
       </div>
       </div>
     </div>
-    <div class="collections-home">
-      <div class="container collections-home__container">
-        <div class="collections-home__item">
-          <div class="collections-home__item-img">
-            <a href="#" style="background-image: url('/image/man.jpg');">
-              <div class="go">
-                <span>перейти</span>
-              </div>
-            </a>
-          </div>
-          <div class="collections-home__item-inf">
-            <a href="#">новая коллекция ВЕСНА ЛЕТО 2017</a>
-            <span>lorem ipsum</span>
-          </div>
-        </div>
-        <div class="collections-home__item">
-          <div class="collections-home__item-img">
-            <a href="#" style="background-image: url('/image/man.jpg');">
-              <div class="go">
-                <span>перейти</span>
-              </div>
-            </a>
-          </div>
-          <div class="collections-home__item-inf">
-            <a href="#">новая коллекция ВЕСНА ЛЕТО 2017</a>
-            <span>lorem ipsum</span>
-          </div>
-        </div>
-        <div class="collections-home__item">
-          <div class="collections-home__item-img">
-            <a href="#" style="background-image: url('/image/man.jpg');">
-              <div class="go">
-                <span>перейти</span>
-              </div>
-            </a>
-          </div>
-          <div class="collections-home__item-inf">
-            <a href="#">новая коллекция ВЕСНА ЛЕТО 2017</a>
-            <span>lorem ipsum</span>
-          </div>
-        </div>
-        <div class="collections-home__item">
-          <div class="collections-home__item-img">
-            <a href="#" style="background-image: url('/image/man.jpg');">
-              <div class="go">
-                <span>перейти</span>
-              </div>
-            </a>
-          </div>
-          <div class="collections-home__item-inf">
-            <a href="#">новая коллекция ВЕСНА ЛЕТО 2017</a>
-            <span>lorem ipsum</span>
-          </div>
-        </div>
-        <div class="collections-home__item">
-          <div class="collections-home__item-img">
-            <a href="#" style="background-image: url('/image/man.jpg');">
-              <div class="go">
-                <span>перейти</span>
-              </div>
-            </a>
-          </div>
-          <div class="collections-home__item-inf">
-            <a href="#">новая коллекция ВЕСНА ЛЕТО 2017</a>
-            <span>lorem ipsum</span>
-          </div>
-        </div>
-      </div>
-    </div>
+    
     <?php echo $content_bottom; ?>
     <div class="advantages">
       <div class="container advantages__container">
