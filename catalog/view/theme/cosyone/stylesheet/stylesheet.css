@@ -3512,15 +3512,7 @@ a.scroll_top {
 .owl-carousel.custom .owl-controls .owl-page {
 	margin:0 2px;
 }
-.owl-carousel.custom .owl-controls .owl-page span {
-	border-radius:0px;
-	border:1px solid #ffffff;
-	background:none;
-	box-shadow:none;
-}
-.owl-carousel.custom .owl-controls .owl-page.active span {
-	background:#ffffff;
-}
+
 
 /* Default banner module */
 .banner div {
