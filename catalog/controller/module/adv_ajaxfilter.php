@@ -163,7 +163,8 @@ class ControllerModuleAdvajaxfilter extends Controller {
 
                     $filter_data[] = array(
                         'filter_id' => $filter['filter_id'],
-                        'name'      => $filter['name'] . ($this->config->get('config_product_count') ? ' (' . $this->model_catalog_product->getTotalProducts($_data) . ')' : '')
+                        'name'      => $filter['name'] . ($this->config->get('config_product_count') ? ' (' . $this->model_catalog_product->getTotalProducts($_data) . ')' : ''),
+                        'color'     => $filter['color'],
                     );
                 }
 
@@ -216,7 +217,7 @@ class ControllerModuleAdvajaxfilter extends Controller {
 		} 
 		
 		$data['url']   = $this->url->link('product/adv_ajaxfilter', '');
-
+//        var_dump($data);
 		return $this->load->view('module/adv_ajaxfilter', $data);
         
 	}

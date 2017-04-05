@@ -175,6 +175,7 @@ class ControllerCatalogFilter extends Controller {
 			$data['filters'][] = array(
 				'filter_group_id' => $result['filter_group_id'],
 				'name'            => $result['name'],
+//                'color'            => $result['color'],
 				'sort_order'      => $result['sort_order'],
 				'edit'            => $this->url->link('catalog/filter/edit', 'token=' . $this->session->data['token'] . '&filter_group_id=' . $result['filter_group_id'] . $url, true)
 			);
@@ -358,6 +359,7 @@ class ControllerCatalogFilter extends Controller {
 		} else {
 			$data['filters'] = array();
 		}
+        //var_dump($data['filters']);
 
 		$data['header'] = $this->load->controller('common/header');
 		$data['column_left'] = $this->load->controller('common/column_left');
