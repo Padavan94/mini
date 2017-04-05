@@ -704,7 +704,7 @@ class ControllerModuleMegaFilter extends Controller {
 		
 		// Groups of customers /////////////////////////////////////////////////
 		
-		$this->load->model('sale/customer_group');
+		/*$this->load->model('sale/customer_group');
 		
 		$this->data['customerGroups'] = array();
 		
@@ -714,7 +714,7 @@ class ControllerModuleMegaFilter extends Controller {
 				'name' => $result['name']
 			);
 		}
-		
+		*/
 		////////////////////////////////////////////////////////////////////////
 		
 		$this->data['action_ldv']			= $this->url->link('module/' . $this->_name . '/ldv', 'token=' . $this->session->data['token'], 'SSL');

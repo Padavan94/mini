@@ -65,7 +65,10 @@
                   <div class="text-danger"><?php echo $error_filter[$filter_row][$language['language_id']]; ?></div>
                   <?php } ?>
                   <?php } ?></td>
-                <td class="text-right"><input type="text" name="filter[<?php echo $filter_row; ?>][sort_order]" value="<?php echo $filter['sort_order']; ?>" placeholder="<?php echo $entry_sort_order; ?>" id="input-sort-order" class="form-control" /></td>
+                <td class="text-right">
+                    <input type="text" name="filter[<?php echo $filter_row; ?>][sort_order]" value="<?php echo $filter['sort_order']; ?>" placeholder="<?php echo $entry_sort_order; ?>" id="input-sort-order" class="form-control" />
+                    <input type="text" name="filter[<?php echo $filter_row; ?>][color]" value="<?php echo $filter['color']; ?>" placeholder="Цвет" id="input-sort-order" class="form-control" />
+                </td>
                 <td class="text-left"><button type="button" onclick="$('#filter-row<?php echo $filter_row; ?>').remove();" data-toggle="tooltip" title="<?php echo $button_remove; ?>" class="btn btn-danger"><i class="fa fa-minus-circle"></i></button></td>
               </tr>
               <?php $filter_row++; ?>
