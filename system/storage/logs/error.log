@@ -1233,3 +1233,30 @@
 2017-04-04 22:46:18 - PHP Warning:  Cannot modify header information - headers already sent by (output started at C:\OPENSERVER\OpenServer\domains\mini.loc\admin\controller\startup\error.php:34) in C:\OPENSERVER\OpenServer\domains\mini.loc\system\library\response.php on line 12
 2017-04-04 22:58:44 - PHP Notice:  Undefined index: description in C:\OPENSERVER\OpenServer\domains\mini.loc\admin\model\design\banner.php on line 36
 2017-04-04 22:58:44 - PHP Warning:  Cannot modify header information - headers already sent by (output started at C:\OPENSERVER\OpenServer\domains\mini.loc\admin\controller\startup\error.php:34) in C:\OPENSERVER\OpenServer\domains\mini.loc\system\library\response.php on line 12
+2017-04-05 1:44:08 - PHP Notice:  Undefined variable: button_remove in C:\OPENSERVER\OpenServer\domains\mini.loc\admin\view\template\design\collections_form.tpl on line 132
+2017-04-05 1:44:08 - PHP Notice:  Undefined variable: button_remove in C:\OPENSERVER\OpenServer\domains\mini.loc\admin\view\template\design\collections_form.tpl on line 132
+2017-04-05 1:44:08 - PHP Notice:  Undefined variable: button_remove in C:\OPENSERVER\OpenServer\domains\mini.loc\admin\view\template\design\collections_form.tpl on line 216
+2017-04-05 1:44:44 - PHP Notice:  Undefined variable: button_remove in C:\OPENSERVER\OpenServer\domains\mini.loc\admin\view\template\design\collections_form.tpl on line 132
+2017-04-05 1:44:44 - PHP Notice:  Undefined variable: button_remove in C:\OPENSERVER\OpenServer\domains\mini.loc\admin\view\template\design\collections_form.tpl on line 132
+2017-04-05 1:44:44 - PHP Notice:  Undefined variable: button_remove in C:\OPENSERVER\OpenServer\domains\mini.loc\admin\view\template\design\collections_form.tpl on line 132
+2017-04-05 1:44:44 - PHP Notice:  Undefined variable: button_remove in C:\OPENSERVER\OpenServer\domains\mini.loc\admin\view\template\design\collections_form.tpl on line 132
+2017-04-05 1:44:44 - PHP Notice:  Undefined variable: button_remove in C:\OPENSERVER\OpenServer\domains\mini.loc\admin\view\template\design\collections_form.tpl on line 216
+2017-04-05 1:44:54 - PHP Notice:  Undefined variable: button_remove in C:\OPENSERVER\OpenServer\domains\mini.loc\admin\view\template\design\collections_form.tpl on line 132
+2017-04-05 1:44:54 - PHP Notice:  Undefined variable: button_remove in C:\OPENSERVER\OpenServer\domains\mini.loc\admin\view\template\design\collections_form.tpl on line 132
+2017-04-05 1:44:54 - PHP Notice:  Undefined variable: button_remove in C:\OPENSERVER\OpenServer\domains\mini.loc\admin\view\template\design\collections_form.tpl on line 132
+2017-04-05 1:44:54 - PHP Notice:  Undefined variable: button_remove in C:\OPENSERVER\OpenServer\domains\mini.loc\admin\view\template\design\collections_form.tpl on line 132
+2017-04-05 1:44:54 - PHP Notice:  Undefined variable: button_remove in C:\OPENSERVER\OpenServer\domains\mini.loc\admin\view\template\design\collections_form.tpl on line 216
+2017-04-05 1:45:04 - PHP Notice:  Undefined variable: button_remove in C:\OPENSERVER\OpenServer\domains\mini.loc\admin\view\template\design\collections_form.tpl on line 132
+2017-04-05 1:45:04 - PHP Notice:  Undefined variable: button_remove in C:\OPENSERVER\OpenServer\domains\mini.loc\admin\view\template\design\collections_form.tpl on line 132
+2017-04-05 1:45:04 - PHP Notice:  Undefined variable: button_remove in C:\OPENSERVER\OpenServer\domains\mini.loc\admin\view\template\design\collections_form.tpl on line 132
+2017-04-05 1:45:04 - PHP Notice:  Undefined variable: button_remove in C:\OPENSERVER\OpenServer\domains\mini.loc\admin\view\template\design\collections_form.tpl on line 132
+2017-04-05 1:45:04 - PHP Notice:  Undefined variable: button_remove in C:\OPENSERVER\OpenServer\domains\mini.loc\admin\view\template\design\collections_form.tpl on line 216
+2017-04-05 1:45:18 - PHP Notice:  Undefined variable: button_remove in C:\OPENSERVER\OpenServer\domains\mini.loc\admin\view\template\design\collections_form.tpl on line 132
+2017-04-05 1:45:18 - PHP Notice:  Undefined variable: button_remove in C:\OPENSERVER\OpenServer\domains\mini.loc\admin\view\template\design\collections_form.tpl on line 132
+2017-04-05 1:45:18 - PHP Notice:  Undefined variable: button_remove in C:\OPENSERVER\OpenServer\domains\mini.loc\admin\view\template\design\collections_form.tpl on line 132
+2017-04-05 1:45:18 - PHP Notice:  Undefined variable: button_remove in C:\OPENSERVER\OpenServer\domains\mini.loc\admin\view\template\design\collections_form.tpl on line 132
+2017-04-05 1:45:18 - PHP Notice:  Undefined variable: button_remove in C:\OPENSERVER\OpenServer\domains\mini.loc\admin\view\template\design\collections_form.tpl on line 132
+2017-04-05 1:45:18 - PHP Notice:  Undefined variable: button_remove in C:\OPENSERVER\OpenServer\domains\mini.loc\admin\view\template\design\collections_form.tpl on line 132
+2017-04-05 1:45:18 - PHP Notice:  Undefined variable: button_remove in C:\OPENSERVER\OpenServer\domains\mini.loc\admin\view\template\design\collections_form.tpl on line 132
+2017-04-05 1:45:18 - PHP Notice:  Undefined variable: button_remove in C:\OPENSERVER\OpenServer\domains\mini.loc\admin\view\template\design\collections_form.tpl on line 132
+2017-04-05 1:45:18 - PHP Notice:  Undefined variable: button_remove in C:\OPENSERVER\OpenServer\domains\mini.loc\admin\view\template\design\collections_form.tpl on line 216

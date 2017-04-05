@@ -52,26 +52,7 @@
     </div>
     
     <?php echo $content_bottom; ?>
-    <div class="advantages">
-      <div class="container advantages__container">
-        <div class="advantages__item">
-          <i class="icon-dress"></i>
-          <span>Качественные и<br> оригинальные изделия</span>
-        </div>
-        <div class="advantages__item">
-          <i class="icon-buss"></i>
-          <span>доставка <br>по всей украине</span>
-        </div>
-        <div class="advantages__item">
-          <i class="icon-percents"></i>
-          <span>система<br> акций и скидок</span>
-        </div>
-        <div class="advantages__item">
-          <i class="icon-card"></i>
-          <span>Удобная система<br> возврата</span>
-        </div>
-      </div>
-    </div>
+    
 
 
 <?php if(false): ?>

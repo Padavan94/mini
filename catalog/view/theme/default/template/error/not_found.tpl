@@ -1,4 +1,5 @@
 <?php echo $header; ?>
+<div class="clearfix page404">
 <div class="container">
   <ul class="breadcrumb">
     <?php foreach ($breadcrumbs as $breadcrumb) { ?>
@@ -13,13 +14,15 @@
     <?php } else { ?>
     <?php $class = 'col-sm-12'; ?>
     <?php } ?>
-    <div id="content" class="<?php echo $class; ?>"><?php echo $content_top; ?>
-      <h1><?php echo $heading_title; ?></h1>
-      <p><?php echo $text_error; ?></p>
+    <div id="content" class="<?php echo $class; ?> page404__content"><?php echo $content_top; ?>
+      <h1>404</h1>
+      <p>ERROR</p>
+      <span>что-то пошло не так:(</span>
       <div class="buttons">
-        <div class="pull-right"><a href="<?php echo $continue; ?>" class="btn btn-primary"><?php echo $button_continue; ?></a></div>
+        <div class="pull-right"><a href="<?php echo $continue; ?>" class="btn btn-primary">НА ГЛАВНУЮ</a></div>
       </div>
       <?php echo $content_bottom; ?></div>
     <?php echo $column_right; ?></div>
+</div>
 </div>
 <?php echo $footer; ?>

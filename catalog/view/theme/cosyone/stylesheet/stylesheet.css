@@ -3496,16 +3496,7 @@ a.scroll_top {
 	border-color:#ffffff;
 	transition: border-color 300ms;
 }
-.owl-carousel.custom .owl-buttons .owl-prev {
-	left:20px !important;
-	margin-top:-20px;
-	opacity:1;
-}
-.owl-carousel.custom .owl-buttons .owl-next {
-	right:20px !important;
-	margin-top:-20px;
-	opacity:1;
-}
+
 .owl-carousel.custom .owl-pagination {
 	top:-30px;
 }
