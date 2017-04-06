@@ -1038,9 +1038,6 @@ a.sq_tag {
 }
 /* Breacrumb */
 .breadcrumb_wrapper { 
-	margin-bottom:45px;
-	min-height:36px;
-	background:#f9f9fb;
 	font-size:0;
 }
 .breadcrumb_disabled .breadcrumb_wrapper {
@@ -1049,7 +1046,6 @@ a.sq_tag {
 }
 .breadcrumb {
 	margin:0 auto;
-	padding:9px 0;
 	background:none;
 	display:none;
 }
@@ -1058,24 +1054,19 @@ a.sq_tag {
 	
 }
 .breadcrumb li a {
-	font-size:13px;
+	font-size:12px;
 }
-.breadcrumb li a:after {
-	content:"/";
-	display:inline-block;
-	padding:0 4px;
-	color:#222222;
-	cursor:default;
-}
+
 .breadcrumb li:last-child a:after {
 	display:none;
 }
 .breadcrumb li:last-child a {
 	cursor:default;
-	color:#8c8c8c;
+	color:#595959;
+	pointer-events: none;
 }
 .breadcrumb > li + li:before {
-	padding:0;
+	padding:0 !important;
 }
 /* layout */
 .outer_container {
@@ -1381,17 +1372,8 @@ a.button.second:hover {
 	border-color:#276658;
 }
 /* Remove buttons */
-a.button.remove, .button.remove { 
-	background-color: #ffffff;
-	color: #292f38;
-	border:1px solid;
-	border-color:#e5e5e5;
-}
-a.button.remove:hover, .button.remove:hover { 
-	border-color:#222222;
-	background-color: #ffffff;
-	color: #292f38;
-}
+
+
 
 .buttons {
 	overflow: auto;

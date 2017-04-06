@@ -63,7 +63,7 @@ class ControllerBlogHome extends Controller {
 			'short_description'      => html_entity_decode($result['short_description'], ENT_QUOTES, 'UTF-8'),
 			'date_added_full' => $result['date_added'],
 			'author' => $result['author'],
-			'image'   		=> $this->model_tool_image->resize($result['image'], $this->config->get('blogsetting_thumbs_w'), $this->config->get('blogsetting_thumbs_h')),
+			'image'   		=> '/image/'.$result['image'],
 			'href' => $this->url->link('blog/blog', 'blog_id=' . $result['blog_id'])
 			);
 		}

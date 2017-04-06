@@ -119,7 +119,7 @@ class ControllerBlogBlog extends Controller {
 				'comment_total' => $this->model_blog_blog->getTotalCommentsByBlogId($result['blog_id']),
         		'date_added_full' => date($this->language->get('date_format_short'), strtotime($result['date_added'])),
 				'date_added' => $result['date_added'],
-        		'image' => $this->model_tool_image->resize($result['image'], $this->config->get('blogsetting_rel_thumbs_w'), $this->config->get('blogsetting_rel_thumbs_h')),
+        		'image' => '/image/'.$result['image'],
 	    		'href'  => $this->url->link('blog/blog', 'blog_id=' . $result['blog_id'])
       			);
     		  }
@@ -141,7 +141,7 @@ class ControllerBlogBlog extends Controller {
 			
 			$data['description'] = html_entity_decode($blog_info['description'], ENT_QUOTES, 'UTF-8');
       		
-			$data['blogsetting_post_thumb'] = $this->model_tool_image->resize($blog_info['image'], $this->config->get('blogsetting_post_thumbs_w'), $this->config->get('blogsetting_post_thumbs_h'));
+			$data['blogsetting_post_thumb'] = '/image/'.$blog_info['image'];
 			
 			$data['tags'] = array();
 

@@ -72,6 +72,7 @@ body {
 
 
 .header {
+	box-shadow: 0 2px 36px rgba(0,0,0,.07);
 	&__top {
 		margin-bottom: 8px;
 	}
@@ -975,6 +976,149 @@ body {
 					color: $brand2;
 				}
 			}
+		}
+	}
+}
+
+
+.title {
+	width: 235px;
+	height: 85px;
+	margin: 0px auto;
+	margin-bottom: 57px;
+	position: relative;
+	overflow: hidden;
+	padding-top: 24px;
+
+	&:after {
+		content: "";
+		width: 250px;
+		height: 250px;
+		border: 2px solid $brand;
+		left: calc(50% - 125px);
+		position: absolute;
+		border-radius: 50%;
+		bottom: 0;
+	}
+
+	h1 {
+		margin: 0px;
+		text-transform: uppercase;
+		font-family: "Ral-b";
+		font-size: 16px;
+		text-align: center;
+		position: relative;
+	}
+
+	.bubles {
+		display: flex;
+		position: absolute;
+		left: 50%;
+		top: calc(100% + 15px);
+		transform: translate(-50%,-50%);	
+		span {
+			border-radius: 50%;
+			background-color: $brand2;
+			width: 6px;
+			height: 6px;
+			margin: 0px 2px;
+		}
+	}
+}
+
+.blog-page {
+	padding-bottom: 90px;
+	&__container {
+
+	}
+	
+	&__list {
+		display: flex;
+		flex-wrap: wrap;
+	}
+
+	&__item {
+		width: calc(33.333% - 12px);
+		margin-bottom: 25px;
+		&:not(:nth-child(3n)) {
+			margin-right: 16px;
+		}
+		.image {
+			a {
+				height: 278px;
+				display: flex;
+				justify-content: center;
+			}
+		}
+		.date_added {
+			background-color: transparent;
+			font-size: 12px;
+			text-transform: uppercase;
+			color: #888888;
+			padding: 11px 0;
+		}
+		.blog_title {
+			margin-top: 0;
+			font-size: 12px;
+			a {
+				font-size: 12px;
+				color: #161616;
+				font-family: "Ral-b";
+				text-transform: uppercase;
+			}
+		}
+
+		p {
+			color: #595959;
+			font-size: 14px;
+		}
+
+		.button {
+			padding: 14px 35px;
+			border-radius: 30px;
+			border: 2px solid $brand;
+			color: #161616;
+			text-transform: uppercase;
+			&:hover {
+				background-color: $brand;
+				color: #161616;
+			}
+		}
+	}
+}
+
+
+
+.breadcrumb {
+	background-color: transparent;
+	padding: 15px 0;
+	margin-bottom: 0px;
+	position: absolute;
+	left: 15px;
+	top: 0;
+	width: 100%;
+	li {
+		margin-right: 20px;
+		a {
+			position: relative;
+			color: $brand2;
+			&:hover {
+				text-decoration: underline;
+			}
+
+			&:after {
+				content: "";
+				width: 3px;
+				height: 3px;
+				border-radius: 50%;
+				background-color: $brand2;
+				position: absolute;
+				left: calc(100% + 9px);
+				top: 6px;
+			}
+		}
+		& +  li:before {
+			padding: 0;
 		}
 	}
 }
