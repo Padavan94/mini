@@ -18,7 +18,7 @@
     <?php } ?>
     <div id="content" class="<?php echo $class; ?>"><?php echo $content_top; ?>
       <div class="blog blog_list">
-      <div class="title">
+      <div class="title-cs">
         <h1><?php echo $heading_title; ?>
           <div class="bubles">
             <span></span>

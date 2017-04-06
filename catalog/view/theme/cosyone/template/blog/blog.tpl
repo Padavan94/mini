@@ -1,5 +1,7 @@
 <?php echo $header; ?>
-<div class="container">
+<div class="clearfix blog-single">
+<div class="clearfix container blog-single__container">
+  <div class="breadcrumb_wrapper"></div>
   <ul class="breadcrumb">
     <?php foreach ($breadcrumbs as $breadcrumb) { ?>
     <li><a href="<?php echo $breadcrumb['href']; ?>"><?php echo $breadcrumb['text']; ?></a></li>
@@ -14,6 +16,41 @@
     <?php $class = 'col-sm-12'; ?>
     <?php } ?>
     <div id="content" class="<?php echo $class; ?>"><?php echo $content_top; ?>
+    <div class="blog-single__inner">
+        <div class="blog-single__img">
+            <img src="<?php echo $blogsetting_post_thumb; ?>" class="zoom_image" alt="<?php echo $heading_title; ?>" title="<?php echo $heading_title; ?>" />
+        </div>
+        <div class="blog-single__descr">
+            <div class="blog-single__title">
+                <h1><?php echo $heading_title; ?></h1>
+            </div>
+            <div class="blog-single__text">
+                <?php echo $description; ?>
+            </div>
+            <div class="blog-single__share">
+                <?php if($share_status){ ?>
+                <div>
+                    <div class="social-heading main_font"><?php echo $text_share_this;?></div>
+                    <!-- AddThis Button BEGIN -->
+                    <div class="addthis_toolbox addthis_default_style addthis_32x32_style">
+                    <a class="addthis_button_preferred_1"></a>
+                    <a class="addthis_button_preferred_2"></a>
+                    <a class="addthis_button_preferred_3"></a>
+                    <a class="addthis_button_preferred_4"></a>
+                    <a class="addthis_button_compact"></a>
+                    </div>
+                </div>
+                <script type="text/javascript" src="http://s7.addthis.com/js/300/addthis_widget.js"></script>
+                <!-- AddThis Button END -->
+                <?php } ?>
+                <a href="/index.php?route=blog/home" class="button">все записи</a>
+            </div>
+        </div>
+    </div>
+
+    <?php if (false): ?>
+        
+    
     <div class="blog_post">
 	<?php if($main_thumb && $blogsetting_post_thumb){ ?>
     <div class="main_thumb zoom_image_container">
@@ -158,9 +195,11 @@
 				</form>
       <?php } ?>
       </div>
-      <?php echo $content_bottom; ?></div>
+      <?php endif ?>
     <?php echo $column_right; ?></div>
 </div>
+
+
 <script type="text/javascript"><!--
 
 $('#comment').delegate('.pagination a', 'click', function(e) {
@@ -211,4 +250,8 @@ $('#button-comment').on('click', function() {
 	});
 });     
 </script>
+
+</div>
+</div>
+
 <?php echo $footer; ?> 
