@@ -1311,13 +1311,15 @@ a.button, input.button, button.button, .btn {
 	color:#222222;
 	border-radius:0;
 	line-height:1.4;
+	cursor: pointer;
 }
 input.button, button.button { 
 	margin: 0;
 	padding:8px 20px;
+
 }
 a.button:hover, input.button:hover, button.button:hover, .btn:hover, .btn:focus { 
-	background-color: #222222;
+	background-color: #5f2a43;
 	color:#ffffff;
 	border-color:transparent;
 }

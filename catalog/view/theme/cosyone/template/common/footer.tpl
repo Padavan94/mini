@@ -77,17 +77,26 @@
 </div> <!-- #footer ends --> 
 
 
-<div class="table-size">
+<div class="table-size mfp-hide">
   <div class="table-size__inner">
+    <div class="title-cs title-cs--fill">
+      <h1>таблица детских размеров
+        <div class="bubles">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </h1>
+    </div>
     <table class="table-size__table">
       <thead>
         <tr>
           <td>Размер</td>
-          <td>Размер</td>
-          <td>Размер</td>
-          <td>Размер</td>
-          <td>Размер</td>
-          <td>Размер</td>
+          <td>Рост</td>
+          <td>Грудь</td>
+          <td>Талия</td>
+          <td>Бедра</td>
+          <td>Возраст</td>
         </tr>
       </thead>
       <tbody>
@@ -98,6 +107,118 @@
           <td>41-43</td>
           <td>50</td>
           <td>0-1 месяца</td>
+        </tr>
+        <tr>
+          <td>56</td>
+          <td>51-56</td>
+          <td>43-45</td>
+          <td>43-45</td>
+          <td>43-45</td>
+          <td>1-2 месяца</td>
+        </tr>
+        <tr>
+          <td>62</td>
+          <td>57-62</td>
+          <td>45-47</td>
+          <td>45-47</td>
+          <td>45-47</td>
+          <td>2-3 месяца</td>
+        </tr>
+        <tr>
+          <td>68</td>
+          <td>63-68</td>
+          <td>47-49</td>
+          <td>47-49</td>
+          <td>47-49</td>
+          <td>4-6 месяца</td>
+        </tr>
+        <tr>
+          <td>74</td>
+          <td>69-74</td>
+          <td>49-51</td>
+          <td>47-49</td>
+          <td>49-51</td>
+          <td>7-9 месяца</td>
+        </tr>
+        <tr>
+          <td>50</td>
+          <td>45-50</td>
+          <td>41-43</td>
+          <td>41-43</td>
+          <td>50</td>
+          <td>0-1 месяца</td>
+        </tr>
+        <tr>
+          <td>56</td>
+          <td>51-56</td>
+          <td>43-45</td>
+          <td>43-45</td>
+          <td>43-45</td>
+          <td>1-2 месяца</td>
+        </tr>
+        <tr>
+          <td>62</td>
+          <td>57-62</td>
+          <td>45-47</td>
+          <td>45-47</td>
+          <td>45-47</td>
+          <td>2-3 месяца</td>
+        </tr>
+        <tr>
+          <td>68</td>
+          <td>63-68</td>
+          <td>47-49</td>
+          <td>47-49</td>
+          <td>47-49</td>
+          <td>4-6 месяца</td>
+        </tr>
+        <tr>
+          <td>74</td>
+          <td>69-74</td>
+          <td>49-51</td>
+          <td>47-49</td>
+          <td>49-51</td>
+          <td>7-9 месяца</td>
+        </tr>
+        <tr>
+          <td>50</td>
+          <td>45-50</td>
+          <td>41-43</td>
+          <td>41-43</td>
+          <td>50</td>
+          <td>0-1 месяца</td>
+        </tr>
+        <tr>
+          <td>56</td>
+          <td>51-56</td>
+          <td>43-45</td>
+          <td>43-45</td>
+          <td>43-45</td>
+          <td>1-2 месяца</td>
+        </tr>
+        <tr>
+          <td>62</td>
+          <td>57-62</td>
+          <td>45-47</td>
+          <td>45-47</td>
+          <td>45-47</td>
+          <td>2-3 месяца</td>
+        </tr>
+        <tr>
+          <td>68</td>
+          <td>63-68</td>
+          <td>47-49</td>
+          <td>47-49</td>
+          <td>47-49</td>
+          <td>4-6 месяца</td>
+        </tr>
+        <tr>
+          <td>74</td>
+          <td>69-74</td>
+          <td>49-51</td>
+          <td>47-49</td>
+          <td>49-51</td>
+          <td>7-9 месяца</td>
         </tr>
       </tbody>
     </table>

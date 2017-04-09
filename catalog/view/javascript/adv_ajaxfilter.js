@@ -274,11 +274,11 @@ function filter(b, c ) {
 
 function adv_result(g, b) {
     var cont = getContainer();
-    var view = 'product-layout';
+    var view = 'grid_holder';
 
     var hash = window.location.hash.substr(1);
     if (typeof(g.result_html) != "undefined") {
-        $(cont).parent().html(g.result_html);
+        $(".grid_holder").html(g.result_html);
         if (localStorage.getItem('display') == 'list') {
        		$('#list-view').trigger('click');
        	} else {
