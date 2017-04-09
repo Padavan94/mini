@@ -990,7 +990,7 @@ body {
 	overflow: hidden;
 	padding-top: 24px;
 
-	&:after {
+	&:before {
 		content: "";
 		width: 250px;
 		height: 250px;
@@ -1022,6 +1022,18 @@ body {
 			width: 6px;
 			height: 6px;
 			margin: 0px 2px;
+		}
+	}
+
+	&--fill {
+		width: 246px;
+		height: 123px;
+
+		&:before {
+			width: 246px;
+			height: 246px;
+			background-color: $brand;
+			z-index: 0;
 		}
 	}
 }
@@ -1257,8 +1269,208 @@ body {
 }
 
 
+.table-size {
+	padding: 144px 45px 55px 45px;
+	background-color: #fff;
+	margin: 0px auto;
+	max-width: 772px;
+	position: relative;
 
 
+	table {
+		width: 100%;
+		thead {
+			tr {
+				td {
+					color: #fff;
+					background-color: #161616;
+				}
+			}
+		}
+		tr {
+			td {
+				padding: 14px 5px;
+				text-align: center;
+				border: 1px solid #fff;
+				background-color: #edeff1;
+				text-transform: uppercase;
+				color: #161616;
+			}
+		}
+	}
+}
+
+#column-left {
+	
+}
+
+.filters-col {
+	width: 285px;
+	float: left;
+	padding: 0 15px;
+
+	.option_box {
+		margin-bottom: 35px;
+
+		.option_name {
+			text-transform: uppercase;
+			font-size: 12px;
+			text-transform: uppercase;
+			font-family: "Ral-b";
+			margin-bottom: 12px;
+			cursor: pointer;
+		}
+
+		.filters {
+			font-size: 14px;
+			color: #161616;
+			font-family: "Ral-m";
+
+			.check {
+				padding-left: 35px;
+				position: relative;
+				margin-bottom: 20px;
+				input {
+					position: absolute;
+					left: 0;
+					top: 0;
+					opacity: 0;
+					pointer-events: none;
+					&:checked + label:before {
+
+						content: "\f00c";
+					} 
+				}
+
+				label {
+					margin-bottom: 0px;
+					cursor: pointer;
+					&:before {
+						content: "";
+						width: 25px;
+						height: 25px;
+						border-radius: 50%;
+						border: 1px solid #dcdcdc;
+						position: absolute;
+						left: 0;
+						top: calc(50% - 12.5px);
+						font: normal normal normal 14px/1 FontAwesome;
+						display: flex;
+						justify-content: center;
+						align-items: center;
+						color: $brand2;
+					}
+				}
+			}
+
+		}
+
+		&.color {
+			position: relative;
+			input {
+				position: absolute;
+				left: 0;
+				top: 0;
+				opacity: 0;
+				pointer-events: none;
+				&:checked ~ .txt {
+					background-color: $brand;
+				} 
+			}
+
+			.filters {
+				display: flex;
+				flex-wrap: wrap;
+			}
+
+			.filter-label {
+				display: flex;
+				align-items: center;
+				width: 50%;
+				padding-right: 15px;
+				margin-bottom: 6px;
+
+				.rgb {
+					width: 22px;
+					height: 22px;
+					border-radius: 50%;
+					border: 2px solid #dbdbdb;
+					margin-right: 5px;
+					cursor: pointer;
+				}
+
+				.txt {
+					font-size: 12px;
+					color: #161616;
+					cursor: pointer;
+				}
+			}
+		}
+	}
+}
+
+#slider-range {
+	width: 100%;
+	border-radius: 4px;
+	background-color: #e5e5e5;
+	box-shadow: inset 0 2px 3px rgba(0,0,0,.04);
+	position: relative;
+
+	.ui-slider-handle {
+		height: 16px;
+		width: 16px;
+		border-radius: 50%;
+		background-color: $brand2;
+		position: absolute;
+		top: -4px;
+		cursor: pointer;
+		position: absolute;
+		&:last-child {
+			transform: translateX(-100%);
+		}
+
+		&:focus {
+			outline: none;
+		}
+	}
+
+	.ui-slider-range {
+		height: 9px;
+		background-color: red;
+		background-color: $brand;
+		position: relative;
+	}
+}
+.price_range {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 7px;
+	font-size: 14px;
+	font-family: "Rob-b";
+	color: #595959;
+}
+
+
+
+.category-page {
+	&__container {
+		padding: 50px 15px;
+	}
+}
+
+.grid_holder {
+	.item {
+		.image {
+			height: 388px;
+			position: relative;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			overflow: hidden;
+		}
+	}
+}
 
 
 

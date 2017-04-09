@@ -1,11 +1,13 @@
 <?php echo $header; ?>
-<div class="container">
+<div class="clearfix category-page">
+<div class="clearfix container category-page__container">
+  <div class="breadcrumb_wrapper"></div>
   <ul class="breadcrumb">
     <?php foreach ($breadcrumbs as $breadcrumb) { ?>
     <li><a href="<?php echo $breadcrumb['href']; ?>"><?php echo $breadcrumb['text']; ?></a></li>
     <?php } ?>
   </ul>
-  <div class="row"><?php echo $column_left; ?>
+  <div class="row clearfix "><?php echo $column_left; ?>
 <?php if ($column_left && $column_right) { ?>
     <?php $class = 'col-sm-6'; ?>
     <?php } elseif ($column_left || $column_right) { ?>
@@ -48,9 +50,9 @@
 
   <?php if ($products) { ?>
   <div class="product-filter">
-    <div class="display"> 
-    <a id="grid_view_icon"><i class="fa fa-th"></i></a><a id="list_view_icon"><i class="fa fa-list"></i></a>
-    </div>
+<!--     <div class="display"> 
+<a id="grid_view_icon"><i class="fa fa-th"></i></a><a id="list_view_icon"><i class="fa fa-list"></i></a>
+</div> -->
     <div class="limit mobile_hide"><?php echo $text_limit; ?>
       <select id="input-limit" onchange="location = this.value;">
         <?php foreach ($limits as $limits) { ?>
@@ -74,7 +76,7 @@
       </select>
               
     </div>
-     <div class="compare-link mobile_hide"><a href="<?php echo $compare; ?>" id="compare-total"><?php echo $text_compare; ?></a></div>
+    <!--  <div class="compare-link mobile_hide"><a href="<?php echo $compare; ?>" id="compare-total"><?php echo $text_compare; ?></a></div> -->
   </div>
   <div id="main" class="product-<?php echo $cosyone_default_view; ?>">
   <div class="grid_holder">
@@ -214,5 +216,6 @@ $(document).ready(function() {
 });
 </script>
 
+</div>
 </div>
 <?php echo $footer; ?>
