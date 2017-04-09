@@ -167,3 +167,16 @@
 2017-04-09 22:36:03 - PHP Notice:  Undefined index: color in D:\OpenServer\domains\mini.loc\admin\model\catalog\filter.php on line 168
 2017-04-09 22:36:03 - PHP Notice:  Undefined index: color in D:\OpenServer\domains\mini.loc\admin\model\catalog\filter.php on line 168
 2017-04-09 22:36:03 - PHP Notice:  Undefined index: color in D:\OpenServer\domains\mini.loc\admin\model\catalog\filter.php on line 168
+2017-04-10 1:29:57 - PHP Notice:  Undefined index: image in D:\OpenServer\domains\mini.loc\admin\view\template\design\special_offers_form.tpl on line 38
+2017-04-10 1:29:57 - PHP Notice:  Undefined variable: button_remove in D:\OpenServer\domains\mini.loc\admin\view\template\design\special_offers_form.tpl on line 132
+2017-04-10 1:29:57 - PHP Notice:  Undefined variable: button_remove in D:\OpenServer\domains\mini.loc\admin\view\template\design\special_offers_form.tpl on line 132
+2017-04-10 1:29:57 - PHP Notice:  Undefined variable: button_remove in D:\OpenServer\domains\mini.loc\admin\view\template\design\special_offers_form.tpl on line 132
+2017-04-10 1:29:57 - PHP Notice:  Undefined variable: button_remove in D:\OpenServer\domains\mini.loc\admin\view\template\design\special_offers_form.tpl on line 216
+2017-04-10 1:53:24 - PHP Notice:  Undefined index: collections_id in D:\OpenServer\domains\mini.loc\catalog\controller\module\collections_widget.php on line 33
+2017-04-10 1:53:24 - PHP Notice:  Undefined index: collections_id in D:\OpenServer\domains\mini.loc\catalog\controller\module\collections_widget.php on line 33
+2017-04-10 1:53:24 - PHP Notice:  Undefined index: collections_id in D:\OpenServer\domains\mini.loc\catalog\controller\module\collections_widget.php on line 33
+2017-04-10 1:53:24 - PHP Notice:  Undefined index: collections_id in D:\OpenServer\domains\mini.loc\catalog\controller\module\collections_widget.php on line 33
+2017-04-10 1:53:51 - PHP Notice:  Undefined index: collections_id in D:\OpenServer\domains\mini.loc\catalog\controller\module\collections_widget.php on line 33
+2017-04-10 1:53:51 - PHP Notice:  Undefined index: collections_id in D:\OpenServer\domains\mini.loc\catalog\controller\module\collections_widget.php on line 33
+2017-04-10 1:53:51 - PHP Notice:  Undefined index: collections_id in D:\OpenServer\domains\mini.loc\catalog\controller\module\collections_widget.php on line 33
+2017-04-10 1:53:51 - PHP Notice:  Undefined index: collections_id in D:\OpenServer\domains\mini.loc\catalog\controller\module\collections_widget.php on line 33
