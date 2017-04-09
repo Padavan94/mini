@@ -161,3 +161,9 @@
 2017-04-07 23:48:19 - PHP Notice:  Undefined variable: image in C:\OPENSERVER\OpenServer\domains\mini.loc\catalog\view\theme\cosyone\template\blog\special_offers-single.tpl on line 34
 2017-04-07 23:48:19 - PHP Notice:  Undefined variable: image in C:\OPENSERVER\OpenServer\domains\mini.loc\catalog\view\theme\cosyone\template\blog\special_offers-single.tpl on line 34
 2017-04-09 21:10:24 - PHP Notice:  Undefined variable: image in C:\OPENSERVER\OpenServer\domains\mini.loc\catalog\view\theme\cosyone\template\blog\special_offers-single.tpl on line 34
+2017-04-09 22:36:02 - PHP Notice:  Undefined index: color in D:\OpenServer\domains\mini.loc\admin\model\catalog\filter.php on line 168
+2017-04-09 22:36:02 - PHP Notice:  Undefined index: color in D:\OpenServer\domains\mini.loc\admin\model\catalog\filter.php on line 168
+2017-04-09 22:36:02 - PHP Notice:  Undefined index: color in D:\OpenServer\domains\mini.loc\admin\model\catalog\filter.php on line 168
+2017-04-09 22:36:03 - PHP Notice:  Undefined index: color in D:\OpenServer\domains\mini.loc\admin\model\catalog\filter.php on line 168
+2017-04-09 22:36:03 - PHP Notice:  Undefined index: color in D:\OpenServer\domains\mini.loc\admin\model\catalog\filter.php on line 168
+2017-04-09 22:36:03 - PHP Notice:  Undefined index: color in D:\OpenServer\domains\mini.loc\admin\model\catalog\filter.php on line 168
