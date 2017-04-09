@@ -1427,9 +1427,6 @@ body {
 		top: -4px;
 		cursor: pointer;
 		position: absolute;
-		&:last-child {
-			transform: translateX(-100%);
-		}
 
 		&:focus {
 			outline: none;
