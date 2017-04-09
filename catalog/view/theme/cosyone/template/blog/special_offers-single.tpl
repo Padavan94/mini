@@ -1,6 +1,6 @@
 
 <?php echo $header; ?>
-
+<div class="look-book-single">
 <div class="content content-blog-single">
   <div class="container">
     <div class="row">
@@ -8,11 +8,45 @@
         <div class="aside-wrap">
          
         <div id="content" class="content__right">
+          <div class="breadcrumb_wrapper"></div>
           <ul class="breadcrumb">
             <?php foreach ($breadcrumbs as $breadcrumb) { ?>
             <li><a href="<?php echo $breadcrumb['href']; ?>"><?php echo $breadcrumb['text']; ?></a></li>
             <?php } ?>
           </ul>
+          <div class="title-cs">
+            <h1><?php //echo ucfirst($blog['name']); ?>
+              lookbook 
+              <div class="bubles">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+            </h1>
+            
+          </div>
+
+          <?php if($images) : ?>
+              <div class="hits__carousel-inner">
+                <div class="hits__carousel">
+              <!-- <div class="collection-grid__sizer"></div> -->
+                <?php if($blog['image']): ?>
+                  <a href="/image/<?php echo $image['image']; ?>"><img src="/image/<?php echo $blog['image']; ?>" alt="<?php $blog['image']; ?>"></a>
+                  
+                  <?php else: ?>
+                    <a href="/image/<?php echo $image['image']; ?>"><img src="/image/no_image.png" alt="/image/no_image.png" /></a>
+                  
+                <?php endif; ?>
+                <?php foreach ($images as $image) : ?>
+                  <div class="collection-grid__item">
+                    <a href="/image/<?php echo $image['image']; ?>"><img src="/image/<?php echo $image['image']; ?>" alt="img"></a>
+                  </div>
+                <?php endforeach; ?>
+              </div>
+            </div>
+            </div>
+          <?php endif; ?>
+          <?php if(false){ ?> 
           <div class="title">
             <h2><?php echo ucfirst($blog['name']); ?></h2>
           </div>
@@ -35,6 +69,7 @@
                 </div>
           </div>
         </div>
+        <?php } ?>  
       </div>
     </div>
   </div>
@@ -56,27 +91,32 @@
 <?php } ?>    
     
     
-  <?php if($images) : ?>
-    <div class="row">
-    <div class="collection-grid">
-      <!-- <div class="collection-grid__sizer"></div> -->
-        <?php foreach ($images as $image) : ?>
-          <div class="collection-grid__item">
-            <a href="/image/<?php echo $image['image']; ?>"><img src="/image/<?php echo $image['image']; ?>" alt="img"></a>
-          </div>
-        <?php endforeach; ?>
-      </div>
-    </div>
-    </div>
-  <?php endif; ?>
+  
+</div>
 </div>
 
 
+<style>
+  .owl-carousel .owl-item {
+    text-align: center;
+  }
+</style>
 
-
-
-<script type="text/javascript"><!--
+<script type="text/javascript">
 $(document).ready(function() {
+  $('.hits__carousel').owlCarousel({
+    items: 1,
+    autoPlay: true,
+    navigation: true,
+    navigationText: ["<span><i class='fa fa-angle-left'></i></span>","<span><i class='fa fa-angle-right'></i></span>"],
+    dots: true,
+    autoHeight: true
+  });
+});
+</script> 
+
+
+<!-- <script type="text/javascript">$(document).ready(function() {
   $('.collection-grid').magnificPopup({
     type:'image',
     delegate: 'a',
@@ -85,6 +125,8 @@ $(document).ready(function() {
     }
   });
 });
-//--></script> 
+//</script>  -->
+
+
 
 <?php echo $footer; ?>

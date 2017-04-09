@@ -76,6 +76,35 @@
   </div>
 </div> <!-- #footer ends --> 
 
+
+<div class="table-size">
+  <div class="table-size__inner">
+    <table class="table-size__table">
+      <thead>
+        <tr>
+          <td>Размер</td>
+          <td>Размер</td>
+          <td>Размер</td>
+          <td>Размер</td>
+          <td>Размер</td>
+          <td>Размер</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>50</td>
+          <td>45-50</td>
+          <td>41-43</td>
+          <td>41-43</td>
+          <td>50</td>
+          <td>0-1 месяца</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
 <?php if(false): ?>
   <div class="bottom_line"> <div class="scroll_to_top"><a class="scroll_top icon tablet_hide"><i class="fa fa-angle-up"></i></a></div>
   <div id="powered"><?php echo $powered; ?></div>
