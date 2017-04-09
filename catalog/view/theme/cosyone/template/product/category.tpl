@@ -53,18 +53,7 @@
 <!--     <div class="display"> 
 <a id="grid_view_icon"><i class="fa fa-th"></i></a><a id="list_view_icon"><i class="fa fa-list"></i></a>
 </div> -->
-    <div class="limit mobile_hide"><?php echo $text_limit; ?>
-      <select id="input-limit" onchange="location = this.value;">
-        <?php foreach ($limits as $limits) { ?>
-        <?php if ($limits['value'] == $limit) { ?>
-        <option value="<?php echo $limits['href']; ?>" selected="selected"><?php echo $limits['text']; ?></option>
-        <?php } else { ?>
-        <option value="<?php echo $limits['href']; ?>"><?php echo $limits['text']; ?></option>
-        <?php } ?>
-        <?php } ?>
-      </select>
-    </div>
-    <div class="sort"><?php echo $text_sort; ?>
+<div class="sort"><span><?php echo $text_sort; ?></span>
       <select id="input-sort" onchange="location = this.value;">
         <?php foreach ($sorts as $sorts) { ?>
         <?php if ($sorts['value'] == $sort . '-' . $order) { ?>
@@ -76,6 +65,18 @@
       </select>
               
     </div>
+    <div class="limit mobile_hide"><span><?php echo $text_limit; ?></span>
+      <select id="input-limit" onchange="location = this.value;">
+        <?php foreach ($limits as $limits) { ?>
+        <?php if ($limits['value'] == $limit) { ?>
+        <option value="<?php echo $limits['href']; ?>" selected="selected"><?php echo $limits['text']; ?></option>
+        <?php } else { ?>
+        <option value="<?php echo $limits['href']; ?>"><?php echo $limits['text']; ?></option>
+        <?php } ?>
+        <?php } ?>
+      </select>
+    </div>
+    
     <!--  <div class="compare-link mobile_hide"><a href="<?php echo $compare; ?>" id="compare-total"><?php echo $text_compare; ?></a></div> -->
   </div>
   <div id="main" class="product-<?php echo $cosyone_default_view; ?>">

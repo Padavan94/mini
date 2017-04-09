@@ -2142,9 +2142,6 @@ a.button.second:hover {
 	
 }
 .product-grid .price {
-	float:right;
-	text-align:right;
-	width:37%;
 	font-size:16px;
 }
 .product-grid .price-old {
