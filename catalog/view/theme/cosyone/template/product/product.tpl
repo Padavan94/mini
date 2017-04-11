@@ -1,5 +1,6 @@
 <?php echo $header; ?>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.2/css/swiper.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css">
 
 <div class="container">
 <div class="breadcrumb_wrapper"></div>
@@ -86,30 +87,15 @@
 
       <?php if ($price) { ?>
       <div>
-        <div class="price-new"><?php echo $text_special_price; ?><span class="amount contrast_font" itemprop="price"><?php echo $special; ?></span></div>
-      <div class="price-old"><?php echo $text_old_price; ?><span class="amount contrast_font"><?php echo $price; ?></span></div>
-      <div class="price-save"><?php echo $text_you_save; ?><span class="amount contrast_font"><?php echo $yousave; ?></span> </div>
+        <div class="price-new"><span class="amount contrast_font" itemprop="price"><?php echo $special; ?></span></div>
+      <div class="price-old"><span class="amount contrast_font"><?php echo $price; ?></span></div>
       </div>
       <?php } ?>
 
       
-      <?php if ($review_status) { ?>
-      <div class="review">
-       <span class="rating r<?php echo $rating; ?>">
-       <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
-       </span>
-        <a class="to_review" onclick="$('a[href=\'#tab-review\']').trigger('click');"><?php echo $reviews; ?></a>
-        <a class="to_review" onclick="$('a[href=\'#tab-review\']').trigger('click');"><?php echo $text_write; ?></a>
-        </div>
-        
-        <?php if ($count_reviews > 0) { ?><!-- Rich snippet start -->
-        <div itemprop="review" itemscope itemtype="http://data-vocabulary.org/Review-aggregate"> 
-       	<span itemprop="rating" content="<?php echo $rating; ?>"></span><span itemprop="count" content="<?php echo $reviews; ?>"></span>
-      	</div> 
-        <?php } ?><!-- Rich snippet end -->
-        
-      <?php } ?>
       
+        <?php if (false): ?>
+
         <div class="description">
         <?php if ($manufacturer) { ?>
         <span class="contrast_font"><?php echo $text_manufacturer; ?></span> <a href="<?php echo $manufacturers; ?>"><?php echo $manufacturer; ?></a><br />
@@ -125,6 +111,7 @@
         
         </div> <!-- .description ends -->
         
+        <?php endif ?>
         
        <div id="product">
        
@@ -143,25 +130,10 @@
       <?php } ?>
        
       <?php if ($options) { ?>
-      <div class="options contrast_font">
-      <h2><?php echo $text_option; ?></h2>
+      <div class="options">
         <?php foreach ($options as $option) { ?>
                 
-        <?php if ($option['type'] == 'select') { ?>
-            <div class="form-group<?php echo ($option['required'] ? ' required' : ''); ?>">
-              <label class="control-label" for="input-option<?php echo $option['product_option_id']; ?>"><?php echo $option['name']; ?></label>
-              <select name="option[<?php echo $option['product_option_id']; ?>]" id="input-option<?php echo $option['product_option_id']; ?>" class="form-control">
-                <option value=""><?php echo $text_select; ?></option>
-                <?php foreach ($option['product_option_value'] as $option_value) { ?>
-                <option value="<?php echo $option_value['product_option_value_id']; ?>"><?php echo $option_value['name']; ?>
-                <?php if ($option_value['price']) { ?>
-                (<?php echo $option_value['price_prefix']; ?><?php echo $option_value['price']; ?>)
-                <?php } ?>
-                </option>
-                <?php } ?>
-              </select>
-            </div>
-            <?php } ?>
+       
         
         <?php if ($option['type'] == 'radio') { ?>
             <div class="form-group<?php echo ($option['required'] ? ' required' : ''); ?>">
@@ -234,6 +206,23 @@
             </div>
             <?php } ?>
             <?php } ?>
+
+             <?php if ($option['type'] == 'select') { ?>
+            <div class="form-group<?php echo ($option['required'] ? ' required' : ''); ?>">
+              <label class="control-label" for="input-option<?php echo $option['product_option_id']; ?>"><?php echo $option['name']; ?></label>
+              <select name="option[<?php echo $option['product_option_id']; ?>]" id="input-option<?php echo $option['product_option_id']; ?>" class="form-control">
+                <option value=""><?php echo $text_select; ?></option>
+                <?php foreach ($option['product_option_value'] as $option_value) { ?>
+                <option value="<?php echo $option_value['product_option_value_id']; ?>"><?php echo $option_value['name']; ?>
+                <?php if ($option_value['price']) { ?>
+                (<?php echo $option_value['price_prefix']; ?><?php echo $option_value['price']; ?>)
+                <?php } ?>
+                </option>
+                <?php } ?>
+              </select>
+              <a href=".table-size" class="table-link table-popup"><i class="icon-triangle"></i><span class="table-size2">Таблица размеров</span></a>
+            </div>
+            <?php } ?>
         
         <?php if ($option['type'] == 'text') { ?>
             <div class="form-group<?php echo ($option['required'] ? ' required' : ''); ?>">
@@ -289,8 +278,13 @@
       </div> <!-- .options ends -->
       <?php } ?> 
       
+      <label class="control-label" for="input-option228">выберите количество</label>
       <div class="cart">
          
+
+        <?php if (false): ?>
+          
+        
       <?php if ($price) { ?> 
       <div class="price">
         
@@ -305,22 +299,43 @@
       </div> 
      </span> <!-- rich snippet ends -->
       <?php } ?>
-        
+        <?php endif ?>
         	
-          <a class="quantity_button minus icon">-</a><input type="text" name="quantity" value="<?php echo $minimum; ?>" size="2" id="input-quantity" class="quantity" /><a class="quantity_button plus icon">+</a>
+          <div class="counter-price">
+            <a class="quantity_button minus icon">-</a><input type="text" name="quantity" value="<?php echo $minimum; ?>" size="2" id="input-quantity" class="quantity" /><a class="quantity_button plus icon">+</a>
+          </div>
          
           <input type="hidden" name="product_id" value="<?php echo $product_id; ?>" />
 
           <button type="submit" id="button-cart" data-loading-text="<?php echo $text_loading; ?>" class="button contrast"><i class="fa fa-shopping-cart"></i> <?php echo $button_cart; ?></button>
           
-          <div class="icons_wrapper">
-    <a class="sq_icon" onclick="wishlist.add('<?php echo $product_id; ?>');" data-tooltip="<?php echo $button_wishlist; ?>"><i class="fa fa-heart"></i></a>
-    <a class="sq_icon compare" onclick="compare.add('<?php echo $product_id; ?>');" data-tooltip="<?php echo $button_compare; ?>"><i class="fa fa-arrow-right"></i><i class="fa fa-arrow-left main_compare"></i></a>
-        </div>
+         
         
         
         
        </div> <!-- Cart ends -->
+      <?php if ($review_status) { ?>
+      <div class="review">
+       <span class="rating r<?php echo $rating; ?>">
+       <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+       </span>
+        <a class="to_review" onclick="$('a[href=\'#tab-review\']').trigger('click');"><?php echo $reviews; ?></a>
+        <a class="to_review" onclick="$('a[href=\'#tab-review\']').trigger('click');"><?php echo $text_write; ?></a>
+        </div>
+        
+        <?php if ($count_reviews > 0) { ?><!-- Rich snippet start -->
+        <div itemprop="review" itemscope itemtype="http://data-vocabulary.org/Review-aggregate"> 
+        <span itemprop="rating" content="<?php echo $rating; ?>"></span><span itemprop="count" content="<?php echo $reviews; ?>"></span>
+        </div> 
+        <?php } ?><!-- Rich snippet end -->
+        
+      <?php } ?>
+
+
+        <?php if (false): ?>
+          
+       
+
         <?php if ($minimum > 1) { ?>
         <div class="minimum"><?php echo $text_minimum; ?></div>
         <?php } ?>
@@ -336,8 +351,14 @@
         </div>
         <?php } ?>
         <?php } ?>
+
+         <?php endif ?>
      </div>
          
+    <?php if (false): ?>
+      
+    
+
      <div class="share">
      <?php if($cosyone_product_share == 'content'){ ?>
      <!-- AddThis Button START -->
@@ -358,6 +379,8 @@
         <?php } ?>
         <?php } ?>
        </div> <!-- .share ends -->
+
+       <?php endif ?>
        
     </div> <!-- product-info-right END -->
     
@@ -570,30 +593,32 @@
   <?php echo $content_bottom; ?></div>
   <?php echo $column_right; ?></div>
 
+
 <script type="text/javascript" src="catalog/view/theme/cosyone/js/cloud-zoom.1.0.2.min.js"></script>
 
 <script type="text/javascript"><!--
 $(document).ready(function() {
    $('.colorbox').colorbox({
       overlayClose: true,
-	  maxWidth:'95%',
-	  rel:'gallery',
+    maxWidth:'95%',
+    rel:'gallery',
       opacity: 0.5
 }); 
 });
 //--></script>
 <script type="text/javascript">
         jQuery(function($) {
-			//Product thumbnails
-			$(".cloud-zoom-gallery").click(function() {
-				$("#zoom-btn").attr('href', $(this).attr('href'));
-				$("#zoom-btn").attr('title', $(this).attr('title'));
-			
-						$(".cloud-zoom-gallery").each(function() {
-						$(this).addClass("cboxElement");
-					});
-					$(this).removeClass("cboxElement");
-							});
+      //Product thumbnails
+      $(".cloud-zoom-gallery").last().removeClass("cboxElement");
+      $(".cloud-zoom-gallery").click(function() {
+        $("#zoom-btn").attr('href', $(this).attr('href'));
+        $("#zoom-btn").attr('title', $(this).attr('title'));
+      
+            $(".cloud-zoom-gallery").each(function() {
+            $(this).addClass("cboxElement");
+          });
+          $(this).removeClass("cboxElement");
+              });
             
         });
 </script>
@@ -733,36 +758,7 @@ $('#button-cart').on('click', function() {
 			}
 			
 			if (json['success']) {
-                            
-                            alert('Ты знаешь как найти эту ебалу');
-                            //json['products'] //массив с товарами
-                            // начало ебалы
-                            var html;
-                            html += '<table>';
-                                <?php foreach ($products as $product) { ?>
-                                html += '<tr>';
-                                  html += '<td class="image border">';
-                                    <?php if ($product['thumb']) { ?>
-                                    html += '<a href="<?php echo $product['href']; ?>"><img src="<?php echo $product['thumb']; ?>" alt="<?php echo $product['name']; ?>" title="<?php echo $product['name']; ?>" /></a>'
-                                    <?php } ?>
-                                html += '</td>';
-                                  html += '<td class="name border">';
-                                  html += '<a class="contrast_font" href="<?php echo $product['href']; ?>"><?php echo $product['name']; ?></a>';
-                                    html += '<?php echo $product['quantity']; ?>&nbsp;x&nbsp;<b><?php echo $product['price']; ?></b>';
-                                    html += '<div>';
-                                      <?php foreach ($product['option'] as $option) { ?>
-                                      html += '<?php echo $option['name']; ?>: <?php echo $option['value']; ?><br />';
-                                      <?php } ?>
-                                    html += '</div></td>';
-                                  html += '<td class="remove border"><a title="<?php echo $button_remove; ?>" onclick="cart.remove('<?php echo $product['cart_id']; ?>');"><span class="remove">x</span></a></td>';
-                                html += '</tr>';
-                                <?php } ?>
-                              html += '</table>';
-                            // конец ебалы
-                            
-                            
-                            
-				//alert('azaza');
+				
 				$.colorbox({
 html:'<div class="cart_notification"><div class="product"><img src="' + json['image'] + '"/><span>' + json['success'] + '</span></div><div class="bottom"><a class="btn btn-default" href="' + json['link_cart'] + '">' + json['text_cart'] + '</a> ' + '<a class="btn btn-primary" href="' + json['link_checkout'] + '">' + json['text_checkout'] + '</a></div></div>',
 className: "notification",
@@ -893,6 +889,7 @@ $('#button-review').on('click', function() {
 //--></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.2/js/swiper.jquery.min.js"></script>
 <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
 </div>
 
 
@@ -907,6 +904,10 @@ $('#button-review').on('click', function() {
         autoplay: 5000,
         loop: true
     });
+
+    $('.table-popup').magnificPopup({
+        type:'inline',
+      });
 </script>
 
 <?php echo $footer; ?>

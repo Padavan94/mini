@@ -2664,14 +2664,14 @@ a.button.second:hover {
 	margin:0px 5px 5px 0;
 }
 .product-info .clean-option-image .single-option label img {
-	border:1px solid #e5e5e5;
+	border:1px solid transparent;
 	padding:3px;
 	max-height:28px;
 	cursor:pointer;
 }
 .product-info .clean-option-image .single-option label img:hover,
 .product-info .clean-option-image .single-option input[type="radio"]:checked + label img {
-	border:1px solid #222222;
+	border:1px solid #5f2a43;
 }
 .product-info .clean-option-image [data-tooltip]:after {bottom:40px;}
 .product-info .clean-option-image [data-tooltip]:before {bottom:44px;}
