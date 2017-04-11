@@ -676,7 +676,25 @@ body {
 
 
 .product-layout {
-	
+	margin: 0 25px;
+	position: relative;
+	&__bage {
+		height: auto !important;
+		width: auto !important;
+		position: absolute;
+		z-index: 10;
+		left: 22px;
+		top: 17px;
+	}
+	&__flag {
+		height: auto !important;
+		width: auto !important;
+		position: absolute;
+		z-index: 10;
+		right: 22px;
+		top: 17px;
+	}
+
 }
 
 
