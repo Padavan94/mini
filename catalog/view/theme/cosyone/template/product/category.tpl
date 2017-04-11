@@ -32,7 +32,7 @@
   <?php } ?>
   
   <?php if ($categories && $cosyone_category_refine) { ?>
-  <div class="box-heading"><?php echo $text_refine; ?></div>
+  <!-- <div class="box-heading"><?php echo $text_refine; ?></div> -->
   <div class="grid_holder">
   <div class="category-grid <?php echo $cosyone_category_per_row; ?>">
   

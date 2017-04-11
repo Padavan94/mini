@@ -1,5 +1,8 @@
 <?php echo $header; ?>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.2/css/swiper.min.css">
+
 <div class="container">
+<div class="breadcrumb_wrapper"></div>
 <ul class="breadcrumb">
     <?php foreach ($breadcrumbs as $breadcrumb) { ?>
     <li><a href="<?php echo $breadcrumb['href']; ?>"><?php echo $breadcrumb['text']; ?></a></li>
@@ -19,16 +22,38 @@
   <div class="product-info">
     <?php if ($thumb || $images) { ?>
     <div class="left">
+      <?php if ($images) { ?>
+
+      <div class="image-additional" >      
+      <div class="swiper-container">
+      <ul class="swiper-wrapper">
+       <!-- Additional images -->
+        <?php foreach ($images as $image) { ?>
+        <li class="swiper-slide">
+        <?php if ($cosyone_product_zoom) { ?>
+        <a href="<?php echo $image['popup']; ?>" title="<?php echo $heading_title; ?>" class="cloud-zoom-gallery colorbox" rel="useZoom: 'zoom1', smallImage: '<?php echo $image['thumb']; ?>'">
+        <?php } else { ?>
+        <a href="<?php echo $image['popup']; ?>" title="<?php echo $heading_title; ?>" class="colorbox" rel="useZoom: 'zoom1', smallImage: '<?php echo $image['thumb']; ?>'">
+        <?php } ?>
+        <img src="<?php echo $image['small']; ?>" title="<?php echo $heading_title; ?>" alt="<?php echo $heading_title; ?>" /></a></li>
+        <?php } ?>
+
+        <?php if ($thumb) { ?>
+        <li class="swiper-slide">
+          <a href="<?php echo $popup; ?>" title="<?php echo $heading_title; ?>" class="cloud-zoom-gallery colorbox" rel="useZoom: 'zoom1', smallImage: '<?php echo $thumb; ?>'"><img itemprop="image" src="<?php echo $thumb; ?>" title="<?php echo $heading_title; ?>" alt="<?php echo $heading_title; ?>" /></a>
+        </li>
+        <?php } ?>
+        </ul>
+        </div>
+        
+      </div>
+      <?php } ?>
+
+
       <?php if ($thumb) { ?>
       <div class="image">
-      
-      <?php if ($cosyone_product_zoom) { ?>
-      <a href="<?php echo $popup; ?>" title="<?php echo $heading_title; ?>" class="cloud-zoom" style="cursor:move" rel="position:'inside', showTitle: false" id='zoom1'><img itemprop="image" src="<?php echo $thumb; ?>" title="<?php echo $heading_title; ?>" alt="<?php echo $heading_title; ?>" /></a>
-      <!-- zoom link-->
-      <a href="<?php echo $popup; ?>" title="<?php echo $heading_title; ?>" id="zoom-btn" class="colorbox" rel="colorbox"><i class="fa fa-search-plus"></i></a>
-      <?php } else { ?>
+
       <a href="<?php echo $popup; ?>" title="<?php echo $heading_title; ?>" class="colorbox"><img itemprop="image" src="<?php echo $thumb; ?>" title="<?php echo $heading_title; ?>" alt="<?php echo $heading_title; ?>" /></a>
-      <?php } ?>
       
       <?php if ($cosyone_percentage_sale_badge == 'enabled') { ?>
       <?php if (!$special) { ?>
@@ -40,29 +65,7 @@
       
       <?php } ?>
       
-      <?php if ($images) { ?>
-
-      <div class="image-additional" style="width:<?php echo $thumb_width; ?>px; height:<?php echo $additional_height; ?>px">      
-      <ul class="image_carousel">
-       <!-- Additional images -->
-        <?php foreach ($images as $image) { ?>
-        <li>
-        <?php if ($cosyone_product_zoom) { ?>
-        <a href="<?php echo $image['popup']; ?>" title="<?php echo $heading_title; ?>" class="cloud-zoom-gallery colorbox" rel="useZoom: 'zoom1', smallImage: '<?php echo $image['thumb']; ?>'">
-        <?php } else { ?>
-        <a href="<?php echo $image['popup']; ?>" title="<?php echo $heading_title; ?>" class="colorbox" rel="useZoom: 'zoom1', smallImage: '<?php echo $image['thumb']; ?>'">
-        <?php } ?>
-        <img src="<?php echo $image['small']; ?>" title="<?php echo $heading_title; ?>" width="<?php echo $additional_width; ?>" height="<?php echo $additional_height; ?>" alt="<?php echo $heading_title; ?>" /></a></li>
-        <?php } ?>
-        
-        <!-- Show even the main image among the additional if  -->
-         <?php if ($cosyone_product_zoom) { ?>
-       <li><a href="<?php echo $popup; ?>" title="<?php echo $heading_title; ?>" class="cloud-zoom-gallery colorbox" rel="useZoom: 'zoom1', smallImage: '<?php echo $thumb; ?>'"><img src="<?php echo $small; ?>" title="<?php echo $heading_title; ?>" alt="<?php echo $heading_title; ?>" width="<?php echo $additional_width; ?>" height="<?php echo $additional_height; ?>"/></a></li>
-        <?php } ?>
-        </ul>
-        
-      </div>
-      <?php } ?>
+      
       <?php if($cosyone_product_share == 'image'){ ?>
      <!-- AddThis Button START -->
      <div class="addthis_toolbox addthis_default_style addthis_32x32_style">
@@ -77,9 +80,18 @@
 		<?php } ?>
     </div>
     <?php } ?>
-   <div class="right" style="margin-<?php if ($direction == 'rtl') { echo 'right'; } else { echo 'left'; } ?>:<?php echo $thumb_width; ?>px">
+   <div class="right">
       
       <h1 itemprop="name"><?php echo $heading_title; ?></h1>
+
+      <?php if ($price) { ?>
+      <div>
+        <div class="price-new"><?php echo $text_special_price; ?><span class="amount contrast_font" itemprop="price"><?php echo $special; ?></span></div>
+      <div class="price-old"><?php echo $text_old_price; ?><span class="amount contrast_font"><?php echo $price; ?></span></div>
+      <div class="price-save"><?php echo $text_you_save; ?><span class="amount contrast_font"><?php echo $yousave; ?></span> </div>
+      </div>
+      <?php } ?>
+
       
       <?php if ($review_status) { ?>
       <div class="review">
@@ -113,31 +125,7 @@
         
         </div> <!-- .description ends -->
         
-        <?php if ($price) { ?>
-        <meta itemprop="currency" content="<?php echo $currency_code; ?>" />
-        <span itemprop="offerDetails" itemscope itemtype="http://data-vocabulary.org/Offer"><!-- Rich snippets start -->
-        <?php if (($special) && ($cosyone_product_yousave)) { ?>
         
-        <div class="extended_offer">
-        
-        <div class="price-new"><?php echo $text_special_price; ?><span class="amount contrast_font" itemprop="price"><?php echo $special; ?></span></div>
-        <div class="price-old"><?php echo $text_old_price; ?><span class="amount contrast_font"><?php echo $price; ?></span></div>
-        <div class="price-save"><?php echo $text_you_save; ?><span class="amount contrast_font"><?php echo $yousave; ?></span> </div>
-        </div>
-
-        <?php } ?>
-        
-        <?php if (($special_date_end > 0) && ($cosyone_product_countdown)) { ?>
-        <div class="contrast_font"><div class="offer"></div></div> 
-		
-        <?php if ($cosyone_product_hurry) { ?>
-        <div class="hurry">
-        <span class="items_left contrast_color"><?php echo $text_stock_quantity; ?></span>
-        <span class="items_sold"><?php echo $text_items_sold; ?></span>
-        </div>
-        <?php } ?>
-        <?php } ?>
-        <?php } ?>
        <div id="product">
        
        <?php if ($recurrings) { ?>
@@ -597,7 +585,6 @@ $(document).ready(function() {
 <script type="text/javascript">
         jQuery(function($) {
 			//Product thumbnails
-			$(".cloud-zoom-gallery").last().removeClass("cboxElement");
 			$(".cloud-zoom-gallery").click(function() {
 				$("#zoom-btn").attr('href', $(this).attr('href'));
 				$("#zoom-btn").attr('title', $(this).attr('title'));
@@ -875,6 +862,22 @@ $('#button-review').on('click', function() {
 	});
 });
 //--></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.2/js/swiper.jquery.min.js"></script>
 <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js"></script>
 </div>
+
+
+
+<script>
+  var swiper = new Swiper('.swiper-container', {
+        slidesPerView: 5,
+        pagination: '.swiper-pagination',
+        paginationClickable: true,
+        direction: 'vertical',
+        spaceBetween: 9,
+        autoplay: 5000,
+        loop: true
+    });
+</script>
+
 <?php echo $footer; ?>
