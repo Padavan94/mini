@@ -1,6 +1,6 @@
 <?php
 class ModelDesignLabel extends Model {
-    public function addLabel($data) {
+    public function addlabel($data) {
         //$this->event->trigger('pre.admin.label.add', $data);
 
         $this->db->query("INSERT INTO " . DB_PREFIX . "product_label SET label_name = '" . $this->db->escape($data['name']) . "', sort_order = '" . (int)$data['sort_order'] . "', label_height = '" . (int)$data['label_height'] . "', label_width = '" . (int)$data['label_width'] . "', status = '" . (int)$data['status'] . "'");
@@ -28,7 +28,7 @@ class ModelDesignLabel extends Model {
         return $label_id;
     }
 
-    public function editLabel($label_id, $data) {
+    public function editlabel($label_id, $data) {
         //$this->event->trigger('pre.admin.label.edit', $data);
 
         $this->db->query("UPDATE " . DB_PREFIX . "product_label SET label_name = '" . $this->db->escape($data['name']) . "', label_height = '" . (int)$data['label_height'] . "', label_width = '" . (int)$data['label_width'] . "', sort_order = '" . (int)$data['sort_order'] . "' WHERE product_label_id = '" . (int)$label_id . "'");
@@ -56,7 +56,7 @@ class ModelDesignLabel extends Model {
         //$this->event->trigger('post.admin.label.edit', $label_id);
     }
 
-    public function deleteLabel($label_id) {
+    public function deletelabel($label_id) {
         //$this->event->trigger('pre.admin.label.delete', $label_id);
 
         $this->db->query("DELETE FROM " . DB_PREFIX . "product_label WHERE product_label_id = '" . (int)$label_id . "'");
@@ -68,7 +68,7 @@ class ModelDesignLabel extends Model {
         //$this->event->trigger('post.admin.label.delete', $label_id);
     }
 
-    public function getLabel($label_id) {
+    public function getlabel($label_id) {
         $query = $this->db->query("SELECT  * FROM " . DB_PREFIX . "product_label WHERE product_label_id = '" . (int)$label_id . "'");
 
         return $query->row;

@@ -112,7 +112,8 @@ class ControllerDesignLabel extends Controller {
         $this->getList();
     }
 
-    protected function getList() {
+    public function getList() {
+        
         if (isset($this->request->get['sort'])) {
             $sort = $this->request->get['sort'];
         } else {
@@ -267,7 +268,8 @@ class ControllerDesignLabel extends Controller {
         $this->response->setOutput($this->load->view('design/label_list.tpl', $data));
     }
 
-    protected function getForm() {
+    public function getForm() {
+        $this->load->model('design/label');
         $data['heading_title'] = $this->language->get('heading_title');
 
         $data['text_form'] = !isset($this->request->get['product_label_id']) ? $this->language->get('text_add') : $this->language->get('text_edit');
@@ -404,7 +406,7 @@ class ControllerDesignLabel extends Controller {
         $this->response->setOutput($this->load->view('design/label_form.tpl', $data));
     }
 
-    protected function validateForm() {
+    public function validateForm() {
         if (!$this->user->hasPermission('modify', 'design/label')) {
             $this->error['warning'] = $this->language->get('error_permission');
         }
@@ -432,7 +434,7 @@ class ControllerDesignLabel extends Controller {
         return !$this->error;
     }
 
-    protected function validateDelete() {
+    public function validateDelete() {
         if (!$this->user->hasPermission('modify', 'design/label')) {
             $this->error['warning'] = $this->language->get('error_permission');
         }

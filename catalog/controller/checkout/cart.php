@@ -400,7 +400,70 @@ class ControllerCheckoutCart extends Controller {
 				$json['redirect'] = str_replace('&amp;', '&', $this->url->link('product/product', 'product_id=' . $this->request->post['product_id']));
 			}
 		}
+//                var_dump($json);
+                
+                
+                foreach ($this->cart->getProducts() as $product) {
+			if ($product['image']) {
+				$image = $this->model_tool_image->resize($product['image'], $this->config->get($this->config->get('config_theme') . '_image_cart_width'), $this->config->get($this->config->get('config_theme') . '_image_cart_height'));
+			} else {
+				$image = '';
+			}
 
+			$option_data = array();
+
+			foreach ($product['option'] as $option) {
+				if ($option['type'] != 'file') {
+					$value = $option['value'];
+				} else {
+					$upload_info = $this->model_tool_upload->getUploadByCode($option['value']);
+
+					if ($upload_info) {
+						$value = $upload_info['name'];
+					} else {
+						$value = '';
+					}
+				}
+
+				$option_data[] = array(
+					'name'  => $option['name'],
+					'value' => (utf8_strlen($value) > 20 ? utf8_substr($value, 0, 20) . '..' : $value),
+					'type'  => $option['type']
+				);
+			}
+
+			// Display prices
+			if ($this->customer->isLogged() || !$this->config->get('config_customer_price')) {
+				$price = $this->currency->format($this->tax->calculate($product['price'], $product['tax_class_id'], $this->config->get('config_tax')), $this->session->data['currency']);
+			} else {
+				$price = false;
+			}
+
+			// Display prices
+			if ($this->customer->isLogged() || !$this->config->get('config_customer_price')) {
+				$total = $this->currency->format($this->tax->calculate($product['price'], $product['tax_class_id'], $this->config->get('config_tax')) * $product['quantity'], $this->session->data['currency']);
+			} else {
+				$total = false;
+			}
+
+			$json['products'][] = array(
+				'cart_id'   => $product['cart_id'],
+				'thumb'     => $image,
+				'name'      => $product['name'],
+				'model'     => $product['model'],
+				'option'    => $option_data,
+				'recurring' => ($product['recurring'] ? $product['recurring']['name'] : ''),
+				'quantity'  => $product['quantity'],
+				'price'     => $price,
+				'total'     => $total,
+				'href'      => $this->url->link('product/product', 'product_id=' . $product['product_id'])
+			);
+		}
+                
+                
+                //var_dump($json['products']);
+                
+                
 		$this->response->addHeader('Content-Type: application/json');
 		$this->response->setOutput(json_encode($json));
 	}

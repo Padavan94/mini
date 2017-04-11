@@ -733,7 +733,36 @@ $('#button-cart').on('click', function() {
 			}
 			
 			if (json['success']) {
-				
+                            
+                            alert('Ты знаешь как найти эту ебалу');
+                            //json['products'] //массив с товарами
+                            // начало ебалы
+                            var html;
+                            html += '<table>';
+                                <?php foreach ($products as $product) { ?>
+                                html += '<tr>';
+                                  html += '<td class="image border">';
+                                    <?php if ($product['thumb']) { ?>
+                                    html += '<a href="<?php echo $product['href']; ?>"><img src="<?php echo $product['thumb']; ?>" alt="<?php echo $product['name']; ?>" title="<?php echo $product['name']; ?>" /></a>'
+                                    <?php } ?>
+                                html += '</td>';
+                                  html += '<td class="name border">';
+                                  html += '<a class="contrast_font" href="<?php echo $product['href']; ?>"><?php echo $product['name']; ?></a>';
+                                    html += '<?php echo $product['quantity']; ?>&nbsp;x&nbsp;<b><?php echo $product['price']; ?></b>';
+                                    html += '<div>';
+                                      <?php foreach ($product['option'] as $option) { ?>
+                                      html += '<?php echo $option['name']; ?>: <?php echo $option['value']; ?><br />';
+                                      <?php } ?>
+                                    html += '</div></td>';
+                                  html += '<td class="remove border"><a title="<?php echo $button_remove; ?>" onclick="cart.remove('<?php echo $product['cart_id']; ?>');"><span class="remove">x</span></a></td>';
+                                html += '</tr>';
+                                <?php } ?>
+                              html += '</table>';
+                            // конец ебалы
+                            
+                            
+                            
+				//alert('azaza');
 				$.colorbox({
 html:'<div class="cart_notification"><div class="product"><img src="' + json['image'] + '"/><span>' + json['success'] + '</span></div><div class="bottom"><a class="btn btn-default" href="' + json['link_cart'] + '">' + json['text_cart'] + '</a> ' + '<a class="btn btn-primary" href="' + json['link_checkout'] + '">' + json['text_checkout'] + '</a></div></div>',
 className: "notification",
