@@ -68,6 +68,9 @@ body {
 .icon-card {
 	@include sprite($card);
 }
+.icon-triangle {
+	@include sprite($triangle);
+}
 
 
 
@@ -193,7 +196,12 @@ body {
 		top: 50%;
 		transform: translate(-50%,-50%);
 	}
+
+
+
 }
+
+
 
 #menu{
 	border-top: 1px solid #d9d9d9;
@@ -221,16 +229,18 @@ body {
 				text-transform: uppercase;
 				color: #161616;
 				& > i {
-					display: none;
+					position: relative;
+					top: -2px;
+					left: 5px;
 				}
 				
 			}
 		}
 	}
 
-	.menu_drop_down {
+	/* .menu_drop_down {
 		display: none;
-	}
+	} */
 }
 
 #search {
@@ -1274,7 +1284,6 @@ body {
 
 
 .table-size {
-	padding: 144px 45px 55px 45px;
 	background-color: #fff;
 	margin: 0px auto;
 	max-width: 772px;
@@ -1304,9 +1313,6 @@ body {
 	}
 }
 
-#column-left {
-	
-}
 
 .filters-col {
 	width: 285px;
@@ -1626,6 +1632,92 @@ body {
 		font-family: "Ral-b";
 		margin-bottom: 40px;
 	}
+
+	.price-new {
+		color: #161616;
+		font-family: "Rob-b";
+		font-size: 26px;
+	}
+
+	.options {
+		margin: 40px 0 30px 0;
+		border: none;
+		padding: 0;
+		.form-group {
+			margin-bottom: 30px;
+			select {
+				font-size: 12px;
+				color: #565656;
+				padding: 11px 31px;
+				border-radius: 40px;
+				border: 1px solid #eaeaea;
+				display: inline-block;
+				height: 61px;
+				width: auto;
+				margin-right: 13px;
+				&:focus {
+					box-shadow: none;
+					border-color: $brand2;
+				}
+			}
+		}
+
+		.table-size2 {
+			font-size: 12px;
+			font-family: "Ral-sb";
+			display: inline-block;
+			line-height: 13px;
+			border-bottom: 1px dashed #161616;
+		
+		}
+		.table-link {
+			display: inline-flex;
+			align-items: flex-end;
+			color: #161616;
+			&:hover {
+				color: $brand2;
+			}
+			i {
+				margin-right: 4px;
+			}
+		}
+	}
+
+	.control-label {
+		font-size: 12px;
+		text-transform: uppercase;
+		font-family: "Ral-b";
+		display: block;
+	}
+
+	.cart {
+		padding: 0;
+		background-color: transparent;
+		border: none;
+		display: flex;
+		align-items: center;
+	}
+	.counter-price {
+		display: flex;
+		align-items: center;
+		margin-right: 25px;
+	}
+	
+	.button {
+		font-size: 12px;
+
+		font-family: Ral-m;
+		padding: 16px 28px;
+		border-radius: 40px;
+		border: 2px solid #ffeb3b;
+		display: inline-block;
+		background-color: transparent;
+		display: inline-block;
+		width: auto;
+		margin-top: 10px;
+		color: #111;
+	}
+
 
 }
 
