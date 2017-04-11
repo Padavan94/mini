@@ -29,3 +29,5 @@
 2017-04-11 21:28:57 - PHP Notice:  Undefined variable: button_remove in C:\OPENSERVER\OpenServer\domains\mini.loc\vqmod\vqcache\vq2-catalog_view_theme_cosyone_template_product_product.tpl on line 774
 2017-04-11 21:28:57 - PHP Notice:  Undefined index: cart_id in C:\OPENSERVER\OpenServer\domains\mini.loc\vqmod\vqcache\vq2-catalog_view_theme_cosyone_template_product_product.tpl on line 774
 2017-04-11 23:22:37 - PHP Notice:  Undefined variable: image in C:\OPENSERVER\OpenServer\domains\mini.loc\catalog\view\theme\cosyone\template\blog\special_offers-single.tpl on line 34
+2017-04-12 0:36:54 - PHP Notice:  Undefined variable: false in C:\OPENSERVER\OpenServer\domains\mini.loc\vqmod\vqcache\vq2-catalog_view_theme_cosyone_template_product_product.tpl on line 453
+2017-04-12 2:07:40 - PHP Notice:  Undefined variable: image in C:\OPENSERVER\OpenServer\domains\mini.loc\catalog\view\theme\cosyone\template\blog\special_offers-single.tpl on line 34

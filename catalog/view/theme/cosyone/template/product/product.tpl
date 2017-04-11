@@ -87,8 +87,10 @@
 
       <?php if ($price) { ?>
       <div>
-        <div class="price-new"><span class="amount contrast_font" itemprop="price"><?php echo $special; ?></span></div>
-      <div class="price-old"><span class="amount contrast_font"><?php echo $price; ?></span></div>
+        <div class="price-new"><span class="amount contrast_font" itemprop="price">
+          <?php echo $price; ?>
+        </span></div>
+      
       </div>
       <?php } ?>
 
@@ -302,12 +304,12 @@
         <?php endif ?>
         	
           <div class="counter-price">
-            <a class="quantity_button minus icon">-</a><input type="text" name="quantity" value="<?php echo $minimum; ?>" size="2" id="input-quantity" class="quantity" /><a class="quantity_button plus icon">+</a>
+            <a class="quantity_button minus icon"><i class="fa fa-angle-left"></i></a><input type="text" name="quantity" value="<?php echo $minimum; ?>" size="2" id="input-quantity" class="quantity" /><a class="quantity_button plus icon"><i class="fa fa-angle-right"></i></a>
           </div>
          
           <input type="hidden" name="product_id" value="<?php echo $product_id; ?>" />
 
-          <button type="submit" id="button-cart" data-loading-text="<?php echo $text_loading; ?>" class="button contrast"><i class="fa fa-shopping-cart"></i> <?php echo $button_cart; ?></button>
+          <button type="submit" id="button-cart" data-loading-text="<?php echo $text_loading; ?>" class="button contrast"><i class="icon-cart"></i> купить</button>
           
          
         
@@ -385,19 +387,24 @@
     </div> <!-- product-info-right END -->
     
     </div> <!-- product-info END -->
+
+    <div class="description-main">
+      <?php echo $description; ?>
+    </div>
    
   
   <ul class="nav nav-tabs product-page">
   
-	<li class="active"><a href="#tab-description" data-toggle="tab"><?php echo $tab_description; ?></a></li>
-                
+	<!-- <li class="active"><a href="#tab-description" data-toggle="tab"><?php echo $tab_description; ?></a></li> -->
+    
+    <?php if ($review_status) { ?>
+    <li class="active"><a href="#tab-review" data-toggle="tab"><?php echo $tab_review; ?></a></li>
+    <?php } ?>
+
     <?php if ($attribute_groups) { ?>
-    <li><a href="#tab-specification" data-toggle="tab"><?php echo $tab_attribute; ?></a></li>
+    <li ><a href="#tab-specification" data-toggle="tab">ВОПРОСЫ</a></li>
     <?php } ?>
    
-    <?php if ($review_status) { ?>
-    <li><a href="#tab-review" data-toggle="tab"><?php echo $tab_review; ?></a></li>
-    <?php } ?>
     
     
     <?php if ($product_tabs_5) { ?>
@@ -411,7 +418,11 @@
   
   <div class="tab-content">
   
-  <div class="tab-pane active" id="tab-description"><?php echo $description; ?>
+
+  <?php if (false): ?>
+    
+
+  <div class="tab-pane" id="tab-description"><?php echo $description; ?>
   <?php if ($tags) { ?>
   <div class="tags">
     <?php for ($i = 0; $i < count($tags); $i++) { ?>
@@ -424,8 +435,11 @@
   </div>
   <?php } ?>
   </div>
+
+    <?php endif ?>
   
-  <?php if ($attribute_groups) { ?>
+  <?php //if ($attribute_groups) { ?>
+  <?php if (false) { ?>
   <div class="tab-pane" id="tab-specification">
     <table class="attribute">
       <?php foreach ($attribute_groups as $attribute_group) { ?>
@@ -448,7 +462,7 @@
   <?php } ?>
   
   <?php if ($review_status) { ?>
-  <div class="tab-pane" id="tab-review">
+  <div class="tab-pane active" id="tab-review">
     <form id="form-review" class="form-horizontal">
     <div id="review"></div>
     <div class="write_review contrast_font">
@@ -457,23 +471,22 @@
     
     <?php if ($review_guest) { ?>
    
-   <div class="form-group required">
-                  <div class="col-sm-12">
-                    <label class="control-label" for="input-name"><?php echo $entry_name; ?></label>
-                    <input type="text" name="name" value="" id="input-name" class="form-control" />
+   <div class="form-row">
+     <div class="form-group required col-md-4">
+                  <div>
+                    <input type="text" name="name" value="" id="input-name" class="form-control" placeholder="<?php echo $entry_name; ?>" />
                   </div>
                 </div>
     
-    <div class="form-group required">
-    <div class="col-sm-12">
-    <label class="control-label" for="input-review"><?php echo $entry_review; ?></label>
-    <textarea name="text" id="input-review" rows="8" style="width: 100%;"></textarea>
-    <small><?php echo $text_note; ?></small>
+    <div class="form-group col-md-8 required">
+    <div>
+    <input name="text" id="input-review" placeholder="<?php echo $entry_review; ?>"></input>
     </div>
     </div>
+   </div>
     
-    <div class="form-group required">
-                  <div class="col-sm-12">
+    <div class="form-group required button-bottom ">
+                  <div >
                     <label class="control-label"><?php echo $entry_rating; ?></label>
                     &nbsp;&nbsp;&nbsp; <span class="main_font"><?php echo $entry_bad; ?></span>&nbsp;
                     <input type="radio" name="rating" value="1" />
@@ -487,12 +500,11 @@
                     <input type="radio" name="rating" value="5" />
                     &nbsp;<span class="main_font"><?php echo $entry_good; ?></span>
                     </div>
-                </div>
-         		
+                
+         		<div>
                 <?php if ((float)VERSION >= 2.1) { ?>
         			<div class="vertical-captcha"><?php echo $captcha; ?></div>
                 	<div class="col-sm-12 text-right"><a id="button-review" class="button"><?php echo $button_continue; ?></a></div>
-                    <div class="clearfix"></div>
         		<?php } else { ?>
                     <div class="form-group">
                     <div class="col-sm-6">
@@ -511,7 +523,11 @@
                 </div>
                 <?php } ?>
                 </form>
+
                 </div>
+                </div>
+
+
                 
                 <?php } ?>
 
@@ -527,7 +543,8 @@
   
    
       
-  	<?php if ($products) { ?>
+  	<?php //if ($products) { ?>
+    <?php if (false) { ?>
   	<div class="box products">
   	<div class="box-heading products"><?php echo $text_related; ?></div>
     <div class="<?php echo $cosyone_grid_related; ?>">
@@ -589,9 +606,23 @@
     </div>
   <?php } ?>
   
+
   
-  <?php echo $content_bottom; ?></div>
-  <?php echo $column_right; ?></div>
+  
+  </div>
+  <?php echo $column_right; ?>
+
+
+  </div>
+  <div class="clearfix"></div>
+  </div>
+  </div>
+
+
+<div class="can-like">
+
+    <?php echo $content_bottom; ?>
+  </div>
 
 
 <script type="text/javascript" src="catalog/view/theme/cosyone/js/cloud-zoom.1.0.2.min.js"></script>

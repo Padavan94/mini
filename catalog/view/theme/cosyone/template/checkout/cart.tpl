@@ -36,8 +36,9 @@
       </h1>
       <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data" id="basket">
         <div class="cart-info-wrapper">
-    	<div class="cart-info">
-          <table class="contrast_font">
+      <div class="cart-info">
+          <div class="cart-overflow">
+            <table class="contrast_font">
             <thead>
               <tr>
             <td class="image mobile_hide"><?php echo $column_image; ?></td>
@@ -78,8 +79,18 @@
                 <td class="model mobile_hide"><?php echo $product['model']; ?></td>
                 <td class="unit_price mobile_hide"><?php echo $product['price']; ?></td>
                 <td class="quantity">
-            <input type="text" name="quantity[<?php echo $product['cart_id']; ?>]" value="<?php echo $product['quantity']; ?>" size="1" />
-             <a onclick="$('#basket').submit();" data-tooltip="<?php echo $button_update; ?>" class="sq_icon"><i class="fa fa-refresh"></i></a>
+                <div class="counter-zone">
+                <div class="counter">
+                  <input type="text" name="quantity[<?php echo $product['cart_id']; ?>]" value="<?php echo $product['quantity']; ?>" />
+                  <div class="btns">
+                    <button class="increment">+</button>
+                    <button class="decrement">-</button>
+                  </div>
+                </div>
+                <a onclick="$('#basket').submit();" data-tooltip="<?php echo $button_update; ?>" class="sq_icon"><i class="fa fa-refresh"></i></a>
+                </div>
+            
+             
              </td>
                 <td class="price total mobile_hide"><?php echo $product['total']; ?></td>
                 <td class="remove mobile_hide">
@@ -104,10 +115,22 @@
               <?php } ?>
             </tbody>
           </table>
-          <div class="cart_bottom_line"><a href="<?php echo $continue; ?>" class="button contrast"><?php echo $button_shopping; ?></a></div>
+          </div>
+          <div class="cart_bottom_line">
+            <a href="<?php echo $continue; ?>" class="button contrast"><?php echo $button_shopping; ?></a>
+            <?php foreach ($totals as $total) { ?>
+              <div>
+                <span><?php echo $total['title']; ?></span>: <span><b><?php echo $total['text']; ?></b></span>
+              </div>
+            <?php } ?>
+            <a href="<?php echo $checkout; ?>" class="button active checkout"><?php echo $button_checkout; ?></a>
+          </div>
           </div>
         </div>
       </form>
+
+
+      <?php if(false): ?>
       
       <div class="row">
       
@@ -139,8 +162,40 @@
       
       </div>
       
+      <?php endif; ?>
       
       <?php echo $content_bottom; ?></div>
     <?php echo $column_right; ?></div>
 </div>
+
+
+<script>
+  
+  //counter
+
+$(document).on('ready', function(event) {
+  /*$(".counter").find("input").val("1");*/
+  
+  
+  $(document).on('click', '.increment', function(event) {
+    event.preventDefault();
+    var num = +$(this).parent().parent().find("input").val();
+    console.log(typeof +num);
+    $(this).parent().parent().find("input").val(++num);
+  });
+
+  $(document).on('click', '.decrement', function(event) {
+    event.preventDefault();
+    if(+$(this).parent().parent().find("input").val() > 1) {
+      var num = +$(this).parent().parent().find("input").val();
+      $(this).parent().parent().find("input").val(num-1);
+    }
+  });
+
+  $(".mobile_menu_trigger").click(function(event) {
+    $("#menu ul").slideToggle("slow");
+  });
+});
+</script>
+
 <?php echo $footer; ?> 

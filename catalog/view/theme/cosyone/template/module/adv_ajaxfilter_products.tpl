@@ -25,17 +25,15 @@
        <?php if ($product['brand_name'] && $cosyone_brand) { ?>
                 <span class="brand main_font"><?php echo $product['brand_name']; ?></span>
                 <?php } ?>
-                <?php if ($product['rating']) { ?>      
-      <div class="rating"><span class="rating r<?php echo $product['rating']; ?>"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></span></div>
-      <?php } ?>
+          
       </div>
       <div class="description main_font"><?php echo $product['description']; ?></div>
       <?php if ($product['price']) { ?>
-      <div class="price">
+      <div class="price price-new">
         <?php if (!$product['special']) { ?>
         <?php echo $product['price']; ?>
         <?php } else { ?>
-        <span class="price-old"><?php echo $product['price']; ?></span> <span class="price-new"><?php echo $product['special']; ?></span>
+        <span class="price-new"><?php echo $product['price']; ?></span>
         <?php } ?>
         <?php if ($product['tax']) { ?>
         <br />
