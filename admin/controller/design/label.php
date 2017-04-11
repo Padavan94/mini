@@ -1,9 +1,9 @@
 <?php
-class ControllerCatalogLabel extends Controller {
+class ControllerDesignLabel extends Controller {
     private $error = array();
 
     public function index() {
-        $this->load->language('catalog/label');
+        $this->load->language('design/label');
 
         $this->document->setTitle($this->language->get('heading_title'));
 
@@ -13,7 +13,7 @@ class ControllerCatalogLabel extends Controller {
     }
 
     public function add() {
-        $this->load->language('catalog/label');
+        $this->load->language('design/label');
 
         $this->document->setTitle($this->language->get('heading_title'));
 
@@ -38,14 +38,14 @@ class ControllerCatalogLabel extends Controller {
                 $url .= '&page=' . $this->request->get['page'];
             }
 
-            $this->response->redirect($this->url->link('catalog/label', 'token=' . $this->session->data['token'] . $url, 'SSL'));
+            $this->response->redirect($this->url->link('design/label', 'token=' . $this->session->data['token'] . $url, 'SSL'));
         }
 
         $this->getForm();
     }
 
     public function edit() {
-        $this->load->language('catalog/label');
+        $this->load->language('design/label');
 
         $this->document->setTitle($this->language->get('heading_title'));
 
@@ -70,14 +70,14 @@ class ControllerCatalogLabel extends Controller {
                 $url .= '&page=' . $this->request->get['page'];
             }
 
-            $this->response->redirect($this->url->link('catalog/label', 'token=' . $this->session->data['token'] . $url, 'SSL'));
+            $this->response->redirect($this->url->link('design/label', 'token=' . $this->session->data['token'] . $url, 'SSL'));
         }
 
         $this->getForm();
     }
 
     public function delete() {
-        $this->load->language('catalog/label');
+        $this->load->language('design/label');
 
         $this->document->setTitle($this->language->get('heading_title'));
 
@@ -106,7 +106,7 @@ class ControllerCatalogLabel extends Controller {
                 $url .= '&page=' . $this->request->get['page'];
             }
 
-            $this->response->redirect($this->url->link('catalog/label', 'token=' . $this->session->data['token'] . $url, 'SSL'));
+            $this->response->redirect($this->url->link('design/label', 'token=' . $this->session->data['token'] . $url, 'SSL'));
         }
 
         $this->getList();
@@ -154,12 +154,12 @@ class ControllerCatalogLabel extends Controller {
 
         $data['breadcrumbs'][] = array(
             'text' => $this->language->get('heading_title'),
-            'href' => $this->url->link('catalog/label', 'token=' . $this->session->data['token'] . $url, 'SSL')
+            'href' => $this->url->link('design/label', 'token=' . $this->session->data['token'] . $url, 'SSL')
         );
 
-        $data['add'] = $this->url->link('catalog/label/add', 'token=' . $this->session->data['token'] . $url, '');
-        $data['delete'] = $this->url->link('catalog/label/delete', 'token=' . $this->session->data['token'] . $url, '');
-        $data['edit_params'] = $this->url->link('catalog/label/edit_params', 'token=' . $this->session->data['token']. $url, '');
+        $data['add'] = $this->url->link('design/label/add', 'token=' . $this->session->data['token'] . $url, '');
+        $data['delete'] = $this->url->link('design/label/delete', 'token=' . $this->session->data['token'] . $url, '');
+        $data['edit_params'] = $this->url->link('design/label/edit_params', 'token=' . $this->session->data['token']. $url, '');
         $data['token'] = $this->session->data['token'];
 
         $data['labels'] = array();
@@ -183,7 +183,7 @@ class ControllerCatalogLabel extends Controller {
 				'label_height'          => $result['label_height'],
 				'label_width'          => $result['label_width'],
                 'sort_order'      => $result['sort_order'],
-                'edit'            => $this->url->link('catalog/label/edit', 'token=' . $this->session->data['token'] . '&product_label_id=' . $result['product_label_id'] . $url, 'SSL')
+                'edit'            => $this->url->link('design/label/edit', 'token=' . $this->session->data['token'] . '&product_label_id=' . $result['product_label_id'] . $url, 'SSL')
             );
         }
 
@@ -234,8 +234,8 @@ class ControllerCatalogLabel extends Controller {
             $url .= '&page=' . $this->request->get['page'];
         }
 
-        $data['sort_name'] = $this->url->link('catalog/label', 'token=' . $this->session->data['token'] . '&sort=name' . $url, 'SSL');
-        $data['sort_sort_order'] = $this->url->link('catalog/label', 'token=' . $this->session->data['token'] . '&sort=sort_order' . $url, 'SSL');
+        $data['sort_name'] = $this->url->link('design/label', 'token=' . $this->session->data['token'] . '&sort=name' . $url, 'SSL');
+        $data['sort_sort_order'] = $this->url->link('design/label', 'token=' . $this->session->data['token'] . '&sort=sort_order' . $url, 'SSL');
 
         $url = '';
 
@@ -251,7 +251,7 @@ class ControllerCatalogLabel extends Controller {
         $pagination->total = $label_total;
         $pagination->page = $page;
         $pagination->limit = $this->config->get('config_limit_admin');
-        $pagination->url = $this->url->link('catalog/label', 'token=' . $this->session->data['token'] . $url . '&page={page}', 'SSL');
+        $pagination->url = $this->url->link('design/label', 'token=' . $this->session->data['token'] . $url . '&page={page}', 'SSL');
 
         $data['pagination'] = $pagination->render();
 
@@ -264,7 +264,7 @@ class ControllerCatalogLabel extends Controller {
         $data['column_left'] = $this->load->controller('common/column_left');
         $data['footer'] = $this->load->controller('common/footer');
 
-        $this->response->setOutput($this->load->view('catalog/label_list.tpl', $data));
+        $this->response->setOutput($this->load->view('design/label_list.tpl', $data));
     }
 
     protected function getForm() {
@@ -320,16 +320,16 @@ class ControllerCatalogLabel extends Controller {
 
         $data['breadcrumbs'][] = array(
             'text' => $this->language->get('heading_title'),
-            'href' => $this->url->link('catalog/label', 'token=' . $this->session->data['token'] . $url, 'SSL')
+            'href' => $this->url->link('design/label', 'token=' . $this->session->data['token'] . $url, 'SSL')
         );
 
         if (!isset($this->request->get['product_label_id'])) {
-            $data['action'] = $this->url->link('catalog/label/add', 'token=' . $this->session->data['token'] . $url, 'SSL');
+            $data['action'] = $this->url->link('design/label/add', 'token=' . $this->session->data['token'] . $url, 'SSL');
         } else {
-            $data['action'] = $this->url->link('catalog/label/edit', 'token=' . $this->session->data['token'] . '&product_label_id=' . $this->request->get['product_label_id'] . $url, 'SSL');
+            $data['action'] = $this->url->link('design/label/edit', 'token=' . $this->session->data['token'] . '&product_label_id=' . $this->request->get['product_label_id'] . $url, 'SSL');
         }
 
-        $data['cancel'] = $this->url->link('catalog/label', 'token=' . $this->session->data['token'] . $url, 'SSL');
+        $data['cancel'] = $this->url->link('design/label', 'token=' . $this->session->data['token'] . $url, 'SSL');
 
         if (isset($this->request->get['product_label_id']) && ($this->request->server['REQUEST_METHOD'] != 'POST')) {
             $label_info = $this->model_design_label->getlabel($this->request->get['product_label_id']);
@@ -401,11 +401,11 @@ class ControllerCatalogLabel extends Controller {
         $data['column_left'] = $this->load->controller('common/column_left');
         $data['footer'] = $this->load->controller('common/footer');
 
-        $this->response->setOutput($this->load->view('catalog/label_form.tpl', $data));
+        $this->response->setOutput($this->load->view('design/label_form.tpl', $data));
     }
 
     protected function validateForm() {
-        if (!$this->user->hasPermission('modify', 'catalog/label')) {
+        if (!$this->user->hasPermission('modify', 'design/label')) {
             $this->error['warning'] = $this->language->get('error_permission');
         }
 
@@ -433,7 +433,7 @@ class ControllerCatalogLabel extends Controller {
     }
 
     protected function validateDelete() {
-        if (!$this->user->hasPermission('modify', 'catalog/label')) {
+        if (!$this->user->hasPermission('modify', 'design/label')) {
             $this->error['warning'] = $this->language->get('error_permission');
         }
 
