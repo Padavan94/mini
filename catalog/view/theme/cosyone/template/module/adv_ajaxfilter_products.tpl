@@ -2,7 +2,10 @@
 
 <?php foreach ($products as $product) { ?><!--
     --><div class="item contrast_font product-layout">
+
        <div class="image">
+       <img src="/image/hit.png" alt="" class="product-layout__bage">
+    <img src="/image/france.png" alt="" class="product-layout__flag">
         <?php if ($product['special'] && $cosyone_percentage_sale_badge == 'enabled') { ?>
 	    <div class="sale_badge">-<?php echo $product['sales_percantage']; ?>%</div>
 	    <?php } ?>

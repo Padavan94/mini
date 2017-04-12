@@ -1,5 +1,17 @@
 <?php echo $header; ?>
 <div class="container">
+<div class="title-cs">
+  <h1><?php //echo $heading_title; ?>
+    Корзина
+    <div class="bubles">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </h1>
+  
+</div>
+<div class="breadcrumb_wrapper"></div>
   <ul class="breadcrumb">
     <?php foreach ($breadcrumbs as $breadcrumb) { ?>
     <li><a href="<?php echo $breadcrumb['href']; ?>"><?php echo $breadcrumb['text']; ?></a></li>
@@ -29,7 +41,7 @@
     <?php $class = 'col-sm-12'; ?>
     <?php } ?>
     <div id="content" class="<?php echo $class; ?>"><?php echo $content_top; ?>
-      <h1><?php echo $heading_title; ?>
+      <!-- <h1><?php echo $heading_title; ?> -->
         <?php if ($weight) { ?>
         &nbsp;(<?php echo $weight; ?>)
         <?php } ?>
@@ -164,10 +176,13 @@
       
       <?php endif; ?>
       
-      <?php echo $content_bottom; ?></div>
-    <?php echo $column_right; ?></div>
-</div>
+      </div>
 
+    <?php echo $column_right; ?></div>
+
+</div>
+<div class="clearfix"></div>
+<?php echo $content_bottom; ?>
 
 <script>
   
