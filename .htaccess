@@ -4,8 +4,6 @@
 
 # For any support issues please visit: http://www.opencart.com
 
-Options +FollowSymlinks
-
 # Prevent Directoy listing
 Options -Indexes
 
