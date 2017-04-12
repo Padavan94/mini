@@ -96,11 +96,7 @@
         <a href="<?php echo $product['href']; ?>"><img src="<?php echo $product['thumb']; ?>" alt="<?php echo $product['name']; ?>" /></a>
         <?php } ?>
 
-        <?php if ($cosyone_text_ql) {?>
-        <div class="main_quicklook">
-        <a href="<?php echo $product['quickview']; ?>" rel="nofollow" class="button quickview"><i class="fa fa-eye"></i> <?php echo $cosyone_text_ql; ?></a>
-        </div>
-    	<?php } ?>
+        
         </div><!-- image ends -->
       <div class="information_wrapper">
       <div class="left">
@@ -108,9 +104,6 @@
        <?php if ($product['brand_name'] && $cosyone_brand) { ?>
                 <span class="brand main_font"><?php echo $product['brand_name']; ?></span>
                 <?php } ?>
-                <?php if ($product['rating']) { ?>      
-      <div class="rating"><span class="rating r<?php echo $product['rating']; ?>"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></span></div>
-      <?php } ?>
       </div>
       <div class="description main_font"><?php echo $product['description']; ?></div>
       <?php if ($product['price']) { ?>

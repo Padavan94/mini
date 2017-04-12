@@ -238,9 +238,15 @@ body {
 		}
 	}
 
-	/* .menu_drop_down {
-		display: none;
-	} */
+	.menu_drop_down {
+		a {
+			color: #161616;
+			&:hover {
+				color: $brand;
+				background-color: $brand2;
+			}
+		}
+	}
 }
 
 #search {
@@ -639,6 +645,14 @@ body {
 			display: flex;
 			justify-content: center;
 			align-items: center;
+			a {
+				height: 100%;
+			}
+			img {
+				height: 100%;
+				width: 100%;
+				object-fit: cover;
+			}
 		}
 		.caption {
 			h4 a{
@@ -1488,6 +1502,8 @@ body {
 
 .grid_holder {
 	.item {
+		margin-left: 0;
+		margin-right: 0;
 		&:before {
 			display: none;
 		}
@@ -1502,6 +1518,11 @@ body {
 				overflow: hidden;
 				margin-bottom: 	20px;
 				border: 1px solid #eaeaea;
+				img {
+					height: 100%;
+					width: 100%;
+					object-fit: cover;
+				}
 			}
 		}
 		.icons_wrapper {

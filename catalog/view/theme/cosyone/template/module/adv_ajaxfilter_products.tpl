@@ -2,8 +2,6 @@
 
 <?php foreach ($products as $product) { ?><!--
     --><div class="item contrast_font product-layout">
-    <img src="/image/hit.png" alt="" class="product-layout__bage">
-    <img src="/image/france.png" alt="" class="product-layout__flag">
        <div class="image">
         <?php if ($product['special'] && $cosyone_percentage_sale_badge == 'enabled') { ?>
 	    <div class="sale_badge">-<?php echo $product['sales_percantage']; ?>%</div>
@@ -15,11 +13,6 @@
         <a href="<?php echo $product['href']; ?>"><img src="<?php echo $product['thumb']; ?>" alt="<?php echo $product['name']; ?>" /></a>
         <?php } ?>
 
-        <?php if ($cosyone_text_ql) {?>
-        <div class="main_quicklook">
-        <a href="<?php echo $product['quickview']; ?>" rel="nofollow" class="button quickview"><i class="fa fa-eye"></i> <?php echo $cosyone_text_ql; ?></a>
-        </div>
-    	<?php } ?>
         </div><!-- image ends -->
       <div class="information_wrapper">
       <div class="left">
@@ -27,15 +20,14 @@
        <?php if ($product['brand_name'] && $cosyone_brand) { ?>
                 <span class="brand main_font"><?php echo $product['brand_name']; ?></span>
                 <?php } ?>
-          
       </div>
       <div class="description main_font"><?php echo $product['description']; ?></div>
       <?php if ($product['price']) { ?>
-      <div class="price price-new">
+      <div class="price">
         <?php if (!$product['special']) { ?>
         <?php echo $product['price']; ?>
         <?php } else { ?>
-        <span class="price-new"><?php echo $product['price']; ?></span>
+        <span class="price-old"><?php echo $product['price']; ?></span> <span class="price-new"><?php echo $product['special']; ?></span>
         <?php } ?>
         <?php if ($product['tax']) { ?>
         <br />
@@ -49,9 +41,7 @@
     <div class="icons_wrapper">
     <a class="sq_icon" onclick="wishlist.add('<?php echo $product['product_id']; ?>');" data-tooltip="<?php echo $button_wishlist; ?>"><i class="fa fa-heart"></i></a>
     <a class="sq_icon compare" onclick="compare.add('<?php echo $product['product_id']; ?>');" data-tooltip="<?php echo $button_compare; ?>"><i class="fa fa-arrow-right"></i><i class="fa fa-arrow-left"></i></a>
-    <?php if ($cosyone_text_ql) {?>
-    <a href="<?php echo $product['quickview']; ?>" rel="nofollow" class="sq_icon qlook quickview" data-tooltip="<?php echo $cosyone_text_ql; ?>"><i class="fa fa-eye"></i></a>
-    <?php } ?>
+ 
     <a class="sq_icon contrast add_to_cart" onclick="cart.add('<?php echo $product['product_id']; ?>', '<?php echo $product['minimum']; ?>');" data-tooltip="<?php echo $button_cart; ?>"><i class="fa fa-shopping-cart"></i></a>
     <a class="plain_link wishlist" onclick="wishlist.add('<?php echo $product['product_id']; ?>');" ><?php echo $button_wishlist; ?></a>
     <a class="plain_link compare" onclick="compare.add('<?php echo $product['product_id']; ?>');" ><?php echo $button_compare; ?></a>
