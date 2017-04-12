@@ -120,7 +120,7 @@ class ControllerModuleCosyoneRecently extends Controller {
 		} elseif (!empty($module_info)) {
 			$data['width'] = $module_info['width'];
 		} else {
-			$data['width'] = 262;
+			//$data['width'] = 262;
 		}
 
 		if (isset($this->request->post['height'])) {
