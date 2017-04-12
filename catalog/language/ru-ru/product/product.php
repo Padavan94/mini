@@ -35,7 +35,7 @@ $_['text_year']                               = 'год';
 $_['entry_qty']                               = 'Количество';
 $_['entry_name']                              = 'Ваше имя:';
 $_['entry_review']                            = 'Ваш отзыв:';
-$_['entry_rating']                            = 'Оценка:';
+$_['entry_rating']                            = 'Оценить товар:';
 $_['entry_good']                              = 'Хорошо';
 $_['entry_bad']                               = 'Плохо';
 $_['entry_captcha']                           = 'Введите код, указанный на картинке:';
@@ -44,7 +44,7 @@ $_['entry_captcha']                           = 'Введите код, указ
 $_['tab_description']                       = 'Описание';
 $_['tab_attribute']                           = 'Характеристики';
 $_['tab_review']                              = 'Отзывов (%s)';
-$_['button_continue']                      = 'Отправить отзыв';
+$_['button_continue']                      = 'Отправить';
 
 // Error
 $_['error_name']                              = 'Имя должно быть от 3 до 25 символов!';

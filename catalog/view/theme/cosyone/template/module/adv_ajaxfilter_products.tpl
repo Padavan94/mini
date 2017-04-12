@@ -2,6 +2,8 @@
 
 <?php foreach ($products as $product) { ?><!--
     --><div class="item contrast_font product-layout">
+    <img src="/image/hit.png" alt="" class="product-layout__bage">
+    <img src="/image/france.png" alt="" class="product-layout__flag">
        <div class="image">
         <?php if ($product['special'] && $cosyone_percentage_sale_badge == 'enabled') { ?>
 	    <div class="sale_badge">-<?php echo $product['sales_percantage']; ?>%</div>
@@ -25,17 +27,15 @@
        <?php if ($product['brand_name'] && $cosyone_brand) { ?>
                 <span class="brand main_font"><?php echo $product['brand_name']; ?></span>
                 <?php } ?>
-                <?php if ($product['rating']) { ?>      
-      <div class="rating"><span class="rating r<?php echo $product['rating']; ?>"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></span></div>
-      <?php } ?>
+          
       </div>
       <div class="description main_font"><?php echo $product['description']; ?></div>
       <?php if ($product['price']) { ?>
-      <div class="price">
+      <div class="price price-new">
         <?php if (!$product['special']) { ?>
         <?php echo $product['price']; ?>
         <?php } else { ?>
-        <span class="price-old"><?php echo $product['price']; ?></span> <span class="price-new"><?php echo $product['special']; ?></span>
+        <span class="price-new"><?php echo $product['price']; ?></span>
         <?php } ?>
         <?php if ($product['tax']) { ?>
         <br />

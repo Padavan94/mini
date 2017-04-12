@@ -19,7 +19,7 @@
     <div id="content" class="<?php echo $class; ?> <?php echo $cosyone_grid_category; ?>">
     <?php echo $content_top; ?>
   
-  <h1><?php echo $heading_title; ?></h1>
+  <h1><?php //echo $heading_title; ?></h1>
   <?php if ($thumb || $description) { ?>
   <div class="category-info">
 	<?php if ($cosyone_category_thumb == 'enabled' && ($thumb)) { ?>
@@ -83,6 +83,8 @@
   <div class="grid_holder">
     <?php foreach ($products as $product) { ?><!--
     --><div class="item contrast_font product-layout">
+    <img src="/image/hit.png" alt="" class="product-layout__bage">
+    <img src="/image/france.png" alt="" class="product-layout__flag">
        <div class="image">
         <?php if ($product['special'] && $cosyone_percentage_sale_badge == 'enabled') { ?>
 	    <div class="sale_badge">-<?php echo $product['sales_percantage']; ?>%</div>

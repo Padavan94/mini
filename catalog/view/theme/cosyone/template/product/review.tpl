@@ -2,10 +2,12 @@
 
 <?php foreach ($reviews as $review) { ?>
 <div class="review-list">
-  <div class="author"><span class="contrast_font"><?php echo $review['author']; ?></span>, <?php echo $review['date_added']; ?></div>
+  <div class="list-row">
+  	<div class="author"><span class="contrast_font"><?php echo $review['author']; ?></span>, <?php echo $review['date_added']; ?></div>
   
   
   <span class="rating r<?php echo $review['rating']; ?>"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></span>
+  </div>
   
   
   <div class="text"><?php echo $review['text']; ?></div>
