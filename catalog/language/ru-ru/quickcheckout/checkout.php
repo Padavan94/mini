@@ -98,7 +98,7 @@ $_['error_shipping']                 = 'Warning: Shipping method required!';
 $_['error_no_shipping']              = 'Warning: No Shipping options are available. Please <a href="%s">contact us</a> for assistance!';
 $_['error_payment']                  = 'Warning: Payment method required!';
 $_['error_no_payment']               = 'Warning: No Payment options are available. Please <a href="%s">contact us</a> for assistance!';
-$_['error_coupon']       		     = 'Warning: Coupon is either invalid, expired or reached it\'s usage limit!';
+$_['error_coupon']       		     = 'Внимание: купон либо недействителен, истек, либо достиг предела его использования!';
 $_['error_voucher']      		     = 'Внимание: Подарочный сертификат недействителен или баланс израсходован!';
 $_['error_survey']					 = 'Внимание: вопрос обследования требуется ответить!';
 $_['error_delivery']				 = 'Внимание: Требуется срок доставки!';
