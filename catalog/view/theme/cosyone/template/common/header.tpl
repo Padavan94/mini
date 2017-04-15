@@ -71,7 +71,7 @@
                   <strong class="flex"><i class="icon-car"></i>бесплатная доставка</strong>
                 </div>
                 <div class="header__share _share2">
-                  <a class="flex" href="#"><i class="icon-prize"></i>Подарочный сертификат</a>
+                  <a class="flex" href="/sert"><i class="icon-prize"></i>Подарочный сертификат</a>
                 </div>
               </div>
             </div>

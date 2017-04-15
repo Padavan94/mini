@@ -41,6 +41,7 @@
       <li><i class="fa fa-angle-right"></i><a href="<?php echo $information['href']; ?>"><?php echo $information['title']; ?></a></li>
       <?php } ?>
       <?php } ?>
+      <li><i class="fa fa-angle-right"></i><a href="/index.php?route=information/shoprating">Отзывы покупателей</a></li>
       <li><i class="fa fa-angle-right"></i><a href="<?php echo $contact; ?>"><?php echo $text_contact; ?></a></li>
     </ul>
   </div><!--
