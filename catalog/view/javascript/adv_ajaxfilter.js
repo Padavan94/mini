@@ -278,7 +278,7 @@ function adv_result(g, b) {
 
     var hash = window.location.hash.substr(1);
     if (typeof(g.result_html) != "undefined") {
-        $(".grid_holder").html(g.result_html);
+        $("#main .grid_holder").html(g.result_html);
         if (localStorage.getItem('display') == 'list') {
        		$('#list-view').trigger('click');
        	} else {

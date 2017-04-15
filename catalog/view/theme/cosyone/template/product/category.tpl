@@ -79,6 +79,7 @@
     
     <!--  <div class="compare-link mobile_hide"><a href="<?php echo $compare; ?>" id="compare-total"><?php echo $text_compare; ?></a></div> -->
   </div>
+  </div>
   <div id="main" class="product-<?php echo $cosyone_default_view; ?>">
   <div class="grid_holder">
     <?php foreach ($products as $product) { ?><!--
