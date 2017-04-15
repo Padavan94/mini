@@ -1,14 +1,18 @@
 <?php if ($coupon_module) { ?>
-<div id="coupon-heading" class="contrast_font"><?php echo $entry_coupon; ?></div>
+<!-- <div id="coupon-heading" class="contrast_font"><?php echo $entry_coupon; ?></div> -->
+<!-- это купон -->
 <div id="coupon-content">
-	<input type="text" name="coupon" value="" />
-	  <button type="button" id="button-coupon" class="button"><?php echo $text_use_coupon; ?></button>
+	<input type="text" name="coupon" value="" placeholder="номер скидочной карты" />
+	  <button type="button" id="button-coupon" class="button">применить</button>
 </div>
 <?php } ?>
 <?php if ($voucher_module) { ?>
-<div id="voucher-heading" class="contrast_font"><?php echo $entry_voucher; ?></div>
+<!-- <div id="voucher-heading" class="contrast_font"><?php echo $entry_voucher; ?></div> -->
+
+
+<!-- это ваучер -->
 <div id="voucher-content">
-	<input type="text" name="voucher" value="" />
+	<input type="text" name="voucher" value="" placeholder="промокод / номер сертификата" />
 	  <button type="button" id="button-voucher" class="button"><?php echo $text_use_voucher; ?></button>
 </div>
 <?php } ?>
@@ -44,4 +48,17 @@ $('#reward-heading').on('click', function() {
       $('#reward-content').slideDown('slow');
     };
 });
+
+
+$("#coupon-content input").on("blur", function() {
+  $("#button-coupon").trigger('click');
+})
+
+$("#voucher-content input").on("blur", function() {
+  $("#button-voucher").trigger('click');
+})
+
+
+
+
 //--></script>

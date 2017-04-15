@@ -11,7 +11,7 @@ foreach ($payment_methods as $payment_method) {
 	}
 }
 ?>
-<p><?php echo $text_payment_method; ?></p>
+<!-- <p><?php echo $text_payment_method; ?></p> -->
 <?php if ($payment) { ?>
 <table class="table payment">
   <?php foreach ($payment_methods as $payment_method) { ?>
@@ -68,8 +68,7 @@ foreach ($payment_methods as $payment_method) {
 <?php } else { ?>
 <textarea name="survey" class="hide"><?php echo $survey; ?></textarea>
 <?php } ?>
-<span class="contrast_font input_heading"><?php echo $text_comments; ?></span>
-<textarea name="comment" rows="5" class="form-control"><?php echo $comment; ?></textarea>
+<textarea name="comment" rows="5" placeholder="комментарии к заказу" class="form-control"><?php echo $comment; ?></textarea>
 
 <script type="text/javascript"><!--
 $('#payment-method input[name=\'payment_method\'], #payment-method select[name=\'payment_method\']').on('change', function() {

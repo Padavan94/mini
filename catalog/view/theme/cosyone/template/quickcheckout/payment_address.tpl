@@ -1,4 +1,4 @@
-<?php if ($addresses) { ?>
+<?php if ($addresses) { ?>asdasdasd
 <div class="radio">
   <label><input type="radio" name="payment_address" value="existing" id="payment-address-existing" checked="checked" />
   <?php echo $text_address_existing; ?></label>
