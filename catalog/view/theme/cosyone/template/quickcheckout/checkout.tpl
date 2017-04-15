@@ -59,9 +59,10 @@
 	  <?php } ?>
       
       <div class="grid_holder checkout-my">
-      
-	  <div class="checkout-column">
-		<?php if (!$logged) { ?>
+		
+		<div class="checkout-my__container clearfix">
+			<div class="col-md-6 checkout-my__col cleafix">
+				<?php if (!$logged) { ?>
 		<div id="payment-address">
 		  <div class="quickcheckout-heading box-heading"><span><?php echo $text_checkout_account; ?></span></div>
 		  <div class="quickcheckout-content"></div>
@@ -72,16 +73,23 @@
 		  <div class="quickcheckout-content"></div>
 		</div>
 		<?php } ?>
+
 		<?php if ($shipping_required) { ?>
 		<div id="shipping-address"><br />
 		  <div class="quickcheckout-heading box-heading"><?php echo $text_checkout_shipping_address; ?></div>
 		  <div class="quickcheckout-content"></div>
 		</div>
 		<?php } ?>
-	  </div>
-      
-	  <div class="checkout-column">
-		<?php if ($shipping_required) { ?>
+
+
+		<?php if ($voucher_module || $coupon_module || $reward_module) { ?>
+	  <div id="voucher">
+	  <div class="quickcheckout-content" style="border:none; padding: 0px;overflow: hidden;"></div>
+	</div>
+    <?php } ?>
+			</div>
+			<div class="col-md-6 checkout-my__col  cleafix">
+				<?php if ($shipping_required) { ?>
 		<?php if ($shipping_module) { ?>
 		<div id="shipping-method">
 		<?php } else { ?>
@@ -99,6 +107,33 @@
 		  <div class="quickcheckout-heading box-heading"><?php echo $text_checkout_payment_method; ?></div>
 		  <div class="quickcheckout-content"></div>
 		</div>
+
+		
+			</div>
+			<div class="col-md-12 checkout-my__col roww  cleafix">
+				<?php if ($cart_module) { ?>
+					<div id="cart1">
+					  <div class="quickcheckout-content" style="border:none; padding: 0px;"></div>
+					</div>
+					<?php } ?>
+			        
+					
+			    
+			    <div id="terms">
+				  <div class="quickcheckout-content"></div>
+				</div>
+			</div>
+		</div>
+
+
+      
+	  <div class="checkout-column">
+		
+		
+	  </div>
+      
+	  <div class="checkout-column">
+		
       
       <?php if ($layout != '2') { ?>
   		</div> <!-- not if 2 columns -->
@@ -110,21 +145,7 @@
   		<div class="checkout-column cart"> <!-- not if 2 columns -->
   		<?php } ?>
       
-		<?php if ($cart_module) { ?>
-		<div id="cart1">
-		  <div class="quickcheckout-content" style="border:none; padding: 0px;"></div>
-		</div>
-		<?php } ?>
-        
-		<?php if ($voucher_module || $coupon_module || $reward_module) { ?>
-	  <div id="voucher">
-	  <div class="quickcheckout-content" style="border:none; padding: 0px;overflow: hidden;"></div>
-	</div>
-    <?php } ?>
-    
-    <div id="terms">
-	  <div class="quickcheckout-content"></div>
-	</div>
+		
 	  
 
 	  

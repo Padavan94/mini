@@ -2409,13 +2409,10 @@ a.button.active:hover, input.button.active:hover, #button-confirm:hover, .style-
 }
 
 .checkout-my {
-	.checkout-column {
-		width: 100%;
-		display: flex;
-		flex-wrap: wrap;
-		& > div {
-			width: 50%;
-		}
+	.checkout-heading  {
+		display: none;
+	}
+	&__col {
 		& > #cart1 {
 			width: 100%;
 		}
@@ -2425,16 +2422,27 @@ a.button.active:hover, input.button.active:hover, #button-confirm:hover, .style-
 		input[type='text'],
 		input[type='password'],
 		input[type='email'],
-		select{
+		select,
+		textarea{
 			height: 60px;
 			width: 100%;
 			border-radius: 40px;
 			border: 1px solid #dbdbdb;
 			font-size: 12px;
 			padding: 4px 26px;
+			text-transform: uppercase;
 			&:focus {
 				border-color: $brand2;
 			}
+		}
+		textarea {
+			height: 105px;
+			padding-top: 10px;
+			resize: none;
+		}
+
+		&.roww {
+			margin-top: 20px;
 		}
 	}
 	.quickcheckout-heading {
@@ -2533,8 +2541,86 @@ a.button.active:hover, input.button.active:hover, #button-confirm:hover, .style-
 					}
 				}
 			}
+			a > i {
+				
+			}
+			.quantity {
+				text-align: center;
+				input {
+					width: 109px;
+				}
+			}
+			.quan {
+				display: flex;
+				align-items: center;
+			}
+			.unit-price,
+			.total {
+				font-size: 19px;
+				color: #161616;
+				font-family: "Ral-b";
+			}
 	}
 }
+
+.checkout-my .quickcheckout-cart a.sq_icon,
+.checkout-my .quickcheckout-cart a.sq_icon i {
+	color: #c9c9c9;
+	font-size: 19px;
+	border: none;	
+	&:hover {
+		color: $brand;
+	}
+}
+
+#shipping-method {
+	table {
+		td {
+			border-top: 0 !important;
+			border-bottom: 0 !important;
+		}
+	}
+}
+#button-coupon,
+#button-voucher {
+	display: none;
+}
+#payment-method,
+.table.payment {
+	margin-bottom: 15px !important;
+}
+#payment-address {
+	.col-sm-6 {
+		margin-bottom: 15px;
+	}
+}
+
+.bottom-of-table {
+	text-align: right;
+	margin-top: 15px;
+	& > div {
+		margin-bottom: 5px;
+		.bold {
+			color: #161616;
+			font-size: 19px;
+			font-family: "Ral-b";
+		}
+	}
+
+}
+.quickcheckout-content {
+	margin-bottom: 35px;
+}
+#coupon-content {
+	input {
+		margin-bottom: 15px;
+	}
+}
+
+
+
+
+
 
 //display: none;
 

@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row"> 
 <?php foreach ($fields as $field) { ?>
   <?php if ($field == 'country') { ?>
     <?php if (!empty(${'field_' . $field}['display'])) { ?>
@@ -54,8 +54,7 @@
   <?php } else { ?>
 	<?php if (!empty(${'field_' . $field}['display'])) { ?>
 	<div<?php echo $field == 'postcode' ? ' id="payment-postcode-required"' : ''; ?> class="col-sm-6<?php echo !empty(${'field_' . $field}['required']) ? ' required' : ''; ?>">
-	  <label class="control-label"><?php echo ${'entry_' . $field}; ?></label>
-	  <input type="text" name="<?php echo $field; ?>" value="<?php echo ${$field} ? ${$field} : ${'field_' . $field}['default']; ?>" class="form-control"  id="input-payment-<?php echo str_replace('_', '-', $field); ?>" />
+	  <input type="text" name="<?php echo $field; ?>" placeholder="<?php echo ${'entry_' . $field}; ?>" value="<?php echo ${$field} ? ${$field} : ${'field_' . $field}['default']; ?>" class="form-control"  placeholder="<?php echo ${'entry_' . $field}; ?>" id="input-payment-<?php echo str_replace('_', '-', $field); ?>" />
 	</div>
 	<?php } else { ?>
 	<input type="text" name="<?php echo $field; ?>" value="<?php echo ${$field} ? ${$field} : ${'field_' . $field}['default']; ?>" class="hide" />
@@ -162,11 +161,11 @@
   <?php } ?>
   <?php if ($shipping_required) { ?>
     <?php if ($shipping_address) { ?>
-    <input type="checkbox" name="shipping_address" value="1" id="shipping" checked="checked" />
+    <input style="position: absolute; opacity: 0; pointer-events: none;"type="checkbox" name="shipping_address" value="1" id="shipping" checked="checked" />
     <?php } else { ?>
-    <input type="checkbox" name="shipping_address" value="1" id="shipping" />
+    <input style="position: absolute; opacity: 0; pointer-events: none;"type="checkbox" name="shipping_address" value="1" id="shipping" />
     <?php } ?>
-    <label for="shipping"><?php echo $entry_shipping; ?></label>
+    <label for="shipping" style="display: none;"><?php echo $entry_shipping; ?></label>
   <?php } else { ?>
     <input type="checkbox" name="shipping_address" value="1" id="shipping" checked="checked" class="hide" />
   <?php } ?>

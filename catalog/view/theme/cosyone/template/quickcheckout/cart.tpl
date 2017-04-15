@@ -35,12 +35,25 @@
 			  <?php } ?>
             </div></td>
           <td class="quantity"><?php if ($edit_cart) { ?>
-            <input type="text" name="quantity[<?php echo $product['cart_id']; ?>]" style="max-width:35px;" value="<?php echo $product['quantity']; ?>" /><a data-tooltip="<?php echo $button_update; ?>" class="button-update sq_icon"><i class="fa fa-refresh"></i></a><a href="<?php echo $product['cart_id']; ?>" data-tooltip="<?php echo $button_remove; ?>" class="button-remove sq_icon" data-remove="<?php echo $product['cart_id']; ?>"><i class="fa fa-times"></i></a>
+
+          <div class="quan">
+            <div class="counter-price">
+                  <button class="decrement1"><i class="fa fa-angle-left"></i></button>
+                 <input type="text" name="quantity[<?php echo $product['cart_id']; ?>]" value="<?php echo $product['quantity']; ?>" />
+                  <button class="increment1"><i class="fa fa-angle-right"></i></button>
+                </div>
+                <a data-tooltip="<?php echo $button_update; ?>" class="button-update sq_icon"><i class="fa fa-refresh"></i></a>
+          </div>
+
+
+
+            
             <?php } else { ?>
 			x&nbsp;<?php echo $product['quantity']; ?>
 			<?php } ?></td>
 		  <td class="unit-price mobile_hide"><?php echo $product['price']; ?></td>
           <td class="total"><?php echo $product['total']; ?></td>
+          <td><a href="<?php echo $product['cart_id']; ?>" data-tooltip="<?php echo $button_remove; ?>" class="button-remove sq_icon" data-remove="<?php echo $product['cart_id']; ?>"><i class="fa fa-times"></i></a></td>
         </tr>
         <?php } ?>
         <?php foreach ($vouchers as $voucher) { ?>
@@ -54,15 +67,35 @@
         </tbody>
         <?php } ?>
         </table>
-        <table class="quickcheckout-cart contrast_font" style="margin-top:-1px">
-        <tbody>
+        <div class="bottom-of-table">
 		<?php foreach ($totals as $total) { ?>
-			<tr>
-				<td style="text-align:right;" colspan="4"><?php echo $total['title']; ?>:</td>
-				<td style="text-align:right;"><?php echo $total['text']; ?></td>
-			</tr>
+      <div>
+        <span><?php echo $total['title']; ?></span>
+        <span class="bold"><?php echo $total['text']; ?></span>
+      </div>
         <?php } ?>
-	</tbody>
-    </table>
+    </div>
     <?php } ?>
 </table>
+
+<script>
+$('.increment1').click(function(event) {
+  /* Act on the event */
+  event.preventDefault();
+    var num = +$(this).parent().parent().find("input").val();
+    console.log(typeof +num);
+    $(this).parent().parent().find("input").val(++num);
+});
+
+$('.decrement1').click(function(event) {
+  /* Act on the event */
+
+  event.preventDefault();
+    var num = +$(this).parent().parent().find("input").val();
+    if(num > 1) {
+      $(this).parent().parent().find("input").val(--num);
+    }
+    
+});
+
+</script>
