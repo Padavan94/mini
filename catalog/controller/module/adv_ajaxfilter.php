@@ -435,6 +435,7 @@ class ControllerModuleAdvajaxfilter extends Controller {
 		$data['button_wishlist'] = $this->language->get('button_wishlist');
 		$data['button_compare'] = $this->language->get('button_compare');
 		$data['button_continue'] = $this->language->get('button_continue');
+                $this->load->model('catalog/label');
 		
 		
 		if (file_exists('catalog/view/theme/cosyone/js/countdown/jquery.countdown_' . $this->language->get('code') . '.js')) {
@@ -513,7 +514,9 @@ class ControllerModuleAdvajaxfilter extends Controller {
 				$images = 'no_image.png';
 				}
 				// Cosyone end
-
+                                //var_dump($result);
+                                $label = $this->model_catalog_label->getLabel($result['label']);
+                                $label2 = $this->model_catalog_label->getLabel($result['label2']);
 			$data['products'][] = array(
 				'product_id'  => $result['product_id'],
 				'thumb'       => $image,
@@ -521,7 +524,8 @@ class ControllerModuleAdvajaxfilter extends Controller {
 				'description' => utf8_substr(strip_tags(html_entity_decode($result['description'], ENT_QUOTES, 'UTF-8')), 0, 100) . '..',
 				'price'       => $price,
 				'special'     => $special,
-				
+                                'label'       => $label,
+                                'label2'      => $label2,
 				// Cosyone custom code starts	
 			  'sales_percantage' => number_format($sales_percantage, 0, ',', '.'),
 			  'special_date_end' => $special_date_end,

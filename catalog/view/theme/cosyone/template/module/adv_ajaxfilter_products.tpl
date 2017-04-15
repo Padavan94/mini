@@ -4,8 +4,12 @@
     --><div class="item contrast_font product-layout">
 
        <div class="image">
-       <img src="/image/hit.png" alt="" class="product-layout__bage">
-    <img src="/image/france.png" alt="" class="product-layout__flag">
+       <?php if ($product['label']) { ?>
+    <img src="/image/<?php echo $product['label']['label_image']; ?>" alt="<?php echo $product['label']['label_name']; ?>" class="product-layout__bage">
+    <?php if ($product['label2']) { ?>
+    <?php } ?>
+    <img src="/image/<?php echo $product['label2']['label_image']; ?>" alt="<?php echo $product['label2']['label_name']; ?>" class="product-layout__flag">
+    <?php } ?>
         <?php if ($product['special'] && $cosyone_percentage_sale_badge == 'enabled') { ?>
 	    <div class="sale_badge">-<?php echo $product['sales_percantage']; ?>%</div>
 	    <?php } ?>

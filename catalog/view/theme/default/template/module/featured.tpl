@@ -14,10 +14,15 @@
   </h3>
   <div class="hits__carousel-inner">
   <div class="hits__carousel">
+      
   <?php foreach ($products as $product) { ?>
   <div class="product-layout">
-    <img src="/image/hit.png" alt="" class="product-layout__bage">
-    <img src="/image/france.png" alt="" class="product-layout__flag">
+    <?php if ($product['label']) { ?>
+    <img src="/image/<?php echo $product['label']['label_image']; ?>" alt="<?php echo $product['label']['label_name']; ?>" class="product-layout__bage">
+    <?php if ($product['label2']) { ?>
+    <?php } ?>
+    <img src="/image/<?php echo $product['label2']['label_image']; ?>" alt="<?php echo $product['label2']['label_name']; ?>" class="product-layout__flag">
+    <?php } ?>
     <div class="product-thumb transition">
       <div class="image"><a href="<?php echo $product['href']; ?>"><img src="<?php echo $product['thumb']; ?>" alt="<?php echo $product['name']; ?>" title="<?php echo $product['name']; ?>" class="img-responsive" /></a></div>
       <div class="caption">

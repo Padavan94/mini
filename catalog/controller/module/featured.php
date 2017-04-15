@@ -12,7 +12,7 @@ class ControllerModuleFeatured extends Controller {
 		$data['button_compare'] = $this->language->get('button_compare');
 
 		$this->load->model('catalog/product');
-
+                $this->load->model('catalog/label');
 		$this->load->model('tool/image');
 
 		$data['products'] = array();
@@ -25,7 +25,6 @@ class ControllerModuleFeatured extends Controller {
 
 			foreach ($products as $product_id) {
 				$product_info = $this->model_catalog_product->getProduct($product_id);
-
 				if ($product_info) {
 					if ($product_info['image']) {
 						$image = '/image/'.$product_info['image'];
@@ -56,7 +55,10 @@ class ControllerModuleFeatured extends Controller {
 					} else {
 						$rating = false;
 					}
-
+                                        
+                                        $label = $this->model_catalog_label->getLabel($product_info['label']);
+                                        $label2 = $this->model_catalog_label->getLabel($product_info['label2']);
+                                        
 					$data['products'][] = array(
 						'product_id'  => $product_info['product_id'],
 						'thumb'       => $image,
@@ -66,12 +68,14 @@ class ControllerModuleFeatured extends Controller {
 						'special'     => $special,
 						'tax'         => $tax,
 						'rating'      => $rating,
-						'href'        => $this->url->link('product/product', 'product_id=' . $product_info['product_id'])
+						'href'        => $this->url->link('product/product', 'product_id=' . $product_info['product_id']),
+                                                'label'       => $label,
+                                                'label2'      => $label2
 					);
 				}
 			}
 		}
-
+                //var_dump($data['products']);
 		if ($data['products']) {
 			return $this->load->view('module/featured', $data);
 		}
