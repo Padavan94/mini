@@ -36,6 +36,16 @@ a.button, input.button, button.button, .btn {
 	line-height:1.4;
 	cursor: pointer;
 	font-family: "Ral-b";
+
+	&.btn-suc {
+		background-color: transparent;
+		color: #fff;
+		border-color: $brand;
+		&:hover {
+			background-color: $brand;
+			color: #161616;
+		}
+	}
 }
 input.button, button.button { 
 	margin: 0;
@@ -738,8 +748,9 @@ a.button.active:hover, input.button.active:hover, #button-confirm:hover, .style-
 				font-family: "Ral-sb";
 			}
 		}
-		.price,
-		.price-new {
+		
+		.price-new,
+		.price {
 			font-size: 19px;
 			color: #161616;
 			font-family: "Rob-b";
@@ -764,7 +775,11 @@ a.button.active:hover, input.button.active:hover, #button-confirm:hover, .style-
 	}
 
 }
-
+.price {
+	font-size: 19px !important;
+	color: #161616;
+	font-family: "Rob-b";
+}
 
 .product-layout {
 	margin: 0 25px;
@@ -2116,7 +2131,7 @@ a.button.active:hover, input.button.active:hover, #button-confirm:hover, .style-
 		padding: 21px 63px;
 		text-transform: uppercase;
 		border-radius: 40px;
-		border-color: $brand2;
+		border-color: $brand;
 		margin-top: 0;
 	}
 }
@@ -2343,13 +2358,178 @@ a.button.active:hover, input.button.active:hover, #button-confirm:hover, .style-
 			}
 		}
 	}
+
+	.empty.main_font {
+		text-align: center;
+		font-size: 24px;
+		color: #161616;
+		font-family: "Rob-b";
+	}
+}
+
+.confirm-message {
+	width: 452px;
+	height: 452px;
+	padding-top: 25px;
+	text-align: center;
+	justify-content: center;
+	align-items: center;
+	display: flex;
+	flex-direction: column;
+	background-image: url('/image/circle.png');
+	background-position: center;
+	background-size: cover;
+	margin: 0 auto;
+	h1 {
+		font-size: 15px;
+		text-transform: uppercase;
+		color: #fff;
+		font-family: "Ral-b";
+	}
+	p {
+		color: #bea8b2;
+		font-size: 14px;
+		margin-bottom: 35px;
+	}
+}
+
+.checkout-my {
+	.checkout-column {
+		width: 100%;
+		display: flex;
+		flex-wrap: wrap;
+		& > div {
+			width: 50%;
+		}
+		& > #cart1 {
+			width: 100%;
+		}
+		.col-sm-6 {
+			width: 100%;
+		}
+		input[type='text'],
+		input[type='password'],
+		input[type='email'],
+		select{
+			height: 60px;
+			width: 100%;
+			border-radius: 40px;
+			border: 1px solid #dbdbdb;
+			font-size: 12px;
+			padding: 4px 26px;
+			&:focus {
+				border-color: $brand2;
+			}
+		}
+	}
+	.quickcheckout-heading {
+		display: none;
+	}
+	.quickcheckout-cart {
+			width: 100%;
+			a.sq_icon{
+				margin-left: 2px;
+				margin-right: 0px;
+				i{
+					color: #fff;
+					font-size: 15px;
+				}
+				&:hover {
+					i {
+						color: $brand;
+					}
+				}
+			}
+			tr{
+				border: 1px solid #e6e6e6;
+				td{
+					border: none;
+				}
+			}
+			thead{
+				tr{
+					td{
+						background-color: transparent;
+						font-size: 12px;
+						text-transform: uppercase;
+						color: #161616;
+						font-weight: normal;
+						padding: 17px 15px;
+						font-family: "Ral-m";
+					}
+				}
+			}
+			tbody{
+				tr{
+					td{
+						vertical-align: middle;
+						b {
+							font-family: "Rob-b";
+							font-size: 19px;
+							color: #161616;
+						}
+						i {
+							&:hover {
+								color: $brand2 !important;
+								cursor: pointer;
+							}
+						}
+						&.image {
+							padding: 4px;
+							a {
+								width: 115px;
+								img {
+									width: 100%;
+									height: auto;
+								}
+							}
+						}
+						&.name{
+							a{
+								color: $brand2;
+								font-size: 16px;
+								font-family: "Ral-b";
+								&:hover{
+									color: $brand2;
+								}
+							}
+						}
+						&.unit_price,
+						&.price{
+							font-size: 21px;
+							color: #161616;
+							font-family: "Rob-b";
+						}
+						&.remove{
+							a{
+								width: 36px;
+								height: 36px;
+								display: flex;
+								justify-content: center;
+								align-items: center;
+								border: none;
+								color: #c9c9c9;
+								i{
+									color: #c9c9c9;
+									font-size: 22px;
+								}
+							}
+						}
+					}
+				}
+			}
+	}
 }
 
 //display: none;
 
 #ajax_search_results,
 .category-info,
-.header__cart #cart .content {
+.header__cart #cart .content,
+.sale_badge,
+.product-filter .display,
+.product-filter .compare-link,
+.main_quicklook{
 	display: none !important;
 }
 

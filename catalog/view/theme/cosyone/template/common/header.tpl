@@ -43,6 +43,15 @@
 <?php echo $analytic; ?>
 <?php } ?>
 
+<script>
+  //checking cart for empty
+  jQuery(document).ready(function($) {
+    if($("div").is(".empty")) {
+      $("#cart .shortcut_heading").css({"pointer-events" : "none"});
+    }
+  });
+</script>
+
 </head>
 <body class="<?php echo $class; ?>">
 <div class="outer_container <?php echo $cosyone_default_product_style; ?> <?php if($cosyone_use_custom){ echo $cosyone_container_layout; } ?> <?php echo $cosyone_use_breadcrumb; ?>">
