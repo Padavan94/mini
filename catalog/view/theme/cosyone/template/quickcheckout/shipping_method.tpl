@@ -123,13 +123,13 @@ foreach ($shipping_methods as $shipping_method) {
 <?php } ?>
 
 <script type="text/javascript"><!--
-$('#shipping-method select[name=\'shipping_method\'], #shipping-method select[name=\'shipping_method\']').on('change', function() {
+$('#shipping-method input[name=\'shipping_method\'], #shipping-method select[name=\'shipping_method\']').on('click', function() {
     var $this = $(this);
     console.log($this.val())
     switch($this.val()){
         case 'novaposhta.warehouse':
             $('#block-novaposhta').show();
-
+        break;
         default:
             $('#block-novaposhta').hide();
 
@@ -213,7 +213,7 @@ function set_shipping_method(){
 			}
 		<?php } ?>
 	<?php } ?>
-});
+};
 
 $(document).ready(function() {
 	$('#shipping-method input[name=\'shipping_method\']:checked, #shipping-method select[name=\'shipping_method\']').trigger('change');
