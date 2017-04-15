@@ -25,18 +25,23 @@
   
 </div>
         
-
+<div class="last-reviews">
       <?php foreach($last_reviews as $rev){ ?>
-      <div class="col-md-12">
+      <div>
+        <div class="inner">
           <strong><?php echo $rev['author']; ?> </strong>(<?php echo $rev['date_added']; ?>)
           
         <span class="rating r<?php echo $rev['rating']; ?>">
             <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
         </span>
       <a href="/index.php?route=product/product&product_id=<?php echo $rev['product_id']; ?>"><?php echo $rev['name']; ?></a>
-          <p><?php echo $rev['text']; ?></p>
       </div>
+      <p><?php echo $rev['text']; ?></p>
+      </div>
+
       <?php } ?>
+
+</div>
       
       
       <?php echo $content_bottom; ?></div>

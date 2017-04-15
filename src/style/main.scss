@@ -585,7 +585,7 @@ a.button.active:hover, input.button.active:hover, #button-confirm:hover, .style-
 }
 
 .hits {
-	margin-top: 25px;
+	
 
 	&__container {
 		border-top: 1px solid #d9d9d9;
@@ -676,6 +676,7 @@ a.button.active:hover, input.button.active:hover, #button-confirm:hover, .style-
 		overflow: hidden;
 		top: -1px;
 		margin-bottom: 40px;
+		padding: 0 20px;
 		&:before {
 			width: 240px;
 			height: 240px;
@@ -1137,7 +1138,7 @@ a.button.active:hover, input.button.active:hover, #button-confirm:hover, .style-
 	margin-bottom: 57px;
 	position: relative;
 	overflow: hidden;
-	padding-top: 24px;
+	padding: 10px 20px;
 
 	&:before {
 		content: "";
@@ -2409,6 +2410,7 @@ a.button.active:hover, input.button.active:hover, #button-confirm:hover, .style-
 }
 
 .checkout-my {
+	padding-bottom: 35px;
 	.checkout-heading  {
 		display: none;
 	}
@@ -2588,6 +2590,9 @@ a.button.active:hover, input.button.active:hover, #button-confirm:hover, .style-
 #payment-method,
 .table.payment {
 	margin-bottom: 15px !important;
+	td {
+		border-top: 0;
+	}
 }
 #payment-address {
 	.col-sm-6 {
@@ -2609,7 +2614,7 @@ a.button.active:hover, input.button.active:hover, #button-confirm:hover, .style-
 
 }
 .quickcheckout-content {
-	margin-bottom: 35px;
+	margin-bottom: 0px;
 }
 #coupon-content {
 	input {
@@ -2617,8 +2622,38 @@ a.button.active:hover, input.button.active:hover, #button-confirm:hover, .style-
 	}
 }
 
+.info-page {
+	padding-bottom: 40px;
+	h1,h2,h3,h4,h5,h6 {
+		margin-bottom: 15px;
+		text-transform: uppercase;
+		color: #161616;
+		font-family: "Ral-b";
+	}
 
+	ul {
+		padding-left: 19px;
+		margin-bottom: 15px;
+		font-family: "Ral-sb"
+	}
+	p {
+		font-family: "Ral-m";
+	}
+}
 
+.last-reviews {
+	padding-bottom: 40px;
+	& > div {
+		margin-bottom: 25px;
+		.rating {
+			margin-right: 50px;
+			margin-left: 20px;
+		}
+		.inner {
+			margin-bottom: 10px;
+		}
+	}
+}
 
 
 

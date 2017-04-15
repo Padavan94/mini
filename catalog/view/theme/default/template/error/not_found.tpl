@@ -21,8 +21,10 @@
       <div class="buttons">
         <div class="pull-right"><a href="<?php echo $continue; ?>" class="btn btn-primary">НА ГЛАВНУЮ</a></div>
       </div>
-      <?php echo $content_bottom; ?></div>
+      </div>
     <?php echo $column_right; ?></div>
 </div>
+</div>
+<?php echo $content_bottom; ?>
 </div>
 <?php echo $footer; ?>

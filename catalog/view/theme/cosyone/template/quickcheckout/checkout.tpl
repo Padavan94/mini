@@ -1222,8 +1222,10 @@ $(document).on('click', '.button-update', function() {
 			$('#cart1 .button-update').prop('disabled', true);
 		},
 		success: function(json) {
+			window.location = 'index.php?route=quickcheckout/checkout';
 			if (json['redirect']) {
 				location = json['redirect'];
+
 			} else {
 				<?php if (!$logged) { ?>
 					if ($('#payment-address input[name=\'shipping_address\']:checked').val()) {
@@ -1277,6 +1279,7 @@ $(document).on('click', '.button-remove', function() {
 			$('#cart1 .button-remove').prop('disabled', true);
 		},
 		success: function(json) {
+			window.location = 'index.php?route=quickcheckout/checkout';
 			if (json['redirect']) {
 				location = json['redirect'];
 			} else {

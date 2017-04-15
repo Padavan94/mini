@@ -147,7 +147,7 @@
 </div>
 </div>
 <div style="clear:both;"></div>
-<div style="clear: both; padding-top:8px">
+<div style="clear: both;">
   <?php if (!empty($field_register['display'])) { ?>
 	<?php if (!$guest_checkout || !empty($field_register['required'])) { ?>
 	  <input type="checkbox" name="create_account" value="1" id="create" class="hide" checked="checked" />
