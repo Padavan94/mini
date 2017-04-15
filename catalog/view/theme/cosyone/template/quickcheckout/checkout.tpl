@@ -1,5 +1,6 @@
 <?php echo $header; ?>
 <div class="container">
+  <div class="breadcrumb_wrapper"></div>
   <ul class="breadcrumb">
     <?php foreach ($breadcrumbs as $breadcrumb) { ?>
     <li><a href="<?php echo $breadcrumb['href']; ?>"><?php echo $breadcrumb['text']; ?></a></li>
@@ -14,8 +15,17 @@
     <?php $class = 'col-sm-12'; ?>
     <?php } ?>
     <div id="content" class="<?php echo $class; ?>"><?php echo $content_top; ?>
+    <div class="title-cs">
+            <h1>         Оформление <br>заказа
+              <div class="bubles">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+            </h1>
+            
+          </div>
     <div id="social_login_content_holder"></div>
-      <h1><?php echo $heading_title; ?></h1>
 	  <!-- Start -->
 	  <div id="warning-messages"></div>
 	  <div id="success-messages"></div>
@@ -48,7 +58,7 @@
   
 	  <?php } ?>
       
-      <div class="grid_holder">
+      <div class="grid_holder checkout-my">
       
 	  <div class="checkout-column">
 		<?php if (!$logged) { ?>

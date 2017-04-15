@@ -1,4 +1,5 @@
 <?php echo $header; ?>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css">
 <div class="container">
   <ul class="breadcrumb">
     <?php foreach ($breadcrumbs as $breadcrumb) { ?>
@@ -13,13 +14,28 @@
     <?php } else { ?>
     <?php $class = 'col-sm-12'; ?>
     <?php } ?>
-    <div id="content" class="<?php echo $class; ?>"><?php echo $content_top; ?>
-      <h1><?php echo $heading_title; ?></h1>
-      <?php echo $text_message; ?>
-      <div class="buttons">
-        <div class="pull-right"><a href="<?php echo $continue; ?>" class="btn btn-primary"><?php echo $button_continue; ?></a></div>
-      </div>
-      <?php echo $content_bottom; ?></div>
-    <?php echo $column_right; ?></div>
+    <div id="content" class="<?php echo $class; ?>">
+    <div class="confirm-message mfp-hide">
+      <h1>Ваш заказ принят</h1>
+      <p>В ближайшее время с Вами свяжется<br> менеджер для подтверждения заказа.</p>
+      <div class="pull-right"><a href="<?php echo $continue; ?>" class="btn btn-suc">Продолжить покупки</a></div>
+    </div>
 </div>
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+
+<script>
+  jQuery(document).ready(function($) {
+    $.magnificPopup.open({
+      modal: true,
+    items: {
+      src: '.confirm-message', // can be a HTML string, jQuery object, or CSS selector
+      type: 'inline',
+    }
+  });
+  });
+</script>
+
 <?php echo $footer; ?>

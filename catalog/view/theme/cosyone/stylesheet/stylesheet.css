@@ -127,9 +127,7 @@ ul.list-unstyled.margin-b li {
 	color: #5f2a43;
 }
 /* price */
-.price, .price-new {
-	color:#276658;
-}
+
 .price-old {
 	color:#888888;
 	text-decoration:line-through;
@@ -1300,28 +1298,9 @@ table.radio tr.highlight td {
 /* default button */
 
 /* Highlighted button*/
-a.button.active, input.button.active, input.button.active:hover, #button-confirm, .style-2 .add_to_cart { 
-	background-color: #d6a916;
-	border-color:transparent;
-	color:#ffffff;
-}
-a.button.active:hover, input.button.active:hover, #button-confirm:hover, .style-2 .add_to_cart:hover { 
-	background-color: #ffffff;
-	border-color:#d6a916;
-	color:#d6a916;
-}
+
 /* Secondary color button */
-a.button.second { 
-	background-color: #276658;
-	border:1px solid;
-	border-color:transparent;
-	color:#ffffff;
-}
-a.button.second:hover { 
-	color:#276658;
-	background-color:#ffffff;
-	border-color:#276658;
-}
+
 /* Remove buttons */
 
 
@@ -1997,7 +1976,7 @@ a.button.second:hover {
 	transition:border-color 500ms;
 }
 .grid2 .product-grid .item {width:50%;}
-.grid3 .product-grid .item {width:33.33%;}
+.grid3 .product-grid .item {width:33.23%;}
 .grid4 .product-grid .item {width:25%;}
 .grid5 .product-grid .item {width:20%;}
 

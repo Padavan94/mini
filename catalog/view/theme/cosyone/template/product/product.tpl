@@ -799,7 +799,7 @@ $('#button-cart').on('click', function() {
           initialWidth: 830,
           width: 830,
           maxWidth: "90%",
-          height:"90%",
+          height:"50%",
           });
 
           $('.cart_notification').load('index.php?route=common/cart/info #cart > *');
