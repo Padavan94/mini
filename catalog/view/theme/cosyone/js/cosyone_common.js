@@ -226,32 +226,7 @@ var cart = {
 				}
 
 				if (json['success']) {
-                                    var html = 'Товары загружаются...';
-                            /*html += '<table>';
-                            
-                                json['products'].forEach(function(product, i, array_products) {   
-                                html += '<tr>';
-                                  html += '<td class="image border">';
-                                    if (product['thumb']) {
-                                        html += '<a href="'+ product['href'] +'"><img src="' + product['thumb'] + '" alt="' + product['name'] + '" title="' + product['name'] + '" /></a>';
-                                    }
-                                html += '</td>';
-                                  html += '<td class="name border">';
-                                  html += '<a class="contrast_font" href="' + product['href'] + '">' + product['name'] + '</a>';
-                                    html += product['quantity']+ '&nbsp;x&nbsp;<b>' + product['price'] + '</b>';
-                                    html += '<div>';
-                                    product['option'].forEach(function(option, j, array_option) {   
-                                        html += option['name'] + ':' + option['value'] + '<br />';
-                                    });
-                                    html += '</div></td>';
-                                  html += '<td class="remove border"><a onclick="cart.remove(' + product['cart_id'] +');"><span class="remove">x</span></a></td>';
-                                html += '</tr>';
-                                });
-                              html += '</table>';*/
-                                    
-                                    
-                           
-                                    
+                                    var html = 'Товары загружаются...'; 
 					$.colorbox({
 					//html:'<div class="cart_notification"><div class="product"><img src="' + json['image'] + '"/><span>' + json['success'] + '</span></div><div class="bottom"><a class="btn btn-default" href="' + json['link_cart'] + '">' + json['text_cart'] + '</a> ' + '<a class="btn btn-primary" href="' + json['link_checkout'] + '">' + json['text_checkout'] + '</a></div></div>',
 					html: '<h3 class="hits__title">  <span>Вам так же может понравится  <div class="bubles"><span></span><span></span><span></span></div></span></h3>' +
@@ -262,7 +237,7 @@ var cart = {
 					initialWidth: 830,
 					width: 830,
 					maxWidth: "90%",
-					height:"90%",
+					maxHeight:"90%",
 					});
 
 					$('.cart_notification').load('index.php?route=common/cart/info #cart > *');
