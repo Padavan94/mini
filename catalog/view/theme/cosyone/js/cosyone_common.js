@@ -233,11 +233,12 @@ var cart = {
 					'<div class="cart_notification">' +
 					html+ '<div class="bottom"><a class="btn btn-default" href="' + json['link_cart'] + '">' + json['text_cart'] + '</a> ' + '<a class="btn btn-primary" href="' + json['link_checkout'] + '">' + json['text_checkout'] + '</a></div></div>',
                                         className: "notification",
-					initialHeight:50,
+					initialHeight: '60%',
 					initialWidth: 830,
 					width: 830,
 					maxWidth: "90%",
-					height:"50%",
+					height: 600,
+					maxHeight:"90%",
 					});
 
 					$('.cart_notification').load('index.php?route=common/cart/info #cart > *');
