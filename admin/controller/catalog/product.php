@@ -1000,6 +1000,36 @@ class ControllerCatalogProduct extends Controller {
 			$data['manufacturer'] = '';
 		}
 
+		// Labels
+		$this->load->model('design/label');
+
+		if (isset($this->request->post['product_label_id'])) {
+			$data['label_id'] = $this->request->post['product_label_id'];
+		} elseif (!empty($product_info)) {
+			$data['label_id'] = $product_info['label_id'];
+		} else {
+			$data['label_id'] = 0;
+		}
+		
+		if (isset($this->request->post['product_label_id2'])) {
+			$data['label_id2'] = $this->request->post['product_label_id'];
+		} elseif (!empty($product_info)) {
+			$data['label_id2'] = $product_info['label_id2'];
+		} else {
+			$data['label_id2'] = 0;
+		}
+
+		$data['product_labels'] = array();
+		$labels = $this->model_design_label->getLabels();
+		foreach ($labels as $label_info) {
+			if ($label_info) {
+				$data['product_labels'][] = array(
+					'product_label_id' => $label_info['product_label_id'],
+					'label_name' => $label_info['label_name']
+				);
+			}
+		}
+
 		// Categories
 		$this->load->model('catalog/category');
 

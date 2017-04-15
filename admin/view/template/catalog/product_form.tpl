@@ -355,6 +355,36 @@
                 </div>
               </div>
               <div class="form-group">
+				<label class="col-sm-2 control-label" for="input-tax-class">Левый стикер</label>
+				<div class="col-sm-10">
+				  <select name="label_id" id="input-product_label" class="form-control">
+					<option value="0"><?php echo $text_none; ?></option>
+					<?php foreach ($product_labels as $product_label) { ?>
+					<?php if ($product_label['product_label_id'] == $label_id) { ?>
+					<option value="<?php echo $product_label['product_label_id']; ?>" selected="selected"><?php echo $product_label['label_name']; ?></option>
+					<?php } else { ?>
+					<option value="<?php echo $product_label['product_label_id']; ?>"><?php echo $product_label['label_name']; ?></option>
+					<?php } ?>
+					<?php } ?>
+				  </select>
+				</div>
+			  </div>
+			  <div class="form-group">
+			  <label class="col-sm-2 control-label" for="input-tax-class">Правый стикер</label>
+				<div class="col-sm-10">
+				  <select name="label_id2" id="input-product_label" class="form-control">
+					<option value="0"><?php echo $text_none; ?></option>
+					<?php foreach ($product_labels as $product_label) { ?>
+					<?php if ($product_label['product_label_id'] == $label_id2) { ?>
+					<option value="<?php echo $product_label['product_label_id']; ?>" selected="selected"><?php echo $product_label['label_name']; ?></option>
+					<?php } else { ?>
+					<option value="<?php echo $product_label['product_label_id']; ?>"><?php echo $product_label['label_name']; ?></option>
+					<?php } ?>
+					<?php } ?>
+				  </select>
+				</div>
+			  </div>
+			  <div class="form-group">
                 <label class="col-sm-2 control-label"><?php echo $entry_store; ?></label>
                 <div class="col-sm-10">
                   <div class="well well-sm" style="height: 150px; overflow: auto;">
