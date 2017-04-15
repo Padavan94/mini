@@ -42,7 +42,7 @@
       <?php } ?>
       <?php } ?>
       <li><i class="fa fa-angle-right"></i><a href="/index.php?route=information/shoprating">Отзывы покупателей</a></li>
-      <li><i class="fa fa-angle-right"></i><a href="<?php echo $contact; ?>"><?php echo $text_contact; ?></a></li>
+      <!--<li><i class="fa fa-angle-right"></i><a href="<?php echo $contact; ?>"><?php echo $text_contact; ?></a></li>-->
     </ul>
   </div><!--
   --><div class="column footer__column">
