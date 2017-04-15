@@ -619,10 +619,7 @@
   </div>
 
 
-<div class="can-like">
-
     <?php echo $content_bottom; ?>
-  </div>
 
 
 <script type="text/javascript" src="catalog/view/theme/cosyone/js/cloud-zoom.1.0.2.min.js"></script>

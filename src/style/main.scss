@@ -532,7 +532,7 @@ body {
 				width: 78px;
 				height: 78px;
 				border-radius: 50%;
-				background-color: #edeff1;
+				background-color: #fbfbfb;
 				display: flex;
 				justify-content: center;
 				align-items: center;
@@ -1740,7 +1740,7 @@ body {
 		display: flex;
 		align-items: center;
 		margin-right: 25px;
-		a {
+		a,button {
 			width: 33px !important;
 			height: 33px !important;
 			border-radius: 50%;
@@ -1811,6 +1811,36 @@ body {
 		}
 	}
 }
+
+
+.counter-price {
+		display: flex;
+		align-items: center;
+		margin-right: 25px;
+		a,button {
+			width: 33px !important;
+			height: 33px !important;
+			border-radius: 50%;
+			color: #fff;
+			background-color: #000;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			cursor: pointer;
+			border: none;
+		}
+		input {
+			height: 60px;
+			width: 106px;
+			border-radius: 40px;
+			margin: 0 5px;
+			border: 1px solid #dedede;
+			text-align: center;
+			color: #161616;
+			font-family: "Rob-b";
+			font-size: 16px;
+		}
+	}
 
 .rating {
 		i {
@@ -2033,10 +2063,12 @@ body {
 			tr{
 				td{
 					background-color: transparent;
-					font-size: 16px;
-					color: #818181;
+					font-size: 12px;
+					text-transform: uppercase;
+					color: #161616;
 					font-weight: normal;
-					padding: 10px 15px;
+					padding: 17px 15px;
+					font-family: "Ral-m";
 				}
 			}
 		}
@@ -2044,11 +2076,21 @@ body {
 			tr{
 				td{
 					vertical-align: middle;
+					&.image {
+						padding: 4px;
+						a {
+							width: 115px;
+							img {
+								width: 100%;
+								height: auto;
+							}
+						}
+					}
 					&.name{
 						a{
-							color: #444;
+							color: $brand2;
 							font-size: 16px;
-							font-weight: 600;
+							font-family: "Ral-b";
 							&:hover{
 								color: $brand2;
 							}
@@ -2057,21 +2099,21 @@ body {
 					&.unit_price,
 					&.price{
 						font-size: 21px;
-						color: #535353;
-						font-weight: bold;
+						color: #161616;
+						font-family: "Rob-b";
 					}
 					&.remove{
 						a{
 							width: 36px;
 							height: 36px;
-							border-radius: 50%;
-							background-color: #eaefee;
 							display: flex;
 							justify-content: center;
 							align-items: center;
+							border: none;
+							color: #c9c9c9;
 							i{
-								color: #880e4f;
-								font-size: 18px;
+								color: #c9c9c9;
+								font-size: 22px;
 							}
 						}
 					}

@@ -1,3 +1,4 @@
+<div class="can-like">
 <div class="hits clearfix">
 <div class="container hits__container">
   <h3 class="hits__title"><?php //echo $heading_title; ?>
@@ -47,6 +48,7 @@
 
 </div>
 
+</div>
 
 <script type="text/javascript">
 $(document).ready(function() {

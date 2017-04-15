@@ -1,5 +1,17 @@
 <?php echo $header; ?>
 <div class="container">
+<div class="title-cs">
+  <h1><?php //echo $heading_title; ?>
+    Корзина
+    <div class="bubles">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </h1>
+  
+</div>
+<div class="breadcrumb_wrapper"></div>
   <ul class="breadcrumb">
     <?php foreach ($breadcrumbs as $breadcrumb) { ?>
     <li><a href="<?php echo $breadcrumb['href']; ?>"><?php echo $breadcrumb['text']; ?></a></li>
@@ -29,7 +41,7 @@
     <?php $class = 'col-sm-12'; ?>
     <?php } ?>
     <div id="content" class="<?php echo $class; ?>"><?php echo $content_top; ?>
-      <h1><?php echo $heading_title; ?>
+      <!-- <h1><?php echo $heading_title; ?> -->
         <?php if ($weight) { ?>
         &nbsp;(<?php echo $weight; ?>)
         <?php } ?>
@@ -44,10 +56,10 @@
             <td class="image mobile_hide"><?php echo $column_image; ?></td>
             <td class="name"><?php echo $column_name; ?></td>
             <td class="model mobile_hide"><?php echo $column_model; ?></td>
-            <td class="price mobile_hide"><?php echo $column_price; ?></td>
+            <!-- <td class="price mobile_hide"><?php echo $column_price; ?></td> -->
             <td class="quantity"><?php echo $column_quantity; ?></td>
             <td class="total mobile_hide"><?php echo $column_total; ?></td>
-            <td class="remove mobile_hide"></td>
+            <td class="remove mobile_hide">Удалить</td>
               </tr>
             </thead>
             <tbody>
@@ -56,36 +68,15 @@
                 <td class="image mobile_hide"><?php if ($product['thumb']) { ?>
                   <a href="<?php echo $product['href']; ?>"><img src="<?php echo $product['thumb']; ?>" alt="<?php echo $product['name']; ?>" title="<?php echo $product['name']; ?>" /></a>
                   <?php } ?></td>
-                <td class="name"><a href="<?php echo $product['href']; ?>"><?php echo $product['name']; ?></a>
-                  <?php if (!$product['stock']) { ?>
-                  <span class="text-danger">***</span>
-                  <?php } ?>
-                  <?php if ($product['option']) { ?>
-                  <?php foreach ($product['option'] as $option) { ?>
-                  <small><?php echo $option['name']; ?>: <?php echo $option['value']; ?></small>
-                  <?php } ?>
-                  <?php } ?>
-                  <?php if ($product['reward']) { ?>
-                  <small><?php echo $product['reward']; ?></small>
-                  <?php } ?>
-                  <?php if ($product['recurring']) { ?>
-                  <small><?php echo $text_recurring_item; ?>: <?php echo $product['recurring']; ?></small>
-                  <?php } ?>
-                  <div class="up_to_mobile">
-              <small><?php echo $column_price; ?>: <?php echo $product['price']; ?></small>
-              <small><?php echo $column_total; ?>: <?php echo $product['total']; ?></small>
-              <small><a class="remove_link" onclick="cart.remove('<?php echo $product['cart_id']; ?>');" title="<?php echo $button_remove; ?>">[<?php echo $button_remove; ?>]</a></small>
-              </div></td>
+                <td class="name"><a href="<?php echo $product['href']; ?>"><?php echo $product['name']; ?></a></td>
                 <td class="model mobile_hide"><?php echo $product['model']; ?></td>
-                <td class="unit_price mobile_hide"><?php echo $product['price']; ?></td>
+                <!-- <td class="unit_price mobile_hide"><?php echo $product['price']; ?></td> -->
                 <td class="quantity">
-                <div class="counter-zone">
-                <div class="counter">
+                <div class="counter-zone counter-price">
+                <div class="counter-price">
+                  <button class="decrement">-</button>
                   <input type="text" name="quantity[<?php echo $product['cart_id']; ?>]" value="<?php echo $product['quantity']; ?>" />
-                  <div class="btns">
-                    <button class="increment">+</button>
-                    <button class="decrement">-</button>
-                  </div>
+                  <button class="increment">+</button>
                 </div>
                 <a onclick="$('#basket').submit();" data-tooltip="<?php echo $button_update; ?>" class="sq_icon"><i class="fa fa-refresh"></i></a>
                 </div>
@@ -164,10 +155,13 @@
       
       <?php endif; ?>
       
-      <?php echo $content_bottom; ?></div>
-    <?php echo $column_right; ?></div>
-</div>
+      </div>
 
+    <?php echo $column_right; ?></div>
+
+</div>
+<div class="clearfix"></div>
+<?php echo $content_bottom; ?>
 
 <script>
   
