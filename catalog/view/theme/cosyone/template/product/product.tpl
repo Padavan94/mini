@@ -788,49 +788,22 @@ $('#button-cart').on('click', function() {
 			}
 			
 			if (json['success']) {
-                            
-                            //alert('Ты знаешь как найти эту ебалу');
-                 
-                            var html;
-                            html += '<table>';
-                            
-                                json['products'].forEach(function(product, i, array_products) {   
-                                html += '<tr>';
-                                  html += '<td class="image border">';
-                                    if (product['thumb']) {
-                                        html += '<a href="'+ product['href'] +'"><img src="' + product['thumb'] + '" alt="' + product['name'] + '" title="' + product['name'] + '" /></a>';
-                                    }
-                                html += '</td>';
-                                  html += '<td class="name border">';
-                                  html += '<a class="contrast_font" href="' + product['href'] + '">' + product['name'] + '</a>';
-                                    html += product['quantity']+ '&nbsp;x&nbsp;<b>' + product['price'] + '</b>';
-                                    html += '<div>';
-                                    product['option'].forEach(function(option, j, array_option) {   
-                                        html += option['name'] + ':' + option['value'] + '<br />';
-                                    });
-                                    html += '</div></td>';
-                                  html += '<td class="remove border"><a onclick="cart.remove(' + product['cart_id'] +');"><span class="remove">x</span></a></td>';
-                                html += '</tr>';
-                                });
-                              html += '</table>';
-                            
-                            //console.log(html);
-                       
-				$.colorbox({
-//html:'<div class="cart_notification"><div class="product"><img src="' + json['image'] + '"/><span>' + json['success'] + '</span></div><div class="bottom"><a class="btn btn-default" href="' + json['link_cart'] + '">' + json['text_cart'] + '</a> ' + '<a class="btn btn-primary" href="' + json['link_checkout'] + '">' + json['text_checkout'] + '</a></div></div>',
-html: '<div class="cart_notification">' + html+ '<div class="bottom"><a class="btn btn-default" href="' + json['link_cart'] + '">' + json['text_cart'] + '</a> ' + '<a class="btn btn-primary" href="' + json['link_checkout'] + '">' + json['text_checkout'] + '</a></div></div>',
-className: "notification",
-initialHeight:50,
-initialWidth:50,
-width:"90%",
-maxWidth:400,
-height:"90%",
-maxHeight:200
-});
-				
-				$('#cart-total').html(json['total']);
-				
-				$('#cart').load('index.php?route=common/cart/info #cart > *'); //Added
+                        var html = 'Товары загружаются...'; 
+          $.colorbox({
+          //html:'<div class="cart_notification"><div class="product"><img src="' + json['image'] + '"/><span>' + json['success'] + '</span></div><div class="bottom"><a class="btn btn-default" href="' + json['link_cart'] + '">' + json['text_cart'] + '</a> ' + '<a class="btn btn-primary" href="' + json['link_checkout'] + '">' + json['text_checkout'] + '</a></div></div>',
+          html: '<h3 class="hits__title">  <span>Вам так же может понравится  <div class="bubles"><span></span><span></span><span></span></div></span></h3>' +
+          '<div class="cart_notification">' +
+          html+ '<div class="bottom"><a class="btn btn-default" href="' + json['link_cart'] + '">' + json['text_cart'] + '</a> ' + '<a class="btn btn-primary" href="' + json['link_checkout'] + '">' + json['text_checkout'] + '</a></div></div>',
+                                        className: "notification",
+          initialHeight:50,
+          initialWidth: 830,
+          width: 830,
+          maxWidth: "90%",
+          height:"90%",
+          });
+
+          $('.cart_notification').load('index.php?route=common/cart/info #cart > *');
+          $('#cart').load('index.php?route=common/cart/info #cart > *'); //Added
 			}
 		}
 	});

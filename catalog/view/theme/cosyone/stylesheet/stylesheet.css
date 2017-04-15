@@ -1298,58 +1298,7 @@ table.radio tr.highlight td {
 }
 /* buttons */
 /* default button */
-a.button, input.button, button.button, .btn { 
-	text-transform:uppercase;
-	padding:9px 20px;
-	display:inline-block;
-	font-size:13px;
-	text-align:center;
-	-webkit-appearance:none; /* Needed for iPad */
-	border:1px solid;
-	background-color: #ffffff;
-	border-color:#222222;
-	color:#222222;
-	border-radius:0;
-	line-height:1.4;
-	cursor: pointer;
-}
-input.button, button.button { 
-	margin: 0;
-	padding:8px 20px;
 
-}
-a.button:hover, input.button:hover, button.button:hover, .btn:hover, .btn:focus { 
-	background-color: #5f2a43;
-	color:#ffffff;
-	border-color:transparent;
-}
-.button i {
-	font-size:16px;
-	margin-right:5px;
-}
-/* Main quickview button */
-a.button.quickview { 
-	background-color: #222222;
-	background-color:rgba(34, 34, 34, 0.8);
-	padding:9px 10px;
-	border-color:transparent !important;
-	color:#ffffff !important;
-}
-a.button.quickview:hover { 
-	background-color:#276658;
-}
-
-/* Cart/contrast buttons */
-a.button.contrast, .button.contrast, .sq_icon.contrast, input.button.contrast { 
-	background-color: #ffffff;
-	color: #d6a916;
-	border:1px solid;
-	border-color:#d6a916;
-}
-a.button.contrast:hover, .button.contrast:hover, .sq_icon.contrast:hover, input.button.contrast:hover { 
-	background-color: #d6a916;
-	color:#ffffff;
-}
 /* Highlighted button*/
 a.button.active, input.button.active, input.button.active:hover, #button-confirm, .style-2 .add_to_cart { 
 	background-color: #d6a916;
@@ -1814,7 +1763,7 @@ a.button.second:hover {
 	width:33.33%;
 }
 .category-grid.grid4 .item {
-	width:25%;
+	width:33.33%;
 }
 .category-grid.grid5 .item {
 	width:20%;
