@@ -85,7 +85,11 @@ class ControllerQuickCheckoutShippingMethod extends Controller {
 					}
 				}
 			}
-
+            //var_dump($method_data);die;
+            if(isset($method_data['novaposhta'])){
+                $method_data['novaposhta']['cities'] = $this->model_shipping_novaposhta->getCitys();
+            }
+            //var_dump($method_data);die;
 			$sort_order = array();
 
 			foreach ($method_data as $key => $value) {
@@ -100,7 +104,8 @@ class ControllerQuickCheckoutShippingMethod extends Controller {
 		$data['text_shipping_method'] = $this->language->get('text_shipping_method');
 		$data['text_estimated_delivery'] = $this->language->get('text_estimated_delivery');
 		$data['text_delivery'] = $this->language->get('text_delivery');
-		
+		$data['text_none'] = $this->language->get('text_none');
+        
 		if ($this->config->get('quickcheckout_delivery_time') == '2') {
 			$min = $this->config->get('quickcheckout_delivery_min');
 			$max = $this->config->get('quickcheckout_delivery_max');
@@ -281,11 +286,29 @@ class ControllerQuickCheckoutShippingMethod extends Controller {
 			$shipping = explode('.', $this->request->post['shipping_method']);
 			
 			if (isset($this->session->data['shipping_methods'][$shipping[0]]['quote'][$shipping[1]])) {
+                if($shipping[0] == 'novaposhta'){
+                    if (isset($this->request->post['novaposhta_city_id']) && utf8_strlen($this->request->post['novaposhta_city_id']) > 1) {
+                        $this->load->model('shipping/novaposhta');
+                        $price = $this->model_shipping_novaposhta->getDocumentPriceByRef($this->request->post['novaposhta_city_id']);
+                        //$this->session->data['shipping_methods'][$shipping[0]]['quote'][$shipping[1]]['cost'] = $price;
+                        $this->session->data['shipping_methods'][$shipping[0]]['quote'][$shipping[1]]['cost'] = 0;
+                        $this->session->data['shipping_methods'][$shipping[0]]['quote'][$shipping[1]]['additional'] = '';
+                        if (isset($this->request->post['novaposhta_post_offices'])){
+                            $this->session->data['shipping_methods'][$shipping[0]]['quote'][$shipping[1]]['additional'] .= ', '.$this->request->post['novaposhta_post_offices'];
+                        }
+                    }    
+                }                 
 				$this->session->data['shipping_method'] = $this->session->data['shipping_methods'][$shipping[0]]['quote'][$shipping[1]];
 			}
 		}
 		
 	}
+    
+    public function novaposhta_offices() {
+        $this->load->model('shipping/novaposhta');
+        $offices = $this->model_shipping_novaposhta->getStreetRefByCity($this->request->get['cityref']);
+        $this->response->setOutput(json_encode(['offices' => $offices]));        
+    }       
 	
 	public function validate() {
 		$this->language->load('quickcheckout/checkout');
@@ -378,6 +401,31 @@ class ControllerQuickCheckoutShippingMethod extends Controller {
 			}
 		}
 		
+        if (isset($this->request->post['shipping_method']) && $this->request->post['shipping_method'] == 'novaposhta.warehouse') {
+            if ((utf8_strlen($this->request->post['novaposhta_city_id']) < 1)) {
+                $json['error']['novaposhta_city_id'] = $this->language->get('error_novaposhta_city_id');
+            }else{
+                
+            } 
+            if ((utf8_strlen($this->request->post['novaposhta_post_offices']) < 1)) {
+                $json['error']['novaposhta_post_offices'] = $this->language->get('error_novaposhta_post_offices');
+            }             
+        }
+
+        if (isset($this->request->post['shipping_method']) && $this->request->post['shipping_method'] == 'flat2.flat2') {
+            if ((utf8_strlen($this->request->post['address_1']) < 1)) {
+                $json['error']['address_1'] = $this->language->get('error_address_1');
+            }       
+        }
+        
+        if (isset($this->request->post['shipping_method']) && $this->request->post['shipping_method'] == 'flat.flat') {
+            if ((utf8_strlen($this->request->post['address_2_dop']) < 1)) {
+                $json['error']['address_2_dop'] = $this->language->get('error_address_1');
+            }       
+        }
+        
+//        var_dump($this->request->post);
+        
 		if (!$json) {			
 			$shipping = explode('.', $this->request->post['shipping_method']);
 				

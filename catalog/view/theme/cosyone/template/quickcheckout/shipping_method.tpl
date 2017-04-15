@@ -30,7 +30,37 @@ foreach ($shipping_methods as $shipping_method) {
       <?php } else { ?>
       <input type="radio" name="shipping_method" value="<?php echo $quote['code']; ?>" id="<?php echo $quote['code']; ?>" />
       <?php } ?></td>
-    <td><label for="<?php echo $quote['code']; ?>"><?php echo $quote['title']; ?></label></td>
+    <td><label for="<?php echo $quote['code']; ?>"><?php echo $quote['title']; ?></label>
+    
+    <?php if($quote['code']=='novaposhta.warehouse'){ ?>
+            <div style="<?php if ($code != 'novaposhta.warehouse'):?> display:none; <?php endif; ?>" id="block-novaposhta" class="shipping_dop">
+                <div class="required">
+                    <label class="control-label">Город</label>
+                    <select name="novaposhta_city_id" class="form-control" id="novaposhta_city_id">
+                        <option value="" selected="selected"><?php echo $text_none; ?></option>
+                        <?php if(isset($shipping_methods['novaposhta']['cities']) && count($shipping_methods['novaposhta']['cities']) > 0): ?>
+                            <?php foreach($shipping_methods['novaposhta']['cities'] as $city): ?>
+                                <option value="<?php echo $city['ref']; ?>"><?php echo $city['descr']; ?></option>
+                            <?php endforeach; ?>
+                        <?php endif; ?>
+                    </select>
+                </div>    
+                <div class="required">
+                    <label class="control-label">Склад</label>
+                    <select name="novaposhta_post_offices" class="form-control" id="novaposhta_post_offices">
+                        <option value="" selected="selected"><?php echo $text_none; ?></option>
+                    </select>
+                </div>
+            </div>
+        <?php } ?>
+    
+    
+    
+    
+    
+    
+    
+    </td>
     <td style="text-align: right;" class="rtl-left"><label for="<?php echo $quote['code']; ?>"><span class="shipping-sum"><?php echo $quote['text']; ?></span></label></td>
   </tr>
   <?php } ?>
@@ -199,4 +229,37 @@ $(document).ready(function() {
 		<?php } ?>
 	});
 <?php } ?>
+
+    $('#shipping-method').on('change', '#novaposhta_city_id', function () {
+        $.ajax({
+            url: 'index.php?route=quickcheckout/shipping_method/novaposhta_offices&cityref=' + this.value,
+            dataType: 'json',
+            beforeSend: function () {
+                $('select[name=\'novaposhta_post_offices\']').html('<option value="">Loading...</option>')
+            },
+            complete: function () {
+                set_shipping_method();
+            },
+            success: function (json) {
+                html = '<option value=""><?php echo $text_none; ?></option>';
+
+                if (json['offices'] && json['offices'] != '') {
+                    var text = $( "select[name='novaposhta_city_id'] option:selected" ).text();
+                    for(key in json['offices']){
+                        html += '<option value="'+text+', '+json['offices'][key][0]+'">'+json['offices'][key][0]+'</option>';
+                    }
+                } else {
+                    html += '<option value="0" selected="selected"><?php echo $text_none; ?></option>';
+                }
+    
+                $('select[name=\'novaposhta_post_offices\']').html(html).val("");
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+            }
+        });
+    }); 
+    $('#shipping-method').on('change', '#novaposhta_post_offices', function () {
+        set_shipping_method();
+    });     
 //--></script>
