@@ -74,9 +74,9 @@
                 <td class="quantity">
                 <div class="counter-zone counter-price">
                 <div class="counter-price">
-                  <button class="decrement">-</button>
+                  <button class="decrement"><i class="fa fa-angle-left"></i></button>
                   <input type="text" name="quantity[<?php echo $product['cart_id']; ?>]" value="<?php echo $product['quantity']; ?>" />
-                  <button class="increment">+</button>
+                  <button class="increment"><i class="fa fa-angle-right"></i></button>
                 </div>
                 <a onclick="$('#basket').submit();" data-tooltip="<?php echo $button_update; ?>" class="sq_icon"><i class="fa fa-refresh"></i></a>
                 </div>

@@ -226,9 +226,8 @@ var cart = {
 				}
 
 				if (json['success']) {
-                                    //alert('azaza');
-                                    var html;
-                            html += '<table>';
+                                    var html = 'Товары загружаются...';
+                            /*html += '<table>';
                             
                                 json['products'].forEach(function(product, i, array_products) {   
                                 html += '<tr>';
@@ -248,22 +247,25 @@ var cart = {
                                   html += '<td class="remove border"><a onclick="cart.remove(' + product['cart_id'] +');"><span class="remove">x</span></a></td>';
                                 html += '</tr>';
                                 });
-                              html += '</table>';
+                              html += '</table>';*/
                                     
                                     
-                                    
+                           
                                     
 					$.colorbox({
 					//html:'<div class="cart_notification"><div class="product"><img src="' + json['image'] + '"/><span>' + json['success'] + '</span></div><div class="bottom"><a class="btn btn-default" href="' + json['link_cart'] + '">' + json['text_cart'] + '</a> ' + '<a class="btn btn-primary" href="' + json['link_checkout'] + '">' + json['text_checkout'] + '</a></div></div>',
-					html: '<div class="cart_notification">' + html+ '<div class="bottom"><a class="btn btn-default" href="' + json['link_cart'] + '">' + json['text_cart'] + '</a> ' + '<a class="btn btn-primary" href="' + json['link_checkout'] + '">' + json['text_checkout'] + '</a></div></div>',
+					html: '<h3 class="hits__title">  <span>Вам так же может понравится  <div class="bubles"><span></span><span></span><span></span></div></span></h3>' +
+					'<div class="cart_notification">' +
+					html+ '<div class="bottom"><a class="btn btn-default" href="' + json['link_cart'] + '">' + json['text_cart'] + '</a> ' + '<a class="btn btn-primary" href="' + json['link_checkout'] + '">' + json['text_checkout'] + '</a></div></div>',
                                         className: "notification",
 					initialHeight:50,
-					initialWidth:50,
-					width:"90%",
-					maxWidth:400,
+					initialWidth: 830,
+					width: 830,
+					maxWidth: "90%",
 					height:"90%",
-					maxHeight:200
 					});
+
+					$('.cart_notification').load('index.php?route=common/cart/info #cart > *');
 					$('#cart').load('index.php?route=common/cart/info #cart > *'); //Added
 				}
 			}
@@ -301,12 +303,13 @@ var cart = {
 				$('#cart > button').button('loading');
 			},
 			success: function(json) {
+
 				$('#cart > button').button('reset');
 
 				$('#cart-total').html(json['total']);
-
-				if (getURLVar('route') == 'checkout/cart' || getURLVar('route') == 'checkout/checkout') {
-					location = 'index.php?route=checkout/cart';
+				$('.cart_notification').load('index.php?route=common/cart/info #cart > *');
+				if (getURLVar('route') == 'checkout/cart' || getURLVar('route') == 'checkout/checkout' || window.location.pathname == '/shopping-cart') {
+					window.location = 'shopping-cart';
 				} else {
 					$('#cart').load('index.php?route=common/cart/info #cart > *'); //Added
 				}
