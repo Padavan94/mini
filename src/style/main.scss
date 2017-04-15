@@ -717,6 +717,9 @@ a.button.active:hover, input.button.active:hover, #button-confirm:hover, .style-
 			z-index: 10;
 			left: 7px;
 			top: 7px;
+			max-width: 50px;
+			max-height: 50px;
+			object-fit: contain;
 		}
 		&__flag {
 			height: auto !important;
@@ -725,6 +728,9 @@ a.button.active:hover, input.button.active:hover, #button-confirm:hover, .style-
 			z-index: 10;
 			right: 7px;
 			top: 7px;
+			max-width: 50px;
+			max-height: 50px;
+			object-fit: contain;
 		}
 		.image {
 			height: 362px;
@@ -787,6 +793,9 @@ a.button.active:hover, input.button.active:hover, #button-confirm:hover, .style-
 	&__bage {
 		height: auto !important;
 		width: auto !important;
+		max-width: 50px;
+		max-height: 50px;
+		object-fit: contain;
 		position: absolute;
 		z-index: 10;
 		left: 22px;
@@ -795,6 +804,9 @@ a.button.active:hover, input.button.active:hover, #button-confirm:hover, .style-
 	&__flag {
 		height: auto !important;
 		width: auto !important;
+		max-width: 50px;
+			max-height: 50px;
+			object-fit: contain;
 		position: absolute;
 		z-index: 10;
 		right: 22px;
@@ -2231,6 +2243,9 @@ a.button.active:hover, input.button.active:hover, #button-confirm:hover, .style-
 		padding-right: 0px;
 		b{
 			font-size: 20px;
+		}
+		div {
+			margin: 0 5px;
 		}
 	}
 
