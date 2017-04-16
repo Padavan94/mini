@@ -2594,7 +2594,9 @@ table.radio tr.highlight td {
 	max-height:28px;
 	cursor:pointer;
 }
-.product-info .clean-option-image .single-option label img:hover,
+.product-info .clean-option-image .single-option label img:hover {
+	border:1px solid #ffeb3b;
+}
 .product-info .clean-option-image .single-option input[type="radio"]:checked + label img {
 	border:1px solid #5f2a43;
 }

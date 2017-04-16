@@ -32,16 +32,16 @@
         <?php foreach ($images as $image) { ?>
         <li class="swiper-slide">
         <?php if ($cosyone_product_zoom) { ?>
-        <a href="<?php echo $image['popup']; ?>" title="<?php echo $heading_title; ?>" class="cloud-zoom-gallery colorbox" rel="useZoom: 'zoom1', smallImage: '<?php echo $image['thumb']; ?>'">
+        <a href="<?php echo $image['popup']; ?>" title="<?php echo $heading_title; ?>" class="colorbox cboxElement"  rel="useZoom: 'zoom1', smallImage: '<?php echo $thumb; ?>'">
         <?php } else { ?>
-        <a href="<?php echo $image['popup']; ?>" title="<?php echo $heading_title; ?>" class="colorbox" rel="useZoom: 'zoom1', smallImage: '<?php echo $image['thumb']; ?>'">
+        <a href="<?php echo $image['popup']; ?>" title="<?php echo $heading_title; ?>" class="colorbox cboxElement"  rel="useZoom: 'zoom1', smallImage: '<?php echo $thumb; ?>'">
         <?php } ?>
         <img src="<?php echo $image['small']; ?>" title="<?php echo $heading_title; ?>" alt="<?php echo $heading_title; ?>" /></a></li>
         <?php } ?>
 
         <?php if ($thumb) { ?>
         <li class="swiper-slide">
-          <a href="<?php echo $popup; ?>" title="<?php echo $heading_title; ?>" class="cloud-zoom-gallery colorbox" rel="useZoom: 'zoom1', smallImage: '<?php echo $thumb; ?>'"><img itemprop="image" src="<?php echo $thumb; ?>" title="<?php echo $heading_title; ?>" alt="<?php echo $heading_title; ?>" /></a>
+          <a href="<?php echo $popup; ?>" title="<?php echo $heading_title; ?>" class="cloud-zoom-gallery colorbox cboxElement" rel="useZoom: 'zoom1', smallImage: '<?php echo $thumb; ?>'"><img itemprop="image" src="<?php echo $thumb; ?>" title="<?php echo $heading_title; ?>" alt="<?php echo $heading_title; ?>" /></a>
         </li>
         <?php } ?>
         </ul>
@@ -54,7 +54,7 @@
       <?php if ($thumb) { ?>
       <div class="image">
 
-      <a href="<?php echo $popup; ?>" title="<?php echo $heading_title; ?>" class="colorbox"><img itemprop="image" src="<?php echo $thumb; ?>" title="<?php echo $heading_title; ?>" alt="<?php echo $heading_title; ?>" /></a>
+      <a href="<?php echo $popup; ?>" title="<?php echo $heading_title; ?>" class="colorbox" rel="useZoom: 'zoom1', smallImage: '<?php echo $thumb; ?>'"><img itemprop="image" src="<?php echo $thumb; ?>" title="<?php echo $heading_title; ?>" alt="<?php echo $heading_title; ?>" /></a>
       
       <?php if ($cosyone_percentage_sale_badge == 'enabled') { ?>
       <?php if (!$special) { ?>
@@ -638,8 +638,18 @@ $(document).ready(function() {
 //--></script>
 <script type="text/javascript">
         jQuery(function($) {
+
+          $(".swiper-slide .cboxElement").mouseover(function (e) {
+            e.preventDefault();
+            var that = $(this);
+            
+            $(".image .cboxElement").attr("href", that.attr("href"));
+            $(".image .cboxElement img, .image .cboxElement").attr("src", that.attr("href"));
+          });
+
+
       //Product thumbnails
-      $(".cloud-zoom-gallery").last().removeClass("cboxElement");
+    /*  $(".cloud-zoom-gallery").last().removeClass("cboxElement");
       $(".cloud-zoom-gallery").click(function() {
         $("#zoom-btn").attr('href', $(this).attr('href'));
         $("#zoom-btn").attr('title', $(this).attr('title'));
@@ -648,7 +658,7 @@ $(document).ready(function() {
             $(this).addClass("cboxElement");
           });
           $(this).removeClass("cboxElement");
-              });
+              });*/
             
         });
 </script>
@@ -936,6 +946,7 @@ $('#button-review').on('click', function() {
         autoplay: 5000,
         loop: true,
         lazyLoading: true,
+        mousewheelControl: true,
     });
 
     $('.table-popup').magnificPopup({

@@ -51,11 +51,16 @@ $('#reward-heading').on('click', function() {
 
 
 $("#coupon-content input").on("blur", function() {
-  $("#button-coupon").trigger('click');
+  if(+$(this).val() > 0) {
+    $("#button-coupon").trigger('click');
+  }
+  
 })
 
 $("#voucher-content input").on("blur", function() {
+  if(+$(this).val() > 0) {
   $("#button-voucher").trigger('click');
+  }
 })
 
 

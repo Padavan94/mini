@@ -46,6 +46,16 @@ a.button, input.button, button.button, .btn {
 			color: #161616;
 		}
 	}
+
+	&.btn-border {
+		background-color: transparent;
+		color: #161616;
+		border-color: $brand;
+		&:hover {
+			background-color: $brand;
+			color: #161616;
+		}
+	}
 }
 input.button, button.button { 
 	margin: 0;
@@ -303,7 +313,12 @@ a.button.active:hover, input.button.active:hover, #button-confirm:hover, .style-
 			&.disabled {
 				display: none !important;
 			}
-			&:hover,
+			&:hover {
+				& > a {
+					background-color: $brand;
+					color: #161616;
+				}
+			}
 			&.current {
 				& > a {
 					background-color: $brand2;
@@ -1754,6 +1769,10 @@ a.button.active:hover, input.button.active:hover, #button-confirm:hover, .style-
 			overflow: hidden;
 			margin-bottom: 0px;
 			height: 600px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			flex: 1 1 auto;
 			a {
 				display: flex;
 				justify-content: center;
@@ -1761,8 +1780,9 @@ a.button.active:hover, input.button.active:hover, #button-confirm:hover, .style-
 				height: 100%;
 
 				img {
-					width: 100%;
+					width: auto;
 					height: auto;
+					max-height: 100%;
 				}
 			}
 		}
@@ -2440,6 +2460,7 @@ a.button.active:hover, input.button.active:hover, #button-confirm:hover, .style-
 			text-transform: uppercase;
 			&:focus {
 				border-color: $brand2;
+				outline: none;
 			}
 		}
 		textarea {

@@ -33,8 +33,8 @@
     </div>
     <div class="cont">
       <div class="checkoutbuttons">
-        <a class="button" href="<?php echo $cart; ?>"><?php echo $text_cart; ?></a>
-        <a class="button active" href="<?php echo $checkout; ?>"><?php echo $text_checkout; ?></a>
+        <a class="button btn-border" href="/index.php?route=product/category&path=59">Продолжить покупки</a>
+        <a class="button" href="<?php echo $checkout; ?>"><?php echo $text_checkout; ?></a>
         </div>
         <div class="mini-cart-total">
             <?php foreach ($totals as $total) { ?>

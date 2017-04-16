@@ -69,9 +69,9 @@
   --><div class="column footer__column">
     <div class="footer__heding"><?php //echo $text_account; ?>мы в соц. сетях</div>
     <div class="footer__socials">
-      <a href="https://vk.com/minny.shopping" class="footer__socials-icon"><i class="fa fa-vk"></i></a>
-      <a href="https://www.instagram.com/minny_for_kids/" class="footer__socials-icon"><i class="fa fa-instagram"></i></a>
-      <a href="https://www.facebook.com/shopping.minny/?ref=bookmarks" class="footer__socials-icon"><i class="fa fa-facebook"></i></a>
+      <a target="_blank" href="https://vk.com/minny.shopping" class="footer__socials-icon"><i class="fa fa-vk"></i></a>
+      <a target="_blank" href="https://www.instagram.com/minny_for_kids/" class="footer__socials-icon"><i class="fa fa-instagram"></i></a>
+      <a target="_blank" href="https://www.facebook.com/shopping.minny/?ref=bookmarks" class="footer__socials-icon"><i class="fa fa-facebook"></i></a>
     </div>
   </div> 
   </div>
