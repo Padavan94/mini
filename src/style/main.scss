@@ -1724,7 +1724,7 @@ a.button.active:hover, input.button.active:hover, #button-confirm:hover, .style-
 	display: flex;
 	padding: 70px 0;
 	.swiper-container {
-		height: 100%;
+		height: 600px;
 		width: 90px;
 		margin-right: 10px;
 	}
@@ -1746,12 +1746,13 @@ a.button.active:hover, input.button.active:hover, #button-confirm:hover, .style-
 	}
 	.left {
 		width: 611px;
-		height: 600px;
+		
 		display: flex;
 		margin-right: 0px;
 		.image {
 			overflow: hidden;
 			margin-bottom: 0px;
+			height: 600px;
 			a {
 				display: flex;
 				justify-content: center;
