@@ -4,7 +4,7 @@
 	$(".breadcrumb_wrapper").hide();
 </script>
 <?php echo $home_top_top; ?>
-<div class="category-home">
+<!-- <div class="category-home">
       <div class="container category-home__container">
       <div class="category-home__col">
         <div class="category-home__img">
@@ -49,7 +49,7 @@
         </div>
       </div>
       </div>
-    </div>
+    </div> -->
     
     <?php echo $content_bottom; ?>
     

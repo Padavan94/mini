@@ -1,2 +1,4 @@
 2017-04-16 0:09:37 - PHP Notice:  Undefined index: address_2_dop in C:\OPENSERVER\OpenServer\domains\mini.loc\catalog\controller\quickcheckout\shipping_method.php on line 422
 2017-04-16 1:45:32 - PHP Notice:  Undefined variable: image in C:\OPENSERVER\OpenServer\domains\mini.loc\catalog\view\theme\cosyone\template\blog\special_offers-single.tpl on line 34
+2017-04-16 3:26:40 - PHP Notice:  Undefined variable: image in C:\OPENSERVER\OpenServer\domains\mini.loc\catalog\view\theme\cosyone\template\blog\special_offers-single.tpl on line 34
+2017-04-16 3:26:53 - PHP Notice:  Undefined variable: image in C:\OPENSERVER\OpenServer\domains\mini.loc\catalog\view\theme\cosyone\template\blog\special_offers-single.tpl on line 34
