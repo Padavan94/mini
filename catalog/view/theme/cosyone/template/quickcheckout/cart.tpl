@@ -12,6 +12,7 @@
 		  <td class="quantity"><?php echo $text_quantity; ?></td>
 		  <td class="unit-price mobile_hide"><?php echo $text_price; ?></td>
 		  <td class="total"><?php echo $text_total; ?></td>
+      <td></td>
 		</tr>
 	</thead>
     <?php if ($products || $vouchers) { ?>

@@ -934,7 +934,8 @@ $('#button-review').on('click', function() {
         direction: 'vertical',
         spaceBetween: 9,
         autoplay: 5000,
-        loop: true
+        loop: true,
+        lazyLoading: true,
     });
 
     $('.table-popup').magnificPopup({

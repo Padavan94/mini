@@ -300,6 +300,9 @@ a.button.active:hover, input.button.active:hover, #button-confirm:hover, .style-
 		& > li {
 			float: none;
 			position: relative;
+			&.disabled {
+				display: none !important;
+			}
 			&:hover,
 			&.current {
 				& > a {
@@ -468,6 +471,7 @@ a.button.active:hover, input.button.active:hover, #button-confirm:hover, .style-
 }
 
 .collections-home {
+	padding-top: 50px;
 	&__container {
 		display: flex;
 		flex-wrap: wrap;
@@ -1721,34 +1725,35 @@ a.button.active:hover, input.button.active:hover, #button-confirm:hover, .style-
 	display: flex;
 	padding: 70px 0;
 	.swiper-container {
-		height: 100%;
+		height: 600px;
 		width: 90px;
+		margin-right: 10px;
 	}
 	.swiper-slide {
-		height: 100%;
 		overflow: hidden;
-		width: auto;
 		display: flex;
 		justify-content: center;
 		align-items: center;
 		a {
-			height: 100%;
+			/* height: 100%;
 			display: flex;
 			justify-content: center;
-			align-items: center;
+			align-items: center; */
 			img {
-				height: 100%;
+				height: auto;
+				width: 100%;
 			}
 		}
 	}
 	.left {
 		width: 611px;
-		height: 600px;
+		
 		display: flex;
 		margin-right: 0px;
 		.image {
 			overflow: hidden;
 			margin-bottom: 0px;
+			height: 600px;
 			a {
 				display: flex;
 				justify-content: center;
@@ -2655,6 +2660,39 @@ a.button.active:hover, input.button.active:hover, #button-confirm:hover, .style-
 	}
 }
 
+.pagination {
+	li {
+		margin-right: 6px;
+		display: inline-block;
+		a,span {
+			width: 40px;
+			height: 40px;
+			border-radius: 50% !important;
+			border: 1px solid #d9d9d9;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			color: #161616;
+		}
+		&.active {
+			span {
+				background-color: $brand2;
+				border-color: $brand2; 
+				color: #fff;
+				font-family: "Ral-b";
+				&:hover {
+					background-color: $brand2;
+				}
+			}
+		}
+		&:last-child {
+			a {
+				background-color: #161616;
+				color: #fff;
+			}
+		}
+	}
+}
 
 
 //display: none;
