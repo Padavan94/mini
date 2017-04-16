@@ -49,6 +49,13 @@
     if($("div").is(".empty")) {
       $("#cart .shortcut_heading").css({"pointer-events" : "none"});
     }
+    var path = window.location.pathname + window.location.search;
+    console.log(path);
+    $("#menu>ul>li").each(function(index, el) {
+      if($(el).find("a").attr('href') == window.location.href || $(el).find("a").attr('href') == path) {
+        $(el).addClass('current');
+      }
+    });
   });
 </script>
 
