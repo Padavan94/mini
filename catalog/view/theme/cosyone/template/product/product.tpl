@@ -801,7 +801,7 @@ $('#button-cart').on('click', function() {
                         var html = 'Товары загружаются...'; 
           $.colorbox({
           //html:'<div class="cart_notification"><div class="product"><img src="' + json['image'] + '"/><span>' + json['success'] + '</span></div><div class="bottom"><a class="btn btn-default" href="' + json['link_cart'] + '">' + json['text_cart'] + '</a> ' + '<a class="btn btn-primary" href="' + json['link_checkout'] + '">' + json['text_checkout'] + '</a></div></div>',
-          html: '<h3 class="hits__title">  <span>Вам так же может понравится  <div class="bubles"><span></span><span></span><span></span></div></span></h3>' +
+          html: '<h3 class="hits__title">  <span>Корзина  <div class="bubles"><span></span><span></span><span></span></div></span></h3>' +
           '<div class="cart_notification">' +
           html+ '<div class="bottom"><a class="btn btn-default" href="' + json['link_cart'] + '">' + json['text_cart'] + '</a> ' + '<a class="btn btn-primary" href="' + json['link_checkout'] + '">' + json['text_checkout'] + '</a></div></div>',
                                         className: "notification",
