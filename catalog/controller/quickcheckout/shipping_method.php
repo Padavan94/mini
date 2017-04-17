@@ -411,7 +411,7 @@ class ControllerQuickCheckoutShippingMethod extends Controller {
                 $json['error']['novaposhta_post_offices'] = $this->language->get('error_novaposhta_post_offices');
             }             
         }
-
+/*
         if (isset($this->request->post['shipping_method']) && $this->request->post['shipping_method'] == 'flat2.flat2') {
             if ((utf8_strlen($this->request->post['address_1']) < 1)) {
                 $json['error']['address_1'] = $this->language->get('error_address_1');
@@ -423,7 +423,7 @@ class ControllerQuickCheckoutShippingMethod extends Controller {
                 $json['error']['address_2_dop'] = $this->language->get('error_address_1');
             }       
         }
-        
+        */
 //        var_dump($this->request->post);
         
 		if (!$json) {			
