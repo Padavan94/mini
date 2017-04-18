@@ -60,11 +60,15 @@ $(document).ready(function() {
 $('.hits__carousel').owlCarousel({
   items: 3,
   autoPlay: true,
-  autoHeight:true,
   navigation: true,
   navigationText: ["<span><i class='fa fa-angle-left'></i></span>","<span><i class='fa fa-angle-right'></i></span>"],
   dots: true,
-  transitionStyle:"backSlide"
+  transitionStyle:"backSlide",
+  itemsDesktop:[1199,3],
+  itemsDesktopSmall:[990,2],  
+  itemsTablet:[768,1],
+  itemsMobile:[479,1],
+
 });
 });
 </script> 

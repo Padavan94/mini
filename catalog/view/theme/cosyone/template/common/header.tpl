@@ -25,9 +25,7 @@
 <link rel="stylesheet" type="text/css" href="catalog/view/theme/cosyone/stylesheet/stylesheet.css" />
 
 <link href="catalog/view/javascript/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
-<?php if($cosyone_use_responsive == 'enabled'){ ?>
-<link rel="stylesheet" type="text/css" href="catalog/view/theme/cosyone/stylesheet/responsive.css" />
-<?php } ?>
+
 
 <link href="catalog/view/theme/default/css/main.css" rel="stylesheet">
 
@@ -55,6 +53,11 @@
       if($(el).find("a").attr('href') == window.location.href || $(el).find("a").attr('href') == path) {
         $(el).addClass('current');
       }
+    });
+
+    $(".trigger-btn").click(function(event) {
+      event.preventDefault();
+      $(this).next().slideToggle("fast");
     });
   });
 </script>
@@ -109,7 +112,9 @@
               <div class="container menu_border"></div>
               <div class="container menu_holder">
               <div id="menu">
-              
+                <a href="#" class="trigger-btn visible-xs">
+                      меню
+                    </a>
                 <ul class="only_desktop">
                 <li class="home only_desktop <?php echo $cosyone_show_home_icon; ?>"><a href="<?php echo $home; ?>"><?php //echo $text_home; ?>Новинки</a></li>
                      <?php if ($categories) { ?>
@@ -171,7 +176,7 @@
                   <li><a href="<?php echo $cosyone_custom_menu_url6; ?>"><?php echo $cosyone_custom_menu_title6; ?></a></li>
                       <?php } ?>
                     </ul>
-
+                    
                     <?php if($cosyone_header_style == 'header3') { ?>
                      <?php } else { ?>
                      <?php if($cosyone_header_search == 'enabled') { ?>
